@@ -27,6 +27,7 @@ class CompensationCalculator {
             const country = countrySelect.value;
             if (country) {
                 this.setDefaultTaxRates(country);
+                this.setDefaultOverheadRates(country);
             }
             this.updateResults();
         });
@@ -48,6 +49,26 @@ class CompensationCalculator {
                 this.setDefaultTaxRates(country);
             }
             this.updateResults();
+        });
+
+        // Add overhead reset button listener
+        document.getElementById('resetOverhead').addEventListener('click', () => {
+            const country = document.getElementById('country').value;
+            if (country) {
+                this.setDefaultOverheadRates(country);
+            }
+            this.updateResults();
+        });
+
+        // Add fixed overhead input listener
+        document.getElementById('fixedOverheadOverride').addEventListener('input', () => this.updateResults());
+        
+        // Add employer cost listeners
+        ['employerTaxOverride', 'workersCompOverride', 'otherFeesOverride'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.addEventListener('input', () => this.updateResults());
+            }
         });
     }
 
@@ -102,6 +123,18 @@ class CompensationCalculator {
         document.getElementById('otherTaxesOverride').value = rates.other;
     }
 
+    setDefaultOverheadRates(country) {
+        const overhead = this.data.companyOverhead.countrySpecific[country] || {
+            employerTax: 0.15,
+            workersComp: 0.02,
+            otherFees: 0.02
+        };
+        
+        document.getElementById('employerTaxOverride').value = (overhead.employerTax * 100).toFixed(1);
+        document.getElementById('workersCompOverride').value = (overhead.workersComp * 100).toFixed(1);
+        document.getElementById('otherFeesOverride').value = (overhead.otherFees * 100).toFixed(1);
+    }
+
     getTaxRates(country) {
         const incomeTax = parseFloat(document.getElementById('incomeTaxOverride').value) / 100;
         const socialSecurity = parseFloat(document.getElementById('socialSecurityOverride').value) / 100;
@@ -111,6 +144,20 @@ class CompensationCalculator {
             incomeTax: incomeTax || 0,
             socialSecurity: socialSecurity || 0,
             other: other || 0
+        };
+    }
+
+    getOverheadRates() {
+        const fixedOverhead = parseFloat(document.getElementById('fixedOverheadOverride').value) || 600;
+        const employerTax = parseFloat(document.getElementById('employerTaxOverride').value) / 100;
+        const workersComp = parseFloat(document.getElementById('workersCompOverride').value) / 100;
+        const otherFees = parseFloat(document.getElementById('otherFeesOverride').value) / 100;
+
+        return {
+            fixedOverhead,
+            employerTax: employerTax || 0,
+            workersComp: workersComp || 0,
+            otherFees: otherFees || 0
         };
     }
 
@@ -167,6 +214,23 @@ class CompensationCalculator {
         return (salary * fromIndex) / toIndex;
     }
 
+    calculateTotalOverhead(salary) {
+        const rates = this.getOverheadRates();
+        const annualFixed = rates.fixedOverhead * 12;
+        const variableCosts = salary * (rates.employerTax + rates.workersComp + rates.otherFees);
+        
+        return {
+            fixed: annualFixed,
+            variable: variableCosts,
+            total: annualFixed + variableCosts,
+            breakdown: {
+                employerTax: salary * rates.employerTax,
+                workersComp: salary * rates.workersComp,
+                otherFees: salary * rates.otherFees
+            }
+        };
+    }
+
     updateResults() {
         const { country, level } = this.getSelectedValues();
         const resultsDiv = document.getElementById('results');
@@ -181,25 +245,44 @@ class CompensationCalculator {
         const currency = countryData.currency;
         const costOfLiving = this.data.costOfLiving[country];
 
-        if (!levelData) {
-            resultsDiv.classList.add('d-none');
-            return;
-        }
-
         const range = levelData.employee;
         const monthlyRange = this.calculateMonthlyRange(range);
         const minUSD = this.convertToUSD(range.min, currency);
         const maxUSD = this.convertToUSD(range.max, currency);
 
-        const minPurchasingPower = this.calculatePurchasingPower(minUSD, costOfLiving.index);
-        const maxPurchasingPower = this.calculatePurchasingPower(maxUSD, costOfLiving.index);
-
         const rates = this.getTaxRates(country);
         const minTakeHome = this.calculateTakeHome(minUSD, country);
         const maxTakeHome = this.calculateTakeHome(maxUSD, country);
 
-        document.getElementById('experienceRange').textContent = 
-            `Experience: ${levelData.experience}`;
+        // Calculate and display overhead costs
+        const minOverhead = this.calculateTotalOverhead(minUSD);
+        const maxOverhead = this.calculateTotalOverhead(maxUSD);
+
+        // Update the display with overhead costs
+        document.getElementById('overheadBreakdown').innerHTML = `
+            <div class="overhead-breakdown mt-3">
+                <div class="ms-2">
+                    <div>Fixed Costs: ${this.formatCurrency(minOverhead.fixed, 'USD')}</div>
+                    <div>Employer Tax: ${this.formatCurrency(minOverhead.breakdown.employerTax, 'USD')} (${(minOverhead.breakdown.employerTax / minUSD * 100).toFixed(1)}%)</div>
+                    <div>Workers Comp: ${this.formatCurrency(minOverhead.breakdown.workersComp, 'USD')} (${(minOverhead.breakdown.workersComp / minUSD * 100).toFixed(1)}%)</div>
+                    <div>Other Fees: ${this.formatCurrency(minOverhead.breakdown.otherFees, 'USD')} (${(minOverhead.breakdown.otherFees / minUSD * 100).toFixed(1)}%)</div>
+                    <div class="mt-1"><strong>Total Overhead: ${this.formatCurrency(minOverhead.total, 'USD')}</strong></div>
+                </div>
+            </div>
+        `;
+
+        // Update the annual and monthly ranges
+        document.getElementById('annualRange').innerHTML = `
+            Annual (Local): ${this.formatCurrency(range.min, currency)} - ${this.formatCurrency(range.max, currency)}<br>
+            Annual (USD): ${this.formatCurrency(minUSD, 'USD')} - ${this.formatCurrency(maxUSD, 'USD')}<br>
+            <small>Take-home: ${this.formatCurrency(minTakeHome.net, 'USD')} - ${this.formatCurrency(maxTakeHome.net, 'USD')}</small>
+        `;
+
+        document.getElementById('monthlyRange').innerHTML = `
+            Monthly (Local): ${this.formatCurrency(monthlyRange.min, currency)} - ${this.formatCurrency(monthlyRange.max, currency)}<br>
+            Monthly (USD): ${this.formatCurrency(minUSD / 12, 'USD')} - ${this.formatCurrency(maxUSD / 12, 'USD')}<br>
+            <small>Take-home (after ~${minTakeHome.taxRate.toFixed(1)}% tax): ${this.formatCurrency(minTakeHome.net / 12, 'USD')} - ${this.formatCurrency(maxTakeHome.net / 12, 'USD')}</small>
+        `;
         
         // Update tax breakdown display
         const taxBreakdown = `
@@ -214,38 +297,7 @@ class CompensationCalculator {
             </div>
         `;
 
-        document.getElementById('annualRange').innerHTML = 
-            `Annual (Local): ${this.formatCurrency(range.min, currency)} - ${this.formatCurrency(range.max, currency)}<br>` +
-            `Annual (USD): ${this.formatCurrency(minUSD, 'USD')} - ${this.formatCurrency(maxUSD, 'USD')}<br>` +
-            `<small>Take-home: ${this.formatCurrency(minTakeHome.net, 'USD')} - ${this.formatCurrency(maxTakeHome.net, 'USD')}</small>`;
-        
-        document.getElementById('monthlyRange').innerHTML = 
-            `Monthly (Local): ${this.formatCurrency(monthlyRange.min, currency)} - ${this.formatCurrency(monthlyRange.max, currency)}<br>` +
-            `Monthly (USD): ${this.formatCurrency(minUSD/12, 'USD')} - ${this.formatCurrency(maxUSD/12, 'USD')}<br>` +
-            `<small>Take-home (after ~${minTakeHome.taxRate.toFixed(1)}% tax): ${this.formatCurrency(minTakeHome.net/12, 'USD')} - ${this.formatCurrency(maxTakeHome.net/12, 'USD')}</small>` +
-            `${taxBreakdown}`;
-
-        // Always show level details (use USA data as default)
-        const levelDetails = this.data.countries.usa.levels[level];
-        if (levelDetails.responsibilities && levelDetails.impact) {
-            document.getElementById('levelDetails').innerHTML = `
-                <div class="level-details mb-3">
-                    <h4 class="h6">Level Details for ${level}</h4>
-                    <div class="responsibilities mb-2">
-                        <strong>Key Responsibilities:</strong>
-                        <ul>
-                            ${levelDetails.responsibilities.map(r => `<li>${r}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div class="impact">
-                        <strong>Expected Impact:</strong>
-                        <ul>
-                            ${levelDetails.impact.map(i => `<li>${i}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `;
-        }
+        document.getElementById('additionalNotes').textContent = countryData.notes;
 
         document.getElementById('exchangeRate').textContent = 
             `Exchange Rate: 1 ${currency} = ${this.formatCurrency(this.data.exchangeRates[currency], 'USD')}`;
@@ -297,7 +349,46 @@ class CompensationCalculator {
             </div>
         `;
 
-        document.getElementById('additionalNotes').textContent = countryData.notes;
+        // Get level details from the global levels object
+        const levelDetails = this.data.levels[level];
+        
+        // Update level details display
+        if (levelDetails) {
+            document.getElementById('levelDetails').innerHTML = `
+                <div class="level-details mb-3">
+                    <h4 class="h6">${levelDetails.title} (${level})</h4>
+                    <p class="text-muted mb-3">Experience: ${levelDetails.experience}</p>
+                    
+                    <div class="responsibilities mb-4">
+                        <h5 class="h6 text-primary">Key Responsibilities</h5>
+                        <ul class="list-unstyled">
+                            ${levelDetails.responsibilities.map(r => `
+                                <li class="mb-2">
+                                    <i class="bi bi-check2-circle text-success me-2"></i>${r}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="impact">
+                        <h5 class="h6 text-primary">Expected Impact</h5>
+                        <ul class="list-unstyled">
+                            ${levelDetails.impact.map(i => `
+                                <li class="mb-2">
+                                    <i class="bi bi-star-fill text-warning me-2"></i>${i}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            document.getElementById('levelDetails').innerHTML = `
+                <div class="alert alert-info">
+                    No detailed information available for this level.
+                </div>
+            `;
+        }
 
         resultsDiv.classList.remove('d-none');
     }

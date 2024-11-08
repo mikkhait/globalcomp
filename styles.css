@@ -90,4 +90,78 @@
     font-size: 0.875rem;
     white-space: nowrap;
     z-index: 1000;
+}
+
+/* Level Details Styles */
+.level-details {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.level-details h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.level-details ul {
+    margin-bottom: 0;
+}
+
+.level-details li {
+    display: flex;
+    align-items: start;
+    line-height: 1.4;
+}
+
+.level-details .text-primary {
+    color: #0d6efd !important;
+    margin-bottom: 1rem;
+}
+
+.level-details .bi {
+    font-size: 1.1rem;
+    margin-top: 0.2rem;
+}
+
+/* Tab Styles */
+.nav-tabs .nav-link {
+    color: #495057;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+.nav-tabs .nav-link.active {
+    font-weight: 500;
+}
+
+/* Overhead Tab Styles */
+.overhead-section {
+    padding-top: 1rem;
+}
+
+.overhead-section h5 {
+    margin-bottom: 1rem;
+}
+
+.overhead-controls .input-group-text {
+    background-color: #f8f9fa;
+}
+
+/* Company Overhead Styles */
+.overhead-breakdown {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.overhead-breakdown h6 {
+    color: #664d03;
+    margin-bottom: 1rem;
+}
+
+.card-header.bg-warning {
+    background-color: #ffc107 !important;
+    border-bottom: none;
 } 

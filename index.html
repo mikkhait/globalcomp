@@ -50,6 +50,20 @@
                         <li>View cost of living comparisons across different locations</li>
                         <li>See role expectations and responsibilities for each level</li>
                     </ul>
+
+                    <h6>Company Overhead:</h6>
+                    <p class="small text-muted mb-2">
+                        The calculator includes employer-side costs that vary by location:
+                    </p>
+                    <ul>
+                        <li>Fixed costs (workspace, equipment, software licenses)</li>
+                        <li>Employer taxes and contributions</li>
+                        <li>Workers compensation insurance</li>
+                        <li>Other location-specific fees</li>
+                    </ul>
+                    <p class="small text-muted">
+                        These costs are essential for understanding the total investment required when hiring in different locations.
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
@@ -71,61 +85,125 @@
             <!-- Controls on the left -->
             <div class="col-md-4">
                 <form id="compensationForm" class="p-4 border rounded shadow-sm sticky-top">
-                    <div class="mb-4">
-                        <h5>Location & Level</h5>
-                        <div class="mb-3">
-                            <label for="country" class="form-label">Country</label>
-                            <select class="form-select" id="country" required>
-                                <option value="">Select a country</option>
-                                <option value="usa" >USA</option>
-                                <option value="spain">Spain</option>
-                                <option value="poland">Poland</option>
-                                <option value="ukraine">Ukraine</option>
-                                <option value="slovakia">Slovakia</option>
-                                <option value="canada">Canada</option>
-                                <option value="wales">Wales</option>
-                                <option value="lithuania">Lithuania</option>
-                            </select>
+                    <!-- Tab navigation -->
+                    <ul class="nav nav-tabs mb-3" id="controlTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">
+                                Basic
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="overhead-tab" data-bs-toggle="tab" data-bs-target="#overhead" type="button" role="tab">
+                                Company Overhead
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab content -->
+                    <div class="tab-content" id="controlTabsContent">
+                        <!-- Basic Settings Tab -->
+                        <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                            <div class="mb-4">
+                                <h5>Location & Level</h5>
+                                <div class="mb-3">
+                                    <label for="country" class="form-label">Country</label>
+                                    <select class="form-select" id="country" required>
+                                        <option value="">Select a country</option>
+                                        <option value="usa">USA</option>
+                                        <option value="spain">Spain</option>
+                                        <option value="poland">Poland</option>
+                                        <option value="ukraine">Ukraine</option>
+                                        <option value="slovakia">Slovakia</option>
+                                        <option value="canada">Canada</option>
+                                        <option value="wales">Wales</option>
+                                        <option value="croatia">Croatia</option>
+                                        <option value="lithuania">Lithuania</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="level" class="form-label">Seniority Level</label>
+                                    <select class="form-select" id="level" required>
+                                        <option value="">Select a level</option>
+                                        <option value="L2">L2 (Junior)</option>
+                                        <option value="L3">L3 (Mid-Level)</option>
+                                        <option value="L4">L4 (Senior)</option>
+                                        <option value="L5">L5 (Staff)</option>
+                                        <option value="L6">L6 (Principal)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="tax-section mb-4">
+                                <h5>Tax Configuration</h5>
+                                <div class="tax-controls">
+                                    <div class="mb-2">
+                                        <label class="form-label small">Income Tax (%)</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="number" class="form-control" id="incomeTaxOverride" min="0" max="100" step="0.1">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small">Social Security (%)</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="number" class="form-control" id="socialSecurityOverride" min="0" max="100" step="0.1">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small">Other Taxes (%)</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="number" class="form-control" id="otherTaxesOverride" min="0" max="100" step="0.1">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary w-100" id="resetTaxes">Reset to Country Defaults</button>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="level" class="form-label">Seniority Level</label>
-                            <select class="form-select" id="level" required>
-                                <option value="">Select a level</option>
-                                <option value="L2">L2 (Junior)</option>
-                                <option value="L3">L3 (Mid-Level)</option>
-                                <option value="L4">L4 (Senior)</option>
-                                <option value="L5">L5 (Staff)</option>
-                                <option value="L6">L6 (Principal)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="tax-section mb-4">
-                        <h5>Tax Configuration</h5>
-                        <div class="tax-controls">
-                            <div class="mb-2">
-                                <label class="form-label small">Income Tax (%)</label>
-                                <div class="input-group input-group-sm">
-                                    <input type="number" class="form-control" id="incomeTaxOverride" min="0" max="100" step="0.1">
-                                    <span class="input-group-text">%</span>
+                        <!-- Company Overhead Tab -->
+                        <div class="tab-pane fade" id="overhead" role="tabpanel">
+                            <div class="overhead-section">
+                                <h5>Company Overhead Configuration</h5>
+                                <div class="overhead-controls">
+                                    <div class="mb-2">
+                                        <label class="form-label small">Monthly Fixed Overhead ($)</label>
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="fixedOverheadOverride" min="0" step="50" value="600">
+                                        </div>
+                                        <small class="text-muted">Base cost per employee (workspace, equipment, etc.)</small>
+                                    </div>
+                                    
+                                    <div class="employer-costs mt-3">
+                                        <h6 class="small">Employer Costs</h6>
+                                        <div class="mb-2">
+                                            <label class="form-label small">Employer Tax (%)</label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" class="form-control" id="employerTaxOverride" min="0" max="100" step="0.1">
+                                                <span class="input-group-text">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label small">Workers Comp (%)</label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" class="form-control" id="workersCompOverride" min="0" max="100" step="0.1">
+                                                <span class="input-group-text">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label small">Other Fees (%)</label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" class="form-control" id="otherFeesOverride" min="0" max="100" step="0.1">
+                                                <span class="input-group-text">%</span>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary w-100" id="resetOverhead">Reset to Country Defaults</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mb-2">
-                                <label class="form-label small">Social Security (%)</label>
-                                <div class="input-group input-group-sm">
-                                    <input type="number" class="form-control" id="socialSecurityOverride" min="0" max="100" step="0.1">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <label class="form-label small">Other Taxes (%)</label>
-                                <div class="input-group input-group-sm">
-                                    <input type="number" class="form-control" id="otherTaxesOverride" min="0" max="100" step="0.1">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-secondary w-100" id="resetTaxes">Reset to Country Defaults</button>
                         </div>
                     </div>
                 </form>
@@ -140,8 +218,8 @@
                             <h5 class="card-title mb-0">Compensation Summary</h5>
                         </div>
                         <div class="card-body">
-                            <div id="experienceRange" class="mb-3 text-muted"></div>
                             <div id="annualRange" class="compensation-amount"></div>
+                            
                             <div id="monthlyRange" class="compensation-amount mt-3"></div>
                         </div>
                     </div>
@@ -169,6 +247,19 @@
                                 <div id="livingCosts"></div>
                             </div>
                             <div id="additionalNotes" class="mt-3 small text-muted"></div>
+                        </div>
+                    </div>
+
+                    <!-- Add after Location Info Card -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="card-title mb-0">Company Overhead</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="overheadBreakdown"></div>
+                            <small class="text-muted mt-2 d-block">
+                                Note: These calculations represent additional costs that a company incurs when employing someone in this location.
+                            </small>
                         </div>
                     </div>
                 </div>

@@ -141,86 +141,35 @@ const compensationData = {
                     employee: {
                         min: 90000,
                         max: 120000
-                    },
-                    responsibilities: [
-                        "Write maintainable code",
-                        "Debug and fix bugs",
-                        "Participate in code reviews",
-                        "Document code and processes"
-                    ],
-                    impact: [
-                        "Contributes to team goals",
-                        "Delivers tasks on time",
-                        "Learns from feedback"
-                    ]
+                    }
                 },
                 L3: {
                     experience: "2-5 years",
                     employee: {
                         min: 120000,
                         max: 150000
-                    },
-                    responsibilities: [
-                        "Design and implement features",
-                        "Mentor junior developers",
-                        "Participate in architectural discussions"
-                    ],
-                    impact: [
-                        "Leads small projects",
-                        "Influences team practices",
-                        "Contributes to product direction"
-                    ]
+                    }
                 },
                 L4: {
                     experience: "5-8 years",
                     employee: {
                         min: 150000,
                         max: 180000
-                    },
-                    responsibilities: [
-                        "Architect complex systems",
-                        "Lead technical discussions",
-                        "Drive best practices in coding"
-                    ],
-                    impact: [
-                        "Shapes team culture",
-                        "Leads cross-team initiatives",
-                        "Drives significant product features"
-                    ]
+                    }
                 },
                 L5: {
                     experience: "8-12 years",
                     employee: {
                         min: 180000,
                         max: 220000
-                    },
-                    responsibilities: [
-                        "Define technical strategy",
-                        "Mentor senior engineers",
-                        "Oversee multiple projects"
-                    ],
-                    impact: [
-                        "Influences company direction",
-                        "Drives innovation",
-                        "Represents engineering in leadership"
-                    ]
+                    }
                 },
                 L6: {
                     experience: "12+ years",
                     employee: {
                         min: 220000,
                         max: 260000
-                    },
-                    responsibilities: [
-                        "Set vision for engineering",
-                        "Lead large-scale initiatives",
-                        "Shape organizational strategy"
-                    ],
-                    impact: [
-                        "Drives company-wide change",
-                        "Influences industry standards",
-                        "Acts as a thought leader"
-                    ]
+                    }
                 }
             },
             notes: "Salaries vary significantly by location. Silicon Valley and NYC typically offer 20-30% higher."
@@ -479,80 +428,183 @@ const compensationData = {
                     employee: {
                         min: 60000,
                         max: 80000
-                    },
-                    responsibilities: [
-                        "Assist in software development",
-                        "Participate in code reviews",
-                        "Write documentation"
-                    ],
-                    impact: [
-                        "Contributes to team projects",
-                        "Learns from senior developers"
-                    ]
+                    }
                 },
                 L3: {
                     experience: "2-5 years",
                     employee: {
                         min: 80000,
                         max: 100000
-                    },
-                    responsibilities: [
-                        "Design and implement features",
-                        "Mentor junior developers",
-                        "Participate in architectural discussions"
-                    ],
-                    impact: [
-                        "Leads small projects",
-                        "Influences team practices"
-                    ]
+                    }
                 },
                 L4: {
                     experience: "5-8 years",
                     employee: {
                         min: 100000,
                         max: 120000
-                    },
-                    responsibilities: [
-                        "Architect complex systems",
-                        "Lead technical discussions"
-                    ],
-                    impact: [
-                        "Shapes team culture",
-                        "Leads cross-team initiatives"
-                    ]
+                    }
                 },
                 L5: {
                     experience: "8-12 years",
                     employee: {
                         min: 120000,
                         max: 140000
-                    },
-                    responsibilities: [
-                        "Define technical strategy",
-                        "Mentor senior engineers"
-                    ],
-                    impact: [
-                        "Influences company direction",
-                        "Drives innovation"
-                    ]
+                    }
                 },
                 L6: {
                     experience: "12+ years",
                     employee: {
                         min: 140000,
                         max: 160000
-                    },
-                    responsibilities: [
-                        "Set vision for engineering",
-                        "Lead large-scale initiatives"
-                    ],
-                    impact: [
-                        "Drives company-wide change",
-                        "Acts as a thought leader"
-                    ]
+                    }
                 }
             },
             notes: "Salaries in Croatia are competitive within the region, with a lower cost of living compared to Western Europe."
+        }
+    },
+    
+    companyOverhead: {
+        fixedCosts: {
+            baseAmount: 600, // Base monthly overhead per employee
+            description: "Base overhead includes workspace, equipment, software licenses, etc."
+        },
+        countrySpecific: {
+            usa: {
+                employerTax: 0.0765, // Social Security (6.2%) + Medicare (1.45%)
+                workersComp: 0.02, // Workers compensation insurance
+                otherFees: 0.03, // State-specific fees and insurance
+                description: "Includes FICA, workers comp, and state-specific fees"
+            },
+            spain: {
+                employerTax: 0.298, // Social Security contribution
+                workersComp: 0.01,
+                otherFees: 0.02,
+                description: "Includes Social Security and mandatory insurance"
+            },
+            poland: {
+                employerTax: 0.198, // Social contributions
+                workersComp: 0.0167,
+                otherFees: 0.02,
+                description: "Includes ZUS contributions and mandatory insurance"
+            },
+            ukraine: {
+                employerTax: 0.22, // Unified Social Contribution
+                workersComp: 0.01,
+                otherFees: 0.01,
+                description: "Includes USC and other mandatory contributions"
+            },
+            slovakia: {
+                employerTax: 0.352, // Social and health insurance
+                workersComp: 0.008,
+                otherFees: 0.01,
+                description: "Includes social and health insurance contributions"
+            },
+            canada: {
+                employerTax: 0.0795, // CPP + EI
+                workersComp: 0.025,
+                otherFees: 0.02,
+                description: "Includes CPP, EI, and provincial requirements"
+            },
+            wales: {
+                employerTax: 0.138, // National Insurance
+                workersComp: 0.01,
+                otherFees: 0.02,
+                description: "Includes National Insurance and mandatory coverage"
+            },
+            lithuania: {
+                employerTax: 0.313, // Social insurance
+                workersComp: 0.01,
+                otherFees: 0.01,
+                description: "Includes Sodra and mandatory insurance"
+            }
+        }
+    },
+    
+    levels: {
+        L2: {
+            title: "Junior Engineer",
+            experience: "0-2 years",
+            responsibilities: [
+                "Write maintainable and well-tested code",
+                "Debug and fix bugs",
+                "Participate in code reviews",
+                "Write unit tests",
+                "Document code and processes"
+            ],
+            impact: [
+                "Delivers assigned tasks on schedule",
+                "Contributes to team discussions",
+                "Learns and applies team practices",
+                "Grows technical skills consistently"
+            ]
+        },
+        L3: {
+            title: "Mid-Level Engineer",
+            experience: "2-5 years",
+            responsibilities: [
+                "Design and implement features independently",
+                "Review code from junior engineers",
+                "Contribute to technical design discussions",
+                "Improve development processes",
+                "Write technical documentation"
+            ],
+            impact: [
+                "Owns small to medium features end-to-end",
+                "Mentors junior engineers",
+                "Contributes to team planning",
+                "Identifies and resolves technical debt"
+            ]
+        },
+        L4: {
+            title: "Senior Engineer",
+            experience: "5-8 years",
+            responsibilities: [
+                "Design and implement complex systems",
+                "Lead technical design discussions",
+                "Drive best practices adoption",
+                "Mentor other engineers",
+                "Contribute to technical strategy"
+            ],
+            impact: [
+                "Owns large features and projects",
+                "Influences team technical decisions",
+                "Drives engineering excellence",
+                "Resolves complex technical challenges"
+            ]
+        },
+        L5: {
+            title: "Staff Engineer",
+            experience: "8-12 years",
+            responsibilities: [
+                "Architect system-wide solutions",
+                "Drive technical strategy",
+                "Lead multiple projects simultaneously",
+                "Establish engineering standards",
+                "Guide technical decision-making"
+            ],
+            impact: [
+                "Influences organization-wide decisions",
+                "Drives innovation and best practices",
+                "Mentors senior engineers",
+                "Resolves critical technical challenges"
+            ]
+        },
+        L6: {
+            title: "Principal Engineer",
+            experience: "12+ years",
+            responsibilities: [
+                "Define technical vision",
+                "Lead organization-wide initiatives",
+                "Drive architectural decisions",
+                "Establish technical governance",
+                "Guide long-term technical strategy"
+            ],
+            impact: [
+                "Shapes company technical direction",
+                "Influences product strategy",
+                "Drives engineering culture",
+                "Resolves strategic technical challenges"
+            ]
         }
     }
 }; 
