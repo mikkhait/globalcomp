@@ -5,7 +5,7 @@ const compensationData = {
         PLN: 0.25,  // 1 PLN to USD
         UAH: 0.027, // 1 UAH to USD
         CAD: 0.74,  // 1 CAD to USD
-        GBP: 1.27  // 1 HRK to USD (approximate)
+        GBP: 1.27  // 1 GBP to USD (approximate)
     },
     
     costOfLiving: {
