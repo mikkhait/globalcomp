@@ -5,8 +5,7 @@ const compensationData = {
         PLN: 0.25,  // 1 PLN to USD
         UAH: 0.027, // 1 UAH to USD
         CAD: 0.74,  // 1 CAD to USD
-        GBP: 1.27,  // 1 GBP to USD
-        HRK: 0.15   // 1 HRK to USD (approximate)
+        GBP: 1.27  // 1 HRK to USD (approximate)
     },
     
     costOfLiving: {
@@ -350,41 +349,41 @@ const compensationData = {
             notes: "Canadian tech hubs like Toronto offer competitive salaries. Benefits typically include health insurance and retirement plans."
         },
         ukraine: {
-            currency: "UAH",
+            currency: "USD",
             levels: {
                 L2: {
                     experience: "0-2 years",
                     employee: {
-                        min: 300000,
-                        max: 450000
+                        min: 12000,
+                        max: 14000
                     }
                 },
                 L3: {
                     experience: "2-5 years",
                     employee: {
-                        min: 450000,
-                        max: 700000
+                        min: 18000,
+                        max: 24000
                     }
                 },
                 L4: {
                     experience: "5-8 years",
                     employee: {
-                        min: 700000,
-                        max: 1000000
+                        min: 36000,
+                        max: 48000
                     }
                 },
                 L5: {
                     experience: "8-12 years",
                     employee: {
-                        min: 1000000,
-                        max: 1500000
+                        min: 48000,
+                        max: 60000
                     }
                 },
                 L6: {
                     experience: "12+ years",
                     employee: {
-                        min: 1500000,
-                        max: 2000000
+                        min: 60000,
+                        max: 72000
                     }
                 }
             },

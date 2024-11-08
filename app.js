@@ -1,3 +1,18 @@
+function showHowToUse() {
+    const modal = new bootstrap.Modal(document.getElementById('howToUseModal'));
+    modal.show();
+}
+
+// Show the modal on first visit
+document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('hasVisited')) {
+        showHowToUse();
+        localStorage.setItem('hasVisited', 'true');
+    }
+    
+    const calculator = new CompensationCalculator(compensationData);
+});
+
 class CompensationCalculator {
     constructor(data) {
         this.data = data;
@@ -146,6 +161,12 @@ class CompensationCalculator {
         };
     }
 
+    calculateCostOfLivingComparison(salary, fromCountry, toCountry) {
+        const fromIndex = this.data.costOfLiving[fromCountry].index;
+        const toIndex = this.data.costOfLiving[toCountry].index;
+        return (salary * fromIndex) / toIndex;
+    }
+
     updateResults() {
         const { country, level } = this.getSelectedValues();
         const resultsDiv = document.getElementById('results');
@@ -229,26 +250,55 @@ class CompensationCalculator {
         document.getElementById('exchangeRate').textContent = 
             `Exchange Rate: 1 ${currency} = ${this.formatCurrency(this.data.exchangeRates[currency], 'USD')}`;
 
-        document.getElementById('costIndex').innerHTML = 
-            `Cost of Living Index: ${costOfLiving.index} <small>(New York = 100)</small><br>` +
-            `<small>Lower index means your money buys more locally</small>`;
-        
-        document.getElementById('rentCosts').innerHTML = 
-            `Average Rent: ${costOfLiving.rent} <small>(1 bedroom, city center)</small>`;
-        
-        document.getElementById('livingCosts').innerHTML = 
-            `Monthly Expenses:<br>
-            • Average Meal: ${costOfLiving.details.meal}<br>
-            • Public Transport: ${costOfLiving.details.transport}<br>
-            • Utilities: ${costOfLiving.details.utilities}`;
-        
+        document.getElementById('costIndex').innerHTML = `
+            <h6 class="mb-3">Cost of Living Comparison</h6>
+            <div class="col-living-comparison mb-3">
+                <div>Index: ${costOfLiving.index} <small>(New York = 100)</small></div>
+                <div class="mt-2">Equivalent purchasing power in other cities:</div>
+                <div class="comparison-table mt-2">
+                    ${Object.entries(this.data.costOfLiving)
+                        .filter(([key]) => key !== country)
+                        .map(([countryKey, countryData]) => {
+                            const equivalentSalary = this.calculateCostOfLivingComparison(
+                                minUSD,
+                                country,
+                                countryKey
+                            );
+                            return `
+                                <div class="comparison-row">
+                                    <strong>${countryKey.charAt(0).toUpperCase() + countryKey.slice(1)}:</strong> 
+                                    ${this.formatCurrency(equivalentSalary, 'USD')}
+                                    <small class="text-muted">(Index: ${countryData.index})</small>
+                                </div>
+                            `;
+                        }).join('')}
+                </div>
+            </div>
+            <div class="living-costs-breakdown">
+                <h6 class="mb-2">Monthly Living Costs</h6>
+                <div class="costs-grid">
+                    <div class="cost-item">
+                        <span class="cost-label">🏠 Rent (1 bed, city center):</span>
+                        <span class="cost-value">${costOfLiving.rent}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">🍽️ Average Meal:</span>
+                        <span class="cost-value">${costOfLiving.details.meal}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">🚌 Public Transport:</span>
+                        <span class="cost-value">${costOfLiving.details.transport}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">💡 Utilities:</span>
+                        <span class="cost-value">${costOfLiving.details.utilities}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
         document.getElementById('additionalNotes').textContent = countryData.notes;
 
         resultsDiv.classList.remove('d-none');
     }
-}
-
-// Initialize the calculator when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    const calculator = new CompensationCalculator(compensationData);
-}); 
+} 
