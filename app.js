@@ -18,6 +18,73 @@ class CompensationCalculator {
         this.data = data;
         this.charts = {}; // Store chart instances
         this.initializeEventListeners();
+        this.displayReleaseNotes();
+    }
+
+    // Helper methods for release notes
+    renderReleaseSection(items, title, sectionClass, iconClass) {
+        if (!items || items.length === 0) return '';
+        
+        return `
+            <div class="release-section ${sectionClass}">
+                <div class="section-title">
+                    <i class="${iconClass} me-2"></i>
+                    ${title}
+                </div>
+                <ul>
+                    ${items.map(item => `
+                        <li>
+                            <i class="${iconClass}"></i>
+                            ${item}
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    renderReleaseNote(release, isLast) {
+        return `
+            <div class="release-note">
+                <div class="version-header">
+                    <div class="version">Version ${release.version}</div>
+                    <div class="date">${release.date}</div>
+                </div>
+                
+                ${this.renderReleaseSection(
+                    release.major,
+                    'Major Changes',
+                    'major-changes',
+                    'bi bi-star-fill'
+                )}
+                
+                ${this.renderReleaseSection(
+                    release.improvements,
+                    'Improvements',
+                    'improvements',
+                    'bi bi-arrow-up-circle-fill'
+                )}
+                
+                ${this.renderReleaseSection(
+                    release.fixes,
+                    'Fixes',
+                    'fixes',
+                    'bi bi-bug-fill'
+                )}
+            </div>
+        `;
+    }
+
+    displayReleaseNotes() {
+        const releaseNotesContent = document.getElementById('releaseNotesContent');
+        if (!releaseNotesContent) return;
+
+        const notes = this.data.releaseNotes;
+        const notesHtml = notes
+            .map((release, index) => this.renderReleaseNote(release))
+            .join('');
+
+        releaseNotesContent.innerHTML = notesHtml;
     }
 
     initializeEventListeners() {

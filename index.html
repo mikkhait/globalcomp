@@ -5,7 +5,273 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Compensation Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(45deg, var(--bs-primary), var(--bs-info));
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .app-header {
+            background: var(--primary-gradient);
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .control-card {
+            position: sticky;
+            top: 1rem;
+        }
+
+        .form-select, .form-control {
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            padding: 0.75rem;
+        }
+
+        .form-select:focus, .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(13,110,253,0.15);
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--bs-gray-600);
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--bs-primary);
+            border-bottom: 2px solid var(--bs-primary);
+            background: none;
+        }
+
+        .compensation-amount {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .level-details li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .level-details li:last-child {
+            border-bottom: none;
+        }
+
+        /* Custom scrollbar for better UX */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Improved card headers */
+        .card-header {
+            background: white;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem;
+        }
+
+        .card-header h5 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* Button improvements */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .btn-outline-info {
+            border-width: 2px;
+        }
+
+        .btn-outline-info:hover {
+            background: var(--primary-gradient);
+            border-color: transparent;
+        }
+
+        /* Badge improvements */
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        /* Alert improvements */
+        .alert {
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Release Notes Styles */
+        .release-notes-container {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .release-note {
+            position: relative;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .release-note:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .version-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .version-header .version {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--bs-primary);
+        }
+
+        .version-header .date {
+            font-size: 0.875rem;
+            color: var(--bs-gray-600);
+            background: var(--bs-gray-100);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .release-section {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .release-section:hover {
+            border-left-color: var(--bs-primary);
+        }
+
+        .release-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .release-section .section-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .release-section.major-changes {
+            border-left-color: var(--bs-warning);
+        }
+
+        .release-section.improvements {
+            border-left-color: var(--bs-success);
+        }
+
+        .release-section.fixes {
+            border-left-color: var(--bs-danger);
+        }
+
+        .release-section ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .release-section li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .release-section li:last-child {
+            margin-bottom: 0;
+        }
+
+        .release-section li i {
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+        }
+
+        .release-section.major-changes i {
+            color: var(--bs-warning);
+        }
+
+        .release-section.improvements i {
+            color: var(--bs-success);
+        }
+
+        .release-section.fixes i {
+            color: var(--bs-danger);
+        }
+
+        /* Modal improvements */
+        .modal-header.bg-primary {
+            background: var(--primary-gradient) !important;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .latest-update {
+            border-left: 4px solid var(--bs-info);
+            margin-bottom: 2rem;
+        }
+    </style>
 </head>
 <body>
     <!-- Add Modal for How to Use -->
@@ -72,147 +338,197 @@
         </div>
     </div>
 
-    <!-- Add a help button in the main container -->
-    <div class="container-fluid my-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>Global Compensation Calculator</h1>
-            <button class="btn btn-outline-info" onclick="showHowToUse()">
-                How to Use
-            </button>
-        </div>
-        
-        <div class="row">
-            <!-- Controls on the left -->
-            <div class="col-md-4">
-                <form id="compensationForm" class="p-4 border rounded shadow-sm sticky-top">
-                    <!-- Tab navigation -->
-                    <ul class="nav nav-tabs mb-3" id="controlTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">
-                                Basic
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="overhead-tab" data-bs-toggle="tab" data-bs-target="#overhead" type="button" role="tab">
-                                Company Overhead
-                            </button>
-                        </li>
-                    </ul>
-
-                    <!-- Tab content -->
-                    <div class="tab-content" id="controlTabsContent">
-                        <!-- Basic Settings Tab -->
-                        <div class="tab-pane fade show active" id="basic" role="tabpanel">
-                            <div class="mb-4">
-                                <h5>Role & Location</h5>
-                                <div class="mb-3">
-                                    <label for="role" class="form-label">Role</label>
-                                    <select class="form-select" id="role" required>
-                                        <option value="">Select a role</option>
-                                        <option value="engineer">Software Engineer</option>
-                                        <option value="pm">Product Manager</option>
-                                        <option value="designer">Product Designer</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="country" class="form-label">Country</label>
-                                    <select class="form-select" id="country" required>
-                                        <option value="">Select a country</option>
-                                        <option value="usa">USA</option>
-                                        <option value="spain">Spain</option>
-                                        <option value="poland">Poland</option>
-                                        <option value="ukraine">Ukraine</option>
-                                        <option value="slovakia">Slovakia</option>
-                                        <option value="canada">Canada</option>
-                                        <option value="wales">Wales</option>
-                                        <!-- <option value="croatia">Croatia</option> -->
-                                        <option value="lithuania">Lithuania</option>
-                                        <option value="germany">Germany</option>
-                                        <option value="uk">United Kingdom</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="level" class="form-label">Seniority Level</label>
-                                    <select class="form-select" id="level" required>
-                                        <option value="">Select a level</option>
-                                        <option value="L2">L2 (Junior)</option>
-                                        <option value="L3">L3 (Mid-Level)</option>
-                                        <option value="L4">L4 (Senior)</option>
-                                        <option value="L5">L5 (Staff)</option>
-                                        <option value="L6">L6 (Principal)</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="tax-section mb-4">
-                                <h5>Tax Configuration</h5>
-                                <div class="tax-controls">
-                                    <div class="mb-2">
-                                        <label class="form-label small">Income Tax (%)</label>
-                                        <div class="input-group input-group-sm">
-                                            <input type="number" class="form-control" id="incomeTaxOverride" min="0" max="100" step="0.1">
-                                            <span class="input-group-text">%</span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label class="form-label small">Social Security (%)</label>
-                                        <div class="input-group input-group-sm">
-                                            <input type="number" class="form-control" id="socialSecurityOverride" min="0" max="100" step="0.1">
-                                            <span class="input-group-text">%</span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label class="form-label small">Other Taxes (%)</label>
-                                        <div class="input-group input-group-sm">
-                                            <input type="number" class="form-control" id="otherTaxesOverride" min="0" max="100" step="0.1">
-                                            <span class="input-group-text">%</span>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary w-100" id="resetTaxes">Reset to Country Defaults</button>
-                                </div>
+    <!-- Add Modal for Release Notes -->
+    <div class="modal fade" id="releaseNotesModal" tabindex="-1" aria-labelledby="releaseNotesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="releaseNotesModalLabel">
+                        <i class="bi bi-clock-history me-2"></i>Release Notes
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info latest-update mb-4">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-stars fs-4 me-3"></i>
+                            <div>
+                                <strong class="d-block mb-1">Latest Update (v2.0.0)</strong>
+                                Added comprehensive role-based compensation data for Product Managers and Designers, along with enhanced UI and improved market data.
                             </div>
                         </div>
+                    </div>
+                    <div id="releaseNotesContent" class="release-notes-container">
+                        <!-- Release notes will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="bi bi-check-lg me-2"></i>Got it!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        <!-- Company Overhead Tab -->
-                        <div class="tab-pane fade" id="overhead" role="tabpanel">
-                            <div class="overhead-section">
-                                <h5>Company Overhead Configuration</h5>
-                                <div class="overhead-controls">
-                                    <div class="mb-2">
-                                        <label class="form-label small">Monthly Fixed Overhead ($)</label>
-                                        <div class="input-group input-group-sm">
-                                            <span class="input-group-text">$</span>
-                                            <input type="number" class="form-control" id="fixedOverheadOverride" min="0" step="50" value="600">
-                                        </div>
-                                        <small class="text-muted">Base cost per employee (workspace, equipment, etc.)</small>
+    <!-- New header section -->
+    <header class="app-header">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="mb-0">
+                    <i class="bi bi-calculator me-2"></i>
+                    Global Compensation Calculator
+                </h1>
+                <div>
+                    <button class="btn btn-outline-light me-2" onclick="showReleaseNotes()">
+                        <i class="bi bi-clock-history me-2"></i>Release Notes
+                    </button>
+                    <button class="btn btn-outline-light" onclick="showHowToUse()">
+                        <i class="bi bi-question-circle me-2"></i>How to Use
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row g-4">
+            <!-- Controls on the left -->
+            <div class="col-md-4 col-lg-3">
+                <form id="compensationForm" class="card control-card">
+                    <div class="card-body p-4">
+                        <!-- Tab navigation -->
+                        <ul class="nav nav-tabs mb-4" id="controlTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">
+                                    <i class="bi bi-gear-fill me-2"></i>Basic
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="overhead-tab" data-bs-toggle="tab" data-bs-target="#overhead" type="button" role="tab">
+                                    <i class="bi bi-building me-2"></i>Overhead
+                                </button>
+                            </li>
+                        </ul>
+
+                        <!-- Tab content -->
+                        <div class="tab-content" id="controlTabsContent">
+                            <!-- Basic Settings Tab -->
+                            <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                                <div class="mb-4">
+                                    <h5 class="mb-4">Role & Location</h5>
+                                    <div class="mb-3">
+                                        <label for="role" class="form-label">Role</label>
+                                        <select class="form-select" id="role" required>
+                                            <option value="">Select a role</option>
+                                            <option value="engineer">Software Engineer</option>
+                                            <option value="pm">Product Manager</option>
+                                            <option value="designer">Product Designer</option>
+                                        </select>
                                     </div>
-                                    
-                                    <div class="employer-costs mt-3">
-                                        <h6 class="small">Employer Costs</h6>
-                                        <div class="mb-2">
-                                            <label class="form-label small">Employer Tax (%)</label>
-                                            <div class="input-group input-group-sm">
-                                                <input type="number" class="form-control" id="employerTaxOverride" min="0" max="100" step="0.1">
+
+                                    <div class="mb-3">
+                                        <label for="country" class="form-label">Country</label>
+                                        <select class="form-select" id="country" required>
+                                            <option value="">Select a country</option>
+                                            <option value="usa">USA</option>
+                                            <option value="spain">Spain</option>
+                                            <option value="poland">Poland</option>
+                                            <option value="ukraine">Ukraine</option>
+                                            <option value="slovakia">Slovakia</option>
+                                            <option value="canada">Canada</option>
+                                            <option value="wales">Wales</option>
+                                            <option value="lithuania">Lithuania</option>
+                                            <option value="germany">Germany</option>
+                                            <option value="uk">United Kingdom</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="level" class="form-label">Seniority Level</label>
+                                        <select class="form-select" id="level" required>
+                                            <option value="">Select a level</option>
+                                            <option value="L2">L2 (Junior)</option>
+                                            <option value="L3">L3 (Mid-Level)</option>
+                                            <option value="L4">L4 (Senior)</option>
+                                            <option value="L5">L5 (Staff)</option>
+                                            <option value="L6">L6 (Principal)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="tax-section mb-4">
+                                    <h5 class="mb-3">Tax Configuration</h5>
+                                    <div class="tax-controls bg-light p-3 rounded">
+                                        <div class="mb-3">
+                                            <label class="form-label">Income Tax (%)</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" id="incomeTaxOverride" min="0" max="100" step="0.1">
                                                 <span class="input-group-text">%</span>
                                             </div>
                                         </div>
-                                        <div class="mb-2">
-                                            <label class="form-label small">Workers Comp (%)</label>
-                                            <div class="input-group input-group-sm">
-                                                <input type="number" class="form-control" id="workersCompOverride" min="0" max="100" step="0.1">
+                                        <div class="mb-3">
+                                            <label class="form-label">Social Security (%)</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" id="socialSecurityOverride" min="0" max="100" step="0.1">
                                                 <span class="input-group-text">%</span>
                                             </div>
                                         </div>
-                                        <div class="mb-2">
-                                            <label class="form-label small">Other Fees (%)</label>
-                                            <div class="input-group input-group-sm">
-                                                <input type="number" class="form-control" id="otherFeesOverride" min="0" max="100" step="0.1">
+                                        <div class="mb-3">
+                                            <label class="form-label">Other Taxes (%)</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" id="otherTaxesOverride" min="0" max="100" step="0.1">
                                                 <span class="input-group-text">%</span>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary w-100" id="resetOverhead">Reset to Country Defaults</button>
+                                        <button type="button" class="btn btn-outline-secondary w-100" id="resetTaxes">
+                                            <i class="bi bi-arrow-counterclockwise me-2"></i>Reset to Defaults
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Company Overhead Tab -->
+                            <div class="tab-pane fade" id="overhead" role="tabpanel">
+                                <div class="overhead-section">
+                                    <h5 class="mb-3">Company Overhead</h5>
+                                    <div class="overhead-controls bg-light p-3 rounded">
+                                        <div class="mb-3">
+                                            <label class="form-label">Monthly Fixed Overhead ($)</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">$</span>
+                                                <input type="number" class="form-control" id="fixedOverheadOverride" min="0" step="50" value="600">
+                                            </div>
+                                            <small class="text-muted">Base cost per employee (workspace, equipment, etc.)</small>
+                                        </div>
+                                        
+                                        <div class="employer-costs mt-4">
+                                            <h6>Employer Costs</h6>
+                                            <div class="mb-3">
+                                                <label class="form-label">Employer Tax (%)</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="employerTaxOverride" min="0" max="100" step="0.1">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Workers Comp (%)</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="workersCompOverride" min="0" max="100" step="0.1">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Other Fees (%)</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="otherFeesOverride" min="0" max="100" step="0.1">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-outline-secondary w-100" id="resetOverhead">
+                                                <i class="bi bi-arrow-counterclockwise me-2"></i>Reset to Defaults
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -222,46 +538,57 @@
             </div>
 
             <!-- Results on the right -->
-            <div class="col-md-8">
-                <div id="results" class="p-4 border rounded shadow-sm d-none">
-                    <!-- Compensation Insights Card - Moved to Top -->
+            <div class="col-md-8 col-lg-9">
+                <div id="results" class="d-none">
+                    <!-- Compensation Summary Card -->
                     <div class="card mb-4">
-                        <div class="card-header bg-secondary text-white">
-                            <h5 class="card-title mb-0">Compensation Insights</h5>
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-currency-dollar me-2"></i>Compensation Summary
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <canvas id="salaryComparisonChart"></canvas>
+                                <div class="col-md-6">
+                                    <div id="annualRange" class="compensation-amount"></div>
                                 </div>
-                                <div class="col-md-6 mb-4">
-                                    <canvas id="costOfLivingChart"></canvas>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <canvas id="taxBreakdownChart"></canvas>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <canvas id="purchasingPowerChart"></canvas>
+                                <div class="col-md-6">
+                                    <div id="monthlyRange" class="compensation-amount"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Compensation Summary Card -->
-                    <div class="card mb-4">
-                        <div class="card-header bg-primary text-white">
-                            <h5 class="card-title mb-0">Compensation Summary</h5>
+                    <!-- Charts Grid -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="chart-container">
+                                <canvas id="salaryComparisonChart"></canvas>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div id="annualRange" class="compensation-amount"></div>
-                            <div id="monthlyRange" class="compensation-amount mt-3"></div>
+                        <div class="col-md-6">
+                            <div class="chart-container">
+                                <canvas id="costOfLivingChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="chart-container">
+                                <canvas id="taxBreakdownChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="chart-container">
+                                <canvas id="purchasingPowerChart"></canvas>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Level Details Card -->
+                    <!-- Role Details Card -->
                     <div class="card mb-4">
                         <div class="card-header bg-info text-white">
-                            <h5 class="card-title mb-0">Role Details</h5>
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-person-badge me-2"></i>Role Details
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div id="levelDetails"></div>
@@ -271,7 +598,9 @@
                     <!-- Location Info Card -->
                     <div class="card mb-4">
                         <div class="card-header bg-success text-white">
-                            <h5 class="card-title mb-0">Location Information</h5>
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-geo-alt me-2"></i>Location Information
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div id="exchangeRate" class="mb-2"></div>
@@ -287,7 +616,9 @@
                     <!-- Company Overhead Card -->
                     <div class="card mb-4">
                         <div class="card-header bg-warning text-dark">
-                            <h5 class="card-title mb-0">Company Overhead</h5>
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-building me-2"></i>Company Overhead
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div id="overheadBreakdown"></div>
@@ -301,11 +632,21 @@
         </div>
     </div>
 
-    <!-- Add Bootstrap JS -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="data.js"></script>
     <script src="app.js"></script>
-    <!-- Add right after the Bootstrap CSS link -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function showHowToUse() {
+            const modal = new bootstrap.Modal(document.getElementById('howToUseModal'));
+            modal.show();
+        }
+
+        function showReleaseNotes() {
+            const modal = new bootstrap.Modal(document.getElementById('releaseNotesModal'));
+            modal.show();
+        }
+    </script>
 </body>
 </html> 

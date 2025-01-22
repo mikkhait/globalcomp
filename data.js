@@ -1,4 +1,67 @@
 const compensationData = {
+    releaseNotes: [
+        {
+            version: "2.0.0",
+            date: "March 2024",
+            major: [
+                "Added comprehensive role-based compensation data for Product Managers and Designers",
+                "Introduced detailed level definitions and career progression paths for all roles",
+                "Implemented role-specific salary comparison charts and insights"
+            ],
+            improvements: [
+                "Enhanced UI with modern design and better user experience",
+                "Updated salary ranges across all countries to reflect 2024 market conditions",
+                "Added purchasing power comparison feature",
+                "Improved cost of living data accuracy with local market adjustments"
+            ],
+            fixes: [
+                "Corrected utilities costs for Ukraine to reflect actual market rates",
+                "Standardized currency display formats across all calculations",
+                "Fixed tax calculation edge cases for high income brackets",
+                "Resolved data inconsistencies in role level transitions"
+            ]
+        },
+        {
+            version: "1.1.0",
+            date: "January 2024",
+            major: [
+                "Introduced cost of living comparison feature",
+                "Added comprehensive tax calculation system",
+                "Implemented company overhead calculator"
+            ],
+            improvements: [
+                "Enhanced data visualization with interactive charts",
+                "Added support for custom tax rate configurations",
+                "Improved salary range accuracy with local market data",
+                "Added detailed breakdown of employer costs"
+            ],
+            fixes: [
+                "Fixed exchange rate calculation issues",
+                "Corrected social security calculation for EU countries",
+                "Resolved mobile responsiveness issues"
+            ]
+        },
+        {
+            version: "1.0.0",
+            date: "December 2023",
+            major: [
+                "Initial release of Global Compensation Calculator",
+                "Support for 10 countries with detailed compensation data",
+                "Basic salary calculator functionality"
+            ],
+            improvements: [
+                "Implemented responsive design for all devices",
+                "Added support for multiple experience levels",
+                "Included cost of living indicators"
+            ],
+            fixes: [
+                "Initial data validation and error handling",
+                "Basic currency conversion implementation",
+                "Core calculation engine stability"
+            ]
+        }
+    ],
+    
     exchangeRates: {
         USD: 1.0,    // Base currency
         EUR: 0.92,   // Updated EUR/USD rate (March 2024)
