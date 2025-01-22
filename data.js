@@ -90,8 +90,7 @@ export const compensationData = {
         wales: 'GBP',
         lithuania: 'EUR',
         germany: 'EUR',
-        uk: 'GBP',
-        croatia: 'EUR'
+        uk: 'GBP'
     },
     
     costOfLiving: {
@@ -228,18 +227,6 @@ export const compensationData = {
                 incomeTax: 0.20,
                 socialSecurity: 0.12,
                 other: 0.02
-            }
-        },
-        croatia: {
-            index: 49.8, // Updated index (Numbeo, 2024)
-            rent: {
-                min: 500,
-                max: 800
-            },
-            details: {
-                meal: 12, // Updated meal cost
-                transport: 45, // Updated transport cost
-                utilities: 200 // Updated utilities cost
             }
         }
     },
@@ -475,47 +462,6 @@ export const compensationData = {
             },
             notes: "Salaries in Wales are competitive, with lower living costs compared to other parts of the UK. Growing tech hub with good work-life balance."
         },
-        croatia: {
-            currency: "EUR",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 20000,  // Updated salary range
-                        max: 30000   // Updated salary range
-                    }
-                },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 30000,  // Updated salary range
-                        max: 40000   // Updated salary range
-                    }
-                },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 40000,  // Updated salary range
-                        max: 50000   // Updated salary range
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 50000,  // Updated salary range
-                        max: 60000   // Updated salary range
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 60000,  // Updated salary range
-                        max: 70000   // Updated salary range
-                    }
-                }
-            },
-            notes: "Croatia's IT sector is developing, with a focus on outsourcing and nearshoring. Salaries are competitive within the region."
-        },
         germany: {
             currency: "EUR",
             roles: {
@@ -625,18 +571,6 @@ export const compensationData = {
                 workersComp: 0.0016, // Guarantee fund contribution
                 otherFees: 0.01,     // Other contributions (e.g., long-term unemployment insurance)
                 description: "Includes Sodra contributions (pension, sickness, maternity, unemployment), guarantee fund contribution, and other mandatory contributions"
-            },
-            croatia: {
-                employerTax: 0.165,  // Health insurance contribution
-                workersComp: 0.005,  // Special contribution for health protection at work
-                otherFees: 0.02,     // Other contributions (e.g., employment contribution)
-                description: "Includes health insurance contribution, special contribution for health protection at work, employment contribution, and other mandatory contributions"
-            },
-            germany: {
-                employerTax: 0.21,    // Updated social security contribution
-                workersComp: 0.015,   // Updated accident insurance
-                otherFees: 0.03,      // Updated other fees
-                description: "Includes social security contributions, accident insurance, and other mandatory benefits"
             }
         }
     },
@@ -1272,33 +1206,6 @@ export const compensationData = {
                 }
             },
             notes: "Canadian tech hubs like Toronto, Vancouver, and Montreal offer competitive salaries. Benefits typically include health insurance and retirement plans."
-        },
-        croatia: {
-            currency: "EUR",
-            roles: {
-                engineer: {
-                    L2: { min: 20000, max: 30000 },
-                    L3: { min: 30000, max: 40000 },
-                    L4: { min: 40000, max: 50000 },
-                    L5: { min: 50000, max: 60000 },
-                    L6: { min: 60000, max: 70000 }
-                },
-                pm: {
-                    L2: { min: 18000, max: 28000 },
-                    L3: { min: 28000, max: 38000 },
-                    L4: { min: 38000, max: 48000 },
-                    L5: { min: 48000, max: 58000 },
-                    L6: { min: 58000, max: 68000 }
-                },
-                designer: {
-                    L2: { min: 16000, max: 26000 },
-                    L3: { min: 26000, max: 36000 },
-                    L4: { min: 36000, max: 46000 },
-                    L5: { min: 46000, max: 56000 },
-                    L6: { min: 56000, max: 66000 }
-                }
-            },
-            notes: "Croatia's IT sector is developing, with a focus on outsourcing and nearshoring. Salaries are competitive within the region."
         }
     }
 }; 

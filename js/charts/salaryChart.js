@@ -5,9 +5,10 @@ export class SalaryChart {
     static create(ctx, data, selectedData) {
         const { country, role, level } = selectedData;
         
+        // Get and sort other countries alphabetically, remove the slice to show all countries
         const otherCountries = Object.entries(data.countries)
-            .filter(([key]) => key !== country && key !== 'croatia')
-            .slice(0, 7);
+            .filter(([key]) => key !== country)
+            .sort(([a], [b]) => a.localeCompare(b));
 
         const chartData = {
             labels: [country.toUpperCase(), ...otherCountries.map(([key]) => key.toUpperCase())],
@@ -15,11 +16,11 @@ export class SalaryChart {
                 label: `${data.roles[role].title} ${level} Salary Range (USD)`,
                 data: [
                     this.getSalaryRange(data, country, role, level),
-                    ...otherCountries.map(([key, countryData]) => 
+                    ...otherCountries.map(([key]) => 
                         this.getSalaryRange(data, key, role, level)
                     )
                 ],
-                backgroundColor: [chartConfig.colors.primary, ...Array(7).fill(chartConfig.colors.secondary)],
+                backgroundColor: [chartConfig.colors.primary, ...Array(otherCountries.length).fill(chartConfig.colors.secondary)],
             }]
         };
 
@@ -47,12 +48,25 @@ export class SalaryChart {
     }
 
     static getSalaryRange(data, country, role, level) {
-        const countryData = data.countries[country];
-        const roleData = countryData.roles[role];
-        const levelData = roleData[level];
-        return [
-            FormatUtils.convertToUSD(levelData.min, countryData.currency, data.exchangeRates),
-            FormatUtils.convertToUSD(levelData.max, countryData.currency, data.exchangeRates)
-        ];
+        try {
+            const countryData = data.countries[country];
+            if (!countryData || !countryData.roles || !countryData.roles[role]) {
+                console.warn(`Missing salary data for ${country} - ${role}`);
+                return [0, 0];
+            }
+            const roleData = countryData.roles[role];
+            const levelData = roleData[level];
+            if (!levelData) {
+                console.warn(`Missing level data for ${country} - ${role} - ${level}`);
+                return [0, 0];
+            }
+            return [
+                FormatUtils.convertToUSD(levelData.min, countryData.currency, data.exchangeRates),
+                FormatUtils.convertToUSD(levelData.max, countryData.currency, data.exchangeRates)
+            ];
+        } catch (error) {
+            console.error(`Error getting salary range for ${country}:`, error);
+            return [0, 0];
+        }
     }
 } 

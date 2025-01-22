@@ -4,12 +4,12 @@ import { CalculationUtils } from '../utils/calculationUtils.js';
 export class PurchasingPowerChart {
     static create(ctx, data, salary, country) {
         const costData = data.costOfLiving;
-        const baseIndex = costData[country].index;
+        const baseIndex = costData[country]?.index || 100;
 
-        // Calculate purchasing power for top 5 countries
+        // Calculate purchasing power for all countries, sorted alphabetically
         const comparisonData = Object.entries(costData)
-            .filter(([key]) => key !== country)
-            .slice(0, 5)
+            .filter(([key]) => key !== country && costData[key]?.index)
+            .sort(([a], [b]) => a.localeCompare(b))
             .map(([key, data]) => ({
                 country: key.toUpperCase(),
                 purchasingPower: CalculationUtils.calculatePurchasingPower(
@@ -27,7 +27,7 @@ export class PurchasingPowerChart {
                     data: [salary, ...comparisonData.map(d => d.purchasingPower)],
                     backgroundColor: [
                         chartConfig.colors.success,
-                        ...Array(5).fill(chartConfig.colors.info)
+                        ...Array(comparisonData.length).fill(chartConfig.colors.info)
                     ]
                 }]
             },

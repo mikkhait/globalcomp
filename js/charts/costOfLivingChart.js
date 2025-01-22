@@ -6,7 +6,7 @@ export class CostOfLivingChart {
         const costData = data.costOfLiving;
         const comparisonCountries = Object.entries(costData)
             .filter(([key]) => key !== country)
-            .slice(0, 6);
+            .sort(([a], [b]) => a.localeCompare(b));
 
         const datasets = [
             {
@@ -64,24 +64,27 @@ export class CostOfLivingChart {
             ? (countryKey) => this.getAverageRent(data.costOfLiving[countryKey])
             : (countryKey) => this.getNumericValue(data.costOfLiving[countryKey], type);
 
-        return [
-            this.convertToUSD(getValue(country), country, data),
-            ...comparisonCountries.map(([key]) => 
-                this.convertToUSD(getValue(key), key, data)
-            )
-        ];
+        const selectedCountryValue = this.convertToUSD(getValue(country), country, data);
+        const comparisonValues = comparisonCountries.map(([key]) => 
+            this.convertToUSD(getValue(key), key, data)
+        );
+
+        return [selectedCountryValue, ...comparisonValues];
     }
 
     static getNumericValue(costData, costType) {
+        if (!costData || !costData.details) return 0;
         return costData.details[costType] || 0;
     }
 
     static getAverageRent(costData) {
+        if (!costData || !costData.rent) return 0;
         return (costData.rent.min + costData.rent.max) / 2;
     }
 
     static convertToUSD(value, country, data) {
         const currency = data.countryToCurrency[country];
+        if (!currency) return value;
         return FormatUtils.convertToUSD(value, currency, data.exchangeRates);
     }
 } 
