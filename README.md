@@ -41,7 +41,11 @@ The application uses Google Cloud Run, which has a generous free tier.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License with additional attribution requirements. While you are free to use, modify, and distribute this software:
+
+- You must include the original license and copyright notice
+- Any modifications or derivative works must prominently display a notice stating that the work is derived from the original Global Engineering Compensation Calculator project
+- See the [LICENSE](LICENSE) file for complete details
 
 ## Acknowledgments
 
