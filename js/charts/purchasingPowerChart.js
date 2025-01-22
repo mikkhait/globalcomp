@@ -5,18 +5,18 @@ export class PurchasingPowerChart {
     static create(ctx, data, salary, country) {
         const costData = data.costOfLiving;
         const baseIndex = costData[country]?.index || 100;
+        const baseSalary = salary / baseIndex; // Normalize the salary by the base country's index
 
         // Calculate purchasing power for all countries, sorted alphabetically
         const comparisonData = Object.entries(costData)
             .filter(([key]) => key !== country && costData[key]?.index)
             .sort(([a], [b]) => a.localeCompare(b))
-            .map(([key, data]) => ({
+            .map(([key, countryData]) => ({
                 country: key.toUpperCase(),
-                purchasingPower: CalculationUtils.calculatePurchasingPower(
-                    salary * baseIndex,
-                    data.index
-                )
+                purchasingPower: this.calculatePurchasingPower(baseSalary, countryData.index)
             }));
+
+        const selectedCountryPower = this.calculatePurchasingPower(baseSalary, baseIndex);
 
         return new Chart(ctx, {
             type: 'bar',
@@ -24,7 +24,7 @@ export class PurchasingPowerChart {
                 labels: [country.toUpperCase(), ...comparisonData.map(d => d.country)],
                 datasets: [{
                     label: 'Equivalent Purchasing Power (USD)',
-                    data: [salary, ...comparisonData.map(d => d.purchasingPower)],
+                    data: [selectedCountryPower, ...comparisonData.map(d => d.purchasingPower)],
                     backgroundColor: [
                         chartConfig.colors.success,
                         ...Array(comparisonData.length).fill(chartConfig.colors.info)
@@ -41,12 +41,33 @@ export class PurchasingPowerChart {
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                return `$${context.raw.toFixed(0)}`;
+                                const value = context.raw;
+                                return `$${value.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                if (value >= 1000000) {
+                                    return `$${(value / 1000000).toFixed(1)}M`;
+                                }
+                                if (value >= 1000) {
+                                    return `$${(value / 1000).toFixed(1)}K`;
+                                }
+                                return `$${value}`;
                             }
                         }
                     }
                 }
             }
         });
+    }
+
+    static calculatePurchasingPower(baseSalary, countryIndex) {
+        return baseSalary * countryIndex;
     }
 } 
