@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 class CompensationCalculator {
     constructor(data) {
         this.data = data;
+        this.charts = {}; // Store chart instances
         this.initializeEventListeners();
     }
 
@@ -113,6 +114,16 @@ class CompensationCalculator {
                 incomeTax: 15.0,
                 socialSecurity: 9.0,
                 other: 3.0
+            },
+            germany: {
+                incomeTax: 42.0,
+                socialSecurity: 20.0, 
+                other: 1.0
+            },
+            uk: {
+                incomeTax: 20.0,
+                socialSecurity: 12.0,
+                other: 2.0  
             }
         };
 
@@ -173,10 +184,18 @@ class CompensationCalculator {
     }
 
     formatCurrency(amount, currency) {
+        const symbol = this.data.currencySymbols[currency];
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
-            currency: currency
+            currency: currency,
+            currencyDisplay: 'symbol'
         }).format(amount);
+    }
+
+    formatCostWithCurrency(amount, country) {
+        const currency = this.getCurrencyForCountry(country);
+        const symbol = this.data.currencySymbols[currency];
+        return `${symbol}${amount.toLocaleString()}`;
     }
 
     calculateMonthlyRange(range) {
@@ -231,7 +250,69 @@ class CompensationCalculator {
         };
     }
 
+    createPurchasingPowerChart(salary, country) {
+        const ctx = document.getElementById('purchasingPowerChart');
+        
+        if (this.charts.purchasingPower) {
+            this.charts.purchasingPower.destroy();
+        }
+
+        const costData = this.data.costOfLiving;
+        const baseIndex = costData[country].index;
+        const baseSalary = salary;
+
+        // Calculate purchasing power for top 5 countries
+        const comparisonData = Object.entries(costData)
+            .filter(([key]) => key !== country)
+            .slice(0, 5)
+            .map(([key, data]) => ({
+                country: key.toUpperCase(),
+                purchasingPower: (baseSalary * baseIndex) / data.index
+            }));
+
+        this.charts.purchasingPower = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [country.toUpperCase(), ...comparisonData.map(d => d.country)],
+                datasets: [{
+                    label: 'Equivalent Purchasing Power (USD)',
+                    data: [baseSalary, ...comparisonData.map(d => d.purchasingPower)],
+                    backgroundColor: ['rgba(75, 192, 192, 0.5)', ...Array(5).fill('rgba(153, 102, 255, 0.5)')]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Purchasing Power Comparison'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `$${context.raw.toFixed(0)}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
     updateResults() {
+        // Destroy existing charts before creating new ones
+        this.destroyCharts();
+
         const { country, level } = this.getSelectedValues();
         const resultsDiv = document.getElementById('results');
 
@@ -331,19 +412,19 @@ class CompensationCalculator {
                 <div class="costs-grid">
                     <div class="cost-item">
                         <span class="cost-label">🏠 Rent (1 bed, city center):</span>
-                        <span class="cost-value">${costOfLiving.rent}</span>
+                        <span class="cost-value">${this.formatCostWithCurrency(costOfLiving.rent.min, country)} - ${this.formatCostWithCurrency(costOfLiving.rent.max, country)}</span>
                     </div>
                     <div class="cost-item">
                         <span class="cost-label">🍽️ Average Meal:</span>
-                        <span class="cost-value">${costOfLiving.details.meal}</span>
+                        <span class="cost-value">${this.formatCostWithCurrency(costOfLiving.details.meal, country)}</span>
                     </div>
                     <div class="cost-item">
                         <span class="cost-label">🚌 Public Transport:</span>
-                        <span class="cost-value">${costOfLiving.details.transport}</span>
+                        <span class="cost-value">${this.formatCostWithCurrency(costOfLiving.details.transport, country)}</span>
                     </div>
                     <div class="cost-item">
                         <span class="cost-label">💡 Utilities:</span>
-                        <span class="cost-value">${costOfLiving.details.utilities}</span>
+                        <span class="cost-value">${this.formatCostWithCurrency(costOfLiving.details.utilities, country)}</span>
                     </div>
                 </div>
             </div>
@@ -391,5 +472,229 @@ class CompensationCalculator {
         }
 
         resultsDiv.classList.remove('d-none');
+
+        this.createSalaryComparisonChart(minUSD, maxUSD, country);
+        this.createCostOfLivingChart(country);
+        this.createTaxBreakdownChart(minTakeHome);
+        this.createPurchasingPowerChart(minUSD, country);
+    }
+
+    // Add this method to destroy existing charts
+    destroyCharts() {
+        Object.values(this.charts).forEach(chart => {
+            if (chart) {
+                chart.destroy();
+            }
+        });
+        this.charts = {};
+    }
+
+    createSalaryComparisonChart(minUSD, maxUSD, country) {
+        const ctx = document.getElementById('salaryComparisonChart');
+        
+        // Destroy existing chart if it exists
+        if (this.charts.salaryComparison) {
+            this.charts.salaryComparison.destroy();
+        }
+
+        const otherCountries = Object.entries(this.data.countries)
+            .filter(([key]) => key !== country)
+            .slice(0, 7); // Show top 7 countries including Germany and UK
+
+        this.charts.salaryComparison = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [country.toUpperCase(), ...otherCountries.map(([key]) => key.toUpperCase())],
+                datasets: [{
+                    label: 'Salary Range (USD)',
+                    data: [
+                        [minUSD, maxUSD],
+                        ...otherCountries.map(([key, data]) => [
+                            this.convertToUSD(data.levels.L4.employee.min, data.currency),
+                            this.convertToUSD(data.levels.L4.employee.max, data.currency)
+                        ])
+                    ],
+                    backgroundColor: ['rgba(54, 162, 235, 0.5)', ...Array(6).fill('rgba(201, 203, 207, 0.5)')],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Salary Comparison Across Countries'
+                    }
+                }
+            }
+        });
+    }
+
+    createCostOfLivingChart(country) {
+        const ctx = document.getElementById('costOfLivingChart');
+        
+        if (this.charts.costOfLiving) {
+            this.charts.costOfLiving.destroy();
+        }
+
+        const costData = this.data.costOfLiving;
+        
+        // Helper function to get numeric value from details
+        const getNumericValue = (countryKey, costType) => {
+            const costData = this.data.costOfLiving[countryKey].details;
+            return costData[costType] || 0;
+        };
+
+        // Helper function to get average rent
+        const getAverageRent = (countryKey) => {
+            const rentData = this.data.costOfLiving[countryKey].rent;
+            return (rentData.min + rentData.max) / 2;
+        };
+
+        // Get top 6 countries for comparison including Germany and UK
+        const comparisonCountries = Object.entries(costData)
+            .filter(([key]) => key !== country) 
+            .slice(0, 6);
+
+        // Prepare data for each expense type
+        const datasets = [
+            {
+                label: 'Rent (avg)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                data: [
+                    getAverageRent(country),
+                    ...comparisonCountries.map(([key]) => 
+                        getAverageRent(key)
+                    )
+                ]
+            },
+            {
+                label: 'Utilities',
+                backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                data: [
+                    getNumericValue(country, 'utilities'),
+                    ...comparisonCountries.map(([key]) => 
+                        getNumericValue(key, 'utilities')
+                    )
+                ]
+            },
+            {
+                label: 'Transport',
+                backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                data: [
+                    getNumericValue(country, 'transport'),
+                    ...comparisonCountries.map(([key]) => 
+                        getNumericValue(key, 'transport')
+                    )
+                ]
+            },
+            {
+                label: 'Meal',
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                data: [
+                    getNumericValue(country, 'meal'),
+                    ...comparisonCountries.map(([key]) => 
+                        getNumericValue(key, 'meal')
+                    )
+                ]
+            }
+        ];
+
+        // Convert all values to USD for fair comparison
+        datasets.forEach(dataset => {
+            dataset.data = dataset.data.map((value, index) => {
+                const countryKey = index === 0 ? country : comparisonCountries[index - 1][0];
+                const currency = this.getCurrencyForCountry(countryKey);
+                return this.convertToUSD(value, currency);
+            });
+        });
+
+        this.charts.costOfLiving = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    country.toUpperCase(),
+                    ...comparisonCountries.map(([key]) => key.toUpperCase())
+                ],
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Monthly Living Costs Comparison (USD)'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: $${context.raw.toFixed(0)}`;
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Helper method to get currency for a country
+    getCurrencyForCountry(countryKey) {
+        return this.data.countryToCurrency[countryKey];
+    }
+
+    createTaxBreakdownChart(takeHome) {
+        const ctx = document.getElementById('taxBreakdownChart');
+        
+        // Destroy existing chart if it exists
+        if (this.charts.taxBreakdown) {
+            this.charts.taxBreakdown.destroy();
+        }
+        
+        this.charts.taxBreakdown = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Take-Home', 'Income Tax', 'Social Security', 'Other Taxes'],
+                datasets: [{
+                    data: [
+                        takeHome.net,
+                        takeHome.breakdown.incomeTax,
+                        takeHome.breakdown.socialSecurity,
+                        takeHome.breakdown.other
+                    ],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(201, 203, 207, 0.5)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Tax Breakdown'
+                    }
+                }
+            }
+        });
     }
 } 

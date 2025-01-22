@@ -1,93 +1,182 @@
 const compensationData = {
     exchangeRates: {
         USD: 1.0,    // Base currency
-        EUR: 0.93,   // Updated EUR/USD rate (as of 2024-03-14)
-        PLN: 0.25,   // Updated PLN/USD rate (as of 2024-03-14)
-        UAH: 0.026,  // Updated UAH/USD rate (as of 2024-03-14)
-        CAD: 0.74,   // Updated CAD/USD rate (as of 2024-03-14)
-        GBP: 1.28,   // Updated GBP/USD rate (as of 2024-03-14)
+        EUR: 0.92,   // Updated EUR/USD rate (March 2024)
+        PLN: 0.25,   // Updated PLN/USD rate (March 2024)
+        UAH: 0.023,  // Updated UAH/USD rate (March 2024)
+        CAD: 0.74,   // Updated CAD/USD rate (March 2024)
+        GBP: 1.27,   // Updated GBP/USD rate (March 2024)
+    },
+    
+    currencySymbols: {
+        USD: '$',
+        EUR: '€',
+        PLN: 'zł',
+        UAH: '₴',
+        CAD: 'C$',
+        GBP: '£'
+    },
+
+    countryToCurrency: {
+        usa: 'USD',
+        spain: 'EUR',
+        poland: 'PLN',
+        ukraine: 'UAH',
+        slovakia: 'EUR',
+        canada: 'CAD',
+        wales: 'GBP',
+        lithuania: 'EUR',
+        germany: 'EUR',
+        uk: 'GBP',
+        croatia: 'EUR'
     },
     
     costOfLiving: {
         lithuania: {
             index: 45.2,  // Updated index (Numbeo, 2024)
-            rent: "€600-1200", // Updated rent range
+            rent: {
+                min: 600,
+                max: 1200
+            },
             details: {
-                meal: "€10", // Updated meal cost
-                transport: "€40", // Updated transport cost
-                utilities: "€170" // Updated utilities cost
+                meal: 10, // Updated meal cost
+                transport: 40, // Updated transport cost
+                utilities: 170 // Updated utilities cost
             }
         },
         spain: {
             index: 53.8, // Updated index (Numbeo, 2024)
-            rent: "€800-1600", // Updated rent range
+            rent: {
+                min: 800,
+                max: 1600
+            },
             details: {
-                meal: "€12", // Updated meal cost
-                transport: "€45", // Updated transport cost
-                utilities: "€140" // Updated utilities cost
+                meal: 12, // Updated meal cost
+                transport: 45, // Updated transport cost
+                utilities: 140 // Updated utilities cost
             }
         },
         poland: {
-            index: 40.5, // Updated index (Numbeo, 2024)
-            rent: "3,500-6,000 PLN", // Updated rent range
+            index: 40.5,  // Updated index (Numbeo, March 2024)
+            rent: {
+                min: 2500,
+                max: 4500
+            },
             details: {
-                meal: "40 PLN", // Updated meal cost
-                transport: "120 PLN", // Updated transport cost
-                utilities: "1,000 PLN" // Updated utilities cost
+                meal: 35, // Updated meal cost
+                transport: 110, // Monthly public transport pass
+                utilities: 750 // Basic utilities monthly
             }
         },
         canada: {
             index: 70.2, // Updated index (Numbeo, 2024)
-            rent: "CAD 1,900-2,700", // Updated rent range
+            rent: {
+                min: 1900,
+                max: 2700
+            },
             details: {
-                meal: "CAD 25", // Updated meal cost
-                transport: "CAD 130", // Updated transport cost
-                utilities: "CAD 200" // Updated utilities cost
+                meal: 25, // Updated meal cost
+                transport: 130, // Updated transport cost
+                utilities: 200 // Updated utilities cost
             }
         },
         ukraine: {
-            index: 33.2, // Updated index (Numbeo, 2024)
-            rent: "15,000-25,000 UAH", // Updated rent range
+            index: 30.2,
+            rent: {
+                min: 12000,
+                max: 25000
+            },
             details: {
-                meal: "300 UAH", // Updated meal cost
-                transport: "600 UAH", // Updated transport cost
-                utilities: "3,500 UAH" // Updated utilities cost
+                meal: 250,
+                transport: 500,
+                utilities: 2200    // Updated based on recent data
+            },
+            taxRates: {           // Adding missing tax rates
+                incomeTax: 0.18,
+                socialSecurity: 0.05,
+                other: 0.015
             }
         },
         slovakia: {
             index: 44.7, // Updated index (Numbeo, 2024)
-            rent: "€650-950", // Updated rent range
+            rent: {
+                min: 650,
+                max: 950
+            },
             details: {
-                meal: "€9", // Updated meal cost
-                transport: "€35", // Updated transport cost
-                utilities: "€180" // Updated utilities cost
+                meal: 9, // Updated meal cost
+                transport: 35, // Updated transport cost
+                utilities: 180 // Updated utilities cost
             }
         },
         wales: {
             index: 60.5, // Updated index (Numbeo, 2024)
-            rent: "£700-1,000", // Updated rent range
+            rent: {
+                min: 1200,
+                max: 2500
+            },
             details: {
-                meal: "£15", // Updated meal cost
-                transport: "£70", // Updated transport cost
-                utilities: "£170" // Updated utilities cost
+                meal: 15, // Updated meal cost
+                transport: 170, // Monthly public transport pass
+                utilities: 195 // Basic utilities monthly
             }
         },
         usa: {
-            index: 72.5, // Updated index (Numbeo, 2024)
-            rent: "$2,700-3,800", // Updated rent range (major cities)
+            index: 71.5,  // Updated index (Numbeo, March 2024)
+            rent: {
+                min: 1800,
+                max: 3500
+            },
             details: {
-                meal: "$25", // Updated meal cost
-                transport: "$150", // Updated transport cost
-                utilities: "$220" // Updated utilities cost
+                meal: 18, // Updated average meal cost
+                transport: 120, // Monthly public transport pass
+                utilities: 190 // Basic utilities monthly
+            }
+        },
+        germany: {
+            index: 65.26,
+            rent: {
+                min: 800,
+                max: 1500
+            },
+            details: {
+                meal: 12.5,
+                transport: 80,
+                utilities: 250
+            },
+            taxRates: {
+                incomeTax: 0.42,
+                socialSecurity: 0.20,
+                other: 0.01
+            }
+        },
+        uk: {
+            index: 75.27,
+            rent: {
+                min: 700,
+                max: 1200
+            },
+            details: {
+                meal: 15, 
+                transport: 125,
+                utilities: 200
+            },
+            taxRates: {
+                incomeTax: 0.20,
+                socialSecurity: 0.12,
+                other: 0.02
             }
         },
         croatia: {
             index: 49.8, // Updated index (Numbeo, 2024)
-            rent: "€500-800", // Updated rent range
+            rent: {
+                min: 500,
+                max: 800
+            },
             details: {
-                meal: "€12", // Updated meal cost
-                transport: "€45", // Updated transport cost
-                utilities: "€200" // Updated utilities cost
+                meal: 12, // Updated meal cost
+                transport: 45, // Updated transport cost
+                utilities: 200 // Updated utilities cost
             }
         }
     },
@@ -140,40 +229,40 @@ const compensationData = {
                 L2: {
                     experience: "0-2 years",
                     employee: {
-                        min: 110000, // Updated salary range
-                        max: 150000  // Updated salary range
+                        min: 95000,    // Updated entry-level salary
+                        max: 135000    // Updated based on recent data
                     }
                 },
                 L3: {
                     experience: "2-5 years",
                     employee: {
-                        min: 150000, // Updated salary range
-                        max: 190000  // Updated salary range
+                        min: 130000,   // Updated mid-level salary
+                        max: 180000    // Updated based on recent data
                     }
                 },
                 L4: {
                     experience: "5-8 years",
                     employee: {
-                        min: 190000, // Updated salary range
-                        max: 240000  // Updated salary range
+                        min: 160000,   // Updated senior-level salary
+                        max: 220000    // Updated based on recent data
                     }
                 },
                 L5: {
                     experience: "8-12 years",
                     employee: {
-                        min: 240000, // Updated salary range
-                        max: 300000  // Updated salary range
+                        min: 200000,   // Updated staff-level salary
+                        max: 280000    // Updated based on recent data
                     }
                 },
                 L6: {
                     experience: "12+ years",
                     employee: {
-                        min: 300000, // Updated salary range
-                        max: 380000  // Updated salary range
+                        min: 250000,   // Updated principal-level salary
+                        max: 350000    // Updated based on recent data
                     }
                 }
             },
-            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-40% higher. Remote work has become standard with location-based pay adjustments."
+            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-50% higher. Remote work policies often include location-based adjustments."
         },
         spain: {
             currency: "EUR",
@@ -299,45 +388,45 @@ const compensationData = {
             notes: "Canadian tech hubs like Toronto, Vancouver, and Montreal offer competitive salaries. Benefits typically include health insurance and retirement plans."
         },
         ukraine: {
-            currency: "USD",
+            currency: "UAH",
             levels: {
                 L2: {
                     experience: "0-2 years",
                     employee: {
-                        min: 14000,  // Updated salary range
-                        max: 18000   // Updated salary range
+                        min: 480000,    // ~$12,500 USD annually
+                        max: 720000     // ~$18,700 USD annually
                     }
                 },
                 L3: {
                     experience: "2-5 years",
                     employee: {
-                        min: 20000,  // Updated salary range
-                        max: 28000   // Updated salary range
+                        min: 840000,    // ~$21,800 USD annually
+                        max: 1200000    // ~$31,200 USD annually
                     }
                 },
                 L4: {
                     experience: "5-8 years",
                     employee: {
-                        min: 38000,  // Updated salary range
-                        max: 50000   // Updated salary range
+                        min: 1320000,   // ~$34,300 USD annually
+                        max: 1800000    // ~$46,800 USD annually
                     }
                 },
                 L5: {
                     experience: "8-12 years",
                     employee: {
-                        min: 50000,  // Updated salary range
-                        max: 65000   // Updated salary range
+                        min: 1920000,   // ~$50,000 USD annually
+                        max: 2400000    // ~$62,400 USD annually
                     }
                 },
                 L6: {
                     experience: "12+ years",
                     employee: {
-                        min: 65000,  // Updated salary range
-                        max: 80000   // Updated salary range
+                        min: 2640000,   // ~$68,600 USD annually
+                        max: 3600000    // ~$93,600 USD annually
                     }
                 }
             },
-            notes: "Ukraine has a rapidly growing IT sector with a large pool of skilled developers. Salaries are often USD-based due to international clients."
+            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv. Many developers work as private entrepreneurs (FOP) for tax optimization."
         },
         slovakia: {
             currency: "EUR",
@@ -461,20 +550,112 @@ const compensationData = {
                 }
             },
             notes: "Croatia's IT sector is developing, with a focus on outsourcing and nearshoring. Salaries are competitive within the region."
+        },
+        germany: {
+            currency: "EUR",
+            levels: {
+                L2: {
+                    experience: "0-2 years",
+                    employee: {
+                        min: 50000,    // Updated entry-level salary
+                        max: 65000     // Updated based on recent data
+                    }
+                },
+                L3: {
+                    experience: "2-5 years",
+                    employee: {
+                        min: 65000,    // Updated mid-level salary
+                        max: 85000     // Updated based on recent data
+                    }
+                },
+                L4: {
+                    experience: "5-8 years",
+                    employee: {
+                        min: 85000,    // Updated senior-level salary
+                        max: 110000    // Updated based on recent data
+                    }
+                },
+                L5: {
+                    experience: "8-12 years",
+                    employee: {
+                        min: 110000,   // Updated staff-level salary
+                        max: 140000    // Updated based on recent data
+                    }
+                },
+                L6: {
+                    experience: "12+ years",
+                    employee: {
+                        min: 140000,   // Updated principal-level salary
+                        max: 180000    // Updated based on recent data
+                    }
+                }
+            },
+            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions.",
+            taxRates: {
+                incomeTax: 0.42,
+                socialSecurity: 0.20,
+                other: 0.01
+            }
+        },
+        uk: {
+            currency: "GBP",
+            levels: {
+                L2: {
+                    experience: "0-2 years",
+                    employee: {
+                        min: 38000,  // Updated salary range
+                        max: 48000   // Updated salary range
+                    }
+                },
+                L3: {
+                    experience: "2-5 years",
+                    employee: {
+                        min: 48000,  // Updated salary range
+                        max: 65000   // Updated salary range
+                    }
+                },
+                L4: {
+                    experience: "5-8 years",
+                    employee: {
+                        min: 65000,  // Updated salary range
+                        max: 80000   // Updated salary range
+                    }
+                },
+                L5: {
+                    experience: "8-12 years",
+                    employee: {
+                        min: 80000,  // Updated salary range
+                        max: 95000   // Updated salary range
+                    }
+                },
+                L6: {
+                    experience: "12+ years",
+                    employee: {
+                        min: 95000,  // Updated salary range
+                        max: 120000  // Updated salary range
+                    }
+                }
+            },
+            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. Living costs are generally lower than in London.",
+            taxRates: {
+                incomeTax: 0.20,
+                socialSecurity: 0.12,
+                other: 0.02
+            }
         }
     },
     
     companyOverhead: {
         fixedCosts: {
-            baseAmount: 900, // Updated base monthly overhead
+            baseAmount: 800,  // Updated monthly fixed costs per employee
             description: "Base overhead includes workspace, equipment, software licenses, remote work tools, cybersecurity measures, and increased compliance costs"
         },
         countrySpecific: {
             usa: {
-                employerTax: 0.0765, // FICA (Social Security + Medicare)
-                workersComp: 0.02,   // Average workers' compensation insurance
-                otherFees: 0.04,    // Other fees (e.g., state unemployment insurance, benefits)
-                description: "Includes FICA, workers' compensation, state-specific taxes, health insurance contributions, and other benefits"
+                employerTax: 0.0765,  // FICA
+                workersComp: 0.02,    // Updated workers comp rate
+                otherFees: 0.04,      // Updated other fees
+                description: "Includes FICA (7.65%), workers compensation, and state-specific fees"
             },
             spain: {
                 employerTax: 0.298,  // Social Security contributions
@@ -523,6 +704,12 @@ const compensationData = {
                 workersComp: 0.005,  // Special contribution for health protection at work
                 otherFees: 0.02,     // Other contributions (e.g., employment contribution)
                 description: "Includes health insurance contribution, special contribution for health protection at work, employment contribution, and other mandatory contributions"
+            },
+            germany: {
+                employerTax: 0.21,    // Updated social security contribution
+                workersComp: 0.015,   // Updated accident insurance
+                otherFees: 0.03,      // Updated other fees
+                description: "Includes social security contributions, accident insurance, and other mandatory benefits"
             }
         }
     },
