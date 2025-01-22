@@ -64,11 +64,11 @@ export const compensationData = {
     
     exchangeRates: {
         USD: 1.0,    // Base currency
-        EUR: 0.92,   // Updated EUR/USD rate (March 2024)
+        EUR: 1.04,   // Updated EUR/USD rate (March 2024)
         PLN: 0.25,   // Updated PLN/USD rate (March 2024)
         UAH: 0.023,  // Updated UAH/USD rate (March 2024)
-        CAD: 0.74,   // Updated CAD/USD rate (March 2024)
-        GBP: 1.27,   // Updated GBP/USD rate (March 2024)
+        CAD: 0.70,   // Updated CAD/USD rate (March 2024)
+        GBP: 1.23,   // Updated GBP/USD rate (March 2024)
     },
     
     currencySymbols: {
