@@ -2,7 +2,7 @@ export const compensationData = {
     releaseNotes: [
         {
             version: "2.0.0",
-            date: "March 2024",
+            date: "January 2025",
             major: [
                 "Added comprehensive role-based compensation data for Product Managers and Designers",
                 "Introduced detailed level definitions and career progression paths for all roles",
@@ -23,7 +23,7 @@ export const compensationData = {
         },
         {
             version: "1.1.0",
-            date: "January 2024",
+            date: "December 2024",
             major: [
                 "Introduced cost of living comparison feature",
                 "Added comprehensive tax calculation system",
@@ -43,7 +43,7 @@ export const compensationData = {
         },
         {
             version: "1.0.0",
-            date: "December 2023",
+            date: "December 2024",
             major: [
                 "Initial release of Global Compensation Calculator",
                 "Support for 10 countries with detailed compensation data",
