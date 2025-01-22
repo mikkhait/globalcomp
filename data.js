@@ -1,4 +1,4 @@
-const compensationData = {
+export const compensationData = {
     releaseNotes: [
         {
             version: "2.0.0",

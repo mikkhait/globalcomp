@@ -1,0 +1,20 @@
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/ 
