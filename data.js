@@ -95,51 +95,71 @@ export const compensationData = {
     
     costOfLiving: {
         lithuania: {
-            index: 45.2,  // Updated index (Numbeo, 2024)
+            index: 45.2,
             rent: {
                 min: 600,
                 max: 1200
             },
             details: {
-                meal: 10, // Updated meal cost
-                transport: 40, // Updated transport cost
-                utilities: 170 // Updated utilities cost
+                meal: 10,
+                transport: 40,
+                utilities: 170
+            },
+            taxRates: {
+                incomeTax: 0.20,      // Progressive rate for higher income
+                socialSecurity: 0.195, // 19.5% social insurance
+                other: 0.015          // Health insurance
             }
         },
         spain: {
-            index: 53.8, // Updated index (Numbeo, 2024)
+            index: 53.8,
             rent: {
                 min: 800,
                 max: 1600
             },
             details: {
-                meal: 12, // Updated meal cost
-                transport: 45, // Updated transport cost
-                utilities: 140 // Updated utilities cost
+                meal: 12,
+                transport: 45,
+                utilities: 140
+            },
+            taxRates: {
+                incomeTax: 0.37,      // Progressive rate for tech salaries
+                socialSecurity: 0.064, // Employee social security
+                other: 0.02           // Regional taxes
             }
         },
         poland: {
-            index: 40.5,  // Updated index (Numbeo, March 2024)
+            index: 40.5,
             rent: {
                 min: 2500,
                 max: 4500
             },
             details: {
-                meal: 35, // Updated meal cost
-                transport: 110, // Monthly public transport pass
-                utilities: 750 // Basic utilities monthly
+                meal: 35,
+                transport: 110,
+                utilities: 750
+            },
+            taxRates: {
+                incomeTax: 0.32,      // Higher bracket for tech salaries
+                socialSecurity: 0.1371,// ZUS employee contribution
+                other: 0.09           // Health insurance
             }
         },
         canada: {
-            index: 70.2, // Updated index (Numbeo, 2024)
+            index: 70.2,
             rent: {
                 min: 1900,
                 max: 2700
             },
             details: {
-                meal: 25, // Updated meal cost
-                transport: 130, // Updated transport cost
-                utilities: 200 // Updated utilities cost
+                meal: 25,
+                transport: 130,
+                utilities: 200
+            },
+            taxRates: {
+                incomeTax: 0.335,     // Federal + Provincial (ON) average
+                socialSecurity: 0.0595,// CPP + EI
+                other: 0.015          // Health premium
             }
         },
         ukraine: {
@@ -151,48 +171,63 @@ export const compensationData = {
             details: {
                 meal: 250,
                 transport: 500,
-                utilities: 2200    // Updated based on recent data
+                utilities: 2200
             },
-            taxRates: {           // Adding missing tax rates
-                incomeTax: 0.18,
-                socialSecurity: 0.05,
-                other: 0.015
+            taxRates: {
+                incomeTax: 0.18,      // Flat rate
+                socialSecurity: 0.05,  // Military tax + social security
+                other: 0.015          // Additional levies
             }
         },
         slovakia: {
-            index: 44.7, // Updated index (Numbeo, 2024)
+            index: 44.7,
             rent: {
                 min: 650,
                 max: 950
             },
             details: {
-                meal: 9, // Updated meal cost
-                transport: 35, // Updated transport cost
-                utilities: 180 // Updated utilities cost
+                meal: 9,
+                transport: 35,
+                utilities: 180
+            },
+            taxRates: {
+                incomeTax: 0.25,      // Progressive rate for tech salaries
+                socialSecurity: 0.138, // Employee social insurance
+                other: 0.04           // Health insurance
             }
         },
         wales: {
-            index: 60.5, // Updated index (Numbeo, 2024)
+            index: 60.5,
             rent: {
                 min: 1200,
                 max: 2500
             },
             details: {
-                meal: 15, // Updated meal cost
-                transport: 170, // Monthly public transport pass
-                utilities: 195 // Basic utilities monthly
+                meal: 15,
+                transport: 170,
+                utilities: 195
+            },
+            taxRates: {
+                incomeTax: 0.40,      // Higher rate for tech salaries
+                socialSecurity: 0.12,  // National Insurance
+                other: 0.02           // Additional contributions
             }
         },
         usa: {
-            index: 71.5,  // Updated index (Numbeo, March 2024)
+            index: 71.5,
             rent: {
                 min: 1800,
                 max: 3500
             },
             details: {
-                meal: 18, // Updated average meal cost
-                transport: 120, // Monthly public transport pass
-                utilities: 190 // Basic utilities monthly
+                meal: 18,
+                transport: 120,
+                utilities: 190
+            },
+            taxRates: {
+                incomeTax: 0.32,      // Federal + State average for tech hubs
+                socialSecurity: 0.0765,// FICA (Social Security + Medicare)
+                other: 0.03           // State specific fees
             }
         },
         germany: {
@@ -207,9 +242,9 @@ export const compensationData = {
                 utilities: 250
             },
             taxRates: {
-                incomeTax: 0.42,
-                socialSecurity: 0.20,
-                other: 0.01
+                incomeTax: 0.42,      // Progressive rate for tech salaries
+                socialSecurity: 0.20,  // Social insurance contributions
+                other: 0.01           // Solidarity surcharge
             }
         },
         uk: {
@@ -219,14 +254,14 @@ export const compensationData = {
                 max: 1200
             },
             details: {
-                meal: 15, 
+                meal: 15,
                 transport: 125,
                 utilities: 200
             },
             taxRates: {
-                incomeTax: 0.20,
-                socialSecurity: 0.12,
-                other: 0.02
+                incomeTax: 0.40,      // Higher rate band
+                socialSecurity: 0.12,  // National Insurance
+                other: 0.02           // Additional contributions
             }
         }
     },

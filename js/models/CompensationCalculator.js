@@ -14,11 +14,13 @@ export class CompensationCalculator {
     }
 
     initializeEventListeners() {
-        const roleSelect = document.getElementById('role');
         const countrySelect = document.getElementById('country');
+        const roleSelect = document.getElementById('role');
         const levelSelect = document.getElementById('level');
+        const resetTaxesButton = document.getElementById('resetTaxes');
+        const resetOverheadButton = document.getElementById('resetOverhead');
 
-        roleSelect.addEventListener('change', () => this.updateResults());
+        // Country change handler
         countrySelect.addEventListener('change', () => {
             const country = countrySelect.value;
             if (country) {
@@ -27,7 +29,27 @@ export class CompensationCalculator {
             }
             this.updateResults();
         });
+
+        // Role and level change handlers
+        roleSelect.addEventListener('change', () => this.updateResults());
         levelSelect.addEventListener('change', () => this.updateResults());
+
+        // Reset buttons handlers
+        resetTaxesButton.addEventListener('click', () => {
+            const country = countrySelect.value;
+            if (country) {
+                this.setDefaultTaxRates(country);
+            }
+            this.updateResults();
+        });
+
+        resetOverheadButton.addEventListener('click', () => {
+            const country = countrySelect.value;
+            if (country) {
+                this.setDefaultOverheadRates(country);
+            }
+            this.updateResults();
+        });
 
         // Tax override listeners
         ['incomeTaxOverride', 'socialSecurityOverride', 'otherTaxesOverride'].forEach(id => {
@@ -37,43 +59,37 @@ export class CompensationCalculator {
             }
         });
 
-        // Reset buttons
-        document.getElementById('resetTaxes').addEventListener('click', () => {
-            const country = countrySelect.value;
-            if (country) {
-                this.setDefaultTaxRates(country);
-            }
-            this.updateResults();
-        });
-
-        document.getElementById('resetOverhead').addEventListener('click', () => {
-            const country = countrySelect.value;
-            if (country) {
-                this.setDefaultOverheadRates(country);
-            }
-            this.updateResults();
-        });
-
         // Overhead listeners
-        document.getElementById('fixedOverheadOverride').addEventListener('input', () => this.updateResults());
-        ['employerTaxOverride', 'workersCompOverride', 'otherFeesOverride'].forEach(id => {
+        ['fixedOverheadOverride', 'employerTaxOverride', 'workersCompOverride', 'otherFeesOverride'].forEach(id => {
             const element = document.getElementById(id);
             if (element) {
                 element.addEventListener('input', () => this.updateResults());
             }
         });
+
+        // Set initial values if country is selected
+        if (countrySelect.value) {
+            this.setDefaultTaxRates(countrySelect.value);
+            this.setDefaultOverheadRates(countrySelect.value);
+        }
     }
 
     setDefaultTaxRates(country) {
-        const defaultRates = this.data.countries[country].taxRates || {
+        if (!country) return;
+        
+        const defaultRates = this.data.costOfLiving[country]?.taxRates || {
             incomeTax: 0.20,
             socialSecurity: 0.10,
             other: 0.05
         };
         
-        document.getElementById('incomeTaxOverride').value = (defaultRates.incomeTax * 100).toFixed(1);
-        document.getElementById('socialSecurityOverride').value = (defaultRates.socialSecurity * 100).toFixed(1);
-        document.getElementById('otherTaxesOverride').value = (defaultRates.other * 100).toFixed(1);
+        const incomeTaxInput = document.getElementById('incomeTaxOverride');
+        const socialSecurityInput = document.getElementById('socialSecurityOverride');
+        const otherTaxesInput = document.getElementById('otherTaxesOverride');
+
+        if (incomeTaxInput) incomeTaxInput.value = (defaultRates.incomeTax * 100).toFixed(1);
+        if (socialSecurityInput) socialSecurityInput.value = (defaultRates.socialSecurity * 100).toFixed(1);
+        if (otherTaxesInput) otherTaxesInput.value = (defaultRates.other * 100).toFixed(1);
     }
 
     setDefaultOverheadRates(country) {
