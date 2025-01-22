@@ -1,4 +1,4 @@
-/* Add to your existing styles.css */
+/* Modal Styles */
 .modal-body {
     font-size: 0.95rem;
 }
@@ -120,11 +120,6 @@
     margin-bottom: 1rem;
 }
 
-.level-details .bi {
-    font-size: 1.1rem;
-    margin-top: 0.2rem;
-}
-
 /* Tab Styles */
 .nav-tabs .nav-link {
     color: #495057;
@@ -164,4 +159,4 @@
 .card-header.bg-warning {
     background-color: #ffc107 !important;
     border-bottom: none;
-} 
+}
