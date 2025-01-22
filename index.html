@@ -104,7 +104,17 @@
                         <!-- Basic Settings Tab -->
                         <div class="tab-pane fade show active" id="basic" role="tabpanel">
                             <div class="mb-4">
-                                <h5>Location & Level</h5>
+                                <h5>Role & Location</h5>
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select class="form-select" id="role" required>
+                                        <option value="">Select a role</option>
+                                        <option value="engineer">Software Engineer</option>
+                                        <option value="pm">Product Manager</option>
+                                        <option value="designer">Product Designer</option>
+                                    </select>
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="country" class="form-label">Country</label>
                                     <select class="form-select" id="country" required>

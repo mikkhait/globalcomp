@@ -21,9 +21,11 @@ class CompensationCalculator {
     }
 
     initializeEventListeners() {
+        const roleSelect = document.getElementById('role');
         const countrySelect = document.getElementById('country');
         const levelSelect = document.getElementById('level');
 
+        roleSelect.addEventListener('change', () => this.updateResults());
         countrySelect.addEventListener('change', () => {
             const country = countrySelect.value;
             if (country) {
@@ -32,7 +34,6 @@ class CompensationCalculator {
             }
             this.updateResults();
         });
-
         levelSelect.addEventListener('change', () => this.updateResults());
 
         // Add tax override listeners
@@ -174,6 +175,7 @@ class CompensationCalculator {
 
     getSelectedValues() {
         return {
+            role: document.getElementById('role').value,
             country: document.getElementById('country').value,
             level: document.getElementById('level').value
         };
@@ -310,26 +312,55 @@ class CompensationCalculator {
     }
 
     updateResults() {
-        // Destroy existing charts before creating new ones
         this.destroyCharts();
 
-        const { country, level } = this.getSelectedValues();
+        const { role, country, level } = this.getSelectedValues();
         const resultsDiv = document.getElementById('results');
 
-        if (!country || !level) {
+        if (!role || !country || !level) {
             resultsDiv.classList.add('d-none');
             return;
         }
 
         const countryData = this.data.countries[country];
-        const levelData = countryData.levels[level];
+        const roleData = countryData.roles[role];
+        const levelData = roleData[level];
         const currency = countryData.currency;
         const costOfLiving = this.data.costOfLiving[country];
 
-        const range = levelData.employee;
+        // Get role-specific level details
+        const roleLevelDetails = this.data.roles[role].levels[level];
+
+        const range = levelData;
         const monthlyRange = this.calculateMonthlyRange(range);
         const minUSD = this.convertToUSD(range.min, currency);
         const maxUSD = this.convertToUSD(range.max, currency);
+
+        // Update annual range display
+        document.getElementById('annualRange').innerHTML = `
+            <h6>Annual Compensation</h6>
+            <div class="local-currency">
+                ${this.formatCurrency(range.min, currency)} - ${this.formatCurrency(range.max, currency)} 
+                <small class="text-muted">(Local Currency)</small>
+            </div>
+            <div class="usd-equivalent">
+                ${this.formatCurrency(minUSD, 'USD')} - ${this.formatCurrency(maxUSD, 'USD')} 
+                <small class="text-muted">(USD)</small>
+            </div>
+        `;
+
+        // Update monthly range display
+        document.getElementById('monthlyRange').innerHTML = `
+            <h6>Monthly Compensation</h6>
+            <div class="local-currency">
+                ${this.formatCurrency(monthlyRange.min, currency)} - ${this.formatCurrency(monthlyRange.max, currency)} 
+                <small class="text-muted">(Local Currency)</small>
+            </div>
+            <div class="usd-equivalent">
+                ${this.formatCurrency(minUSD / 12, 'USD')} - ${this.formatCurrency(maxUSD / 12, 'USD')} 
+                <small class="text-muted">(USD)</small>
+            </div>
+        `;
 
         const rates = this.getTaxRates(country);
         const minTakeHome = this.calculateTakeHome(minUSD, country);
@@ -352,98 +383,44 @@ class CompensationCalculator {
             </div>
         `;
 
-        // Update the annual and monthly ranges
-        document.getElementById('annualRange').innerHTML = `
-            Annual (Local): ${this.formatCurrency(range.min, currency)} - ${this.formatCurrency(range.max, currency)}<br>
-            Annual (USD): ${this.formatCurrency(minUSD, 'USD')} - ${this.formatCurrency(maxUSD, 'USD')}<br>
-            <small>Take-home: ${this.formatCurrency(minTakeHome.net, 'USD')} - ${this.formatCurrency(maxTakeHome.net, 'USD')}</small>
+        // Update exchange rate display
+        document.getElementById('exchangeRate').innerHTML = `
+            <div>Exchange Rate: 1 ${currency} = ${this.data.exchangeRates[currency].toFixed(3)} USD</div>
         `;
 
-        document.getElementById('monthlyRange').innerHTML = `
-            Monthly (Local): ${this.formatCurrency(monthlyRange.min, currency)} - ${this.formatCurrency(monthlyRange.max, currency)}<br>
-            Monthly (USD): ${this.formatCurrency(minUSD / 12, 'USD')} - ${this.formatCurrency(maxUSD / 12, 'USD')}<br>
-            <small>Take-home (after ~${minTakeHome.taxRate.toFixed(1)}% tax): ${this.formatCurrency(minTakeHome.net / 12, 'USD')} - ${this.formatCurrency(maxTakeHome.net / 12, 'USD')}</small>
-        `;
-        
-        // Update tax breakdown display
-        const taxBreakdown = `
-            <div class="tax-breakdown mt-2">
-                <h4 class="h6">Tax Breakdown (Annual)</h4>
-                <div class="ms-2">
-                    <div>Income Tax: ${this.formatCurrency(minTakeHome.breakdown.incomeTax, 'USD')} (${(rates.incomeTax * 100).toFixed(1)}%)</div>
-                    <div>Social Security: ${this.formatCurrency(minTakeHome.breakdown.socialSecurity, 'USD')} (${(rates.socialSecurity * 100).toFixed(1)}%)</div>
-                    <div>Other Taxes: ${this.formatCurrency(minTakeHome.breakdown.other, 'USD')} (${(rates.other * 100).toFixed(1)}%)</div>
-                    <div class="mt-1">Total Tax: ${this.formatCurrency(minTakeHome.gross - minTakeHome.net, 'USD')} (${minTakeHome.taxRate.toFixed(1)}%)</div>
-                </div>
-            </div>
-        `;
-
-        document.getElementById('additionalNotes').textContent = countryData.notes;
-
-        document.getElementById('exchangeRate').textContent = 
-            `Exchange Rate: 1 ${currency} = ${this.formatCurrency(this.data.exchangeRates[currency], 'USD')}`;
-
+        // Update cost of living display
         document.getElementById('costIndex').innerHTML = `
-            <h6 class="mb-3">Cost of Living Comparison</h6>
-            <div class="col-living-comparison mb-3">
-                <div>Index: ${costOfLiving.index} <small>(New York = 100)</small></div>
-                <div class="mt-2">Equivalent purchasing power in other cities:</div>
-                <div class="comparison-table mt-2">
-                    ${Object.entries(this.data.costOfLiving)
-                        .filter(([key]) => key !== country)
-                        .map(([countryKey, countryData]) => {
-                            const equivalentSalary = this.calculateCostOfLivingComparison(
-                                minUSD,
-                                country,
-                                countryKey
-                            );
-                            return `
-                                <div class="comparison-row">
-                                    <strong>${countryKey.charAt(0).toUpperCase() + countryKey.slice(1)}:</strong> 
-                                    ${this.formatCurrency(equivalentSalary, 'USD')}
-                                    <small class="text-muted">(Index: ${countryData.index})</small>
-                                </div>
-                            `;
-                        }).join('')}
-                </div>
-            </div>
-            <div class="living-costs-breakdown">
-                <h6 class="mb-2">Monthly Living Costs</h6>
-                <div class="costs-grid">
-                    <div class="cost-item">
-                        <span class="cost-label">🏠 Rent (1 bed, city center):</span>
-                        <span class="cost-value">${this.formatCostWithCurrency(costOfLiving.rent.min, country)} - ${this.formatCostWithCurrency(costOfLiving.rent.max, country)}</span>
-                    </div>
-                    <div class="cost-item">
-                        <span class="cost-label">🍽️ Average Meal:</span>
-                        <span class="cost-value">${this.formatCostWithCurrency(costOfLiving.details.meal, country)}</span>
-                    </div>
-                    <div class="cost-item">
-                        <span class="cost-label">🚌 Public Transport:</span>
-                        <span class="cost-value">${this.formatCostWithCurrency(costOfLiving.details.transport, country)}</span>
-                    </div>
-                    <div class="cost-item">
-                        <span class="cost-label">💡 Utilities:</span>
-                        <span class="cost-value">${this.formatCostWithCurrency(costOfLiving.details.utilities, country)}</span>
-                    </div>
-                </div>
+            <div>Cost of Living Index: ${costOfLiving.index} <small>(New York = 100)</small></div>
+        `;
+
+        // Update rent costs display
+        document.getElementById('rentCosts').innerHTML = `
+            <div>Monthly Rent (1 bed, city center): 
+                ${this.formatCostWithCurrency(costOfLiving.rent.min, country)} - 
+                ${this.formatCostWithCurrency(costOfLiving.rent.max, country)}
             </div>
         `;
 
-        // Get level details from the global levels object
-        const levelDetails = this.data.levels[level];
-        
-        // Update level details display
-        if (levelDetails) {
+        // Update other living costs display
+        document.getElementById('livingCosts').innerHTML = `
+            <div>
+                <div>Average Meal Cost: ${this.formatCostWithCurrency(costOfLiving.details.meal, country)}</div>
+                <div>Monthly Transport: ${this.formatCostWithCurrency(costOfLiving.details.transport, country)}</div>
+                <div>Monthly Utilities: ${this.formatCostWithCurrency(costOfLiving.details.utilities, country)}</div>
+            </div>
+        `;
+
+        // Update level details display with role-specific information
+        if (roleLevelDetails) {
             document.getElementById('levelDetails').innerHTML = `
                 <div class="level-details mb-3">
-                    <h4 class="h6">${levelDetails.title} (${level})</h4>
-                    <p class="text-muted mb-3">Experience: ${levelDetails.experience}</p>
+                    <h4 class="h6">${roleLevelDetails.title}</h4>
+                    <p class="text-muted mb-3">Experience: ${roleLevelDetails.experience}</p>
                     
                     <div class="responsibilities mb-4">
                         <h5 class="h6 text-primary">Key Responsibilities</h5>
                         <ul class="list-unstyled">
-                            ${levelDetails.responsibilities.map(r => `
+                            ${roleLevelDetails.responsibilities.map(r => `
                                 <li class="mb-2">
                                     <i class="bi bi-check2-circle text-success me-2"></i>${r}
                                 </li>
@@ -454,7 +431,7 @@ class CompensationCalculator {
                     <div class="impact">
                         <h5 class="h6 text-primary">Expected Impact</h5>
                         <ul class="list-unstyled">
-                            ${levelDetails.impact.map(i => `
+                            ${roleLevelDetails.impact.map(i => `
                                 <li class="mb-2">
                                     <i class="bi bi-star-fill text-warning me-2"></i>${i}
                                 </li>
@@ -491,30 +468,34 @@ class CompensationCalculator {
 
     createSalaryComparisonChart(minUSD, maxUSD, country) {
         const ctx = document.getElementById('salaryComparisonChart');
+        const { role, level } = this.getSelectedValues();
         
-        // Destroy existing chart if it exists
         if (this.charts.salaryComparison) {
             this.charts.salaryComparison.destroy();
         }
 
         const otherCountries = Object.entries(this.data.countries)
-            .filter(([key]) => key !== country)
-            .slice(0, 7); // Show top 7 countries including Germany and UK
+            .filter(([key]) => key !== country && key !== 'croatia')
+            .slice(0, 7);
 
         this.charts.salaryComparison = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: [country.toUpperCase(), ...otherCountries.map(([key]) => key.toUpperCase())],
                 datasets: [{
-                    label: 'Salary Range (USD)',
+                    label: `${this.data.roles[role].title} ${level} Salary Range (USD)`,
                     data: [
                         [minUSD, maxUSD],
-                        ...otherCountries.map(([key, data]) => [
-                            this.convertToUSD(data.levels.L4.employee.min, data.currency),
-                            this.convertToUSD(data.levels.L4.employee.max, data.currency)
-                        ])
+                        ...otherCountries.map(([key, data]) => {
+                            const roleData = data.roles[role];
+                            const levelData = roleData[level];
+                            return [
+                                this.convertToUSD(levelData.min, data.currency),
+                                this.convertToUSD(levelData.max, data.currency)
+                            ];
+                        })
                     ],
-                    backgroundColor: ['rgba(54, 162, 235, 0.5)', ...Array(6).fill('rgba(201, 203, 207, 0.5)')],
+                    backgroundColor: ['rgba(54, 162, 235, 0.5)', ...Array(7).fill('rgba(201, 203, 207, 0.5)')],
                 }]
             },
             options: {
@@ -523,6 +504,24 @@ class CompensationCalculator {
                     title: {
                         display: true,
                         text: 'Salary Comparison Across Countries'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const [min, max] = context.raw;
+                                return `Range: $${min.toLocaleString()} - $${max.toLocaleString()}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
                     }
                 }
             }

@@ -184,41 +184,27 @@ const compensationData = {
     countries: {
         lithuania: {
             currency: "EUR",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 24000, // Updated salary range
-                        max: 36000  // Updated salary range
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 24000, max: 36000 },
+                    L3: { min: 36000, max: 48000 },
+                    L4: { min: 48000, max: 60000 },
+                    L5: { min: 60000, max: 72000 },
+                    L6: { min: 72000, max: 84000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 36000, // Updated salary range
-                        max: 48000  // Updated salary range
-                    }
+                pm: {
+                    L2: { min: 22000, max: 32000 },
+                    L3: { min: 32000, max: 45000 },
+                    L4: { min: 45000, max: 58000 },
+                    L5: { min: 58000, max: 70000 },
+                    L6: { min: 70000, max: 85000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 48000, // Updated salary range
-                        max: 60000  // Updated salary range
-                    }
-                },
-                L5: {
-                    experience: "8+ years",
-                    employee: {
-                        min: 60000, // Updated salary range
-                        max: 72000  // Updated salary range
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 72000, // Updated salary range
-                        max: 84000  // Updated salary range
-                    }
+                designer: {
+                    L2: { min: 20000, max: 30000 },
+                    L3: { min: 30000, max: 42000 },
+                    L4: { min: 42000, max: 55000 },
+                    L5: { min: 55000, max: 68000 },
+                    L6: { min: 68000, max: 80000 }
                 }
             },
             notes: "Lithuania's IT sector is growing rapidly, with increasing demand for skilled professionals. Remote work opportunities are also on the rise."
@@ -266,249 +252,165 @@ const compensationData = {
         },
         spain: {
             currency: "EUR",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 38000,  // Updated salary range
-                        max: 48000   // Updated salary range
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 60000 },
+                    L4: { min: 60000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 48000,  // Updated salary range
-                        max: 60000   // Updated salary range
-                    }
+                pm: {
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 58000 },
+                    L4: { min: 58000, max: 72000 },
+                    L5: { min: 72000, max: 88000 },
+                    L6: { min: 88000, max: 105000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 60000,  // Updated salary range
-                        max: 75000   // Updated salary range
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 75000,  // Updated salary range
-                        max: 90000   // Updated salary range
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 90000,  // Updated salary range
-                        max: 110000  // Updated salary range
-                    }
+                designer: {
+                    L2: { min: 32000, max: 42000 },
+                    L3: { min: 42000, max: 55000 },
+                    L4: { min: 55000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 100000 }
                 }
             },
             notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid."
         },
         poland: {
             currency: "PLN",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 100000, // Updated salary range
-                        max: 130000  // Updated salary range
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 100000, max: 130000 },
+                    L3: { min: 130000, max: 190000 },
+                    L4: { min: 160000, max: 210000 },
+                    L5: { min: 210000, max: 270000 },
+                    L6: { min: 270000, max: 330000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 130000, // Updated salary range
-                        max: 190000  // Updated salary range
-                    }
+                pm: {
+                    L2: { min: 90000, max: 120000 },
+                    L3: { min: 120000, max: 170000 },
+                    L4: { min: 150000, max: 200000 },
+                    L5: { min: 200000, max: 260000 },
+                    L6: { min: 260000, max: 320000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 160000, // Updated salary range
-                        max: 210000  // Updated salary range
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 210000, // Updated salary range
-                        max: 270000  // Updated salary range
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 270000, // Updated salary range
-                        max: 330000  // Updated salary range
-                    }
+                designer: {
+                    L2: { min: 85000, max: 115000 },
+                    L3: { min: 115000, max: 165000 },
+                    L4: { min: 145000, max: 195000 },
+                    L5: { min: 195000, max: 250000 },
+                    L6: { min: 250000, max: 310000 }
                 }
             },
             notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common."
         },
         canada: {
             currency: "CAD",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 70000,  // Updated salary range
-                        max: 90000   // Updated salary range
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 70000, max: 90000 },
+                    L3: { min: 90000, max: 120000 },
+                    L4: { min: 120000, max: 150000 },
+                    L5: { min: 150000, max: 200000 },
+                    L6: { min: 200000, max: 250000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 90000,  // Updated salary range
-                        max: 120000  // Updated salary range
-                    }
+                pm: {
+                    L2: { min: 65000, max: 85000 },
+                    L3: { min: 85000, max: 115000 },
+                    L4: { min: 115000, max: 145000 },
+                    L5: { min: 145000, max: 190000 },
+                    L6: { min: 190000, max: 240000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 120000, // Updated salary range
-                        max: 150000  // Updated salary range
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 150000, // Updated salary range
-                        max: 200000  // Updated salary range
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 200000, // Updated salary range
-                        max: 250000  // Updated salary range
-                    }
+                designer: {
+                    L2: { min: 60000, max: 80000 },
+                    L3: { min: 80000, max: 110000 },
+                    L4: { min: 110000, max: 140000 },
+                    L5: { min: 140000, max: 180000 },
+                    L6: { min: 180000, max: 230000 }
                 }
             },
             notes: "Canadian tech hubs like Toronto, Vancouver, and Montreal offer competitive salaries. Benefits typically include health insurance and retirement plans."
         },
         ukraine: {
             currency: "UAH",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 480000,    // ~$12,500 USD annually
-                        max: 720000     // ~$18,700 USD annually
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 480000, max: 720000 },
+                    L3: { min: 840000, max: 1200000 },
+                    L4: { min: 1320000, max: 1800000 },
+                    L5: { min: 1920000, max: 2400000 },
+                    L6: { min: 2640000, max: 3600000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 840000,    // ~$21,800 USD annually
-                        max: 1200000    // ~$31,200 USD annually
-                    }
+                pm: {
+                    L2: { min: 420000, max: 660000 },
+                    L3: { min: 780000, max: 1140000 },
+                    L4: { min: 1260000, max: 1740000 },
+                    L5: { min: 1860000, max: 2340000 },
+                    L6: { min: 2580000, max: 3300000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 1320000,   // ~$34,300 USD annually
-                        max: 1800000    // ~$46,800 USD annually
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 1920000,   // ~$50,000 USD annually
-                        max: 2400000    // ~$62,400 USD annually
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 2640000,   // ~$68,600 USD annually
-                        max: 3600000    // ~$93,600 USD annually
-                    }
+                designer: {
+                    L2: { min: 360000, max: 600000 },
+                    L3: { min: 720000, max: 1080000 },
+                    L4: { min: 1200000, max: 1680000 },
+                    L5: { min: 1800000, max: 2280000 },
+                    L6: { min: 2520000, max: 3240000 }
                 }
             },
-            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv. Many developers work as private entrepreneurs (FOP) for tax optimization."
+            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv."
         },
         slovakia: {
             currency: "EUR",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 33000,  // Updated salary range
-                        max: 44000   // Updated salary range
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 33000, max: 44000 },
+                    L3: { min: 44000, max: 58000 },
+                    L4: { min: 58000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 44000,  // Updated salary range
-                        max: 58000   // Updated salary range
-                    }
+                pm: {
+                    L2: { min: 30000, max: 40000 },
+                    L3: { min: 40000, max: 55000 },
+                    L4: { min: 55000, max: 72000 },
+                    L5: { min: 72000, max: 88000 },
+                    L6: { min: 88000, max: 105000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 58000,  // Updated salary range
-                        max: 75000   // Updated salary range
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 75000,  // Updated salary range
-                        max: 90000   // Updated salary range
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 90000,  // Updated salary range
-                        max: 110000  // Updated salary range
-                    }
+                designer: {
+                    L2: { min: 28000, max: 38000 },
+                    L3: { min: 38000, max: 52000 },
+                    L4: { min: 52000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 100000 }
                 }
             },
             notes: "Slovakia offers competitive salaries within the EU, particularly in the growing tech sector. Living costs are relatively lower than in Western Europe."
         },
         wales: {
             currency: "GBP",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 38000,  // Updated salary range
-                        max: 48000   // Updated salary range
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 60000 },
+                    L4: { min: 60000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 48000,  // Updated salary range
-                        max: 65000   // Updated salary range
-                    }
+                pm: {
+                    L2: { min: 32000, max: 42000 },
+                    L3: { min: 42000, max: 58000 },
+                    L4: { min: 58000, max: 72000 },
+                    L5: { min: 72000, max: 88000 },
+                    L6: { min: 88000, max: 105000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 65000,  // Updated salary range
-                        max: 80000   // Updated salary range
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 80000,  // Updated salary range
-                        max: 95000   // Updated salary range
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 95000,  // Updated salary range
-                        max: 120000  // Updated salary range
-                    }
+                designer: {
+                    L2: { min: 30000, max: 40000 },
+                    L3: { min: 40000, max: 55000 },
+                    L4: { min: 55000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 100000 }
                 }
             },
-            notes: "Salaries in Wales are competitive within the UK, with a growing tech sector. Living costs are generally lower than in London."
+            notes: "Salaries in Wales are competitive, with lower living costs compared to other parts of the UK. Growing tech hub with good work-life balance."
         },
         croatia: {
             currency: "EUR",
@@ -553,95 +455,57 @@ const compensationData = {
         },
         germany: {
             currency: "EUR",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 50000,    // Updated entry-level salary
-                        max: 65000     // Updated based on recent data
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 50000, max: 65000 },
+                    L3: { min: 65000, max: 85000 },
+                    L4: { min: 85000, max: 110000 },
+                    L5: { min: 110000, max: 140000 },
+                    L6: { min: 140000, max: 180000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 65000,    // Updated mid-level salary
-                        max: 85000     // Updated based on recent data
-                    }
+                pm: {
+                    L2: { min: 48000, max: 62000 },
+                    L3: { min: 62000, max: 82000 },
+                    L4: { min: 82000, max: 105000 },
+                    L5: { min: 105000, max: 135000 },
+                    L6: { min: 135000, max: 175000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 85000,    // Updated senior-level salary
-                        max: 110000    // Updated based on recent data
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 110000,   // Updated staff-level salary
-                        max: 140000    // Updated based on recent data
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 140000,   // Updated principal-level salary
-                        max: 180000    // Updated based on recent data
-                    }
+                designer: {
+                    L2: { min: 45000, max: 60000 },
+                    L3: { min: 60000, max: 80000 },
+                    L4: { min: 80000, max: 100000 },
+                    L5: { min: 100000, max: 130000 },
+                    L6: { min: 130000, max: 170000 }
                 }
             },
-            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions.",
-            taxRates: {
-                incomeTax: 0.42,
-                socialSecurity: 0.20,
-                other: 0.01
-            }
+            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions."
         },
         uk: {
             currency: "GBP",
-            levels: {
-                L2: {
-                    experience: "0-2 years",
-                    employee: {
-                        min: 38000,  // Updated salary range
-                        max: 48000   // Updated salary range
-                    }
+            roles: {
+                engineer: {
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 65000 },
+                    L4: { min: 65000, max: 80000 },
+                    L5: { min: 80000, max: 95000 },
+                    L6: { min: 95000, max: 120000 }
                 },
-                L3: {
-                    experience: "2-5 years",
-                    employee: {
-                        min: 48000,  // Updated salary range
-                        max: 65000   // Updated salary range
-                    }
+                pm: {
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 62000 },
+                    L4: { min: 62000, max: 78000 },
+                    L5: { min: 78000, max: 92000 },
+                    L6: { min: 92000, max: 115000 }
                 },
-                L4: {
-                    experience: "5-8 years",
-                    employee: {
-                        min: 65000,  // Updated salary range
-                        max: 80000   // Updated salary range
-                    }
-                },
-                L5: {
-                    experience: "8-12 years",
-                    employee: {
-                        min: 80000,  // Updated salary range
-                        max: 95000   // Updated salary range
-                    }
-                },
-                L6: {
-                    experience: "12+ years",
-                    employee: {
-                        min: 95000,  // Updated salary range
-                        max: 120000  // Updated salary range
-                    }
+                designer: {
+                    L2: { min: 32000, max: 42000 },
+                    L3: { min: 42000, max: 58000 },
+                    L4: { min: 58000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
                 }
             },
-            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. Living costs are generally lower than in London.",
-            taxRates: {
-                incomeTax: 0.20,
-                socialSecurity: 0.12,
-                other: 0.02
-            }
+            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. Living costs are generally lower than in London."
         }
     },
     
@@ -799,6 +663,579 @@ const compensationData = {
                 "Drives engineering culture",
                 "Resolves strategic technical challenges"
             ]
+        }
+    },
+
+    roles: {
+        engineer: {
+            title: "Software Engineer",
+            levels: {
+                L2: {
+                    title: "Junior Engineer",
+                    experience: "0-2 years",
+                    responsibilities: [
+                        "Write maintainable and well-tested code",
+                        "Debug and fix bugs",
+                        "Participate in code reviews",
+                        "Write unit tests",
+                        "Document code and processes"
+                    ],
+                    impact: [
+                        "Delivers assigned tasks on schedule",
+                        "Contributes to team discussions",
+                        "Learns and applies team practices",
+                        "Grows technical skills consistently"
+                    ]
+                },
+                L3: {
+                    title: "Mid-Level Engineer",
+                    experience: "2-5 years",
+                    responsibilities: [
+                        "Design and implement features independently",
+                        "Review code from junior engineers",
+                        "Contribute to technical design discussions",
+                        "Improve development processes",
+                        "Write technical documentation"
+                    ],
+                    impact: [
+                        "Owns small to medium features end-to-end",
+                        "Mentors junior engineers",
+                        "Contributes to team planning",
+                        "Identifies and resolves technical debt"
+                    ]
+                },
+                L4: {
+                    title: "Senior Engineer",
+                    experience: "5-8 years",
+                    responsibilities: [
+                        "Design and implement complex systems",
+                        "Lead technical design discussions",
+                        "Drive best practices adoption",
+                        "Mentor other engineers",
+                        "Contribute to technical strategy"
+                    ],
+                    impact: [
+                        "Owns large features and projects",
+                        "Influences team technical decisions",
+                        "Drives engineering excellence",
+                        "Resolves complex technical challenges"
+                    ]
+                },
+                L5: {
+                    title: "Staff Engineer",
+                    experience: "8-12 years",
+                    responsibilities: [
+                        "Architect system-wide solutions",
+                        "Drive technical strategy",
+                        "Lead multiple projects simultaneously",
+                        "Establish engineering standards",
+                        "Guide technical decision-making"
+                    ],
+                    impact: [
+                        "Influences organization-wide decisions",
+                        "Drives innovation and best practices",
+                        "Mentors senior engineers",
+                        "Resolves critical technical challenges"
+                    ]
+                },
+                L6: {
+                    title: "Principal Engineer",
+                    experience: "12+ years",
+                    responsibilities: [
+                        "Define technical vision",
+                        "Lead organization-wide initiatives",
+                        "Drive architectural decisions",
+                        "Establish technical governance",
+                        "Guide long-term technical strategy"
+                    ],
+                    impact: [
+                        "Shapes company technical direction",
+                        "Influences product strategy",
+                        "Drives engineering culture",
+                        "Resolves strategic technical challenges"
+                    ]
+                }
+            }
+        },
+        pm: {
+            title: "Product Manager",
+            levels: {
+                L2: {
+                    title: "Associate Product Manager",
+                    experience: "0-2 years",
+                    responsibilities: [
+                        "Support product feature development",
+                        "Gather and analyze user feedback",
+                        "Write clear product requirements",
+                        "Coordinate with development teams",
+                        "Track product metrics"
+                    ],
+                    impact: [
+                        "Manages individual feature releases",
+                        "Contributes to product roadmap",
+                        "Identifies user needs",
+                        "Supports data-driven decisions"
+                    ]
+                },
+                L3: {
+                    title: "Product Manager",
+                    experience: "2-5 years",
+                    responsibilities: [
+                        "Own product features end-to-end",
+                        "Define product requirements",
+                        "Conduct user research",
+                        "Prioritize product backlog",
+                        "Work with cross-functional teams"
+                    ],
+                    impact: [
+                        "Drives feature adoption",
+                        "Improves product metrics",
+                        "Builds stakeholder relationships",
+                        "Influences product direction"
+                    ]
+                },
+                L4: {
+                    title: "Senior Product Manager",
+                    experience: "5-8 years",
+                    responsibilities: [
+                        "Lead product strategy",
+                        "Drive product vision",
+                        "Manage complex stakeholders",
+                        "Define success metrics",
+                        "Guide product development"
+                    ],
+                    impact: [
+                        "Owns product success metrics",
+                        "Drives strategic initiatives",
+                        "Mentors junior PMs",
+                        "Influences company strategy"
+                    ]
+                },
+                L5: {
+                    title: "Group Product Manager",
+                    experience: "8-12 years",
+                    responsibilities: [
+                        "Define product vision",
+                        "Lead product organization",
+                        "Drive business strategy",
+                        "Manage product portfolio",
+                        "Build product culture"
+                    ],
+                    impact: [
+                        "Shapes product strategy",
+                        "Drives business growth",
+                        "Develops product leaders",
+                        "Influences company direction"
+                    ]
+                },
+                L6: {
+                    title: "Director of Product",
+                    experience: "12+ years",
+                    responsibilities: [
+                        "Set product vision",
+                        "Drive company strategy",
+                        "Lead product organization",
+                        "Define product processes",
+                        "Build product culture"
+                    ],
+                    impact: [
+                        "Shapes company direction",
+                        "Drives organizational growth",
+                        "Builds product teams",
+                        "Influences industry trends"
+                    ]
+                }
+            }
+        },
+        designer: {
+            title: "Product Designer",
+            levels: {
+                L2: {
+                    title: "Junior Designer",
+                    experience: "0-2 years",
+                    responsibilities: [
+                        "Create UI components",
+                        "Support design systems",
+                        "Conduct user research",
+                        "Create wireframes",
+                        "Maintain design documentation"
+                    ],
+                    impact: [
+                        "Delivers quality designs",
+                        "Contributes to design system",
+                        "Supports user testing",
+                        "Improves design processes"
+                    ]
+                },
+                L3: {
+                    title: "Product Designer",
+                    experience: "2-5 years",
+                    responsibilities: [
+                        "Own feature design end-to-end",
+                        "Create user flows",
+                        "Conduct user research",
+                        "Define interaction patterns",
+                        "Collaborate with product teams"
+                    ],
+                    impact: [
+                        "Improves user experience",
+                        "Drives design consistency",
+                        "Influences product decisions",
+                        "Mentors junior designers"
+                    ]
+                },
+                L4: {
+                    title: "Senior Designer",
+                    experience: "5-8 years",
+                    responsibilities: [
+                        "Lead design strategy",
+                        "Define design systems",
+                        "Drive user research",
+                        "Mentor design team",
+                        "Guide product direction"
+                    ],
+                    impact: [
+                        "Shapes product experience",
+                        "Drives design excellence",
+                        "Influences product strategy",
+                        "Builds design culture"
+                    ]
+                },
+                L5: {
+                    title: "Staff Designer",
+                    experience: "8-12 years",
+                    responsibilities: [
+                        "Drive design vision",
+                        "Lead design organization",
+                        "Define design strategy",
+                        "Build design systems",
+                        "Guide design culture"
+                    ],
+                    impact: [
+                        "Shapes company direction",
+                        "Drives design innovation",
+                        "Builds design teams",
+                        "Influences industry trends"
+                    ]
+                },
+                L6: {
+                    title: "Principal Designer",
+                    experience: "12+ years",
+                    responsibilities: [
+                        "Set design vision",
+                        "Lead design organization",
+                        "Drive design strategy",
+                        "Define design principles",
+                        "Build design culture"
+                    ],
+                    impact: [
+                        "Shapes industry trends",
+                        "Drives organizational growth",
+                        "Builds design leaders",
+                        "Influences company strategy"
+                    ]
+                }
+            }
+        }
+    },
+
+    countries: {
+        usa: {
+            currency: "USD",
+            roles: {
+                engineer: {
+                    L2: { min: 95000, max: 135000 },
+                    L3: { min: 130000, max: 180000 },
+                    L4: { min: 160000, max: 220000 },
+                    L5: { min: 200000, max: 280000 },
+                    L6: { min: 250000, max: 350000 }
+                },
+                pm: {
+                    L2: { min: 85000, max: 120000 },
+                    L3: { min: 120000, max: 160000 },
+                    L4: { min: 150000, max: 200000 },
+                    L5: { min: 180000, max: 250000 },
+                    L6: { min: 220000, max: 300000 }
+                },
+                designer: {
+                    L2: { min: 80000, max: 110000 },
+                    L3: { min: 110000, max: 150000 },
+                    L4: { min: 140000, max: 190000 },
+                    L5: { min: 170000, max: 230000 },
+                    L6: { min: 200000, max: 280000 }
+                }
+            },
+            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-50% higher. Remote work policies often include location-based adjustments."
+        },
+        germany: {
+            currency: "EUR",
+            roles: {
+                engineer: {
+                    L2: { min: 50000, max: 65000 },
+                    L3: { min: 65000, max: 85000 },
+                    L4: { min: 85000, max: 110000 },
+                    L5: { min: 110000, max: 140000 },
+                    L6: { min: 140000, max: 180000 }
+                },
+                pm: {
+                    L2: { min: 48000, max: 62000 },
+                    L3: { min: 62000, max: 82000 },
+                    L4: { min: 82000, max: 105000 },
+                    L5: { min: 105000, max: 135000 },
+                    L6: { min: 135000, max: 175000 }
+                },
+                designer: {
+                    L2: { min: 45000, max: 60000 },
+                    L3: { min: 60000, max: 80000 },
+                    L4: { min: 80000, max: 100000 },
+                    L5: { min: 100000, max: 130000 },
+                    L6: { min: 130000, max: 170000 }
+                }
+            },
+            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions."
+        },
+        uk: {
+            currency: "GBP",
+            roles: {
+                engineer: {
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 65000 },
+                    L4: { min: 65000, max: 80000 },
+                    L5: { min: 80000, max: 95000 },
+                    L6: { min: 95000, max: 120000 }
+                },
+                pm: {
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 62000 },
+                    L4: { min: 62000, max: 78000 },
+                    L5: { min: 78000, max: 92000 },
+                    L6: { min: 92000, max: 115000 }
+                },
+                designer: {
+                    L2: { min: 32000, max: 42000 },
+                    L3: { min: 42000, max: 58000 },
+                    L4: { min: 58000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
+                }
+            },
+            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. Living costs are generally lower than in London."
+        },
+        spain: {
+            currency: "EUR",
+            roles: {
+                engineer: {
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 60000 },
+                    L4: { min: 60000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
+                },
+                pm: {
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 58000 },
+                    L4: { min: 58000, max: 72000 },
+                    L5: { min: 72000, max: 88000 },
+                    L6: { min: 88000, max: 105000 }
+                },
+                designer: {
+                    L2: { min: 32000, max: 42000 },
+                    L3: { min: 42000, max: 55000 },
+                    L4: { min: 55000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 100000 }
+                }
+            },
+            notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid."
+        },
+        poland: {
+            currency: "PLN",
+            roles: {
+                engineer: {
+                    L2: { min: 100000, max: 130000 },
+                    L3: { min: 130000, max: 190000 },
+                    L4: { min: 160000, max: 210000 },
+                    L5: { min: 210000, max: 270000 },
+                    L6: { min: 270000, max: 330000 }
+                },
+                pm: {
+                    L2: { min: 90000, max: 120000 },
+                    L3: { min: 120000, max: 170000 },
+                    L4: { min: 150000, max: 200000 },
+                    L5: { min: 200000, max: 260000 },
+                    L6: { min: 260000, max: 320000 }
+                },
+                designer: {
+                    L2: { min: 85000, max: 115000 },
+                    L3: { min: 115000, max: 165000 },
+                    L4: { min: 145000, max: 195000 },
+                    L5: { min: 195000, max: 250000 },
+                    L6: { min: 250000, max: 310000 }
+                }
+            },
+            notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common."
+        },
+        ukraine: {
+            currency: "UAH",
+            roles: {
+                engineer: {
+                    L2: { min: 480000, max: 720000 },
+                    L3: { min: 840000, max: 1200000 },
+                    L4: { min: 1320000, max: 1800000 },
+                    L5: { min: 1920000, max: 2400000 },
+                    L6: { min: 2640000, max: 3600000 }
+                },
+                pm: {
+                    L2: { min: 420000, max: 660000 },
+                    L3: { min: 780000, max: 1140000 },
+                    L4: { min: 1260000, max: 1740000 },
+                    L5: { min: 1860000, max: 2340000 },
+                    L6: { min: 2580000, max: 3300000 }
+                },
+                designer: {
+                    L2: { min: 360000, max: 600000 },
+                    L3: { min: 720000, max: 1080000 },
+                    L4: { min: 1200000, max: 1680000 },
+                    L5: { min: 1800000, max: 2280000 },
+                    L6: { min: 2520000, max: 3240000 }
+                }
+            },
+            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv."
+        },
+        slovakia: {
+            currency: "EUR",
+            roles: {
+                engineer: {
+                    L2: { min: 33000, max: 44000 },
+                    L3: { min: 44000, max: 58000 },
+                    L4: { min: 58000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
+                },
+                pm: {
+                    L2: { min: 30000, max: 40000 },
+                    L3: { min: 40000, max: 55000 },
+                    L4: { min: 55000, max: 72000 },
+                    L5: { min: 72000, max: 88000 },
+                    L6: { min: 88000, max: 105000 }
+                },
+                designer: {
+                    L2: { min: 28000, max: 38000 },
+                    L3: { min: 38000, max: 52000 },
+                    L4: { min: 52000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 100000 }
+                }
+            },
+            notes: "Slovakia offers competitive salaries within the EU, particularly in the growing tech sector. Living costs are relatively lower than in Western Europe."
+        },
+        lithuania: {
+            currency: "EUR",
+            roles: {
+                engineer: {
+                    L2: { min: 24000, max: 36000 },
+                    L3: { min: 36000, max: 48000 },
+                    L4: { min: 48000, max: 60000 },
+                    L5: { min: 60000, max: 72000 },
+                    L6: { min: 72000, max: 84000 }
+                },
+                pm: {
+                    L2: { min: 22000, max: 32000 },
+                    L3: { min: 32000, max: 45000 },
+                    L4: { min: 45000, max: 58000 },
+                    L5: { min: 58000, max: 70000 },
+                    L6: { min: 70000, max: 85000 }
+                },
+                designer: {
+                    L2: { min: 20000, max: 30000 },
+                    L3: { min: 30000, max: 42000 },
+                    L4: { min: 42000, max: 55000 },
+                    L5: { min: 55000, max: 68000 },
+                    L6: { min: 68000, max: 80000 }
+                }
+            },
+            notes: "Lithuania's IT sector is growing rapidly, with increasing demand for skilled professionals. Remote work opportunities are also on the rise."
+        },
+        wales: {
+            currency: "GBP",
+            roles: {
+                engineer: {
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 60000 },
+                    L4: { min: 60000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
+                },
+                pm: {
+                    L2: { min: 32000, max: 42000 },
+                    L3: { min: 42000, max: 58000 },
+                    L4: { min: 58000, max: 72000 },
+                    L5: { min: 72000, max: 88000 },
+                    L6: { min: 88000, max: 105000 }
+                },
+                designer: {
+                    L2: { min: 30000, max: 40000 },
+                    L3: { min: 40000, max: 55000 },
+                    L4: { min: 55000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 100000 }
+                }
+            },
+            notes: "Salaries in Wales are competitive, with lower living costs compared to other parts of the UK. Growing tech hub with good work-life balance."
+        },
+        canada: {
+            currency: "CAD",
+            roles: {
+                engineer: {
+                    L2: { min: 70000, max: 90000 },
+                    L3: { min: 90000, max: 120000 },
+                    L4: { min: 120000, max: 150000 },
+                    L5: { min: 150000, max: 200000 },
+                    L6: { min: 200000, max: 250000 }
+                },
+                pm: {
+                    L2: { min: 65000, max: 85000 },
+                    L3: { min: 85000, max: 115000 },
+                    L4: { min: 115000, max: 145000 },
+                    L5: { min: 145000, max: 190000 },
+                    L6: { min: 190000, max: 240000 }
+                },
+                designer: {
+                    L2: { min: 60000, max: 80000 },
+                    L3: { min: 80000, max: 110000 },
+                    L4: { min: 110000, max: 140000 },
+                    L5: { min: 140000, max: 180000 },
+                    L6: { min: 180000, max: 230000 }
+                }
+            },
+            notes: "Canadian tech hubs like Toronto, Vancouver, and Montreal offer competitive salaries. Benefits typically include health insurance and retirement plans."
+        },
+        croatia: {
+            currency: "EUR",
+            roles: {
+                engineer: {
+                    L2: { min: 20000, max: 30000 },
+                    L3: { min: 30000, max: 40000 },
+                    L4: { min: 40000, max: 50000 },
+                    L5: { min: 50000, max: 60000 },
+                    L6: { min: 60000, max: 70000 }
+                },
+                pm: {
+                    L2: { min: 18000, max: 28000 },
+                    L3: { min: 28000, max: 38000 },
+                    L4: { min: 38000, max: 48000 },
+                    L5: { min: 48000, max: 58000 },
+                    L6: { min: 58000, max: 68000 }
+                },
+                designer: {
+                    L2: { min: 16000, max: 26000 },
+                    L3: { min: 26000, max: 36000 },
+                    L4: { min: 36000, max: 46000 },
+                    L5: { min: 46000, max: 56000 },
+                    L6: { min: 56000, max: 66000 }
+                }
+            },
+            notes: "Croatia's IT sector is developing, with a focus on outsourcing and nearshoring. Salaries are competitive within the region."
         }
     }
 }; 
