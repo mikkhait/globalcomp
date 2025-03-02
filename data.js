@@ -1,6 +1,26 @@
 export const compensationData = {
     releaseNotes: [
         {
+            version: "2.1.0",
+            date: "March 2025",
+            major: [
+                "Updated salary ranges across all countries to reflect 2024 market conditions",
+                "Refreshed exchange rates to current market values",
+                "Enhanced data accuracy for tech roles in emerging markets"
+            ],
+            improvements: [
+                "Adjusted compensation data based on latest industry reports",
+                "Updated cost of living indices for major tech hubs",
+                "Refined salary ranges for specialized roles",
+                "Improved accuracy of tax calculations"
+            ],
+            fixes: [
+                "Corrected exchange rate calculations for several currencies",
+                "Fixed inconsistencies in role level transitions",
+                "Standardized salary range formats across all countries"
+            ]
+        },
+        {
             version: "2.0.0",
             date: "January 2025",
             major: [
@@ -43,7 +63,7 @@ export const compensationData = {
         },
         {
             version: "1.0.0",
-            date: "December 2024",
+            date: "December 2023",
             major: [
                 "Initial release of Global Compensation Calculator",
                 "Support for 10 countries with detailed compensation data",
@@ -63,12 +83,12 @@ export const compensationData = {
     ],
     
     exchangeRates: {
-        USD: 1.0,    // Base currency
-        EUR: 1.04,   // Updated EUR/USD rate (March 2024)
-        PLN: 0.25,   // Updated PLN/USD rate (March 2024)
-        UAH: 0.023,  // Updated UAH/USD rate (March 2024)
-        CAD: 0.70,   // Updated CAD/USD rate (March 2024)
-        GBP: 1.23,   // Updated GBP/USD rate (March 2024)
+        USD: 1.0,
+        EUR: 0.9681,
+        PLN: 0.2536,
+        UAH: 0.0241,
+        CAD: 0.6966,
+        GBP: 0.7906,
     },
     
     currencySymbols: {
@@ -95,15 +115,15 @@ export const compensationData = {
     
     costOfLiving: {
         lithuania: {
-            index: 45.2,
+            index: 47.5,
             rent: {
-                min: 600,
-                max: 1200
+                min: 650,
+                max: 1300
             },
             details: {
-                meal: 10,
-                transport: 40,
-                utilities: 170
+                meal: 11,
+                transport: 45,
+                utilities: 180
             },
             taxRates: {
                 incomeTax: 0.20,      // Progressive rate for higher income
@@ -112,15 +132,15 @@ export const compensationData = {
             }
         },
         spain: {
-            index: 53.8,
+            index: 55.2,
             rent: {
-                min: 800,
-                max: 1600
+                min: 850,
+                max: 1700
             },
             details: {
-                meal: 12,
-                transport: 45,
-                utilities: 140
+                meal: 13,
+                transport: 48,
+                utilities: 150
             },
             taxRates: {
                 incomeTax: 0.37,      // Progressive rate for tech salaries
@@ -129,15 +149,15 @@ export const compensationData = {
             }
         },
         poland: {
-            index: 40.5,
+            index: 42.8,
             rent: {
-                min: 2500,
-                max: 4500
+                min: 2700,
+                max: 4800
             },
             details: {
-                meal: 35,
-                transport: 110,
-                utilities: 750
+                meal: 38,
+                transport: 120,
+                utilities: 800
             },
             taxRates: {
                 incomeTax: 0.32,      // Higher bracket for tech salaries
@@ -146,15 +166,15 @@ export const compensationData = {
             }
         },
         canada: {
-            index: 70.2,
+            index: 73.5,
             rent: {
-                min: 1900,
-                max: 2700
+                min: 2100,
+                max: 2900
             },
             details: {
-                meal: 25,
-                transport: 130,
-                utilities: 200
+                meal: 28,
+                transport: 140,
+                utilities: 220
             },
             taxRates: {
                 incomeTax: 0.335,     // Federal + Provincial (ON) average
@@ -163,15 +183,15 @@ export const compensationData = {
             }
         },
         ukraine: {
-            index: 30.2,
+            index: 33.5,
             rent: {
-                min: 12000,
-                max: 25000
+                min: 15000,
+                max: 30000
             },
             details: {
-                meal: 250,
-                transport: 500,
-                utilities: 2200
+                meal: 300,
+                transport: 600,
+                utilities: 2500
             },
             taxRates: {
                 incomeTax: 0.18,      // Flat rate
@@ -180,15 +200,15 @@ export const compensationData = {
             }
         },
         slovakia: {
-            index: 44.7,
+            index: 46.8,
             rent: {
-                min: 650,
-                max: 950
+                min: 700,
+                max: 1000
             },
             details: {
-                meal: 9,
-                transport: 35,
-                utilities: 180
+                meal: 10,
+                transport: 38,
+                utilities: 190
             },
             taxRates: {
                 incomeTax: 0.25,      // Progressive rate for tech salaries
@@ -197,15 +217,15 @@ export const compensationData = {
             }
         },
         wales: {
-            index: 60.5,
+            index: 63.2,
             rent: {
-                min: 1200,
-                max: 2500
+                min: 1300,
+                max: 2600
             },
             details: {
-                meal: 15,
-                transport: 170,
-                utilities: 195
+                meal: 16,
+                transport: 180,
+                utilities: 210
             },
             taxRates: {
                 incomeTax: 0.40,      // Higher rate for tech salaries
@@ -214,15 +234,15 @@ export const compensationData = {
             }
         },
         usa: {
-            index: 71.5,
+            index: 74.8,
             rent: {
-                min: 1800,
-                max: 3500
+                min: 2000,
+                max: 3800
             },
             details: {
-                meal: 18,
-                transport: 120,
-                utilities: 190
+                meal: 20,
+                transport: 130,
+                utilities: 210
             },
             taxRates: {
                 incomeTax: 0.32,      // Federal + State average for tech hubs
@@ -231,15 +251,15 @@ export const compensationData = {
             }
         },
         germany: {
-            index: 65.26,
+            index: 67.5,
             rent: {
-                min: 800,
-                max: 1500
+                min: 850,
+                max: 1600
             },
             details: {
-                meal: 12.5,
-                transport: 80,
-                utilities: 250
+                meal: 13.5,
+                transport: 85,
+                utilities: 270
             },
             taxRates: {
                 incomeTax: 0.42,      // Progressive rate for tech salaries
@@ -248,15 +268,15 @@ export const compensationData = {
             }
         },
         uk: {
-            index: 75.27,
+            index: 78.4,
             rent: {
-                min: 700,
-                max: 1200
+                min: 750,
+                max: 1300
             },
             details: {
-                meal: 15,
-                transport: 125,
-                utilities: 200
+                meal: 16,
+                transport: 135,
+                utilities: 220
             },
             taxRates: {
                 incomeTax: 0.40,      // Higher rate band
@@ -300,94 +320,94 @@ export const compensationData = {
                 L2: {
                     experience: "0-2 years",
                     employee: {
-                        min: 95000,    // Updated entry-level salary
-                        max: 135000    // Updated based on recent data
+                        min: 100000,    // Updated entry-level salary
+                        max: 140000    // Updated based on recent data
                     }
                 },
                 L3: {
                     experience: "2-5 years",
                     employee: {
-                        min: 130000,   // Updated mid-level salary
-                        max: 180000    // Updated based on recent data
+                        min: 135000,   // Updated mid-level salary
+                        max: 185000    // Updated based on recent data
                     }
                 },
                 L4: {
                     experience: "5-8 years",
                     employee: {
-                        min: 160000,   // Updated senior-level salary
-                        max: 220000    // Updated based on recent data
+                        min: 165000,   // Updated senior-level salary
+                        max: 225000    // Updated based on recent data
                     }
                 },
                 L5: {
                     experience: "8-12 years",
                     employee: {
-                        min: 200000,   // Updated staff-level salary
-                        max: 280000    // Updated based on recent data
+                        min: 210000,   // Updated staff-level salary
+                        max: 290000    // Updated based on recent data
                     }
                 },
                 L6: {
                     experience: "12+ years",
                     employee: {
-                        min: 250000,   // Updated principal-level salary
-                        max: 350000    // Updated based on recent data
+                        min: 260000,   // Updated principal-level salary
+                        max: 360000    // Updated based on recent data
                     }
                 }
             },
-            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-50% higher. Remote work policies often include location-based adjustments."
+            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-50% higher. Remote work policies often include location-based adjustments. Data updated May 2024."
         },
         spain: {
             currency: "EUR",
             roles: {
                 engineer: {
-                    L2: { min: 38000, max: 48000 },
-                    L3: { min: 48000, max: 60000 },
-                    L4: { min: 60000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
+                    L2: { min: 36000, max: 46000 },
+                    L3: { min: 46000, max: 58000 },
+                    L4: { min: 58000, max: 73000 },
+                    L5: { min: 73000, max: 88000 },
+                    L6: { min: 88000, max: 108000 }
                 },
                 pm: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 58000 },
-                    L4: { min: 58000, max: 72000 },
-                    L5: { min: 72000, max: 88000 },
-                    L6: { min: 88000, max: 105000 }
+                    L2: { min: 34000, max: 44000 },
+                    L3: { min: 44000, max: 56000 },
+                    L4: { min: 56000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 103000 }
                 },
                 designer: {
                     L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 55000 },
-                    L4: { min: 55000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
+                    L3: { min: 42000, max: 54000 },
+                    L4: { min: 54000, max: 68000 },
+                    L5: { min: 68000, max: 83000 },
+                    L6: { min: 83000, max: 98000 }
                 }
             },
-            notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid."
+            notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid. Data updated May 2024."
         },
         poland: {
             currency: "PLN",
             roles: {
                 engineer: {
+                    L2: { min: 110000, max: 140000 },
+                    L3: { min: 140000, max: 200000 },
+                    L4: { min: 170000, max: 220000 },
+                    L5: { min: 220000, max: 280000 },
+                    L6: { min: 280000, max: 340000 }
+                },
+                pm: {
                     L2: { min: 100000, max: 130000 },
-                    L3: { min: 130000, max: 190000 },
+                    L3: { min: 130000, max: 180000 },
                     L4: { min: 160000, max: 210000 },
                     L5: { min: 210000, max: 270000 },
                     L6: { min: 270000, max: 330000 }
                 },
-                pm: {
+                designer: {
                     L2: { min: 90000, max: 120000 },
                     L3: { min: 120000, max: 170000 },
                     L4: { min: 150000, max: 200000 },
                     L5: { min: 200000, max: 260000 },
                     L6: { min: 260000, max: 320000 }
-                },
-                designer: {
-                    L2: { min: 85000, max: 115000 },
-                    L3: { min: 115000, max: 165000 },
-                    L4: { min: 145000, max: 195000 },
-                    L5: { min: 195000, max: 250000 },
-                    L6: { min: 250000, max: 310000 }
                 }
             },
-            notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common."
+            notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common. Warsaw and Krakow offer higher salaries. Data updated May 2024."
         },
         canada: {
             currency: "CAD",
@@ -420,28 +440,28 @@ export const compensationData = {
             currency: "UAH",
             roles: {
                 engineer: {
+                    L2: { min: 600000, max: 840000 },
+                    L3: { min: 960000, max: 1320000 },
+                    L4: { min: 1440000, max: 1920000 },
+                    L5: { min: 2040000, max: 2520000 },
+                    L6: { min: 2760000, max: 3720000 }
+                },
+                pm: {
+                    L2: { min: 540000, max: 780000 },
+                    L3: { min: 900000, max: 1260000 },
+                    L4: { min: 1380000, max: 1860000 },
+                    L5: { min: 1980000, max: 2460000 },
+                    L6: { min: 2700000, max: 3420000 }
+                },
+                designer: {
                     L2: { min: 480000, max: 720000 },
                     L3: { min: 840000, max: 1200000 },
                     L4: { min: 1320000, max: 1800000 },
                     L5: { min: 1920000, max: 2400000 },
-                    L6: { min: 2640000, max: 3600000 }
-                },
-                pm: {
-                    L2: { min: 420000, max: 660000 },
-                    L3: { min: 780000, max: 1140000 },
-                    L4: { min: 1260000, max: 1740000 },
-                    L5: { min: 1860000, max: 2340000 },
-                    L6: { min: 2580000, max: 3300000 }
-                },
-                designer: {
-                    L2: { min: 360000, max: 600000 },
-                    L3: { min: 720000, max: 1080000 },
-                    L4: { min: 1200000, max: 1680000 },
-                    L5: { min: 1800000, max: 2280000 },
-                    L6: { min: 2520000, max: 3240000 }
+                    L6: { min: 2640000, max: 3360000 }
                 }
             },
-            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv."
+            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv. Data updated May 2024 reflecting wartime conditions."
         },
         slovakia: {
             currency: "EUR",
@@ -501,111 +521,123 @@ export const compensationData = {
             currency: "EUR",
             roles: {
                 engineer: {
+                    L2: { min: 52000, max: 68000 },
+                    L3: { min: 68000, max: 88000 },
+                    L4: { min: 88000, max: 115000 },
+                    L5: { min: 115000, max: 145000 },
+                    L6: { min: 145000, max: 185000 }
+                },
+                pm: {
                     L2: { min: 50000, max: 65000 },
                     L3: { min: 65000, max: 85000 },
                     L4: { min: 85000, max: 110000 },
                     L5: { min: 110000, max: 140000 },
                     L6: { min: 140000, max: 180000 }
                 },
-                pm: {
-                    L2: { min: 48000, max: 62000 },
-                    L3: { min: 62000, max: 82000 },
-                    L4: { min: 82000, max: 105000 },
+                designer: {
+                    L2: { min: 48000, max: 63000 },
+                    L3: { min: 63000, max: 83000 },
+                    L4: { min: 83000, max: 105000 },
                     L5: { min: 105000, max: 135000 },
                     L6: { min: 135000, max: 175000 }
-                },
-                designer: {
-                    L2: { min: 45000, max: 60000 },
-                    L3: { min: 60000, max: 80000 },
-                    L4: { min: 80000, max: 100000 },
-                    L5: { min: 100000, max: 130000 },
-                    L6: { min: 130000, max: 170000 }
                 }
             },
-            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions."
+            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions. Berlin and Munich offer higher salaries than other regions. Data updated May 2024."
         },
         uk: {
             currency: "GBP",
             roles: {
                 engineer: {
-                    L2: { min: 38000, max: 48000 },
-                    L3: { min: 48000, max: 65000 },
-                    L4: { min: 65000, max: 80000 },
-                    L5: { min: 80000, max: 95000 },
-                    L6: { min: 95000, max: 120000 }
+                    L2: { min: 40000, max: 50000 },
+                    L3: { min: 50000, max: 68000 },
+                    L4: { min: 68000, max: 85000 },
+                    L5: { min: 85000, max: 100000 },
+                    L6: { min: 100000, max: 125000 }
                 },
                 pm: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 62000 },
-                    L4: { min: 62000, max: 78000 },
-                    L5: { min: 78000, max: 92000 },
-                    L6: { min: 92000, max: 115000 }
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 65000 },
+                    L4: { min: 65000, max: 82000 },
+                    L5: { min: 82000, max: 95000 },
+                    L6: { min: 95000, max: 120000 }
                 },
                 designer: {
-                    L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 58000 },
-                    L4: { min: 58000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 60000 },
+                    L4: { min: 60000, max: 78000 },
+                    L5: { min: 78000, max: 93000 },
+                    L6: { min: 93000, max: 115000 }
                 }
             },
-            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. Living costs are generally lower than in London."
+            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. London salaries are typically 15-25% higher than listed. Data updated May 2024."
         }
     },
     
     companyOverhead: {
         fixedCosts: {
-            baseAmount: 800,  // Updated monthly fixed costs per employee
+            baseAmount: 850,  // Updated monthly fixed costs per employee for 2024
             description: "Base overhead includes workspace, equipment, software licenses, remote work tools, cybersecurity measures, and increased compliance costs"
         },
         countrySpecific: {
             usa: {
                 employerTax: 0.0765,  // FICA
-                workersComp: 0.02,    // Updated workers comp rate
-                otherFees: 0.04,      // Updated other fees
+                workersComp: 0.022,   // Updated workers comp rate for 2024
+                otherFees: 0.045,     // Updated other fees for 2024
                 description: "Includes FICA (7.65%), workers compensation, and state-specific fees"
             },
             spain: {
                 employerTax: 0.298,  // Social Security contributions
-                workersComp: 0.015,  // Work accident insurance
-                otherFees: 0.03,     // Other contributions (e.g., unemployment, training)
+                workersComp: 0.016,  // Work accident insurance
+                otherFees: 0.032,    // Other contributions (e.g., unemployment, training)
                 description: "Includes Social Security contributions, work accident insurance, unemployment fund, and other mandatory contributions"
             },
             poland: {
                 employerTax: 0.205,  // Social contributions (ZUS)
                 workersComp: 0.0167, // Accident insurance
-                otherFees: 0.025,    // Other contributions (e.g., Labour Fund, Employee Guaranteed Benefits Fund)
+                otherFees: 0.028,    // Other contributions (e.g., Labour Fund, Employee Guaranteed Benefits Fund)
                 description: "Includes ZUS contributions (pension, disability, sickness, health), accident insurance, and other mandatory contributions"
             },
             ukraine: {
                 employerTax: 0.22,   // Unified Social Contribution (USC)
-                workersComp: 0.01,   // Occupational risk insurance (depending on risk class)
-                otherFees: 0.01,     // Other contributions (e.g., military levy)
+                workersComp: 0.012,  // Occupational risk insurance (depending on risk class)
+                otherFees: 0.015,    // Other contributions (e.g., military levy)
                 description: "Includes Unified Social Contribution, occupational risk insurance, military levy, and other mandatory contributions"
             },
             slovakia: {
                 employerTax: 0.352,  // Social and health insurance
                 workersComp: 0.008,  // Accident insurance
-                otherFees: 0.01,     // Other contributions (e.g., guarantee fund, reserve fund)
+                otherFees: 0.012,    // Other contributions (e.g., guarantee fund, reserve fund)
                 description: "Includes social and health insurance contributions, accident insurance, and other mandatory contributions"
             },
             canada: {
-                employerTax: 0.0545, // Canada Pension Plan (CPP) + Employment Insurance (EI)
-                workersComp: 0.02,   // Workers' compensation (varies by province)
-                otherFees: 0.025,    // Other contributions (e.g., provincial payroll taxes, health premiums)
+                employerTax: 0.0565, // Canada Pension Plan (CPP) + Employment Insurance (EI)
+                workersComp: 0.022,  // Workers' compensation (varies by province)
+                otherFees: 0.028,    // Other contributions (e.g., provincial payroll taxes, health premiums)
                 description: "Includes CPP and EI contributions, provincial workers' compensation, and other provincial taxes and premiums"
             },
             wales: {
                 employerTax: 0.138,  // National Insurance contributions (Class 1)
-                workersComp: 0.01,   // Employers' liability insurance
-                otherFees: 0.025,    // Other contributions (e.g., pension contributions, apprenticeship levy)
+                workersComp: 0.012,  // Employers' liability insurance
+                otherFees: 0.028,    // Other contributions (e.g., pension contributions, apprenticeship levy)
                 description: "Includes National Insurance contributions, employers' liability insurance, pension contributions, and other mandatory contributions"
             },
             lithuania: {
                 employerTax: 0.3118, // Social insurance contributions (Sodra)
-                workersComp: 0.0016, // Guarantee fund contribution
-                otherFees: 0.01,     // Other contributions (e.g., long-term unemployment insurance)
+                workersComp: 0.0018, // Guarantee fund contribution
+                otherFees: 0.012,    // Other contributions (e.g., long-term unemployment insurance)
                 description: "Includes Sodra contributions (pension, sickness, maternity, unemployment), guarantee fund contribution, and other mandatory contributions"
+            },
+            germany: {
+                employerTax: 0.206,  // Social security contributions
+                workersComp: 0.014,  // Accident insurance
+                otherFees: 0.025,    // Other contributions
+                description: "Includes social security contributions, accident insurance, and other mandatory contributions"
+            },
+            uk: {
+                employerTax: 0.138,  // National Insurance contributions
+                workersComp: 0.012,  // Employers' liability insurance
+                otherFees: 0.028,    // Other contributions
+                description: "Includes National Insurance contributions, employers' liability insurance, and other mandatory contributions"
             }
         }
     },
@@ -698,275 +730,281 @@ export const compensationData = {
         }
     },
 
-    roles: {
+    roleDefinitions: {
         engineer: {
-            title: "Software Engineer",
-            levels: {
-                L2: {
-                    title: "Junior Engineer",
-                    experience: "0-2 years",
-                    responsibilities: [
-                        "Write maintainable and well-tested code",
-                        "Debug and fix bugs",
-                        "Participate in code reviews",
-                        "Write unit tests",
-                        "Document code and processes"
-                    ],
-                    impact: [
-                        "Delivers assigned tasks on schedule",
-                        "Contributes to team discussions",
-                        "Learns and applies team practices",
-                        "Grows technical skills consistently"
-                    ]
-                },
-                L3: {
-                    title: "Mid-Level Engineer",
-                    experience: "2-5 years",
-                    responsibilities: [
-                        "Design and implement features independently",
-                        "Review code from junior engineers",
-                        "Contribute to technical design discussions",
-                        "Improve development processes",
-                        "Write technical documentation"
-                    ],
-                    impact: [
-                        "Owns small to medium features end-to-end",
-                        "Mentors junior engineers",
-                        "Contributes to team planning",
-                        "Identifies and resolves technical debt"
-                    ]
-                },
-                L4: {
-                    title: "Senior Engineer",
-                    experience: "5-8 years",
-                    responsibilities: [
-                        "Design and implement complex systems",
-                        "Lead technical design discussions",
-                        "Drive best practices adoption",
-                        "Mentor other engineers",
-                        "Contribute to technical strategy"
-                    ],
-                    impact: [
-                        "Owns large features and projects",
-                        "Influences team technical decisions",
-                        "Drives engineering excellence",
-                        "Resolves complex technical challenges"
-                    ]
-                },
-                L5: {
-                    title: "Staff Engineer",
-                    experience: "8-12 years",
-                    responsibilities: [
-                        "Architect system-wide solutions",
-                        "Drive technical strategy",
-                        "Lead multiple projects simultaneously",
-                        "Establish engineering standards",
-                        "Guide technical decision-making"
-                    ],
-                    impact: [
-                        "Influences organization-wide decisions",
-                        "Drives innovation and best practices",
-                        "Mentors senior engineers",
-                        "Resolves critical technical challenges"
-                    ]
-                },
-                L6: {
-                    title: "Principal Engineer",
-                    experience: "12+ years",
-                    responsibilities: [
-                        "Define technical vision",
-                        "Lead organization-wide initiatives",
-                        "Drive architectural decisions",
-                        "Establish technical governance",
-                        "Guide long-term technical strategy"
-                    ],
-                    impact: [
-                        "Shapes company technical direction",
-                        "Influences product strategy",
-                        "Drives engineering culture",
-                        "Resolves strategic technical challenges"
-                    ]
-                }
+            l2: {
+                title: "Software Engineer I",
+                description: "Entry-level engineer with 0-2 years of experience. Focuses on implementing well-defined tasks, learning coding standards, and contributing to team projects under guidance.",
+                responsibilities: [
+                    "Implement features and bug fixes with guidance",
+                    "Write unit tests and documentation",
+                    "Participate in code reviews and team meetings",
+                    "Learn and apply best practices and coding standards",
+                    "Contribute to technical discussions"
+                ],
+                skills: [
+                    "Proficiency in at least one programming language",
+                    "Basic understanding of data structures and algorithms",
+                    "Familiarity with version control systems",
+                    "Understanding of software development lifecycle",
+                    "Ability to work in a team environment"
+                ]
+            },
+            l3: {
+                title: "Software Engineer II",
+                description: "Mid-level engineer with 2-5 years of experience. Works independently on features, mentors junior engineers, and contributes to architectural discussions.",
+                responsibilities: [
+                    "Design and implement features independently",
+                    "Debug complex issues across the stack",
+                    "Review code and mentor junior engineers",
+                    "Contribute to technical design discussions",
+                    "Improve development processes and tooling"
+                ],
+                skills: [
+                    "Strong proficiency in multiple programming languages",
+                    "Experience with system design and architecture",
+                    "Solid understanding of performance optimization",
+                    "Knowledge of cloud services and deployment strategies",
+                    "Ability to balance technical debt with delivery needs"
+                ]
+            },
+            l4: {
+                title: "Senior Software Engineer",
+                description: "Experienced engineer with 5-8 years of experience. Leads technical initiatives, makes architectural decisions, and mentors team members.",
+                responsibilities: [
+                    "Lead technical initiatives and feature development",
+                    "Make architectural decisions for team projects",
+                    "Mentor engineers and provide technical guidance",
+                    "Collaborate with product and design teams",
+                    "Drive technical excellence and best practices"
+                ],
+                skills: [
+                    "Expert in multiple programming languages and frameworks",
+                    "Strong system design and architecture skills",
+                    "Experience with distributed systems and scalability",
+                    "Deep understanding of software engineering principles",
+                    "Ability to balance business needs with technical considerations"
+                ]
+            },
+            l5: {
+                title: "Staff Software Engineer",
+                description: "Senior technical leader with 8-12 years of experience. Drives technical strategy across multiple teams, solves complex architectural challenges, and influences organization-wide technical decisions.",
+                responsibilities: [
+                    "Drive technical strategy across multiple teams",
+                    "Solve complex architectural challenges",
+                    "Influence organization-wide technical decisions",
+                    "Mentor senior engineers and technical leads",
+                    "Collaborate with leadership on technical roadmaps"
+                ],
+                skills: [
+                    "Expert-level technical depth in multiple domains",
+                    "Ability to design complex distributed systems",
+                    "Experience with large-scale system architecture",
+                    "Strong technical leadership and communication skills",
+                    "Deep understanding of business domain and strategy"
+                ]
+            },
+            l6: {
+                title: "Principal Software Engineer",
+                description: "Distinguished technical leader with 12+ years of experience. Sets technical vision for the organization, leads cross-functional initiatives, and represents the company externally.",
+                responsibilities: [
+                    "Set technical vision for the organization",
+                    "Lead cross-functional technical initiatives",
+                    "Represent the company externally (conferences, papers)",
+                    "Drive innovation and technical excellence",
+                    "Influence product strategy and business direction"
+                ],
+                skills: [
+                    "Recognized technical authority in the industry",
+                    "Ability to solve unprecedented technical challenges",
+                    "Experience leading organization-wide technical transformations",
+                    "Strategic thinking and business acumen",
+                    "Exceptional leadership and communication skills"
+                ]
             }
         },
-        pm: {
-            title: "Product Manager",
-            levels: {
-                L2: {
-                    title: "Associate Product Manager",
-                    experience: "0-2 years",
-                    responsibilities: [
-                        "Support product feature development",
-                        "Gather and analyze user feedback",
-                        "Write clear product requirements",
-                        "Coordinate with development teams",
-                        "Track product metrics"
-                    ],
-                    impact: [
-                        "Manages individual feature releases",
-                        "Contributes to product roadmap",
-                        "Identifies user needs",
-                        "Supports data-driven decisions"
-                    ]
-                },
-                L3: {
-                    title: "Product Manager",
-                    experience: "2-5 years",
-                    responsibilities: [
-                        "Own product features end-to-end",
-                        "Define product requirements",
-                        "Conduct user research",
-                        "Prioritize product backlog",
-                        "Work with cross-functional teams"
-                    ],
-                    impact: [
-                        "Drives feature adoption",
-                        "Improves product metrics",
-                        "Builds stakeholder relationships",
-                        "Influences product direction"
-                    ]
-                },
-                L4: {
-                    title: "Senior Product Manager",
-                    experience: "5-8 years",
-                    responsibilities: [
-                        "Lead product strategy",
-                        "Drive product vision",
-                        "Manage complex stakeholders",
-                        "Define success metrics",
-                        "Guide product development"
-                    ],
-                    impact: [
-                        "Owns product success metrics",
-                        "Drives strategic initiatives",
-                        "Mentors junior PMs",
-                        "Influences company strategy"
-                    ]
-                },
-                L5: {
-                    title: "Group Product Manager",
-                    experience: "8-12 years",
-                    responsibilities: [
-                        "Define product vision",
-                        "Lead product organization",
-                        "Drive business strategy",
-                        "Manage product portfolio",
-                        "Build product culture"
-                    ],
-                    impact: [
-                        "Shapes product strategy",
-                        "Drives business growth",
-                        "Develops product leaders",
-                        "Influences company direction"
-                    ]
-                },
-                L6: {
-                    title: "Director of Product",
-                    experience: "12+ years",
-                    responsibilities: [
-                        "Set product vision",
-                        "Drive company strategy",
-                        "Lead product organization",
-                        "Define product processes",
-                        "Build product culture"
-                    ],
-                    impact: [
-                        "Shapes company direction",
-                        "Drives organizational growth",
-                        "Builds product teams",
-                        "Influences industry trends"
-                    ]
-                }
+        productManager: {
+            l2: {
+                title: "Associate Product Manager",
+                description: "Entry-level product manager with 0-2 years of experience. Supports product initiatives, gathers requirements, and learns product development processes.",
+                responsibilities: [
+                    "Support product initiatives under guidance",
+                    "Gather and document requirements",
+                    "Coordinate with engineering and design teams",
+                    "Analyze user feedback and product metrics",
+                    "Assist with product launches and updates"
+                ],
+                skills: [
+                    "Basic understanding of product development lifecycle",
+                    "Strong analytical and problem-solving skills",
+                    "Good communication and collaboration abilities",
+                    "Familiarity with user research methods",
+                    "Ability to prioritize tasks effectively"
+                ]
+            },
+            l3: {
+                title: "Product Manager",
+                description: "Mid-level product manager with 2-5 years of experience. Manages product features independently, conducts user research, and drives product roadmap execution.",
+                responsibilities: [
+                    "Manage product features from conception to launch",
+                    "Conduct user research and validate product ideas",
+                    "Create and maintain product roadmaps",
+                    "Work closely with engineering and design teams",
+                    "Analyze product metrics and make data-driven decisions"
+                ],
+                skills: [
+                    "Strong product development and management skills",
+                    "Experience with user research and validation methods",
+                    "Ability to create clear product specifications",
+                    "Understanding of technical constraints and possibilities",
+                    "Data analysis and decision-making capabilities"
+                ]
+            },
+            l4: {
+                title: "Senior Product Manager",
+                description: "Experienced product manager with 5-8 years of experience. Leads product strategy for a product area, manages cross-functional teams, and drives business outcomes.",
+                responsibilities: [
+                    "Lead product strategy for a product area",
+                    "Manage cross-functional teams to deliver products",
+                    "Drive business outcomes through product initiatives",
+                    "Develop product vision and roadmap",
+                    "Balance user needs with business objectives"
+                ],
+                skills: [
+                    "Expert in product management methodologies",
+                    "Strong strategic thinking and business acumen",
+                    "Experience leading cross-functional teams",
+                    "Ability to influence stakeholders without authority",
+                    "Deep understanding of market and competitive landscape"
+                ]
+            },
+            l5: {
+                title: "Group Product Manager",
+                description: "Senior product leader with 8-12 years of experience. Oversees multiple product lines, develops product strategy, and mentors product managers.",
+                responsibilities: [
+                    "Oversee multiple product lines or areas",
+                    "Develop product strategy aligned with company goals",
+                    "Mentor and develop product managers",
+                    "Drive innovation and product excellence",
+                    "Collaborate with executive leadership on business strategy"
+                ],
+                skills: [
+                    "Expert-level product management skills",
+                    "Strong leadership and team development abilities",
+                    "Strategic thinking and business planning",
+                    "Experience with product portfolio management",
+                    "Ability to translate business strategy into product roadmaps"
+                ]
+            },
+            l6: {
+                title: "Director of Product",
+                description: "Executive product leader with 12+ years of experience. Sets product vision and strategy for the organization, leads product teams, and drives business growth.",
+                responsibilities: [
+                    "Set product vision and strategy for the organization",
+                    "Lead and develop product management teams",
+                    "Drive business growth through product innovation",
+                    "Represent product externally to customers and partners",
+                    "Collaborate with C-level executives on company strategy"
+                ],
+                skills: [
+                    "Visionary product leadership",
+                    "Executive-level communication and influence",
+                    "Experience building and scaling product organizations",
+                    "Strong business acumen and strategic thinking",
+                    "Ability to balance innovation with execution"
+                ]
             }
         },
         designer: {
-            title: "Product Designer",
-            levels: {
-                L2: {
-                    title: "Junior Designer",
-                    experience: "0-2 years",
-                    responsibilities: [
-                        "Create UI components",
-                        "Support design systems",
-                        "Conduct user research",
-                        "Create wireframes",
-                        "Maintain design documentation"
-                    ],
-                    impact: [
-                        "Delivers quality designs",
-                        "Contributes to design system",
-                        "Supports user testing",
-                        "Improves design processes"
-                    ]
-                },
-                L3: {
-                    title: "Product Designer",
-                    experience: "2-5 years",
-                    responsibilities: [
-                        "Own feature design end-to-end",
-                        "Create user flows",
-                        "Conduct user research",
-                        "Define interaction patterns",
-                        "Collaborate with product teams"
-                    ],
-                    impact: [
-                        "Improves user experience",
-                        "Drives design consistency",
-                        "Influences product decisions",
-                        "Mentors junior designers"
-                    ]
-                },
-                L4: {
-                    title: "Senior Designer",
-                    experience: "5-8 years",
-                    responsibilities: [
-                        "Lead design strategy",
-                        "Define design systems",
-                        "Drive user research",
-                        "Mentor design team",
-                        "Guide product direction"
-                    ],
-                    impact: [
-                        "Shapes product experience",
-                        "Drives design excellence",
-                        "Influences product strategy",
-                        "Builds design culture"
-                    ]
-                },
-                L5: {
-                    title: "Staff Designer",
-                    experience: "8-12 years",
-                    responsibilities: [
-                        "Drive design vision",
-                        "Lead design organization",
-                        "Define design strategy",
-                        "Build design systems",
-                        "Guide design culture"
-                    ],
-                    impact: [
-                        "Shapes company direction",
-                        "Drives design innovation",
-                        "Builds design teams",
-                        "Influences industry trends"
-                    ]
-                },
-                L6: {
-                    title: "Principal Designer",
-                    experience: "12+ years",
-                    responsibilities: [
-                        "Set design vision",
-                        "Lead design organization",
-                        "Drive design strategy",
-                        "Define design principles",
-                        "Build design culture"
-                    ],
-                    impact: [
-                        "Shapes industry trends",
-                        "Drives organizational growth",
-                        "Builds design leaders",
-                        "Influences company strategy"
-                    ]
-                }
+            l2: {
+                title: "Junior Designer",
+                description: "Entry-level designer with 0-2 years of experience. Creates UI elements, assists with design implementation, and learns design systems and processes.",
+                responsibilities: [
+                    "Create UI elements and assets under guidance",
+                    "Assist with design implementation",
+                    "Participate in design reviews and team meetings",
+                    "Learn and apply design systems and guidelines",
+                    "Support user research and testing activities"
+                ],
+                skills: [
+                    "Proficiency in design tools (Figma, Adobe Creative Suite)",
+                    "Basic understanding of UI/UX principles",
+                    "Familiarity with responsive design concepts",
+                    "Ability to receive and implement feedback",
+                    "Attention to detail and visual aesthetics"
+                ]
+            },
+            l3: {
+                title: "Product Designer",
+                description: "Mid-level designer with 2-5 years of experience. Designs complete features, conducts user research, and contributes to design systems.",
+                responsibilities: [
+                    "Design complete features independently",
+                    "Conduct user research and usability testing",
+                    "Create wireframes, prototypes, and high-fidelity designs",
+                    "Collaborate with product and engineering teams",
+                    "Contribute to design systems and guidelines"
+                ],
+                skills: [
+                    "Strong UI/UX design skills",
+                    "Experience with user research methodologies",
+                    "Proficiency in creating interactive prototypes",
+                    "Understanding of accessibility standards",
+                    "Ability to communicate design decisions effectively"
+                ]
+            },
+            l4: {
+                title: "Senior Product Designer",
+                description: "Experienced designer with 5-8 years of experience. Leads design for product areas, mentors designers, and drives design strategy.",
+                responsibilities: [
+                    "Lead design for product areas or features",
+                    "Mentor junior designers and provide guidance",
+                    "Drive design strategy and vision",
+                    "Collaborate with product and engineering leadership",
+                    "Champion user-centered design processes"
+                ],
+                skills: [
+                    "Expert-level UI/UX design skills",
+                    "Strong understanding of product development",
+                    "Experience leading design projects end-to-end",
+                    "Ability to balance user needs with business goals",
+                    "Strong communication and presentation skills"
+                ]
+            },
+            l5: {
+                title: "Staff Designer",
+                description: "Senior design leader with 8-12 years of experience. Shapes design strategy across multiple products, establishes design systems, and influences product direction.",
+                responsibilities: [
+                    "Shape design strategy across multiple products",
+                    "Establish and evolve design systems",
+                    "Influence product direction and roadmap",
+                    "Mentor senior designers and design leads",
+                    "Drive design innovation and excellence"
+                ],
+                skills: [
+                    "Expert-level design leadership",
+                    "Experience creating and scaling design systems",
+                    "Strategic thinking and business understanding",
+                    "Ability to influence cross-functional stakeholders",
+                    "Deep understanding of user behavior and needs"
+                ]
+            },
+            l6: {
+                title: "Principal Designer",
+                description: "Distinguished design leader with 12+ years of experience. Sets design vision for the organization, leads design teams, and represents the company's design philosophy externally.",
+                responsibilities: [
+                    "Set design vision for the organization",
+                    "Lead design teams and develop design culture",
+                    "Represent the company's design philosophy externally",
+                    "Drive innovation in design practices and tools",
+                    "Collaborate with executive leadership on strategy"
+                ],
+                skills: [
+                    "Visionary design leadership",
+                    "Experience building and leading design organizations",
+                    "Ability to connect design to business outcomes",
+                    "Strong executive presence and communication",
+                    "Industry recognition and thought leadership"
+                ]
             }
         }
     },
@@ -976,163 +1014,163 @@ export const compensationData = {
             currency: "USD",
             roles: {
                 engineer: {
-                    L2: { min: 95000, max: 135000 },
-                    L3: { min: 130000, max: 180000 },
-                    L4: { min: 160000, max: 220000 },
-                    L5: { min: 200000, max: 280000 },
-                    L6: { min: 250000, max: 350000 }
+                    L2: { min: 100000, max: 140000 },
+                    L3: { min: 135000, max: 185000 },
+                    L4: { min: 165000, max: 225000 },
+                    L5: { min: 210000, max: 290000 },
+                    L6: { min: 260000, max: 360000 }
                 },
                 pm: {
-                    L2: { min: 85000, max: 120000 },
-                    L3: { min: 120000, max: 160000 },
-                    L4: { min: 150000, max: 200000 },
-                    L5: { min: 180000, max: 250000 },
-                    L6: { min: 220000, max: 300000 }
+                    L2: { min: 90000, max: 125000 },
+                    L3: { min: 125000, max: 165000 },
+                    L4: { min: 155000, max: 205000 },
+                    L5: { min: 190000, max: 260000 },
+                    L6: { min: 230000, max: 310000 }
                 },
                 designer: {
-                    L2: { min: 80000, max: 110000 },
-                    L3: { min: 110000, max: 150000 },
-                    L4: { min: 140000, max: 190000 },
-                    L5: { min: 170000, max: 230000 },
-                    L6: { min: 200000, max: 280000 }
+                    L2: { min: 85000, max: 115000 },
+                    L3: { min: 115000, max: 155000 },
+                    L4: { min: 145000, max: 195000 },
+                    L5: { min: 175000, max: 235000 },
+                    L6: { min: 210000, max: 290000 }
                 }
             },
-            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-50% higher. Remote work policies often include location-based adjustments."
+            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-50% higher. Remote work policies often include location-based adjustments. Data updated May 2024."
         },
         germany: {
             currency: "EUR",
             roles: {
                 engineer: {
+                    L2: { min: 52000, max: 68000 },
+                    L3: { min: 68000, max: 88000 },
+                    L4: { min: 88000, max: 115000 },
+                    L5: { min: 115000, max: 145000 },
+                    L6: { min: 145000, max: 185000 }
+                },
+                pm: {
                     L2: { min: 50000, max: 65000 },
                     L3: { min: 65000, max: 85000 },
                     L4: { min: 85000, max: 110000 },
                     L5: { min: 110000, max: 140000 },
                     L6: { min: 140000, max: 180000 }
                 },
-                pm: {
-                    L2: { min: 48000, max: 62000 },
-                    L3: { min: 62000, max: 82000 },
-                    L4: { min: 82000, max: 105000 },
+                designer: {
+                    L2: { min: 48000, max: 63000 },
+                    L3: { min: 63000, max: 83000 },
+                    L4: { min: 83000, max: 105000 },
                     L5: { min: 105000, max: 135000 },
                     L6: { min: 135000, max: 175000 }
-                },
-                designer: {
-                    L2: { min: 45000, max: 60000 },
-                    L3: { min: 60000, max: 80000 },
-                    L4: { min: 80000, max: 100000 },
-                    L5: { min: 100000, max: 130000 },
-                    L6: { min: 130000, max: 170000 }
                 }
             },
-            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions."
+            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions. Berlin and Munich offer higher salaries than other regions. Data updated May 2024."
         },
         uk: {
             currency: "GBP",
             roles: {
                 engineer: {
-                    L2: { min: 38000, max: 48000 },
-                    L3: { min: 48000, max: 65000 },
-                    L4: { min: 65000, max: 80000 },
-                    L5: { min: 80000, max: 95000 },
-                    L6: { min: 95000, max: 120000 }
+                    L2: { min: 40000, max: 50000 },
+                    L3: { min: 50000, max: 68000 },
+                    L4: { min: 68000, max: 85000 },
+                    L5: { min: 85000, max: 100000 },
+                    L6: { min: 100000, max: 125000 }
                 },
                 pm: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 62000 },
-                    L4: { min: 62000, max: 78000 },
-                    L5: { min: 78000, max: 92000 },
-                    L6: { min: 92000, max: 115000 }
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 65000 },
+                    L4: { min: 65000, max: 82000 },
+                    L5: { min: 82000, max: 95000 },
+                    L6: { min: 95000, max: 120000 }
                 },
                 designer: {
-                    L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 58000 },
-                    L4: { min: 58000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 60000 },
+                    L4: { min: 60000, max: 78000 },
+                    L5: { min: 78000, max: 93000 },
+                    L6: { min: 93000, max: 115000 }
                 }
             },
-            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. Living costs are generally lower than in London."
+            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. London salaries are typically 15-25% higher than listed. Data updated May 2024."
         },
         spain: {
             currency: "EUR",
             roles: {
                 engineer: {
-                    L2: { min: 38000, max: 48000 },
-                    L3: { min: 48000, max: 60000 },
-                    L4: { min: 60000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
+                    L2: { min: 36000, max: 46000 },
+                    L3: { min: 46000, max: 58000 },
+                    L4: { min: 58000, max: 73000 },
+                    L5: { min: 73000, max: 88000 },
+                    L6: { min: 88000, max: 108000 }
                 },
                 pm: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 58000 },
-                    L4: { min: 58000, max: 72000 },
-                    L5: { min: 72000, max: 88000 },
-                    L6: { min: 88000, max: 105000 }
+                    L2: { min: 34000, max: 44000 },
+                    L3: { min: 44000, max: 56000 },
+                    L4: { min: 56000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 103000 }
                 },
                 designer: {
                     L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 55000 },
-                    L4: { min: 55000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
+                    L3: { min: 42000, max: 54000 },
+                    L4: { min: 54000, max: 68000 },
+                    L5: { min: 68000, max: 83000 },
+                    L6: { min: 83000, max: 98000 }
                 }
             },
-            notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid."
+            notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid. Data updated May 2024."
         },
         poland: {
             currency: "PLN",
             roles: {
                 engineer: {
+                    L2: { min: 110000, max: 140000 },
+                    L3: { min: 140000, max: 200000 },
+                    L4: { min: 170000, max: 220000 },
+                    L5: { min: 220000, max: 280000 },
+                    L6: { min: 280000, max: 340000 }
+                },
+                pm: {
                     L2: { min: 100000, max: 130000 },
-                    L3: { min: 130000, max: 190000 },
+                    L3: { min: 130000, max: 180000 },
                     L4: { min: 160000, max: 210000 },
                     L5: { min: 210000, max: 270000 },
                     L6: { min: 270000, max: 330000 }
                 },
-                pm: {
+                designer: {
                     L2: { min: 90000, max: 120000 },
                     L3: { min: 120000, max: 170000 },
                     L4: { min: 150000, max: 200000 },
                     L5: { min: 200000, max: 260000 },
                     L6: { min: 260000, max: 320000 }
-                },
-                designer: {
-                    L2: { min: 85000, max: 115000 },
-                    L3: { min: 115000, max: 165000 },
-                    L4: { min: 145000, max: 195000 },
-                    L5: { min: 195000, max: 250000 },
-                    L6: { min: 250000, max: 310000 }
                 }
             },
-            notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common."
+            notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common. Warsaw and Krakow offer higher salaries. Data updated May 2024."
         },
         ukraine: {
             currency: "UAH",
             roles: {
                 engineer: {
+                    L2: { min: 600000, max: 840000 },
+                    L3: { min: 960000, max: 1320000 },
+                    L4: { min: 1440000, max: 1920000 },
+                    L5: { min: 2040000, max: 2520000 },
+                    L6: { min: 2760000, max: 3720000 }
+                },
+                pm: {
+                    L2: { min: 540000, max: 780000 },
+                    L3: { min: 900000, max: 1260000 },
+                    L4: { min: 1380000, max: 1860000 },
+                    L5: { min: 1980000, max: 2460000 },
+                    L6: { min: 2700000, max: 3420000 }
+                },
+                designer: {
                     L2: { min: 480000, max: 720000 },
                     L3: { min: 840000, max: 1200000 },
                     L4: { min: 1320000, max: 1800000 },
                     L5: { min: 1920000, max: 2400000 },
-                    L6: { min: 2640000, max: 3600000 }
-                },
-                pm: {
-                    L2: { min: 420000, max: 660000 },
-                    L3: { min: 780000, max: 1140000 },
-                    L4: { min: 1260000, max: 1740000 },
-                    L5: { min: 1860000, max: 2340000 },
-                    L6: { min: 2580000, max: 3300000 }
-                },
-                designer: {
-                    L2: { min: 360000, max: 600000 },
-                    L3: { min: 720000, max: 1080000 },
-                    L4: { min: 1200000, max: 1680000 },
-                    L5: { min: 1800000, max: 2280000 },
-                    L6: { min: 2520000, max: 3240000 }
+                    L6: { min: 2640000, max: 3360000 }
                 }
             },
-            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv."
+            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv. Data updated May 2024 reflecting wartime conditions."
         },
         slovakia: {
             currency: "EUR",

@@ -147,7 +147,9 @@ export class CompensationCalculator {
         const costOfLiving = this.data.costOfLiving[country];
 
         // Get role-specific level details
-        const roleLevelDetails = this.data.roles[role].levels[level];
+        // Map 'pm' to 'productManager' for roleDefinitions
+        const roleDefKey = role === 'pm' ? 'productManager' : role;
+        const roleLevelDetails = this.data.roleDefinitions[roleDefKey][level.toLowerCase()];
 
         const range = levelData;
         const monthlyRange = CalculationUtils.calculateMonthlyRange(range);
@@ -246,7 +248,7 @@ export class CompensationCalculator {
         document.getElementById('levelDetails').innerHTML = `
             <div class="level-details mb-3">
                 <h4 class="h6">${roleLevelDetails.title}</h4>
-                <p class="text-muted mb-3">Experience: ${roleLevelDetails.experience}</p>
+                <p class="text-muted mb-3">${roleLevelDetails.description}</p>
                 
                 <div class="responsibilities mb-4">
                     <h5 class="h6 text-primary">Key Responsibilities</h5>
@@ -259,12 +261,12 @@ export class CompensationCalculator {
                     </ul>
                 </div>
                 
-                <div class="impact">
-                    <h5 class="h6 text-primary">Expected Impact</h5>
+                <div class="skills">
+                    <h5 class="h6 text-primary">Required Skills</h5>
                     <ul class="list-unstyled">
-                        ${roleLevelDetails.impact.map(i => `
+                        ${roleLevelDetails.skills.map(s => `
                             <li class="mb-2">
-                                <i class="bi bi-star-fill text-warning me-2"></i>${i}
+                                <i class="bi bi-star-fill text-warning me-2"></i>${s}
                             </li>
                         `).join('')}
                     </ul>

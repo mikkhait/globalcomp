@@ -10,10 +10,14 @@ export class SalaryChart {
             .filter(([key]) => key !== country)
             .sort(([a], [b]) => a.localeCompare(b));
 
+        // Map 'pm' to 'productManager' for roleDefinitions
+        const roleDefKey = role === 'pm' ? 'productManager' : role;
+        const roleTitle = data.roleDefinitions[roleDefKey][level.toLowerCase()].title;
+
         const chartData = {
             labels: [country.toUpperCase(), ...otherCountries.map(([key]) => key.toUpperCase())],
             datasets: [{
-                label: `${data.roles[role].title} ${level} Salary Range (USD)`,
+                label: `${roleTitle} Salary Range (USD)`,
                 data: [
                     this.getSalaryRange(data, country, role, level),
                     ...otherCountries.map(([key]) => 
