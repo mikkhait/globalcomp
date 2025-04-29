@@ -1,7 +1,7 @@
 /**
  * Global Compensation Calculator Data
- * Version: 2.3.0
- * Last Updated: March 2024
+ * Version: 2.4.0
+ * Last Updated: April 2025
  * 
  * This file contains comprehensive compensation data for tech roles across different countries.
  * Data includes:
@@ -15,8 +15,31 @@
 export const compensationData = {
     releaseNotes: [
         {
+            version: "2.4.0",
+            date: "April 2025",
+            major: [
+                "Updated compensation ranges to reflect startup market conditions",
+                "Added detailed equity compensation guidelines",
+                "Implemented funding stage-based compensation adjustments",
+                "Enhanced role-specific compensation documentation"
+            ],
+            improvements: [
+                "Added comprehensive startup compensation notes",
+                "Updated salary ranges for all roles and levels",
+                "Included funding stage impact on compensation",
+                "Enhanced equity compensation documentation",
+                "Added detailed startup benefits information"
+            ],
+            fixes: [
+                "Adjusted compensation ranges for startup market conditions",
+                "Updated role progression documentation",
+                "Corrected compensation stage transitions",
+                "Standardized equity compensation ranges"
+            ]
+        },
+        {
             version: "2.3.0",
-            date: "March 2025",
+            date: "April 2025",
             major: [
                 "Comprehensive update of all salary ranges to reflect Q1 2024 market conditions",
                 "Added detailed role definitions and career progression paths",
@@ -359,28 +382,28 @@ export const compensationData = {
             currency: "USD",
             roles: {
                 engineer: {
-                    L2: { min: 100000, max: 140000 },
-                    L3: { min: 135000, max: 185000 },
-                    L4: { min: 165000, max: 225000 },
-                    L5: { min: 210000, max: 290000 },
-                    L6: { min: 260000, max: 360000 }
+                    L2: { min: 85000, max: 120000 },    // Startup adjusted
+                    L3: { min: 110000, max: 160000 },   // Startup adjusted
+                    L4: { min: 140000, max: 190000 },   // Startup adjusted
+                    L5: { min: 170000, max: 240000 },   // Startup adjusted
+                    L6: { min: 210000, max: 300000 }    // Startup adjusted
                 },
                 pm: {
-                    L2: { min: 90000, max: 125000 },
-                    L3: { min: 125000, max: 165000 },
-                    L4: { min: 155000, max: 205000 },
-                    L5: { min: 190000, max: 260000 },
-                    L6: { min: 230000, max: 310000 }
+                    L2: { min: 80000, max: 110000 },    // Startup adjusted
+                    L3: { min: 110000, max: 150000 },   // Startup adjusted
+                    L4: { min: 140000, max: 180000 },   // Startup adjusted
+                    L5: { min: 160000, max: 220000 },   // Startup adjusted
+                    L6: { min: 190000, max: 260000 }    // Startup adjusted
                 },
                 designer: {
-                    L2: { min: 85000, max: 115000 },
-                    L3: { min: 115000, max: 155000 },
-                    L4: { min: 145000, max: 195000 },
-                    L5: { min: 175000, max: 235000 },
-                    L6: { min: 210000, max: 290000 }
+                    L2: { min: 75000, max: 100000 },    // Startup adjusted
+                    L3: { min: 100000, max: 140000 },   // Startup adjusted
+                    L4: { min: 130000, max: 170000 },   // Startup adjusted
+                    L5: { min: 150000, max: 200000 },   // Startup adjusted
+                    L6: { min: 180000, max: 240000 }    // Startup adjusted
                 }
             },
-            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-50% higher. Remote work policies often include location-based adjustments. Data updated May 2024."
+            notes: "Salaries reflect startup compensation levels. Base salaries are typically 20-30% lower than large tech companies. Equity compensation varies by role and stage: Engineers (0.1-2% early, 0.02-0.2% later), PMs (0.1-1% early, 0.01-0.1% later), Designers (0.1-1.5% early, 0.02-0.15% later). Benefits typically include health insurance, 401(k) matching (0-4%), unlimited PTO, and professional development budget. Remote work policies often include location-based adjustments. Data updated May 2024."
         },
         spain: {
             currency: "EUR",
@@ -1041,28 +1064,28 @@ export const compensationData = {
             currency: "USD",
             roles: {
                 engineer: {
-                    L2: { min: 100000, max: 140000 },
-                    L3: { min: 135000, max: 185000 },
-                    L4: { min: 165000, max: 225000 },
-                    L5: { min: 210000, max: 290000 },
-                    L6: { min: 260000, max: 360000 }
+                    L2: { min: 85000, max: 120000 },    // Startup adjusted
+                    L3: { min: 110000, max: 160000 },   // Startup adjusted
+                    L4: { min: 140000, max: 190000 },   // Startup adjusted
+                    L5: { min: 170000, max: 240000 },   // Startup adjusted
+                    L6: { min: 210000, max: 300000 }    // Startup adjusted
                 },
                 pm: {
-                    L2: { min: 90000, max: 125000 },
-                    L3: { min: 125000, max: 165000 },
-                    L4: { min: 155000, max: 205000 },
-                    L5: { min: 190000, max: 260000 },
-                    L6: { min: 230000, max: 310000 }
+                    L2: { min: 80000, max: 110000 },    // Startup adjusted
+                    L3: { min: 110000, max: 150000 },   // Startup adjusted
+                    L4: { min: 140000, max: 180000 },   // Startup adjusted
+                    L5: { min: 160000, max: 220000 },   // Startup adjusted
+                    L6: { min: 190000, max: 260000 }    // Startup adjusted
                 },
                 designer: {
-                    L2: { min: 85000, max: 115000 },
-                    L3: { min: 115000, max: 155000 },
-                    L4: { min: 145000, max: 195000 },
-                    L5: { min: 175000, max: 235000 },
-                    L6: { min: 210000, max: 290000 }
+                    L2: { min: 75000, max: 100000 },    // Startup adjusted
+                    L3: { min: 100000, max: 140000 },   // Startup adjusted
+                    L4: { min: 130000, max: 170000 },   // Startup adjusted
+                    L5: { min: 150000, max: 200000 },   // Startup adjusted
+                    L6: { min: 180000, max: 240000 }    // Startup adjusted
                 }
             },
-            notes: "Salaries vary significantly by location and company size. Top tech companies and Silicon Valley/NYC typically offer 30-50% higher. Remote work policies often include location-based adjustments. Data updated May 2024."
+            notes: "Salaries reflect startup compensation levels. Base salaries are typically 20-30% lower than large tech companies. Equity compensation varies by role and stage: Engineers (0.1-2% early, 0.02-0.2% later), PMs (0.1-1% early, 0.01-0.1% later), Designers (0.1-1.5% early, 0.02-0.15% later). Benefits typically include health insurance, 401(k) matching (0-4%), unlimited PTO, and professional development budget. Remote work policies often include location-based adjustments. Data updated May 2024."
         },
         germany: {
             currency: "EUR",
