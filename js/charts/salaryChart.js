@@ -11,7 +11,8 @@ export class SalaryChart {
             .sort(([a], [b]) => a.localeCompare(b));
 
         // Map 'pm' to 'productManager' for roleDefinitions
-        const roleDefKey = role === 'pm' ? 'productManager' : role;
+        const roleDefKey = role === 'pm' ? 'productManager' : 
+                          (role === 'dataEngineer' ? 'dataEngineer' : role);
         const roleTitle = data.roleDefinitions[roleDefKey][level.toLowerCase()].title;
 
         const chartData = {

@@ -148,7 +148,8 @@ export class CompensationCalculator {
 
         // Get role-specific level details
         // Map 'pm' to 'productManager' for roleDefinitions
-        const roleDefKey = role === 'pm' ? 'productManager' : role;
+        const roleDefKey = role === 'pm' ? 'productManager' : 
+                          (role === 'dataEngineer' ? 'dataEngineer' : role);
         const roleLevelDetails = this.data.roleDefinitions[roleDefKey][level.toLowerCase()];
 
         const range = levelData;

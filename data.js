@@ -1,7 +1,7 @@
 /**
  * Global Compensation Calculator Data
- * Version: 2.4.0
- * Last Updated: April 2025
+ * Version: 2.5.0
+ * Last Updated: June 2025
  * 
  * This file contains comprehensive compensation data for tech roles across different countries.
  * Data includes:
@@ -14,6 +14,27 @@
 
 export const compensationData = {
     releaseNotes: [
+        {
+            version: "2.5.0",
+            date: "June 2025",
+            major: [
+                "Added comprehensive Data Engineer role across all countries",
+                "Updated role definitions and career paths for Data Engineers",
+                "Adjusted compensation ranges to reflect market rates for data engineering skills",
+                "Enhanced documentation for data engineering competencies"
+            ],
+            improvements: [
+                "Added detailed role definitions for Data Engineers across all levels",
+                "Updated salary ranges for all countries to include Data Engineer role",
+                "Enhanced documentation for data engineering skills and responsibilities",
+                "Included data engineering-specific career progression paths"
+            ],
+            fixes: [
+                "Standardized data engineering compensation ranges across regions",
+                "Aligned data engineering roles with existing engineering levels",
+                "Corrected compensation differences between similar engineering disciplines"
+            ]
+        },
         {
             version: "2.4.0",
             date: "April 2025",
@@ -347,279 +368,6 @@ export const compensationData = {
                 socialSecurity: 0.12,  // National Insurance
                 other: 0.02           // Additional contributions
             }
-        }
-    },
-    
-    countries: {
-        lithuania: {
-            currency: "EUR",
-            roles: {
-                engineer: {
-                    L2: { min: 25000, max: 38000 },
-                    L3: { min: 38000, max: 50000 },
-                    L4: { min: 50000, max: 65000 },
-                    L5: { min: 65000, max: 80000 },
-                    L6: { min: 80000, max: 95000 }
-                },
-                pm: {
-                    L2: { min: 23000, max: 34000 },
-                    L3: { min: 34000, max: 48000 },
-                    L4: { min: 48000, max: 62000 },
-                    L5: { min: 62000, max: 75000 },
-                    L6: { min: 75000, max: 90000 }
-                },
-                designer: {
-                    L2: { min: 22000, max: 32000 },
-                    L3: { min: 32000, max: 45000 },
-                    L4: { min: 45000, max: 58000 },
-                    L5: { min: 58000, max: 72000 },
-                    L6: { min: 72000, max: 85000 }
-                }
-            },
-            notes: "Lithuania's IT sector continues to grow, with increasing demand for skilled professionals. Remote work opportunities are expanding, and the government is offering additional incentives for tech companies."
-        },
-        usa: {
-            currency: "USD",
-            roles: {
-                engineer: {
-                    L2: { min: 85000, max: 120000 },    // Startup adjusted
-                    L3: { min: 110000, max: 160000 },   // Startup adjusted
-                    L4: { min: 140000, max: 190000 },   // Startup adjusted
-                    L5: { min: 170000, max: 240000 },   // Startup adjusted
-                    L6: { min: 210000, max: 300000 }    // Startup adjusted
-                },
-                pm: {
-                    L2: { min: 80000, max: 110000 },    // Startup adjusted
-                    L3: { min: 110000, max: 150000 },   // Startup adjusted
-                    L4: { min: 140000, max: 180000 },   // Startup adjusted
-                    L5: { min: 160000, max: 220000 },   // Startup adjusted
-                    L6: { min: 190000, max: 260000 }    // Startup adjusted
-                },
-                designer: {
-                    L2: { min: 75000, max: 100000 },    // Startup adjusted
-                    L3: { min: 100000, max: 140000 },   // Startup adjusted
-                    L4: { min: 130000, max: 170000 },   // Startup adjusted
-                    L5: { min: 150000, max: 200000 },   // Startup adjusted
-                    L6: { min: 180000, max: 240000 }    // Startup adjusted
-                }
-            },
-            notes: "Salaries reflect startup compensation levels. Base salaries are typically 20-30% lower than large tech companies. Equity compensation varies by role and stage: Engineers (0.1-2% early, 0.02-0.2% later), PMs (0.1-1% early, 0.01-0.1% later), Designers (0.1-1.5% early, 0.02-0.15% later). Benefits typically include health insurance, 401(k) matching (0-4%), unlimited PTO, and professional development budget. Remote work policies often include location-based adjustments. Data updated May 2024."
-        },
-        spain: {
-            currency: "EUR",
-            roles: {
-                engineer: {
-                    L2: { min: 36000, max: 46000 },
-                    L3: { min: 46000, max: 58000 },
-                    L4: { min: 58000, max: 73000 },
-                    L5: { min: 73000, max: 88000 },
-                    L6: { min: 88000, max: 108000 }
-                },
-                pm: {
-                    L2: { min: 34000, max: 44000 },
-                    L3: { min: 44000, max: 56000 },
-                    L4: { min: 56000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 103000 }
-                },
-                designer: {
-                    L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 54000 },
-                    L4: { min: 54000, max: 68000 },
-                    L5: { min: 68000, max: 83000 },
-                    L6: { min: 83000, max: 98000 }
-                }
-            },
-            notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid. Data updated May 2024."
-        },
-        poland: {
-            currency: "PLN",
-            roles: {
-                engineer: {
-                    L2: { min: 110000, max: 140000 },
-                    L3: { min: 140000, max: 200000 },
-                    L4: { min: 170000, max: 220000 },
-                    L5: { min: 220000, max: 280000 },
-                    L6: { min: 280000, max: 340000 }
-                },
-                pm: {
-                    L2: { min: 100000, max: 130000 },
-                    L3: { min: 130000, max: 180000 },
-                    L4: { min: 160000, max: 210000 },
-                    L5: { min: 210000, max: 270000 },
-                    L6: { min: 270000, max: 330000 }
-                },
-                designer: {
-                    L2: { min: 90000, max: 120000 },
-                    L3: { min: 120000, max: 170000 },
-                    L4: { min: 150000, max: 200000 },
-                    L5: { min: 200000, max: 260000 },
-                    L6: { min: 260000, max: 320000 }
-                }
-            },
-            notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common. Warsaw and Krakow offer higher salaries. Data updated May 2024."
-        },
-        canada: {
-            currency: "CAD",
-            roles: {
-                engineer: {
-                    L2: { min: 70000, max: 90000 },
-                    L3: { min: 90000, max: 120000 },
-                    L4: { min: 120000, max: 150000 },
-                    L5: { min: 150000, max: 200000 },
-                    L6: { min: 200000, max: 250000 }
-                },
-                pm: {
-                    L2: { min: 65000, max: 85000 },
-                    L3: { min: 85000, max: 115000 },
-                    L4: { min: 115000, max: 145000 },
-                    L5: { min: 145000, max: 190000 },
-                    L6: { min: 190000, max: 240000 }
-                },
-                designer: {
-                    L2: { min: 60000, max: 80000 },
-                    L3: { min: 80000, max: 110000 },
-                    L4: { min: 110000, max: 140000 },
-                    L5: { min: 140000, max: 180000 },
-                    L6: { min: 180000, max: 230000 }
-                }
-            },
-            notes: "Canadian tech hubs like Toronto, Vancouver, and Montreal offer competitive salaries. Benefits typically include health insurance and retirement plans."
-        },
-        ukraine: {
-            currency: "UAH",
-            roles: {
-                engineer: {
-                    L2: { min: 600000, max: 840000 },
-                    L3: { min: 960000, max: 1320000 },
-                    L4: { min: 1440000, max: 1920000 },
-                    L5: { min: 2040000, max: 2520000 },
-                    L6: { min: 2760000, max: 3720000 }
-                },
-                pm: {
-                    L2: { min: 540000, max: 780000 },
-                    L3: { min: 900000, max: 1260000 },
-                    L4: { min: 1380000, max: 1860000 },
-                    L5: { min: 1980000, max: 2460000 },
-                    L6: { min: 2700000, max: 3420000 }
-                },
-                designer: {
-                    L2: { min: 480000, max: 720000 },
-                    L3: { min: 840000, max: 1200000 },
-                    L4: { min: 1320000, max: 1800000 },
-                    L5: { min: 1920000, max: 2400000 },
-                    L6: { min: 2640000, max: 3360000 }
-                }
-            },
-            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv. Data updated May 2024 reflecting wartime conditions."
-        },
-        slovakia: {
-            currency: "EUR",
-            roles: {
-                engineer: {
-                    L2: { min: 33000, max: 44000 },
-                    L3: { min: 44000, max: 58000 },
-                    L4: { min: 58000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
-                },
-                pm: {
-                    L2: { min: 30000, max: 40000 },
-                    L3: { min: 40000, max: 55000 },
-                    L4: { min: 55000, max: 72000 },
-                    L5: { min: 72000, max: 88000 },
-                    L6: { min: 88000, max: 105000 }
-                },
-                designer: {
-                    L2: { min: 28000, max: 38000 },
-                    L3: { min: 38000, max: 52000 },
-                    L4: { min: 52000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
-                }
-            },
-            notes: "Slovakia offers competitive salaries within the EU, particularly in the growing tech sector. Living costs are relatively lower than in Western Europe."
-        },
-        wales: {
-            currency: "GBP",
-            roles: {
-                engineer: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 60000 },
-                    L4: { min: 60000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
-                },
-                pm: {
-                    L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 58000 },
-                    L4: { min: 58000, max: 72000 },
-                    L5: { min: 72000, max: 88000 },
-                    L6: { min: 88000, max: 105000 }
-                },
-                designer: {
-                    L2: { min: 30000, max: 40000 },
-                    L3: { min: 40000, max: 55000 },
-                    L4: { min: 55000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
-                }
-            },
-            notes: "Salaries in Wales are competitive, with lower living costs compared to other parts of the UK. Growing tech hub with good work-life balance."
-        },
-        germany: {
-            currency: "EUR",
-            roles: {
-                engineer: {
-                    L2: { min: 52000, max: 68000 },
-                    L3: { min: 68000, max: 88000 },
-                    L4: { min: 88000, max: 115000 },
-                    L5: { min: 115000, max: 145000 },
-                    L6: { min: 145000, max: 185000 }
-                },
-                pm: {
-                    L2: { min: 50000, max: 65000 },
-                    L3: { min: 65000, max: 85000 },
-                    L4: { min: 85000, max: 110000 },
-                    L5: { min: 110000, max: 140000 },
-                    L6: { min: 140000, max: 180000 }
-                },
-                designer: {
-                    L2: { min: 48000, max: 63000 },
-                    L3: { min: 63000, max: 83000 },
-                    L4: { min: 83000, max: 105000 },
-                    L5: { min: 105000, max: 135000 },
-                    L6: { min: 135000, max: 175000 }
-                }
-            },
-            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions. Berlin and Munich offer higher salaries than other regions. Data updated May 2024."
-        },
-        uk: {
-            currency: "GBP",
-            roles: {
-                engineer: {
-                    L2: { min: 40000, max: 50000 },
-                    L3: { min: 50000, max: 68000 },
-                    L4: { min: 68000, max: 85000 },
-                    L5: { min: 85000, max: 100000 },
-                    L6: { min: 100000, max: 125000 }
-                },
-                pm: {
-                    L2: { min: 38000, max: 48000 },
-                    L3: { min: 48000, max: 65000 },
-                    L4: { min: 65000, max: 82000 },
-                    L5: { min: 82000, max: 95000 },
-                    L6: { min: 95000, max: 120000 }
-                },
-                designer: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 60000 },
-                    L4: { min: 60000, max: 78000 },
-                    L5: { min: 78000, max: 93000 },
-                    L6: { min: 93000, max: 115000 }
-                }
-            },
-            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. London salaries are typically 15-25% higher than listed. Data updated May 2024."
         }
     },
     
@@ -1056,199 +804,102 @@ export const compensationData = {
                     "Industry recognition and thought leadership"
                 ]
             }
+        },
+        dataEngineer: {
+            l2: {
+                title: "Data Engineer I",
+                description: "Entry-level data engineer with 0-2 years of experience. Focuses on building and maintaining data pipelines, ETL processes, and data storage solutions under guidance.",
+                responsibilities: [
+                    "Develop and maintain basic data pipelines with guidance",
+                    "Implement ETL processes for data transformation",
+                    "Assist with data storage and retrieval solutions",
+                    "Write and optimize data queries",
+                    "Participate in data architecture discussions"
+                ],
+                skills: [
+                    "Proficiency in SQL and at least one programming language (Python, Scala)",
+                    "Basic understanding of data modeling and database design",
+                    "Familiarity with ETL tools and processes",
+                    "Understanding of data warehousing concepts",
+                    "Ability to work with structured and semi-structured data"
+                ]
+            },
+            l3: {
+                title: "Data Engineer II",
+                description: "Mid-level data engineer with 2-5 years of experience. Works independently on data pipelines, optimizes data workflows, and contributes to data architecture decisions.",
+                responsibilities: [
+                    "Design and implement data pipelines independently",
+                    "Optimize ETL processes for performance and reliability",
+                    "Develop data models and storage solutions",
+                    "Implement data quality checks and monitoring",
+                    "Collaborate with data scientists and analysts on data needs"
+                ],
+                skills: [
+                    "Strong proficiency in multiple data technologies (DBT, Airflow, Spark)",
+                    "Experience with cloud data services (AWS, GCP, Azure)",
+                    "Knowledge of data modeling methodologies",
+                    "Understanding of distributed systems and big data processing",
+                    "Ability to balance performance with data integrity needs"
+                ]
+            },
+            l4: {
+                title: "Senior Data Engineer",
+                description: "Experienced data engineer with 5-8 years of experience. Leads data infrastructure initiatives, designs data architecture, and mentors junior data engineers.",
+                responsibilities: [
+                    "Lead data infrastructure initiatives and development",
+                    "Design scalable data architectures",
+                    "Mentor data engineers and provide technical guidance",
+                    "Collaborate with cross-functional teams on data strategy",
+                    "Drive data engineering best practices and standards"
+                ],
+                skills: [
+                    "Expert in multiple data engineering tools and frameworks",
+                    "Strong data architecture and system design skills",
+                    "Experience with real-time and batch data processing",
+                    "Deep understanding of data security and governance",
+                    "Ability to translate business requirements into data solutions"
+                ]
+            },
+            l5: {
+                title: "Staff Data Engineer",
+                description: "Senior technical leader with 8-12 years of experience. Drives data strategy across multiple teams, solves complex data architecture challenges, and influences organization-wide data decisions.",
+                responsibilities: [
+                    "Drive data strategy and architecture across multiple teams",
+                    "Solve complex data engineering challenges",
+                    "Influence organization-wide data decisions",
+                    "Mentor senior data engineers and technical leads",
+                    "Collaborate with leadership on data roadmaps"
+                ],
+                skills: [
+                    "Expert-level technical depth in data engineering",
+                    "Ability to design complex data ecosystems",
+                    "Experience with large-scale data architecture",
+                    "Strong technical leadership and communication skills",
+                    "Deep understanding of business domains and data strategy"
+                ]
+            },
+            l6: {
+                title: "Principal Data Engineer",
+                description: "Distinguished technical leader with 12+ years of experience. Sets data vision for the organization, leads cross-functional data initiatives, and represents the company externally in data engineering contexts.",
+                responsibilities: [
+                    "Set data vision and strategy for the organization",
+                    "Lead cross-functional data engineering initiatives",
+                    "Represent the company externally (conferences, papers)",
+                    "Drive innovation in data engineering practices",
+                    "Influence product and business strategy through data capabilities"
+                ],
+                skills: [
+                    "Recognized authority in data engineering",
+                    "Ability to solve unprecedented data challenges",
+                    "Experience leading organization-wide data transformations",
+                    "Strategic thinking and business acumen",
+                    "Exceptional leadership and communication skills"
+                ]
+            }
         }
     },
 
     countries: {
-        usa: {
-            currency: "USD",
-            roles: {
-                engineer: {
-                    L2: { min: 85000, max: 120000 },    // Startup adjusted
-                    L3: { min: 110000, max: 160000 },   // Startup adjusted
-                    L4: { min: 140000, max: 190000 },   // Startup adjusted
-                    L5: { min: 170000, max: 240000 },   // Startup adjusted
-                    L6: { min: 210000, max: 300000 }    // Startup adjusted
-                },
-                pm: {
-                    L2: { min: 80000, max: 110000 },    // Startup adjusted
-                    L3: { min: 110000, max: 150000 },   // Startup adjusted
-                    L4: { min: 140000, max: 180000 },   // Startup adjusted
-                    L5: { min: 160000, max: 220000 },   // Startup adjusted
-                    L6: { min: 190000, max: 260000 }    // Startup adjusted
-                },
-                designer: {
-                    L2: { min: 75000, max: 100000 },    // Startup adjusted
-                    L3: { min: 100000, max: 140000 },   // Startup adjusted
-                    L4: { min: 130000, max: 170000 },   // Startup adjusted
-                    L5: { min: 150000, max: 200000 },   // Startup adjusted
-                    L6: { min: 180000, max: 240000 }    // Startup adjusted
-                }
-            },
-            notes: "Salaries reflect startup compensation levels. Base salaries are typically 20-30% lower than large tech companies. Equity compensation varies by role and stage: Engineers (0.1-2% early, 0.02-0.2% later), PMs (0.1-1% early, 0.01-0.1% later), Designers (0.1-1.5% early, 0.02-0.15% later). Benefits typically include health insurance, 401(k) matching (0-4%), unlimited PTO, and professional development budget. Remote work policies often include location-based adjustments. Data updated May 2024."
-        },
-        germany: {
-            currency: "EUR",
-            roles: {
-                engineer: {
-                    L2: { min: 52000, max: 68000 },
-                    L3: { min: 68000, max: 88000 },
-                    L4: { min: 88000, max: 115000 },
-                    L5: { min: 115000, max: 145000 },
-                    L6: { min: 145000, max: 185000 }
-                },
-                pm: {
-                    L2: { min: 50000, max: 65000 },
-                    L3: { min: 65000, max: 85000 },
-                    L4: { min: 85000, max: 110000 },
-                    L5: { min: 110000, max: 140000 },
-                    L6: { min: 140000, max: 180000 }
-                },
-                designer: {
-                    L2: { min: 48000, max: 63000 },
-                    L3: { min: 63000, max: 83000 },
-                    L4: { min: 83000, max: 105000 },
-                    L5: { min: 105000, max: 135000 },
-                    L6: { min: 135000, max: 175000 }
-                }
-            },
-            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions. Berlin and Munich offer higher salaries than other regions. Data updated May 2024."
-        },
-        uk: {
-            currency: "GBP",
-            roles: {
-                engineer: {
-                    L2: { min: 40000, max: 50000 },
-                    L3: { min: 50000, max: 68000 },
-                    L4: { min: 68000, max: 85000 },
-                    L5: { min: 85000, max: 100000 },
-                    L6: { min: 100000, max: 125000 }
-                },
-                pm: {
-                    L2: { min: 38000, max: 48000 },
-                    L3: { min: 48000, max: 65000 },
-                    L4: { min: 65000, max: 82000 },
-                    L5: { min: 82000, max: 95000 },
-                    L6: { min: 95000, max: 120000 }
-                },
-                designer: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 60000 },
-                    L4: { min: 60000, max: 78000 },
-                    L5: { min: 78000, max: 93000 },
-                    L6: { min: 93000, max: 115000 }
-                }
-            },
-            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. London salaries are typically 15-25% higher than listed. Data updated May 2024."
-        },
-        spain: {
-            currency: "EUR",
-            roles: {
-                engineer: {
-                    L2: { min: 36000, max: 46000 },
-                    L3: { min: 46000, max: 58000 },
-                    L4: { min: 58000, max: 73000 },
-                    L5: { min: 73000, max: 88000 },
-                    L6: { min: 88000, max: 108000 }
-                },
-                pm: {
-                    L2: { min: 34000, max: 44000 },
-                    L3: { min: 44000, max: 56000 },
-                    L4: { min: 56000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 103000 }
-                },
-                designer: {
-                    L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 54000 },
-                    L4: { min: 54000, max: 68000 },
-                    L5: { min: 68000, max: 83000 },
-                    L6: { min: 83000, max: 98000 }
-                }
-            },
-            notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid. Data updated May 2024."
-        },
-        poland: {
-            currency: "PLN",
-            roles: {
-                engineer: {
-                    L2: { min: 110000, max: 140000 },
-                    L3: { min: 140000, max: 200000 },
-                    L4: { min: 170000, max: 220000 },
-                    L5: { min: 220000, max: 280000 },
-                    L6: { min: 280000, max: 340000 }
-                },
-                pm: {
-                    L2: { min: 100000, max: 130000 },
-                    L3: { min: 130000, max: 180000 },
-                    L4: { min: 160000, max: 210000 },
-                    L5: { min: 210000, max: 270000 },
-                    L6: { min: 270000, max: 330000 }
-                },
-                designer: {
-                    L2: { min: 90000, max: 120000 },
-                    L3: { min: 120000, max: 170000 },
-                    L4: { min: 150000, max: 200000 },
-                    L5: { min: 200000, max: 260000 },
-                    L6: { min: 260000, max: 320000 }
-                }
-            },
-            notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common. Warsaw and Krakow offer higher salaries. Data updated May 2024."
-        },
-        ukraine: {
-            currency: "UAH",
-            roles: {
-                engineer: {
-                    L2: { min: 600000, max: 840000 },
-                    L3: { min: 960000, max: 1320000 },
-                    L4: { min: 1440000, max: 1920000 },
-                    L5: { min: 2040000, max: 2520000 },
-                    L6: { min: 2760000, max: 3720000 }
-                },
-                pm: {
-                    L2: { min: 540000, max: 780000 },
-                    L3: { min: 900000, max: 1260000 },
-                    L4: { min: 1380000, max: 1860000 },
-                    L5: { min: 1980000, max: 2460000 },
-                    L6: { min: 2700000, max: 3420000 }
-                },
-                designer: {
-                    L2: { min: 480000, max: 720000 },
-                    L3: { min: 840000, max: 1200000 },
-                    L4: { min: 1320000, max: 1800000 },
-                    L5: { min: 1920000, max: 2400000 },
-                    L6: { min: 2640000, max: 3360000 }
-                }
-            },
-            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv. Data updated May 2024 reflecting wartime conditions."
-        },
-        slovakia: {
-            currency: "EUR",
-            roles: {
-                engineer: {
-                    L2: { min: 33000, max: 44000 },
-                    L3: { min: 44000, max: 58000 },
-                    L4: { min: 58000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
-                },
-                pm: {
-                    L2: { min: 30000, max: 40000 },
-                    L3: { min: 40000, max: 55000 },
-                    L4: { min: 55000, max: 72000 },
-                    L5: { min: 72000, max: 88000 },
-                    L6: { min: 88000, max: 105000 }
-                },
-                designer: {
-                    L2: { min: 28000, max: 38000 },
-                    L3: { min: 38000, max: 52000 },
-                    L4: { min: 52000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
-                }
-            },
-            notes: "Slovakia offers competitive salaries within the EU, particularly in the growing tech sector. Living costs are relatively lower than in Western Europe."
-        },
         lithuania: {
             currency: "EUR",
             roles: {
@@ -1258,6 +909,13 @@ export const compensationData = {
                     L4: { min: 50000, max: 65000 },
                     L5: { min: 65000, max: 80000 },
                     L6: { min: 80000, max: 95000 }
+                },
+                dataEngineer: {
+                    L2: { min: 27000, max: 40000 },
+                    L3: { min: 40000, max: 52000 },
+                    L4: { min: 52000, max: 68000 },
+                    L5: { min: 68000, max: 84000 },
+                    L6: { min: 84000, max: 98000 }
                 },
                 pm: {
                     L2: { min: 23000, max: 34000 },
@@ -1276,32 +934,107 @@ export const compensationData = {
             },
             notes: "Lithuania's IT sector continues to grow, with increasing demand for skilled professionals. Remote work opportunities are expanding, and the government is offering additional incentives for tech companies."
         },
-        wales: {
-            currency: "GBP",
+        usa: {
+            currency: "USD",
             roles: {
                 engineer: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 60000 },
-                    L4: { min: 60000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
+                    L2: { min: 85000, max: 120000 },    // Startup adjusted
+                    L3: { min: 110000, max: 160000 },   // Startup adjusted
+                    L4: { min: 140000, max: 190000 },   // Startup adjusted
+                    L5: { min: 170000, max: 240000 },   // Startup adjusted
+                    L6: { min: 210000, max: 300000 }    // Startup adjusted
+                },
+                dataEngineer: {
+                    L2: { min: 90000, max: 125000 },    // Startup adjusted
+                    L3: { min: 115000, max: 165000 },   // Startup adjusted
+                    L4: { min: 145000, max: 195000 },   // Startup adjusted
+                    L5: { min: 175000, max: 245000 },   // Startup adjusted
+                    L6: { min: 215000, max: 305000 }    // Startup adjusted
                 },
                 pm: {
-                    L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 58000 },
-                    L4: { min: 58000, max: 72000 },
-                    L5: { min: 72000, max: 88000 },
-                    L6: { min: 88000, max: 105000 }
+                    L2: { min: 80000, max: 110000 },    // Startup adjusted
+                    L3: { min: 110000, max: 150000 },   // Startup adjusted
+                    L4: { min: 140000, max: 180000 },   // Startup adjusted
+                    L5: { min: 160000, max: 220000 },   // Startup adjusted
+                    L6: { min: 190000, max: 260000 }    // Startup adjusted
                 },
                 designer: {
-                    L2: { min: 30000, max: 40000 },
-                    L3: { min: 40000, max: 55000 },
-                    L4: { min: 55000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
+                    L2: { min: 75000, max: 100000 },    // Startup adjusted
+                    L3: { min: 100000, max: 140000 },   // Startup adjusted
+                    L4: { min: 130000, max: 170000 },   // Startup adjusted
+                    L5: { min: 150000, max: 200000 },   // Startup adjusted
+                    L6: { min: 180000, max: 240000 }    // Startup adjusted
                 }
             },
-            notes: "Salaries in Wales are competitive, with lower living costs compared to other parts of the UK. Growing tech hub with good work-life balance."
+            notes: "Salaries reflect startup compensation levels. Base salaries are typically 20-30% lower than large tech companies. Equity compensation varies by role and stage: Engineers (0.1-2% early, 0.02-0.2% later), PMs (0.1-1% early, 0.01-0.1% later), Designers (0.1-1.5% early, 0.02-0.15% later). Benefits typically include health insurance, 401(k) matching (0-4%), unlimited PTO, and professional development budget. Remote work policies often include location-based adjustments. Data updated June 2025."
+        },
+        spain: {
+            currency: "EUR",
+            roles: {
+                engineer: {
+                    L2: { min: 36000, max: 46000 },
+                    L3: { min: 46000, max: 58000 },
+                    L4: { min: 58000, max: 73000 },
+                    L5: { min: 73000, max: 88000 },
+                    L6: { min: 88000, max: 108000 }
+                },
+                dataEngineer: {
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 60000 },
+                    L4: { min: 60000, max: 76000 },
+                    L5: { min: 76000, max: 92000 },
+                    L6: { min: 92000, max: 112000 }
+                },
+                pm: {
+                    L2: { min: 34000, max: 44000 },
+                    L3: { min: 44000, max: 56000 },
+                    L4: { min: 56000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 103000 }
+                },
+                designer: {
+                    L2: { min: 32000, max: 42000 },
+                    L3: { min: 42000, max: 54000 },
+                    L4: { min: 54000, max: 68000 },
+                    L5: { min: 68000, max: 83000 },
+                    L6: { min: 83000, max: 98000 }
+                }
+            },
+            notes: "Salaries in Spain include 14 monthly payments. The tech industry is growing, particularly in hubs like Barcelona and Madrid. Data updated June 2025."
+        },
+        poland: {
+            currency: "PLN",
+            roles: {
+                engineer: {
+                    L2: { min: 110000, max: 140000 },
+                    L3: { min: 140000, max: 200000 },
+                    L4: { min: 170000, max: 220000 },
+                    L5: { min: 220000, max: 280000 },
+                    L6: { min: 280000, max: 340000 }
+                },
+                dataEngineer: {
+                    L2: { min: 115000, max: 145000 },
+                    L3: { min: 145000, max: 205000 },
+                    L4: { min: 175000, max: 225000 },
+                    L5: { min: 225000, max: 285000 },
+                    L6: { min: 285000, max: 345000 }
+                },
+                pm: {
+                    L2: { min: 100000, max: 130000 },
+                    L3: { min: 130000, max: 180000 },
+                    L4: { min: 160000, max: 210000 },
+                    L5: { min: 210000, max: 270000 },
+                    L6: { min: 270000, max: 330000 }
+                },
+                designer: {
+                    L2: { min: 90000, max: 120000 },
+                    L3: { min: 120000, max: 170000 },
+                    L4: { min: 150000, max: 200000 },
+                    L5: { min: 200000, max: 260000 },
+                    L6: { min: 260000, max: 320000 }
+                }
+            },
+            notes: "Poland's IT sector is booming, with a large talent pool and competitive salaries. Remote work for international companies is increasingly common. Warsaw and Krakow offer higher salaries. Data updated June 2025."
         },
         canada: {
             currency: "CAD",
@@ -1312,6 +1045,13 @@ export const compensationData = {
                     L4: { min: 120000, max: 150000 },
                     L5: { min: 150000, max: 200000 },
                     L6: { min: 200000, max: 250000 }
+                },
+                dataEngineer: {
+                    L2: { min: 75000, max: 95000 },
+                    L3: { min: 95000, max: 125000 },
+                    L4: { min: 125000, max: 155000 },
+                    L5: { min: 155000, max: 205000 },
+                    L6: { min: 205000, max: 255000 }
                 },
                 pm: {
                     L2: { min: 65000, max: 85000 },
@@ -1328,7 +1068,177 @@ export const compensationData = {
                     L6: { min: 180000, max: 230000 }
                 }
             },
-            notes: "Canadian tech hubs like Toronto, Vancouver, and Montreal offer competitive salaries. Benefits typically include health insurance and retirement plans."
+            notes: "Canadian tech hubs like Toronto, Vancouver, and Montreal offer competitive salaries. Benefits typically include health insurance and retirement plans. Data updated June 2025."
+        },
+        ukraine: {
+            currency: "UAH",
+            roles: {
+                engineer: {
+                    L2: { min: 600000, max: 840000 },
+                    L3: { min: 960000, max: 1320000 },
+                    L4: { min: 1440000, max: 1920000 },
+                    L5: { min: 2040000, max: 2520000 },
+                    L6: { min: 2760000, max: 3720000 }
+                },
+                dataEngineer: {
+                    L2: { min: 630000, max: 870000 },
+                    L3: { min: 990000, max: 1350000 },
+                    L4: { min: 1470000, max: 1950000 },
+                    L5: { min: 2070000, max: 2550000 },
+                    L6: { min: 2790000, max: 3750000 }
+                },
+                pm: {
+                    L2: { min: 540000, max: 780000 },
+                    L3: { min: 900000, max: 1260000 },
+                    L4: { min: 1380000, max: 1860000 },
+                    L5: { min: 1980000, max: 2460000 },
+                    L6: { min: 2700000, max: 3420000 }
+                },
+                designer: {
+                    L2: { min: 480000, max: 720000 },
+                    L3: { min: 840000, max: 1200000 },
+                    L4: { min: 1320000, max: 1800000 },
+                    L5: { min: 1920000, max: 2400000 },
+                    L6: { min: 2640000, max: 3360000 }
+                }
+            },
+            notes: "Salaries are for US-based companies hiring in Ukraine. Local companies typically offer 30-50% lower. Strong tech talent pool, particularly in Kyiv, Lviv, and Kharkiv. Data updated June 2025 reflecting wartime conditions."
+        },
+        slovakia: {
+            currency: "EUR",
+            roles: {
+                engineer: {
+                    L2: { min: 33000, max: 44000 },
+                    L3: { min: 44000, max: 58000 },
+                    L4: { min: 58000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
+                },
+                dataEngineer: {
+                    L2: { min: 35000, max: 46000 },
+                    L3: { min: 46000, max: 60000 },
+                    L4: { min: 60000, max: 78000 },
+                    L5: { min: 78000, max: 93000 },
+                    L6: { min: 93000, max: 114000 }
+                },
+                pm: {
+                    L2: { min: 30000, max: 40000 },
+                    L3: { min: 40000, max: 55000 },
+                    L4: { min: 55000, max: 72000 },
+                    L5: { min: 72000, max: 88000 },
+                    L6: { min: 88000, max: 105000 }
+                },
+                designer: {
+                    L2: { min: 28000, max: 38000 },
+                    L3: { min: 38000, max: 52000 },
+                    L4: { min: 52000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 100000 }
+                }
+            },
+            notes: "Slovakia offers competitive salaries within the EU, particularly in the growing tech sector. Living costs are relatively lower than in Western Europe. Data updated June 2025."
+        },
+        wales: {
+            currency: "GBP",
+            roles: {
+                engineer: {
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 60000 },
+                    L4: { min: 60000, max: 75000 },
+                    L5: { min: 75000, max: 90000 },
+                    L6: { min: 90000, max: 110000 }
+                },
+                dataEngineer: {
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 63000 },
+                    L4: { min: 63000, max: 78000 },
+                    L5: { min: 78000, max: 93000 },
+                    L6: { min: 93000, max: 115000 }
+                },
+                pm: {
+                    L2: { min: 32000, max: 42000 },
+                    L3: { min: 42000, max: 58000 },
+                    L4: { min: 58000, max: 72000 },
+                    L5: { min: 72000, max: 88000 },
+                    L6: { min: 88000, max: 105000 }
+                },
+                designer: {
+                    L2: { min: 30000, max: 40000 },
+                    L3: { min: 40000, max: 55000 },
+                    L4: { min: 55000, max: 70000 },
+                    L5: { min: 70000, max: 85000 },
+                    L6: { min: 85000, max: 100000 }
+                }
+            },
+            notes: "Salaries in Wales are competitive, with lower living costs compared to other parts of the UK. Growing tech hub with good work-life balance. Data updated June 2025."
+        },
+        germany: {
+            currency: "EUR",
+            roles: {
+                engineer: {
+                    L2: { min: 52000, max: 68000 },
+                    L3: { min: 68000, max: 88000 },
+                    L4: { min: 88000, max: 115000 },
+                    L5: { min: 115000, max: 145000 },
+                    L6: { min: 145000, max: 185000 }
+                },
+                dataEngineer: {
+                    L2: { min: 55000, max: 72000 },
+                    L3: { min: 72000, max: 92000 },
+                    L4: { min: 92000, max: 120000 },
+                    L5: { min: 120000, max: 150000 },
+                    L6: { min: 150000, max: 190000 }
+                },
+                pm: {
+                    L2: { min: 50000, max: 65000 },
+                    L3: { min: 65000, max: 85000 },
+                    L4: { min: 85000, max: 110000 },
+                    L5: { min: 110000, max: 140000 },
+                    L6: { min: 140000, max: 180000 }
+                },
+                designer: {
+                    L2: { min: 48000, max: 63000 },
+                    L3: { min: 63000, max: 83000 },
+                    L4: { min: 83000, max: 105000 },
+                    L5: { min: 105000, max: 135000 },
+                    L6: { min: 135000, max: 175000 }
+                }
+            },
+            notes: "Salaries include 13th month pay. Strong benefits package including ~30 days vacation, health insurance, and pension contributions. Berlin and Munich offer higher salaries than other regions. Data updated June 2025."
+        },
+        uk: {
+            currency: "GBP",
+            roles: {
+                engineer: {
+                    L2: { min: 40000, max: 50000 },
+                    L3: { min: 50000, max: 68000 },
+                    L4: { min: 68000, max: 85000 },
+                    L5: { min: 85000, max: 100000 },
+                    L6: { min: 100000, max: 125000 }
+                },
+                dataEngineer: {
+                    L2: { min: 43000, max: 53000 },
+                    L3: { min: 53000, max: 72000 },
+                    L4: { min: 72000, max: 88000 },
+                    L5: { min: 88000, max: 105000 },
+                    L6: { min: 105000, max: 130000 }
+                },
+                pm: {
+                    L2: { min: 38000, max: 48000 },
+                    L3: { min: 48000, max: 65000 },
+                    L4: { min: 65000, max: 82000 },
+                    L5: { min: 82000, max: 95000 },
+                    L6: { min: 95000, max: 120000 }
+                },
+                designer: {
+                    L2: { min: 35000, max: 45000 },
+                    L3: { min: 45000, max: 60000 },
+                    L4: { min: 60000, max: 78000 },
+                    L5: { min: 78000, max: 93000 },
+                    L6: { min: 93000, max: 115000 }
+                }
+            },
+            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. London salaries are typically 15-25% higher than listed. Data updated June 2025."
         }
     }
 }; 
