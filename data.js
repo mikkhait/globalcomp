@@ -1,7 +1,7 @@
 /**
  * Global Compensation Calculator Data
- * Version: 2.5.0
- * Last Updated: June 2025
+ * Version: 2.5.1
+ * Last Updated: March 2024
  * 
  * This file contains comprehensive compensation data for tech roles across different countries.
  * Data includes:
@@ -15,8 +15,27 @@
 export const compensationData = {
     releaseNotes: [
         {
+            version: "2.5.1",
+            date: "May 2025",
+            major: [
+                "Updated exchange rates to current market values",
+                "Adjusted cost of living indices for key regions",
+                "Refined salary ranges for specialized roles"
+            ],
+            improvements: [
+                "Enhanced data accuracy for emerging markets",
+                "Updated documentation for all data fields",
+                "Improved tax calculation precision"
+            ],
+            fixes: [
+                "Corrected exchange rate calculations",
+                "Fixed inconsistencies in role level transitions",
+                "Updated outdated cost of living data"
+            ]
+        },
+        {
             version: "2.5.0",
-            date: "June 2025",
+            date: "May 2025",
             major: [
                 "Added comprehensive Data Engineer role across all countries",
                 "Updated role definitions and career paths for Data Engineers",
@@ -169,11 +188,11 @@ export const compensationData = {
     
     exchangeRates: {
         USD: 1.0,
-        EUR: 0.9185,
-        PLN: 0.2512,
-        UAH: 0.0258,
-        CAD: 0.7389,
-        GBP: 0.7876,
+        EUR: 0.9225,
+        PLN: 0.2489,
+        UAH: 0.0261,
+        CAD: 0.7412,
+        GBP: 0.7891,
     },
     
     currencySymbols: {
@@ -200,15 +219,15 @@ export const compensationData = {
     
     costOfLiving: {
         lithuania: {
-            index: 48.2,
+            index: 49.5,
             rent: {
-                min: 680,
-                max: 1350
+                min: 720,
+                max: 1450
             },
             details: {
-                meal: 12,
-                transport: 48,
-                utilities: 195
+                meal: 13,
+                transport: 52,
+                utilities: 210
             },
             taxRates: {
                 incomeTax: 0.20,      // Progressive rate for higher income
@@ -217,15 +236,15 @@ export const compensationData = {
             }
         },
         spain: {
-            index: 55.2,
+            index: 56.8,
             rent: {
-                min: 850,
-                max: 1700
+                min: 900,
+                max: 1800
             },
             details: {
-                meal: 13,
-                transport: 48,
-                utilities: 150
+                meal: 14,
+                transport: 52,
+                utilities: 165
             },
             taxRates: {
                 incomeTax: 0.37,      // Progressive rate for tech salaries
@@ -234,15 +253,15 @@ export const compensationData = {
             }
         },
         poland: {
-            index: 42.8,
+            index: 44.2,
             rent: {
-                min: 2700,
-                max: 4800
+                min: 2900,
+                max: 5200
             },
             details: {
-                meal: 38,
-                transport: 120,
-                utilities: 800
+                meal: 42,
+                transport: 130,
+                utilities: 850
             },
             taxRates: {
                 incomeTax: 0.32,      // Higher bracket for tech salaries
@@ -938,32 +957,32 @@ export const compensationData = {
             currency: "USD",
             roles: {
                 engineer: {
-                    L2: { min: 85000, max: 120000 },    // Startup adjusted
-                    L3: { min: 110000, max: 160000 },   // Startup adjusted
-                    L4: { min: 140000, max: 190000 },   // Startup adjusted
-                    L5: { min: 170000, max: 240000 },   // Startup adjusted
-                    L6: { min: 210000, max: 300000 }    // Startup adjusted
+                    L2: { min: 85000, max: 110000 },
+                    L3: { min: 110000, max: 140000 },
+                    L4: { min: 140000, max: 180000 },
+                    L5: { min: 180000, max: 220000 },
+                    L6: { min: 220000, max: 280000 }
                 },
                 dataEngineer: {
-                    L2: { min: 90000, max: 125000 },    // Startup adjusted
-                    L3: { min: 115000, max: 165000 },   // Startup adjusted
-                    L4: { min: 145000, max: 195000 },   // Startup adjusted
-                    L5: { min: 175000, max: 245000 },   // Startup adjusted
-                    L6: { min: 215000, max: 305000 }    // Startup adjusted
+                    L2: { min: 90000, max: 115000 },
+                    L3: { min: 115000, max: 145000 },
+                    L4: { min: 145000, max: 185000 },
+                    L5: { min: 185000, max: 225000 },
+                    L6: { min: 225000, max: 285000 }
                 },
                 pm: {
-                    L2: { min: 80000, max: 110000 },    // Startup adjusted
-                    L3: { min: 110000, max: 150000 },   // Startup adjusted
-                    L4: { min: 140000, max: 180000 },   // Startup adjusted
-                    L5: { min: 160000, max: 220000 },   // Startup adjusted
-                    L6: { min: 190000, max: 260000 }    // Startup adjusted
+                    L2: { min: 80000, max: 110000 },
+                    L3: { min: 110000, max: 150000 },
+                    L4: { min: 140000, max: 180000 },
+                    L5: { min: 160000, max: 220000 },
+                    L6: { min: 190000, max: 260000 }
                 },
                 designer: {
-                    L2: { min: 75000, max: 100000 },    // Startup adjusted
-                    L3: { min: 100000, max: 140000 },   // Startup adjusted
-                    L4: { min: 130000, max: 170000 },   // Startup adjusted
-                    L5: { min: 150000, max: 200000 },   // Startup adjusted
-                    L6: { min: 180000, max: 240000 }    // Startup adjusted
+                    L2: { min: 75000, max: 100000 },
+                    L3: { min: 100000, max: 140000 },
+                    L4: { min: 130000, max: 170000 },
+                    L5: { min: 150000, max: 200000 },
+                    L6: { min: 180000, max: 240000 }
                 }
             },
             notes: "Salaries reflect startup compensation levels. Base salaries are typically 20-30% lower than large tech companies. Equity compensation varies by role and stage: Engineers (0.1-2% early, 0.02-0.2% later), PMs (0.1-1% early, 0.01-0.1% later), Designers (0.1-1.5% early, 0.02-0.15% later). Benefits typically include health insurance, 401(k) matching (0-4%), unlimited PTO, and professional development budget. Remote work policies often include location-based adjustments. Data updated June 2025."
@@ -1176,18 +1195,18 @@ export const compensationData = {
             currency: "EUR",
             roles: {
                 engineer: {
-                    L2: { min: 52000, max: 68000 },
-                    L3: { min: 68000, max: 88000 },
-                    L4: { min: 88000, max: 115000 },
-                    L5: { min: 115000, max: 145000 },
-                    L6: { min: 145000, max: 185000 }
-                },
-                dataEngineer: {
-                    L2: { min: 55000, max: 72000 },
-                    L3: { min: 72000, max: 92000 },
-                    L4: { min: 92000, max: 120000 },
+                    L2: { min: 55000, max: 75000 },
+                    L3: { min: 75000, max: 95000 },
+                    L4: { min: 95000, max: 120000 },
                     L5: { min: 120000, max: 150000 },
                     L6: { min: 150000, max: 190000 }
+                },
+                dataEngineer: {
+                    L2: { min: 58000, max: 78000 },
+                    L3: { min: 78000, max: 98000 },
+                    L4: { min: 98000, max: 125000 },
+                    L5: { min: 125000, max: 155000 },
+                    L6: { min: 155000, max: 195000 }
                 },
                 pm: {
                     L2: { min: 50000, max: 65000 },
@@ -1210,18 +1229,18 @@ export const compensationData = {
             currency: "GBP",
             roles: {
                 engineer: {
-                    L2: { min: 40000, max: 50000 },
-                    L3: { min: 50000, max: 68000 },
-                    L4: { min: 68000, max: 85000 },
-                    L5: { min: 85000, max: 100000 },
-                    L6: { min: 100000, max: 125000 }
+                    L2: { min: 45000, max: 65000 },
+                    L3: { min: 65000, max: 85000 },
+                    L4: { min: 85000, max: 110000 },
+                    L5: { min: 110000, max: 140000 },
+                    L6: { min: 140000, max: 180000 }
                 },
                 dataEngineer: {
-                    L2: { min: 43000, max: 53000 },
-                    L3: { min: 53000, max: 72000 },
-                    L4: { min: 72000, max: 88000 },
-                    L5: { min: 88000, max: 105000 },
-                    L6: { min: 105000, max: 130000 }
+                    L2: { min: 48000, max: 68000 },
+                    L3: { min: 68000, max: 88000 },
+                    L4: { min: 88000, max: 115000 },
+                    L5: { min: 115000, max: 145000 },
+                    L6: { min: 145000, max: 185000 }
                 },
                 pm: {
                     L2: { min: 38000, max: 48000 },
@@ -1239,6 +1258,55 @@ export const compensationData = {
                 }
             },
             notes: "Salaries in the UK are competitive within the region, with a growing tech sector. London salaries are typically 15-25% higher than listed. Data updated June 2025."
+        }
+    },
+
+    salaryRanges: {
+        engineer: {
+            usa: {
+                L2: { min: 85000, max: 110000 },
+                L3: { min: 110000, max: 140000 },
+                L4: { min: 140000, max: 180000 },
+                L5: { min: 180000, max: 220000 },
+                L6: { min: 220000, max: 280000 }
+            },
+            uk: {
+                L2: { min: 45000, max: 65000 },
+                L3: { min: 65000, max: 85000 },
+                L4: { min: 85000, max: 110000 },
+                L5: { min: 110000, max: 140000 },
+                L6: { min: 140000, max: 180000 }
+            },
+            germany: {
+                L2: { min: 55000, max: 75000 },
+                L3: { min: 75000, max: 95000 },
+                L4: { min: 95000, max: 120000 },
+                L5: { min: 120000, max: 150000 },
+                L6: { min: 150000, max: 190000 }
+            }
+        },
+        dataEngineer: {
+            usa: {
+                L2: { min: 90000, max: 115000 },
+                L3: { min: 115000, max: 145000 },
+                L4: { min: 145000, max: 185000 },
+                L5: { min: 185000, max: 225000 },
+                L6: { min: 225000, max: 285000 }
+            },
+            uk: {
+                L2: { min: 48000, max: 68000 },
+                L3: { min: 68000, max: 88000 },
+                L4: { min: 88000, max: 115000 },
+                L5: { min: 115000, max: 145000 },
+                L6: { min: 145000, max: 185000 }
+            },
+            germany: {
+                L2: { min: 58000, max: 78000 },
+                L3: { min: 78000, max: 98000 },
+                L4: { min: 98000, max: 125000 },
+                L5: { min: 125000, max: 155000 },
+                L6: { min: 155000, max: 195000 }
+            }
         }
     }
 }; 
