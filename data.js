@@ -211,7 +211,6 @@ export const compensationData = {
         ukraine: 'UAH',
         slovakia: 'EUR',
         canada: 'CAD',
-        wales: 'GBP',
         lithuania: 'EUR',
         germany: 'EUR',
         uk: 'GBP'
@@ -230,7 +229,7 @@ export const compensationData = {
                 utilities: 210
             },
             taxRates: {
-                incomeTax: 0.20,      // Progressive rate for higher income
+                incomeTax: 0.20,      // Progressive rate for higher income (15-20%)
                 socialSecurity: 0.195, // 19.5% social insurance
                 other: 0.015          // Health insurance
             }
@@ -247,8 +246,8 @@ export const compensationData = {
                 utilities: 165
             },
             taxRates: {
-                incomeTax: 0.37,      // Progressive rate for tech salaries
-                socialSecurity: 0.064, // Employee social security
+                incomeTax: 0.37,      // Progressive rate for tech salaries (30-47%)
+                socialSecurity: 0.064, // 6.4% Employee social security
                 other: 0.02           // Regional taxes
             }
         },
@@ -264,9 +263,9 @@ export const compensationData = {
                 utilities: 850
             },
             taxRates: {
-                incomeTax: 0.32,      // Higher bracket for tech salaries
-                socialSecurity: 0.1371,// ZUS employee contribution
-                other: 0.09           // Health insurance
+                incomeTax: 0.32,      // Higher bracket for tech salaries (17-32%)
+                socialSecurity: 0.1371,// ZUS employee contribution (13.71%)
+                other: 0.09           // Health insurance (9%)
             }
         },
         canada: {
@@ -281,8 +280,8 @@ export const compensationData = {
                 utilities: 220
             },
             taxRates: {
-                incomeTax: 0.335,     // Federal + Provincial (ON) average
-                socialSecurity: 0.0595,// CPP + EI
+                incomeTax: 0.335,     // Federal + Provincial (ON) average (29-38%)
+                socialSecurity: 0.0595,// CPP (5.95%) + EI (1.63%)
                 other: 0.015          // Health premium
             }
         },
@@ -298,8 +297,8 @@ export const compensationData = {
                 utilities: 2500
             },
             taxRates: {
-                incomeTax: 0.18,      // Flat rate
-                socialSecurity: 0.05,  // Military tax + social security
+                incomeTax: 0.18,      // Flat personal income tax (18%)
+                socialSecurity: 0.05,  // Military tax (1.5%) + social security (3.6%)
                 other: 0.015          // Additional levies
             }
         },
@@ -315,28 +314,12 @@ export const compensationData = {
                 utilities: 190
             },
             taxRates: {
-                incomeTax: 0.25,      // Progressive rate for tech salaries
-                socialSecurity: 0.138, // Employee social insurance
-                other: 0.04           // Health insurance
+                incomeTax: 0.25,      // Progressive rate for tech salaries (19-25%)
+                socialSecurity: 0.138, // Employee social insurance (13.8%)
+                other: 0.04           // Health insurance (4%)
             }
         },
-        wales: {
-            index: 63.2,
-            rent: {
-                min: 1300,
-                max: 2600
-            },
-            details: {
-                meal: 16,
-                transport: 180,
-                utilities: 210
-            },
-            taxRates: {
-                incomeTax: 0.40,      // Higher rate for tech salaries
-                socialSecurity: 0.12,  // National Insurance
-                other: 0.02           // Additional contributions
-            }
-        },
+
         usa: {
             index: 74.8,
             rent: {
@@ -349,8 +332,8 @@ export const compensationData = {
                 utilities: 210
             },
             taxRates: {
-                incomeTax: 0.32,      // Federal + State average for tech hubs
-                socialSecurity: 0.0765,// FICA (Social Security + Medicare)
+                incomeTax: 0.32,      // Federal + State average for tech hubs (22-37%)
+                socialSecurity: 0.0765,// FICA (6.2% Social Security + 1.45% Medicare)
                 other: 0.03           // State specific fees
             }
         },
@@ -366,9 +349,9 @@ export const compensationData = {
                 utilities: 270
             },
             taxRates: {
-                incomeTax: 0.42,      // Progressive rate for tech salaries
-                socialSecurity: 0.20,  // Social insurance contributions
-                other: 0.01           // Solidarity surcharge
+                incomeTax: 0.42,      // Progressive rate for tech salaries (14-45%)
+                socialSecurity: 0.195, // Social insurance contributions (19.5%)
+                other: 0.012          // Solidarity surcharge (5.5% of income tax)
             }
         },
         uk: {
@@ -383,8 +366,8 @@ export const compensationData = {
                 utilities: 220
             },
             taxRates: {
-                incomeTax: 0.40,      // Higher rate band
-                socialSecurity: 0.12,  // National Insurance
+                incomeTax: 0.40,      // Higher rate band (20-45%)
+                socialSecurity: 0.12,  // National Insurance (10-12%)
                 other: 0.02           // Additional contributions
             }
         }
@@ -397,64 +380,58 @@ export const compensationData = {
         },
         countrySpecific: {
             usa: {
-                employerTax: 0.0765,  // FICA
-                workersComp: 0.022,   // Updated workers comp rate for 2024
-                otherFees: 0.045,     // Updated other fees for 2024
-                description: "Includes FICA (7.65%), workers compensation, and state-specific fees"
+                employerTax: 0.0765,  // FICA (6.2% Social Security + 1.45% Medicare)
+                workersComp: 0.018,   // Workers comp insurance (1-3% based on industry)
+                otherFees: 0.03,      // FUTA, SUTA, and other fees
+                description: "Includes FICA (7.65%), workers compensation insurance (1.8%), and payroll taxes including FUTA and SUTA (3%)"
             },
             spain: {
-                employerTax: 0.298,  // Social Security contributions
-                workersComp: 0.016,  // Work accident insurance
-                otherFees: 0.032,    // Other contributions (e.g., unemployment, training)
-                description: "Includes Social Security contributions, work accident insurance, unemployment fund, and other mandatory contributions"
+                employerTax: 0.298,   // Social Security contributions (29.8%)
+                workersComp: 0.016,   // Work accident insurance (1.6%)
+                otherFees: 0.032,     // Other contributions (unemployment, training)
+                description: "Includes Social Security contributions (29.8%), work accident insurance (1.6%), and other mandatory contributions such as unemployment and professional training funds (3.2%)"
             },
             poland: {
-                employerTax: 0.205,  // Social contributions (ZUS)
-                workersComp: 0.0167, // Accident insurance
-                otherFees: 0.028,    // Other contributions (e.g., Labour Fund, Employee Guaranteed Benefits Fund)
-                description: "Includes ZUS contributions (pension, disability, sickness, health), accident insurance, and other mandatory contributions"
+                employerTax: 0.197,   // Social contributions (ZUS) (19.7%)
+                workersComp: 0.0167,  // Accident insurance (varies by industry, 0.67-3.33%)
+                otherFees: 0.028,     // Labour Fund (2.45%), Employee Guaranteed Benefits Fund (0.1%)
+                description: "Includes ZUS contributions for pension, disability and sickness (19.7%), accident insurance (1.67%), Labour Fund (2.45%), and Employee Guaranteed Benefits Fund (0.1%)"
             },
             ukraine: {
-                employerTax: 0.22,   // Unified Social Contribution (USC)
-                workersComp: 0.012,  // Occupational risk insurance (depending on risk class)
-                otherFees: 0.015,    // Other contributions (e.g., military levy)
-                description: "Includes Unified Social Contribution, occupational risk insurance, military levy, and other mandatory contributions"
+                employerTax: 0.22,    // Unified Social Contribution (USC) (22%)
+                workersComp: 0.012,   // Occupational risk insurance (0.6-1.5%)
+                otherFees: 0.015,     // Military levy and other contributions
+                description: "Includes Unified Social Contribution (22%), occupational risk insurance (1.2%), military levy and other mandatory contributions (1.5%)"
             },
             slovakia: {
-                employerTax: 0.352,  // Social and health insurance
-                workersComp: 0.008,  // Accident insurance
-                otherFees: 0.012,    // Other contributions (e.g., guarantee fund, reserve fund)
-                description: "Includes social and health insurance contributions, accident insurance, and other mandatory contributions"
+                employerTax: 0.352,   // Social and health insurance (35.2%)
+                workersComp: 0.008,   // Accident insurance (0.8%)
+                otherFees: 0.012,     // Guarantee fund, reserve fund (1.2%)
+                description: "Includes social and health insurance contributions (35.2%), accident insurance (0.8%), and other mandatory contributions including guarantee fund and reserve fund (1.2%)"
             },
             canada: {
-                employerTax: 0.0565, // Canada Pension Plan (CPP) + Employment Insurance (EI)
-                workersComp: 0.022,  // Workers' compensation (varies by province)
-                otherFees: 0.028,    // Other contributions (e.g., provincial payroll taxes, health premiums)
-                description: "Includes CPP and EI contributions, provincial workers' compensation, and other provincial taxes and premiums"
-            },
-            wales: {
-                employerTax: 0.138,  // National Insurance contributions (Class 1)
-                workersComp: 0.012,  // Employers' liability insurance
-                otherFees: 0.028,    // Other contributions (e.g., pension contributions, apprenticeship levy)
-                description: "Includes National Insurance contributions, employers' liability insurance, pension contributions, and other mandatory contributions"
+                employerTax: 0.0565,  // CPP (5.95%) + EI (2.21% employer portion)
+                workersComp: 0.019,   // Workers' compensation (varies by province, 1.5-2.19%)
+                otherFees: 0.025,     // Provincial payroll taxes, health premiums
+                description: "Includes Canada Pension Plan (5.95%), Employment Insurance (2.21% employer portion), provincial workers' compensation (1.9%), and other provincial health premiums and payroll taxes (2.5%)"
             },
             lithuania: {
-                employerTax: 0.3118, // Social insurance contributions (Sodra)
-                workersComp: 0.0018, // Guarantee fund contribution
-                otherFees: 0.012,    // Other contributions (e.g., long-term unemployment insurance)
-                description: "Includes Sodra contributions (pension, sickness, maternity, unemployment), guarantee fund contribution, and other mandatory contributions"
+                employerTax: 0.3118,  // Social insurance contributions (Sodra) (31.18%)
+                workersComp: 0.0018,  // Guarantee fund contribution (0.18%)
+                otherFees: 0.012,     // Long-term unemployment insurance (1.2%)
+                description: "Includes Sodra social insurance contributions for pension, sickness, maternity and unemployment (31.18%), guarantee fund contribution (0.18%), and long-term unemployment insurance (1.2%)"
             },
             germany: {
-                employerTax: 0.206,  // Social security contributions
-                workersComp: 0.014,  // Accident insurance
-                otherFees: 0.025,    // Other contributions
-                description: "Includes social security contributions, accident insurance, and other mandatory contributions"
+                employerTax: 0.206,   // Social security contributions (20.6%)
+                workersComp: 0.014,   // Accident insurance (1.4%)
+                otherFees: 0.025,     // Insolvency levy and other contributions
+                description: "Includes social security contributions for pension, health, unemployment and nursing care (20.6%), statutory accident insurance (1.4%), and insolvency levy and other mandatory contributions (2.5%)"
             },
             uk: {
-                employerTax: 0.138,  // National Insurance contributions
-                workersComp: 0.012,  // Employers' liability insurance
-                otherFees: 0.028,    // Other contributions
-                description: "Includes National Insurance contributions, employers' liability insurance, and other mandatory contributions"
+                employerTax: 0.138,   // National Insurance contributions (13.8%)
+                workersComp: 0.012,   // Employers' liability insurance (1-2%)
+                otherFees: 0.025,     // Apprenticeship levy, pension auto-enrollment
+                description: "Includes National Insurance contributions (13.8%), employers' liability insurance (1.2%), apprenticeship levy, and pension auto-enrollment contributions (2.5%)"
             }
         }
     },
@@ -1157,40 +1134,7 @@ export const compensationData = {
             },
             notes: "Slovakia offers competitive salaries within the EU, particularly in the growing tech sector. Living costs are relatively lower than in Western Europe. Data updated June 2025."
         },
-        wales: {
-            currency: "GBP",
-            roles: {
-                engineer: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 60000 },
-                    L4: { min: 60000, max: 75000 },
-                    L5: { min: 75000, max: 90000 },
-                    L6: { min: 90000, max: 110000 }
-                },
-                dataEngineer: {
-                    L2: { min: 38000, max: 48000 },
-                    L3: { min: 48000, max: 63000 },
-                    L4: { min: 63000, max: 78000 },
-                    L5: { min: 78000, max: 93000 },
-                    L6: { min: 93000, max: 115000 }
-                },
-                pm: {
-                    L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 58000 },
-                    L4: { min: 58000, max: 72000 },
-                    L5: { min: 72000, max: 88000 },
-                    L6: { min: 88000, max: 105000 }
-                },
-                designer: {
-                    L2: { min: 30000, max: 40000 },
-                    L3: { min: 40000, max: 55000 },
-                    L4: { min: 55000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
-                }
-            },
-            notes: "Salaries in Wales are competitive, with lower living costs compared to other parts of the UK. Growing tech hub with good work-life balance. Data updated June 2025."
-        },
+
         germany: {
             currency: "EUR",
             roles: {

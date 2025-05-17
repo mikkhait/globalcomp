@@ -161,25 +161,7 @@
                             <!-- Basic Settings Tab -->
                             <div class="tab-pane fade show active" id="basic" role="tabpanel">
                                 <div class="mb-4">
-                                    <h5 class="mb-4">Location</h5>
-                                    <div class="mb-3">
-                                        <label for="country" class="form-label">Country</label>
-                                        <select class="form-select" id="country" required>
-                                            <option value="">Select a country</option>
-                                            <option value="canada">Canada</option>
-                                            <option value="germany">Germany</option>
-                                            <option value="lithuania">Lithuania</option>
-                                            <option value="poland">Poland</option>
-                                            <option value="slovakia">Slovakia</option>
-                                            <option value="spain">Spain</option>
-                                            <option value="uk">United Kingdom</option>
-                                            <option value="ukraine">Ukraine</option>
-                                            <option value="usa">USA</option>
-                                            <option value="wales">Wales</option>
-                                        </select>
-                                    </div>
-
-                                    <h5 class="mb-4 mt-4">Role Information</h5>
+                                    <h5 class="mb-4">Role & Location</h5>
                                     <div class="mb-3">
                                         <label for="role" class="form-label">Role</label>
                                         <select class="form-select" id="role" required>
@@ -202,51 +184,50 @@
                                             <option value="L6">L6 (Principal)</option>
                                         </select>
                                     </div>
+<div class="mb-3">
+    <label for="country" class="form-label">Country</label>
+    <select class="form-select" id="country" required>
+        <option value="">Select a country</option>
+        <option value="canada">Canada</option>
+        <option value="germany">Germany</option>
+        <option value="lithuania">Lithuania</option>
+        <option value="poland">Poland</option>
+        <option value="slovakia">Slovakia</option>
+        <option value="spain">Spain</option>
+        <option value="uk">United Kingdom</option>
+        <option value="ukraine">Ukraine</option>
+        <option value="usa">USA</option>
+    </select>
+</div>
                                 </div>
 
                                 <div class="tax-section mb-4">
-                                    <div class="accordion" id="taxAccordion">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#taxCollapse" aria-expanded="false" aria-controls="taxCollapse">
-                                                    <i class="bi bi-percent me-2"></i>Tax Configuration
+                                    <h5 class="mb-3">Tax Configuration</h5>
+                                    <div class="tax-controls bg-light p-3 rounded">
+                                        <div class="mb-3">
+                                            <label class="form-label">Income Tax (%)</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" id="incomeTaxOverride" min="0" max="100" step="0.1">
+                                                <span class="input-group-text">%</span>
+                                                </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Social Security (%)</label>
+                                                    <div class="input-group">
+                                                <input type="number" class="form-control" id="socialSecurityOverride" min="0" max="100" step="0.1">
+                                                <span class="input-group-text">%</span>
+                                                </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Other Taxes (%)</label>
+                                                    <div class="input-group">
+                                                <input type="number" class="form-control" id="otherTaxesOverride" min="0" max="100" step="0.1">
+                                                <span class="input-group-text">%</span>
+                                                </div>
+                                                </div>
+                                                <button type="button" class="btn btn-outline-secondary w-100" id="resetTaxes">
+                                                    <i class="bi bi-arrow-counterclockwise me-2"></i>Reset to Defaults
                                                 </button>
-                                            </h2>
-                                            <div id="taxCollapse" class="accordion-collapse collapse" data-bs-parent="#taxAccordion">
-                                                <div class="accordion-body">
-                                                    <div class="tax-controls bg-light p-3 rounded">
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Income Tax (%)</label>
-                                                            <div class="input-group">
-                                                                <input type="number" class="form-control" id="incomeTaxOverride" min="0" max="100"
-                                                                    step="0.1">
-                                                                <span class="input-group-text">%</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Social Security (%)</label>
-                                                            <div class="input-group">
-                                                                <input type="number" class="form-control" id="socialSecurityOverride" min="0" max="100"
-                                                                    step="0.1">
-                                                                <span class="input-group-text">%</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Other Taxes (%)</label>
-                                                            <div class="input-group">
-                                                                <input type="number" class="form-control" id="otherTaxesOverride" min="0" max="100"
-                                                                    step="0.1">
-                                                                <span class="input-group-text">%</span>
-                                                            </div>
-                                                        </div>
-                                                        <button type="button" class="btn btn-outline-secondary w-100" id="resetTaxes">
-                                                            <i class="bi bi-arrow-counterclockwise me-2"></i>Reset to Defaults
-                                                        </button>
-                                                    </div>
-                                                    </div>
-                                                    </div>
-                                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -303,29 +284,15 @@
             <!-- Results on the right -->
             <div class="col-md-8 col-lg-9">
                 <div id="results" class="d-none">
-                    <!-- Role Details Card -->
-                    <div class="card mb-4">
-                        <div class="card-header bg-info text-white">
-                            <h5 class="card-title mb-0">
-                                <i class="bi bi-person-badge me-2"></i>Role Details
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="levelDetails">
-                                <!-- Role details will be populated here -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Compensation Card -->
+                    <!-- Compensation Summary Card -->
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <h5 class="card-title mb-0">
-                                <i class="bi bi-cash-stack me-2"></i>Compensation Details
+                                <i class="bi bi-currency-dollar me-2"></i>Compensation Summary
                             </h5>
                         </div>
                         <div class="card-body">
-                            <div class="row g-4">
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div id="annualRange" class="compensation-amount"></div>
                                 </div>
@@ -357,6 +324,18 @@
                             <div class="chart-container">
                                 <canvas id="purchasingPowerChart"></canvas>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Role Details Card -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-person-badge me-2"></i>Role Details
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="levelDetails"></div>
                         </div>
                     </div>
 

@@ -20,17 +20,6 @@ export class CompensationCalculator {
         const resetTaxesButton = document.getElementById('resetTaxes');
         const resetOverheadButton = document.getElementById('resetOverhead');
 
-        // Role and level change handlers
-        roleSelect.addEventListener('change', () => {
-            this.updateRoleDetails();
-            this.updateResults();
-        });
-        
-        levelSelect.addEventListener('change', () => {
-            this.updateRoleDetails();
-            this.updateResults();
-        });
-
         // Country change handler
         countrySelect.addEventListener('change', () => {
             const country = countrySelect.value;
@@ -40,6 +29,10 @@ export class CompensationCalculator {
             }
             this.updateResults();
         });
+
+        // Role and level change handlers
+        roleSelect.addEventListener('change', () => this.updateResults());
+        levelSelect.addEventListener('change', () => this.updateResults());
 
         // Reset buttons handlers
         resetTaxesButton.addEventListener('click', () => {
@@ -254,12 +247,12 @@ export class CompensationCalculator {
         }
 
         document.getElementById('levelDetails').innerHTML = `
-            <div class="level-details">
-                <h4 class="h5 mb-3">${roleLevelDetails.title}</h4>
-                <p class="text-muted mb-4">${roleLevelDetails.description}</p>
+            <div class="level-details mb-3">
+                <h4 class="h6">${roleLevelDetails.title}</h4>
+                <p class="text-muted mb-3">${roleLevelDetails.description}</p>
                 
                 <div class="responsibilities mb-4">
-                    <h5 class="h6 text-primary mb-3">Key Responsibilities</h5>
+                    <h5 class="h6 text-primary">Key Responsibilities</h5>
                     <ul class="list-unstyled">
                         ${roleLevelDetails.responsibilities.map(r => `
                             <li class="mb-2">
@@ -270,7 +263,7 @@ export class CompensationCalculator {
                 </div>
                 
                 <div class="skills">
-                    <h5 class="h6 text-primary mb-3">Required Skills</h5>
+                    <h5 class="h6 text-primary">Required Skills</h5>
                     <ul class="list-unstyled">
                         ${roleLevelDetails.skills.map(s => `
                             <li class="mb-2">
