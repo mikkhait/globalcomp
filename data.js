@@ -528,368 +528,404 @@ export const compensationData = {
         engineer: {
             l2: {
                 title: "Software Engineer I",
-                description: "Entry-level engineer with 0-2 years of experience. Focuses on implementing well-defined tasks, learning coding standards, and contributing to team projects under guidance.",
+                description: "A foundational engineering role for individuals with 0-2 years of experience. Software Engineer I focuses on developing core technical skills by implementing well-defined features and bug fixes under the mentorship of senior team members. Key contributions include writing clean, tested code and actively participating in team collaboration and learning processes.",
                 responsibilities: [
-                    "Implement features and bug fixes with guidance",
-                    "Write unit tests and documentation",
-                    "Participate in code reviews and team meetings",
-                    "Learn and apply best practices and coding standards",
-                    "Contribute to technical discussions"
+                    "Develop, test, and deploy code for assigned features and bug fixes with guidance from senior engineers.",
+                    "Write comprehensive unit tests and contribute to technical documentation.",
+                    "Actively participate in code reviews, providing and receiving constructive feedback.",
+                    "Continuously learn and apply software development best practices, coding standards, and team processes.",
+                    "Collaborate effectively with team members in technical discussions and problem-solving."
                 ],
                 skills: [
-                    "Proficiency in at least one programming language",
-                    "Basic understanding of data structures and algorithms",
-                    "Familiarity with version control systems",
-                    "Understanding of software development lifecycle",
-                    "Ability to work in a team environment"
+                    "Proficiency in at least one core programming language (e.g., JavaScript, Python, Java, C#).",
+                    "Fundamental understanding of data structures, algorithms, and object-oriented principles.",
+                    "Working knowledge of version control systems (e.g., Git).",
+                    "Basic understanding of the software development lifecycle (SDLC) and agile methodologies.",
+                    "Strong problem-solving aptitude and a proactive learning orientation.",
+                    "Good communication skills and ability to work effectively within a collaborative team."
                 ]
             },
             l3: {
                 title: "Software Engineer II",
-                description: "Mid-level engineer with 2-5 years of experience. Works independently on features, mentors junior engineers, and contributes to architectural discussions.",
+                description: "An developing engineer with 2-5 years of experience, capable of independently owning and delivering features of moderate complexity. Software Engineer II contributes to design discussions, begins to mentor junior engineers, and actively seeks to improve code quality and team processes.",
                 responsibilities: [
-                    "Design and implement features independently",
-                    "Debug complex issues across the stack",
-                    "Review code and mentor junior engineers",
-                    "Contribute to technical design discussions",
-                    "Improve development processes and tooling"
+                    "Independently design, develop, test, and deploy robust and scalable software features.",
+                    "Effectively debug and resolve complex issues across different parts of the software stack.",
+                    "Conduct thorough code reviews and provide mentorship to L2 engineers.",
+                    "Proactively contribute to technical design discussions and offer solutions to improve system architecture.",
+                    "Identify opportunities and implement improvements for development processes, testing strategies, and internal tooling."
                 ],
                 skills: [
-                    "Strong proficiency in multiple programming languages",
-                    "Experience with system design and architecture",
-                    "Solid understanding of performance optimization",
-                    "Knowledge of cloud services and deployment strategies",
-                    "Ability to balance technical debt with delivery needs"
+                    "Strong proficiency in one or more core programming languages and related frameworks.",
+                    "Solid experience with system design principles and contributing to architectural decisions.",
+                    "Good understanding of performance optimization techniques and database technologies (SQL/NoSQL).",
+                    "Familiarity with cloud platforms (e.g., AWS, Azure, GCP) and CI/CD pipelines.",
+                    "Ability to manage technical debt effectively while meeting project deadlines.",
+                    "Developing leadership skills and clear technical communication."
                 ]
             },
             l4: {
                 title: "Senior Software Engineer",
-                description: "Experienced engineer with 5-8 years of experience. Leads technical initiatives, makes architectural decisions, and mentors team members.",
+                description: "A seasoned engineer with 5-8 years of experience, taking a leading role in the design, development, and delivery of complex software systems. Senior Software Engineers drive technical initiatives, make key architectural decisions within their domain, and actively mentor other engineers to foster technical growth within the team.",
                 responsibilities: [
-                    "Lead technical initiatives and feature development",
-                    "Make architectural decisions for team projects",
-                    "Mentor engineers and provide technical guidance",
-                    "Collaborate with product and design teams",
-                    "Drive technical excellence and best practices"
+                    "Lead the end-to-end design and implementation of significant features and complex system components.",
+                    "Define and uphold architectural standards and best practices for team projects, ensuring scalability and maintainability.",
+                    "Mentor L2 and L3 engineers, providing technical guidance, fostering skill development, and championing code quality.",
+                    "Collaborate effectively with product managers, designers, and other stakeholders to translate requirements into robust technical solutions.",
+                    "Proactively identify and advocate for technical improvements, driving innovation and engineering excellence within the team.",
+                    "Take ownership of operational stability for owned systems, including troubleshooting and resolving critical issues."
                 ],
                 skills: [
-                    "Expert in multiple programming languages and frameworks",
-                    "Strong system design and architecture skills",
-                    "Experience with distributed systems and scalability",
-                    "Deep understanding of software engineering principles",
-                    "Ability to balance business needs with technical considerations"
+                    "Expertise in multiple programming languages, paradigms (e.g., OOP, functional), and associated frameworks.",
+                    "Proven ability in system design, distributed systems, and building scalable, resilient applications.",
+                    "Deep understanding of software engineering principles, design patterns, and data modeling.",
+                    "Experience with performance tuning, monitoring, and operating services in production environments (cloud or on-prem).",
+                    "Strong leadership, communication, and collaboration skills, with an ability to influence technical direction.",
+                    "Adept at balancing technical strategy with business objectives and product requirements."
                 ]
             },
             l5: {
                 title: "Staff Software Engineer",
-                description: "Senior technical leader with 8-12 years of experience. Drives technical strategy across multiple teams, solves complex architectural challenges, and influences organization-wide technical decisions.",
+                description: "A highly experienced engineer (8-12+ years) demonstrating profound technical expertise and leadership. Staff Software Engineers are responsible for architecting and leading the development of complex, large-scale projects that often span multiple teams or systems. They define technical strategy, mentor senior engineers, and exert significant influence on engineering practices and direction across the organization.",
                 responsibilities: [
-                    "Drive technical strategy across multiple teams",
-                    "Solve complex architectural challenges",
-                    "Influence organization-wide technical decisions",
-                    "Mentor senior engineers and technical leads",
-                    "Collaborate with leadership on technical roadmaps"
+                    "Architect, design, and spearhead the implementation of critical, large-scale systems and services with significant business impact.",
+                    "Define and drive the technical strategy for a major domain or product area, anticipating future needs and technological shifts.",
+                    "Act as a technical leader and mentor to senior engineers (L3/L4), fostering a culture of technical excellence and innovation.",
+                    "Influence and align engineering practices, architectural patterns, and technology choices across multiple teams and departments.",
+                    "Resolve the most ambiguous and technically challenging problems, often requiring novel solutions or deep system-wide analysis.",
+                    "Represent the engineering team in cross-functional strategic discussions, providing expert technical perspective."
                 ],
                 skills: [
-                    "Expert-level technical depth in multiple domains",
-                    "Ability to design complex distributed systems",
-                    "Experience with large-scale system architecture",
-                    "Strong technical leadership and communication skills",
-                    "Deep understanding of business domain and strategy"
+                    "Recognized deep expertise in multiple critical technical domains (e.g., distributed computing, data infrastructure, specific platform internals).",
+                    "Exceptional ability to architect, design, and implement highly scalable, available, and resilient distributed systems.",
+                    "Proven track record of successfully leading and delivering complex, multi-faceted technical projects with broad impact.",
+                    "Outstanding communication, negotiation, and influencing skills, capable of driving consensus and technical decisions at senior levels.",
+                    "Strong strategic thinking, with the ability to translate business goals into long-term technical roadmaps.",
+                    "Ability to effectively mentor and develop other senior technical talent."
                 ]
             },
             l6: {
                 title: "Principal Software Engineer",
-                description: "Distinguished technical leader with 12+ years of experience. Sets technical vision for the organization, leads cross-functional initiatives, and represents the company externally.",
+                description: "A distinguished technical leader with 12+ years of experience, recognized for their deep and broad technical expertise and visionary impact on the company's technology landscape. Principal Software Engineers set long-term technical vision, drive groundbreaking innovation, mentor other senior technologists, and often represent the company's technical capabilities externally.",
                 responsibilities: [
-                    "Set technical vision for the organization",
-                    "Lead cross-functional technical initiatives",
-                    "Represent the company externally (conferences, papers)",
-                    "Drive innovation and technical excellence",
-                    "Influence product strategy and business direction"
+                    "Define and champion the long-term technical vision and strategy for the entire engineering organization or significant parts thereof.",
+                    "Initiate, lead, and deliver transformative, high-impact technical projects and innovations that provide a distinct competitive advantage.",
+                    "Solve the company's most critical, complex, and ambiguous technical challenges, often pioneering new approaches or technologies.",
+                    "Mentor and cultivate the growth of Staff and other Principal Engineers, shaping the next generation of technical leadership.",
+                    "Act as a key technical advisor to executive leadership, influencing company-wide strategy and investment in technology.",
+                    "Represent the company as a technical authority at industry conferences, in publications, and within open-source communities."
                 ],
                 skills: [
-                    "Recognized technical authority in the industry",
-                    "Ability to solve unprecedented technical challenges",
-                    "Experience leading organization-wide technical transformations",
-                    "Strategic thinking and business acumen",
-                    "Exceptional leadership and communication skills"
+                    "World-class, internationally recognized expertise across a broad range of technologies and architectural paradigms.",
+                    "Demonstrated ability to set and drive long-term technical vision that aligns with and propels business strategy.",
+                    "Exceptional leadership, mentorship, and influencing capabilities, able to inspire and align large engineering groups.",
+                    "Visionary thinking coupled with pragmatic execution, consistently driving innovation from conception to impactful delivery.",
+                    "Strong industry presence, credibility, and an extensive professional network.",
+                    "Ability to communicate complex technical concepts effectively to both technical and non-technical audiences at all levels."
                 ]
             }
         },
         productManager: {
             l2: {
                 title: "Associate Product Manager",
-                description: "Entry-level product manager with 0-2 years of experience. Supports product initiatives, gathers requirements, and learns product development processes.",
+                description: "A foundational product management role for individuals with 0-2 years of experience. Associate Product Managers support the product lifecycle by assisting with market research, defining clear product requirements, and collaborating closely with engineering and design teams under the guidance of senior PMs. They focus on developing core PM skills and understanding user needs.",
                 responsibilities: [
-                    "Support product initiatives under guidance",
-                    "Gather and document requirements",
-                    "Coordinate with engineering and design teams",
-                    "Analyze user feedback and product metrics",
-                    "Assist with product launches and updates"
+                    "Assist in the development and maintenance of the product roadmap and backlog.",
+                    "Conduct foundational market, competitor, and user research to identify opportunities and inform product decisions.",
+                    "Draft clear and concise product specifications, user stories, and acceptance criteria.",
+                    "Collaborate effectively with engineering, design, and other stakeholders to facilitate product development.",
+                    "Help track key product metrics and gather user feedback to iterate on features."
                 ],
                 skills: [
-                    "Basic understanding of product development lifecycle",
-                    "Strong analytical and problem-solving skills",
-                    "Good communication and collaboration abilities",
-                    "Familiarity with user research methods",
-                    "Ability to prioritize tasks effectively"
+                    "Fundamental understanding of product management principles and the product development lifecycle.",
+                    "Strong analytical and problem-solving abilities with a data-informed mindset.",
+                    "Excellent written and verbal communication and interpersonal skills.",
+                    "Familiarity with agile/scrum methodologies and product management tools.",
+                    "High degree of user empathy and a passion for building valuable products.",
+                    "Proactive learner with strong organizational skills."
                 ]
             },
             l3: {
                 title: "Product Manager",
-                description: "Mid-level product manager with 2-5 years of experience. Manages product features independently, conducts user research, and drives product roadmap execution.",
+                description: "A product manager with 2-5 years of experience, responsible for owning a specific product, feature set, or significant component of the product strategy. Product Managers define and drive the roadmap, conduct in-depth research, and lead cross-functional teams to deliver valuable user experiences and achieve business objectives.",
                 responsibilities: [
-                    "Manage product features from conception to launch",
-                    "Conduct user research and validate product ideas",
-                    "Create and maintain product roadmaps",
-                    "Work closely with engineering and design teams",
-                    "Analyze product metrics and make data-driven decisions"
+                    "Define, own, and communicate the product vision, strategy, and roadmap for a specific product or feature area.",
+                    "Conduct comprehensive market analysis, user research, and competitive intelligence to identify user needs and market opportunities.",
+                    "Author detailed product requirements, user stories, and functional specifications; manage and prioritize the product backlog.",
+                    "Lead and collaborate with engineering, design, marketing, and sales teams throughout the product lifecycle.",
+                    "Analyze product performance data and user feedback to make informed decisions and drive continuous improvement.",
+                    "Manage stakeholder expectations and ensure alignment on product goals and timelines."
                 ],
                 skills: [
-                    "Strong product development and management skills",
-                    "Experience with user research and validation methods",
-                    "Ability to create clear product specifications",
-                    "Understanding of technical constraints and possibilities",
-                    "Data analysis and decision-making capabilities"
+                    "Proven product management skills, including roadmap development, requirements definition, and backlog prioritization.",
+                    "Strong experience with agile development methodologies (Scrum, Kanban) and lean product principles.",
+                    "Excellent analytical skills with proficiency in data analysis and A/B testing to inform product decisions.",
+                    "Effective communication, presentation, and stakeholder management abilities.",
+                    "Demonstrated ability to translate user needs and business requirements into successful product outcomes.",
+                    "Good understanding of UX/UI principles and technical concepts."
                 ]
             },
             l4: {
                 title: "Senior Product Manager",
-                description: "Experienced product manager with 5-8 years of experience. Leads product strategy for a product area, manages cross-functional teams, and drives business outcomes.",
+                description: "An experienced product leader (5-8 years) who owns and drives strategic product initiatives with significant business impact. Senior Product Managers define and champion product vision, mentor other PMs, and play a key role in shaping overall product strategy and influencing cross-functional teams.",
                 responsibilities: [
-                    "Lead product strategy for a product area",
-                    "Manage cross-functional teams to deliver products",
-                    "Drive business outcomes through product initiatives",
-                    "Develop product vision and roadmap",
-                    "Balance user needs with business objectives"
+                    "Lead the definition, development, and launch of strategic products or complex feature sets that address major user needs and business opportunities.",
+                    "Develop and evangelize a compelling product vision and strategy, ensuring alignment with broader company goals.",
+                    "Mentor and coach L2/L3 Product Managers, fostering their growth and improving the team\'s overall effectiveness.",
+                    "Collaborate closely with engineering, design, marketing, sales, and executive leadership to drive product success.",
+                    "Own market positioning and go-to-market strategy for their product areas, driving adoption and achieving key performance indicators.",
+                    "Proactively identify and pursue opportunities for product innovation and market differentiation."
                 ],
                 skills: [
-                    "Expert in product management methodologies",
-                    "Strong strategic thinking and business acumen",
-                    "Experience leading cross-functional teams",
-                    "Ability to influence stakeholders without authority",
-                    "Deep understanding of market and competitive landscape"
+                    "Advanced product management expertise, including strategic planning, market analysis, and product lifecycle management.",
+                    "Demonstrated success in launching and iterating on complex products that achieve significant market traction.",
+                    "Strong leadership, mentoring, and team development capabilities.",
+                    "Exceptional communication, presentation, and negotiation skills, with the ability to influence at all levels.",
+                    "Deep understanding of market dynamics, competitive landscapes, and emerging technology trends.",
+                    "Proficiency in financial modeling, business case development, and defining/tracking product success metrics."
                 ]
             },
             l5: {
-                title: "Group Product Manager",
-                description: "Senior product leader with 8-12 years of experience. Oversees multiple product lines, develops product strategy, and mentors product managers.",
+                title: "Group Product Manager / Director of Product",
+                description: "A senior product leader (8-12+ years) responsible for guiding the strategy and execution for a significant product portfolio or group of related products. They lead and mentor a team of product managers, define multi-year product visions, and play a critical role in shaping overall business strategy and driving organizational alignment.",
                 responsibilities: [
-                    "Oversee multiple product lines or areas",
-                    "Develop product strategy aligned with company goals",
-                    "Mentor and develop product managers",
-                    "Drive innovation and product excellence",
-                    "Collaborate with executive leadership on business strategy"
+                    "Lead, manage, and mentor a team of Product Managers (L2-L4), fostering their professional development and ensuring high team performance.",
+                    "Define and champion the overarching product vision, strategy, and roadmap for a major product line or group, aligning with company objectives.",
+                    "Drive strategic alignment with executive leadership (VPs, C-suite) on product direction, investments, and key business initiatives.",
+                    "Oversee the entire product lifecycle for their portfolio, from ideation through launch, growth, and sun-setting, ensuring P&L success where applicable.",
+                    "Cultivate a strong product culture, promoting innovation, data-driven decision-making, and customer-centricity across the organization.",
+                    "Represent the product organization in high-level strategic planning and cross-functional leadership forums."
                 ],
                 skills: [
-                    "Expert-level product management skills",
-                    "Strong leadership and team development abilities",
-                    "Strategic thinking and business planning",
-                    "Experience with product portfolio management",
-                    "Ability to translate business strategy into product roadmaps"
+                    "Exceptional product leadership, team management, and organizational development skills.",
+                    "Proven expertise in defining and executing successful product strategies for complex product portfolios at scale.",
+                    "Strong business acumen, financial literacy, and experience with P&L management or budget oversight.",
+                    "Mastery in influencing and aligning executive stakeholders and navigating complex organizational dynamics.",
+                    "Visionary thinking, with the ability to identify and capitalize on long-term market trends and strategic opportunities.",
+                    "Deep understanding of various business models, market analysis techniques, and competitive strategy."
                 ]
             },
             l6: {
-                title: "Director of Product",
-                description: "Executive product leader with 12+ years of experience. Sets product vision and strategy for the organization, leads product teams, and drives business growth.",
+                title: "VP of Product / Head of Product",
+                description: "An executive leader (12+ years) who directs the entire product vision, strategy, and execution for the company or a major business unit. They are responsible for building and leading a high-performing product organization, shaping company-level strategy, and ensuring product initiatives drive substantial business growth and market leadership.",
                 responsibilities: [
-                    "Set product vision and strategy for the organization",
-                    "Lead and develop product management teams",
-                    "Drive business growth through product innovation",
-                    "Represent product externally to customers and partners",
-                    "Collaborate with C-level executives on company strategy"
+                    "Define, articulate, and champion the overall product vision, strategy, and long-term roadmap for the entire company or a significant business unit.",
+                    "Lead, scale, and mentor the entire product management organization, including Directors/Group PMs, fostering a world-class product culture.",
+                    "Serve as the primary product voice at the executive leadership level, and to the Board of Directors, influencing company direction and investment.",
+                    "Drive a culture of innovation, customer obsession, and data-driven execution across the product portfolio.",
+                    "Make critical, high-stakes decisions regarding product investments, resource allocation, and strategic partnerships.",
+                    "Ensure the product organization is structured and operates effectively to achieve ambitious business objectives and market impact."
                 ],
                 skills: [
-                    "Visionary product leadership",
-                    "Executive-level communication and influence",
-                    "Experience building and scaling product organizations",
-                    "Strong business acumen and strategic thinking",
-                    "Ability to balance innovation with execution"
+                    "World-class product leadership, organizational design, and executive management capabilities.",
+                    "Demonstrated track record of building, scaling, and leading high-performing, global product organizations.",
+                    "Profound expertise in product strategy formulation, market analysis, business operations, and P&L management at a company-wide scale.",
+                    "Exceptional executive presence, with outstanding communication, negotiation, and influencing skills at the highest levels.",
+                    "Visionary ability to shape overall company strategy and consistently drive significant business growth and competitive advantage through product innovation.",
+                    "Deep understanding of industry trends, M&A, and strategic corporate development from a product perspective."
                 ]
             }
         },
         designer: {
             l2: {
-                title: "Junior Designer",
-                description: "Entry-level designer with 0-2 years of experience. Creates UI elements, assists with design implementation, and learns design systems and processes.",
+                title: "Associate Designer",
+                description: "A foundational design role for individuals with 0-2 years of experience. Associate Designers support various design projects by learning and applying core design principles and tools. They contribute to UI/UX solutions for specific features under the mentorship of senior designers, focusing on developing their craft and collaborative skills.",
                 responsibilities: [
-                    "Create UI elements and assets under guidance",
-                    "Assist with design implementation",
-                    "Participate in design reviews and team meetings",
-                    "Learn and apply design systems and guidelines",
-                    "Support user research and testing activities"
+                    "Assist senior designers in various stages of the design process, from concept to execution.",
+                    "Create wireframes, mockups, and prototypes for specific features based on established design patterns and guidance.",
+                    "Learn and effectively utilize design software (e.g., Figma, Sketch, Adobe Creative Suite).",
+                    "Prepare and maintain design assets, style guides, and detailed specifications for development teams.",
+                    "Collaborate with product managers and engineers to understand requirements and contribute to design solutions.",
+                    "Actively participate in design critiques, incorporating feedback to refine work."
                 ],
                 skills: [
-                    "Proficiency in design tools (Figma, Adobe Creative Suite)",
-                    "Basic understanding of UI/UX principles",
-                    "Familiarity with responsive design concepts",
-                    "Ability to receive and implement feedback",
-                    "Attention to detail and visual aesthetics"
+                    "Fundamental understanding of UI/UX design principles, typography, color theory, and layout.",
+                    "Growing proficiency in industry-standard design and prototyping tools (e.g., Figma, Sketch, Adobe XD).",
+                    "A keen eye for detail and a burgeoning creative problem-solving ability.",
+                    "Good communication and interpersonal skills, with an eagerness to collaborate within a team.",
+                    "Proactive approach to learning new design techniques and receiving constructive feedback.",
+                    "Basic understanding of user-centered design methodologies."
                 ]
             },
             l3: {
-                title: "Product Designer",
-                description: "Mid-level designer with 2-5 years of experience. Designs complete features, conducts user research, and contributes to design systems.",
+                title: "Designer",
+                description: "A designer with 2-5 years of experience who takes ownership of the UI/UX design for specific products or features. Designers conduct user research, translate insights into intuitive and effective design solutions, and contribute to the evolution of design systems, working independently on moderately complex projects.",
                 responsibilities: [
-                    "Design complete features independently",
-                    "Conduct user research and usability testing",
-                    "Create wireframes, prototypes, and high-fidelity designs",
-                    "Collaborate with product and engineering teams",
-                    "Contribute to design systems and guidelines"
+                    "Lead the end-to-end design process for assigned features or products, including user research, ideation, wireframing, prototyping, and high-fidelity visual design.",
+                    "Plan and conduct user research (e.g., interviews, surveys, usability testing) to gather insights and validate design decisions.",
+                    "Create compelling and user-centered design solutions that meet user needs and business goals, adhering to accessibility best practices.",
+                    "Actively contribute to the development, maintenance, and adoption of design systems and component libraries.",
+                    "Collaborate closely with product managers to define user stories and requirements, and with engineers to ensure faithful implementation of designs.",
+                    "Present design work effectively to stakeholders and articulate design rationale clearly."
                 ],
                 skills: [
-                    "Strong UI/UX design skills",
-                    "Experience with user research methodologies",
-                    "Proficiency in creating interactive prototypes",
-                    "Understanding of accessibility standards",
-                    "Ability to communicate design decisions effectively"
+                    "Strong portfolio showcasing proficiency in UI/UX design, interaction design, and visual design across multiple platforms.",
+                    "Advanced skills in industry-standard design and prototyping tools (e.g., Figma, Sketch, Adobe Creative Suite).",
+                    "Solid experience with various user research methodologies and usability testing techniques.",
+                    "Good understanding and application of web and mobile accessibility standards (WCAG).",
+                    "Ability to translate complex requirements and user feedback into elegant and intuitive design solutions.",
+                    "Strong problem-solving skills and the ability to iterate on designs effectively."
                 ]
             },
             l4: {
-                title: "Senior Product Designer",
-                description: "Experienced designer with 5-8 years of experience. Leads design for product areas, mentors designers, and drives design strategy.",
+                title: "Senior Designer",
+                description: "An experienced design leader (5-8 years) who spearheads the design of complex products or significant feature areas. Senior Designers mentor other designers, contribute significantly to design strategy and vision, and advocate for user-centered design principles across the organization.",
                 responsibilities: [
-                    "Lead design for product areas or features",
-                    "Mentor junior designers and provide guidance",
-                    "Drive design strategy and vision",
-                    "Collaborate with product and engineering leadership",
-                    "Champion user-centered design processes"
+                    "Lead the design vision and execution for complex, high-impact products or strategic feature initiatives from concept through delivery.",
+                    "Mentor and provide guidance to L2/L3 designers, fostering their skills and ensuring high-quality design output from the team.",
+                    "Play a key role in defining and evolving the overall design strategy, design systems, and best practices within the organization.",
+                    "Collaborate effectively with product, engineering, and research leadership to align on product goals and ensure design excellence.",
+                    "Champion user-centered design methodologies and advocate for the user throughout the product development lifecycle.",
+                    "Present and defend design decisions to senior stakeholders and executive leadership, clearly articulating strategic rationale."
                 ],
                 skills: [
-                    "Expert-level UI/UX design skills",
-                    "Strong understanding of product development",
-                    "Experience leading design projects end-to-end",
-                    "Ability to balance user needs with business goals",
-                    "Strong communication and presentation skills"
+                    "Expert-level UI/UX design skills, demonstrated through a strong portfolio of impactful and well-crafted products.",
+                    "Proven ability to lead complex design projects, manage ambiguity, and deliver innovative solutions.",
+                    "Strong strategic thinking, with the ability to connect design decisions to broader business objectives.",
+                    "Excellent communication, presentation, and interpersonal skills, with experience influencing cross-functional teams and leadership.",
+                    "Deep understanding of user psychology, behavioral science, and advanced research methodologies.",
+                    "Experience in establishing and scaling design systems and processes."
                 ]
             },
             l5: {
-                title: "Staff Designer",
-                description: "Senior design leader with 8-12 years of experience. Shapes design strategy across multiple products, establishes design systems, and influences product direction.",
+                title: "Lead Designer / Design Manager",
+                description: "A senior design leader (8-12+ years) who directs a team of designers and shapes the design culture and strategy for a significant product area or platform. They are responsible for delivering world-class user experiences, mentoring design talent, and influencing overall product and brand strategy at a high level.",
                 responsibilities: [
-                    "Shape design strategy across multiple products",
-                    "Establish and evolve design systems",
-                    "Influence product direction and roadmap",
-                    "Mentor senior designers and design leads",
-                    "Drive design innovation and excellence"
+                    "Lead, manage, and mentor a team of designers (L2-L4), fostering their growth, ensuring design quality, and building a high-performing team culture.",
+                    "Define and drive the comprehensive design vision, strategy, and execution for a major product line, platform, or user journey.",
+                    "Establish and champion design processes, standards, and systems that elevate the quality and consistency of design across the organization.",
+                    "Collaborate with executive leadership (VPs, C-suite) to align design strategy with overall business objectives and brand identity.",
+                    "Develop and nurture design talent, creating opportunities for growth and ensuring the team has the skills to meet future challenges.",
+                    "Oversee large-scale design initiatives, ensuring they are user-centered, innovative, and effectively meet business goals."
                 ],
                 skills: [
-                    "Expert-level design leadership",
-                    "Experience creating and scaling design systems",
-                    "Strategic thinking and business understanding",
-                    "Ability to influence cross-functional stakeholders",
-                    "Deep understanding of user behavior and needs"
+                    "Exceptional design leadership, team management, and organizational development capabilities.",
+                    "Demonstrated ability to define, drive, and deliver world-class, end-to-end product experiences for complex systems.",
+                    "Strong strategic thinking and ability to translate business goals into compelling design strategies and tangible outcomes.",
+                    "Excellent communication, negotiation, and influencing skills, capable of advocating for design at the executive level.",
+                    "Deep expertise in user-centered design, interaction design, visual design, branding, and content strategy.",
+                    "Proven experience in building, scaling, and motivating high-performing design teams and fostering a positive design culture."
                 ]
             },
             l6: {
-                title: "Principal Designer",
-                description: "Distinguished design leader with 12+ years of experience. Sets design vision for the organization, leads design teams, and represents the company's design philosophy externally.",
+                title: "Head of Design / VP of Design",
+                description: "An executive leader (12+ years) who directs the comprehensive design vision, strategy, and execution across the entire company or a major business unit. They are responsible for building and leading a world-class design organization, shaping company-level strategy through design, and ensuring a cohesive, innovative, and market-leading user experience across all products and brand touchpoints.",
                 responsibilities: [
-                    "Set design vision for the organization",
-                    "Lead design teams and develop design culture",
-                    "Represent the company's design philosophy externally",
-                    "Drive innovation in design practices and tools",
-                    "Collaborate with executive leadership on strategy"
+                    "Define, articulate, and champion the overall design vision, strategy, and brand identity for the entire company.",
+                    "Lead, scale, and mentor the entire design organization, including senior design leadership (Managers/Leads), fostering a culture of excellence and innovation.",
+                    "Serve as the principal design voice at the executive leadership level and to the Board of Directors, profoundly influencing company direction, strategy, and brand perception.",
+                    "Drive a pervasive culture of design thinking, user-centricity, and creative problem-solving throughout the organization.",
+                    "Make critical, high-impact decisions regarding design investments, organizational structure, and strategic design partnerships.",
+                    "Ensure all product experiences and brand expressions are of the highest quality, cohesive, and effectively differentiate the company in the market."
                 ],
                 skills: [
-                    "Visionary design leadership",
-                    "Experience building and leading design organizations",
-                    "Ability to connect design to business outcomes",
-                    "Strong executive presence and communication",
-                    "Industry recognition and thought leadership"
+                    "World-class design leadership, organizational design, and executive management capabilities, with a transformative impact.",
+                    "Demonstrated track record of building, scaling, and leading globally recognized, high-performing design organizations.",
+                    "Profound expertise in design strategy, brand development, multi-channel user experience, and design operations at an enterprise scale.",
+                    "Exceptional executive presence, with masterful communication, storytelling, and influencing skills at the highest corporate levels.",
+                    "Visionary ability to shape overall company strategy and consistently drive significant business growth, brand loyalty, and market leadership through design innovation.",
+                    "Deep understanding of global design trends, emerging technologies, and their strategic application to business and user experience."
                 ]
             }
         },
         dataEngineer: {
             l2: {
-                title: "Data Engineer I",
-                description: "Entry-level data engineer with 0-2 years of experience. Focuses on building and maintaining data pipelines, ETL processes, and data storage solutions under guidance.",
+                title: "Associate Data Engineer",
+                description: "A foundational data engineering role for individuals with 0-2 years of experience. Associate Data Engineers focus on learning to build and maintain data pipelines, understand ETL processes, and grasp data warehousing fundamentals under the guidance of senior team members. They contribute by writing scripts for data tasks and supporting data infrastructure.",
                 responsibilities: [
-                    "Develop and maintain basic data pipelines with guidance",
-                    "Implement ETL processes for data transformation",
-                    "Assist with data storage and retrieval solutions",
-                    "Write and optimize data queries",
-                    "Participate in data architecture discussions"
+                    "Assist in the development, testing, and maintenance of data ingestion scripts and ETL/ELT pipelines with guidance.",
+                    "Learn and apply data transformation techniques and support basic data modeling tasks.",
+                    "Help monitor and troubleshoot data pipeline jobs and data quality issues.",
+                    "Contribute to the documentation of data processes, systems, and infrastructure.",
+                    "Collaborate with data analysts, data scientists, and other engineers on data-related requirements."
                 ],
                 skills: [
-                    "Proficiency in SQL and at least one programming language (Python, Scala)",
-                    "Basic understanding of data modeling and database design",
-                    "Familiarity with ETL tools and processes",
-                    "Understanding of data warehousing concepts",
-                    "Ability to work with structured and semi-structured data"
+                    "Basic understanding of relational (SQL) and NoSQL database concepts.",
+                    "Familiarity with at least one programming language relevant to data engineering (e.g., Python, Scala, Java).",
+                    "Introductory knowledge of data pipeline orchestration (e.g., Airflow), ETL/ELT principles, and data warehousing.",
+                    "Good analytical and problem-solving abilities with an attention to detail.",
+                    "A strong desire to learn new data technologies and distributed systems concepts.",
+                    "Effective communication skills for collaborating within a technical team."
                 ]
             },
             l3: {
-                title: "Data Engineer II",
-                description: "Mid-level data engineer with 2-5 years of experience. Works independently on data pipelines, optimizes data workflows, and contributes to data architecture decisions.",
+                title: "Data Engineer",
+                description: "A data engineer with 2-5 years of experience, responsible for designing, building, and optimizing scalable and reliable data pipelines and infrastructure. Data Engineers implement robust ETL/ELT processes, develop data models, and increasingly work with big data technologies to support analytics and data science initiatives.",
                 responsibilities: [
-                    "Design and implement data pipelines independently",
-                    "Optimize ETL processes for performance and reliability",
-                    "Develop data models and storage solutions",
-                    "Implement data quality checks and monitoring",
-                    "Collaborate with data scientists and analysts on data needs"
+                    "Independently design, develop, test, and deploy efficient and scalable data pipelines and ETL/ELT processes.",
+                    "Develop and optimize data models and schemas for data warehouses, data lakes, and analytical systems.",
+                    "Implement solutions using big data technologies (e.g., Spark, Kafka, Flink) and cloud data services (e.g., AWS Glue, GCP Dataflow, Azure Data Factory).",
+                    "Establish and maintain data quality checks, integrity constraints, and reliability monitoring for critical datasets.",
+                    "Collaborate closely with data scientists, analysts, and business stakeholders to understand data needs and deliver appropriate solutions.",
+                    "Automate data engineering workflows and contribute to CI/CD processes for data infrastructure."
                 ],
                 skills: [
-                    "Strong proficiency in multiple data technologies (DBT, Airflow, Spark)",
-                    "Experience with cloud data services (AWS, GCP, Azure)",
-                    "Knowledge of data modeling methodologies",
-                    "Understanding of distributed systems and big data processing",
-                    "Ability to balance performance with data integrity needs"
+                    "Strong proficiency in SQL and programming languages like Python or Scala for data manipulation and pipeline development.",
+                    "Hands-on experience with big data processing frameworks (e.g., Apache Spark, Hadoop MapReduce) and distributed systems.",
+                    "Experience with cloud-based data platforms (AWS, GCP, Azure) and their respective data services (e.g., S3, Redshift, BigQuery, Synapse).",
+                    "Solid understanding of data warehousing, data lake architectures, and data modeling techniques (e.g., dimensional modeling).",
+                    "Knowledge of data governance principles, data security best practices, and data pipeline orchestration tools (e.g., Airflow, Prefect).",
+                    "Ability to troubleshoot and optimize performance of complex data systems."
                 ]
             },
             l4: {
                 title: "Senior Data Engineer",
-                description: "Experienced data engineer with 5-8 years of experience. Leads data infrastructure initiatives, designs data architecture, and mentors junior data engineers.",
+                description: "An experienced data engineer (5-8 years) who leads the design and implementation of complex data architectures and systems. Senior Data Engineers drive best practices, mentor other engineers, and play a key role in shaping data strategy and governance within their domain.",
                 responsibilities: [
-                    "Lead data infrastructure initiatives and development",
-                    "Design scalable data architectures",
-                    "Mentor data engineers and provide technical guidance",
-                    "Collaborate with cross-functional teams on data strategy",
-                    "Drive data engineering best practices and standards"
+                    "Lead the architectural design, development, and deployment of large-scale, complex data platforms, pipelines, and warehousing solutions.",
+                    "Define and champion data engineering best practices, coding standards, and robust testing methodologies within the team.",
+                    "Mentor and provide technical guidance to L2/L3 data engineers, fostering their growth and ensuring high-quality deliverables.",
+                    "Collaborate with data architects, data scientists, and business leaders to define data strategy, governance policies, and technology roadmaps.",
+                    "Evaluate, prototype, and recommend new data technologies, tools, and architectural patterns to enhance system capabilities.",
+                    "Take ownership of the operational stability, scalability, and performance of critical data infrastructure components."
                 ],
                 skills: [
-                    "Expert in multiple data engineering tools and frameworks",
-                    "Strong data architecture and system design skills",
-                    "Experience with real-time and batch data processing",
-                    "Deep understanding of data security and governance",
-                    "Ability to translate business requirements into data solutions"
+                    "Deep expertise in data architecture patterns, big data technologies (e.g., Spark, Kafka, Presto), and cloud data services (AWS, GCP, Azure).",
+                    "Proven track record of leading and successfully delivering complex data engineering projects from conception to production.",
+                    "Strong understanding of data governance, data security, privacy regulations (e.g., GDPR, CCPA), and data quality management.",
+                    "Excellent problem-solving, system optimization, and analytical skills, particularly for distributed data systems.",
+                    "Effective leadership, mentoring, and communication skills, with the ability to influence technical decisions.",
+                    "Experience with infrastructure-as-code (e.g., Terraform, CloudFormation) and CI/CD for data systems."
                 ]
             },
             l5: {
-                title: "Staff Data Engineer",
-                description: "Senior technical leader with 8-12 years of experience. Drives data strategy across multiple teams, solves complex data architecture challenges, and influences organization-wide data decisions.",
+                title: "Staff Data Engineer / Lead Data Engineer",
+                description: "A highly experienced data engineering leader (8-12+ years) who defines data strategy and architects solutions for major business domains or company-wide data platforms. They lead critical, large-scale data initiatives, mentor senior engineers, and exert significant influence on data governance and technology adoption across the organization.",
                 responsibilities: [
-                    "Drive data strategy and architecture across multiple teams",
-                    "Solve complex data engineering challenges",
-                    "Influence organization-wide data decisions",
-                    "Mentor senior data engineers and technical leads",
-                    "Collaborate with leadership on data roadmaps"
+                    "Architect, design, and spearhead the implementation of enterprise-wide data platforms, data lakes, and critical data services with significant business impact.",
+                    "Define and drive the data engineering strategy for major business domains, aligning with overall company objectives and anticipating future technological needs.",
+                    "Act as a technical leader and mentor to senior data engineers (L3/L4), fostering a culture of technical excellence and innovation in data practices.",
+                    "Influence and align data governance policies, data quality standards, and technology choices across multiple teams and departments.",
+                    "Resolve the most ambiguous and technically challenging data engineering problems, often requiring pioneering new solutions or deep system-wide optimization.",
+                    "Represent data engineering in strategic discussions with executive leadership, providing expert guidance on data-related investments and initiatives."
                 ],
                 skills: [
-                    "Expert-level technical depth in data engineering",
-                    "Ability to design complex data ecosystems",
-                    "Experience with large-scale data architecture",
-                    "Strong technical leadership and communication skills",
-                    "Deep understanding of business domains and data strategy"
+                    "Recognized deep expertise in multiple critical data domains (e.g., distributed data processing, stream processing, data mesh, data modeling at scale).",
+                    "Exceptional ability to architect, design, and deliver highly scalable, available, and resilient data platforms and ecosystems.",
+                    "Proven track record of successfully leading and delivering complex, multi-faceted data projects with broad organizational impact.",
+                    "Outstanding communication, negotiation, and influencing skills, capable of driving consensus and technical decisions with senior leadership.",
+                    "Strong strategic thinking, with the ability to translate business goals into long-term data technology roadmaps and scalable architectures.",
+                    "Ability to effectively mentor and develop other senior data engineering talent and lead technical communities of practice."
                 ]
             },
             l6: {
                 title: "Principal Data Engineer",
-                description: "Distinguished technical leader with 12+ years of experience. Sets data vision for the organization, leads cross-functional data initiatives, and represents the company externally in data engineering contexts.",
+                description: "A distinguished data engineering leader (12+ years), recognized for their deep and broad expertise and visionary impact on the company\'s entire data landscape. Principal Data Engineers set the long-term technical vision for data, drive groundbreaking innovation in data practices and platforms, mentor other senior technologists, and often represent the company\'s data capabilities externally.",
                 responsibilities: [
-                    "Set data vision and strategy for the organization",
-                    "Lead cross-functional data engineering initiatives",
-                    "Represent the company externally (conferences, papers)",
-                    "Drive innovation in data engineering practices",
-                    "Influence product and business strategy through data capabilities"
+                    "Define and champion the long-term technical vision, strategy, and architecture for all data engineering and platform initiatives across the company.",
+                    "Initiate, lead, and deliver transformative, high-impact data projects and innovations that provide a significant competitive advantage through data.",
+                    "Solve the company\'s most critical, complex, and ambiguous data engineering challenges, frequently pioneering new architectural patterns or technologies.",
+                    "Mentor and cultivate the growth of Staff and other Principal Data Engineers, shaping the next generation of data technology leadership.",
+                    "Act as a key technical advisor on data to executive leadership, profoundly influencing company-wide strategy and investment in data capabilities.",
+                    "Represent the company as a data technology authority at industry conferences, in publications, and within relevant open-source and data communities."
                 ],
                 skills: [
-                    "Recognized authority in data engineering",
-                    "Ability to solve unprecedented data challenges",
-                    "Experience leading organization-wide data transformations",
-                    "Strategic thinking and business acumen",
-                    "Exceptional leadership and communication skills"
+                    "World-class, internationally recognized expertise across a broad range of data technologies, distributed systems, and data architectural paradigms.",
+                    "Demonstrated ability to set and drive long-term technical vision for data that aligns with and propels overarching business strategy.",
+                    "Exceptional leadership, mentorship, and influencing capabilities, able to inspire and align large, diverse data engineering and analytics groups.",
+                    "Visionary thinking coupled with pragmatic execution, consistently driving data innovation from concept to impactful, company-wide deployment.",
+                    "Strong industry presence, credibility, and an extensive professional network within the data and analytics community.",
+                    "Ability to articulate complex data concepts and strategies effectively to both highly technical and non-technical audiences at all organizational levels."
                 ]
             }
         }

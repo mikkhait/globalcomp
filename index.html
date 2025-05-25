@@ -15,8 +15,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <!-- Preload critical assets -->
-    <link rel="preload" href="app.js" as="script">
-    <link rel="preload" href="data.js" as="script">
+    <link rel="modulepreload" href="app.js">
+    <link rel="modulepreload" href="data.js">
 </head>
 <body>
     <!-- Add Modal for How to Use -->
@@ -29,52 +29,112 @@
                 </div>
                 <div class="modal-body">
                     <div class="disclaimer alert alert-warning mb-4">
-                        <strong>Important Note:</strong> All numbers in this calculator are approximations based on market research and publicly available data. This tool should be used as a reference point only, not as a definitive guide for compensation decisions.
+                        <h6 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Important Note</h6>
+                        <p class="mb-0">All numbers in this calculator are approximations based on market research and publicly available data.
+                            This tool should be used as a reference point only, not as a definitive guide for compensation decisions.</p>
                     </div>
                     
-                    <h6>Quick Start Guide:</h6>
-                    <ol class="mb-4">
-                        <li>Select your country of interest from the dropdown menu</li>
-                        <li>Choose your experience level (L2-L6)</li>
-                        <li>Review the compensation details, including:
-                            <ul>
-                                <li>Salary ranges in local currency and USD</li>
-                                <li>Monthly and annual calculations</li>
-                                <li>Tax implications (customizable)</li>
-                            </ul>
-                        </li>
-                        <li>Check the cost of living information to understand the local context</li>
+                    <h5><i class="bi bi-rocket-takeoff-fill me-2"></i>Quick Start Guide</h5>
+                    <ol class="list-group list-group-numbered mb-4">
+                        <li class="list-group-item">Select the <strong>Role</strong> you are interested in.</li>
+                        <li class="list-group-item">Choose the <strong>Seniority Level</strong> (e.g., L2-L6).</li>
+                        <li class="list-group-item">Select your <strong>Country</strong> of interest.</li>
+                        <li class="list-group-item">Review the dynamically updated <strong>Compensation Summary</strong>, including annual
+                            and monthly salary ranges in both local currency and USD.</li>
+                        <li class="list-group-item">Explore the <strong>Charts</strong> for visual comparisons of salaries, cost of living,
+                            taxes, and purchasing power.</li>
+                        <li class="list-group-item">View detailed <strong>Role Details</strong> including responsibilities and skills for
+                            the selected level.</li>
+                        <li class="list-group-item">Check <strong>Location Information</strong> for exchange rates, cost of living index,
+                            and typical expenses.</li>
                     </ol>
 
-                    <h6>Understanding the Levels:</h6>
+                    <h5><i class="bi bi-gear-wide-connected me-2"></i>Customization & Configuration</h5>
+                    <div class="accordion mb-4" id="howToUseAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingLevels">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseLevels" aria-expanded="false" aria-controls="collapseLevels">
+                                    Understanding Seniority Levels
+                                </button>
+                            </h2>
+                            <div id="collapseLevels" class="accordion-collapse collapse" aria-labelledby="headingLevels"
+                                data-bs-parent="#howToUseAccordion">
+                                <div class="accordion-body">
+                                    <ul class="list-unstyled">
+                                        <li><strong>L2 (Junior):</strong> Typically 0-2 years of relevant experience.</li>
+                                        <li><strong>L3 (Mid-Level):</strong> Usually 2-5 years of relevant experience.</li>
+                                        <li><strong>L4 (Senior):</strong> Generally 5-8 years of relevant experience, demonstrating strong
+                                            individual contribution.</li>
+                                        <li><strong>L5 (Staff):</strong> Around 8-12 years of experience, with technical leadership and/or
+                                            broader impact.</li>
+                                        <li><strong>L6 (Principal):</strong> 12+ years of experience, often setting technical direction and
+                                            mentoring at a high level.</li>
+                                    </ul>
+                                    <small class="text-muted">Note: Experience ranges are indicative and can vary.</small>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTax">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTax"
+                                                aria-expanded="false" aria-controls="collapseTax">
+                                                Tax Configuration (Basic Tab)
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTax" class="accordion-collapse collapse" aria-labelledby="headingTax"
+                                            data-bs-parent="#howToUseAccordion">
+                                            <div class="accordion-body">
+                                                <p>In the "Basic" tab (under "Controls"), you can customize tax percentages for a more accurate estimate
+                                                    of take-home pay:</p>
+                                                <ul>
+                                                    <li><strong>Income Tax (%):</strong> Your estimated income tax rate.</li>
+                                                    <li><strong>Social Security (%):</strong> Contributions to social security.</li>
+                                                    <li><strong>Other Taxes (%):</strong> Any other relevant tax deductions.</li>
+                                                </ul>
+                                                <p>Default rates are provided per country and can be reset using the "Reset to Defaults" button.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOverhead">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseOverhead" aria-expanded="false" aria-controls="collapseOverhead">
+                                                Company Overhead (Overhead Tab)
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOverhead" class="accordion-collapse collapse" aria-labelledby="headingOverhead"
+                                            data-bs-parent="#howToUseAccordion">
+                                            <div class="accordion-body">
+                                                <p>Switch to the "Overhead" tab to configure and understand employer-side costs. This section helps estimate
+                                                    the total cost for a company to employ someone in the selected location.</p>
+                                                <ul>
+                                        <li><strong>Monthly Fixed Overhead ($):</strong> Base costs like workspace, equipment, software licenses per employee.
+                                        </li>
+                                        <li><strong>Employer Tax (%):</strong> Company contributions based on salary (e.g., payroll taxes).</li>
+                                        <li><strong>Workers Comp (%):</strong> Workers compensation insurance rates.</li>
+                                        <li><strong>Other Fees (%):</strong> Any other location-specific fees or contributions by the employer.</li>
+                                        </ul>
+                                    <p>Default rates are provided and can be reset. The "Company Overhead" card in the results area will display the
+                                        breakdown based on these settings and the selected salary.</p>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+
+                    <h5><i class="bi bi-bar-chart-line-fill me-2"></i>Understanding the Charts</h5>
                     <ul class="mb-4">
-                        <li><strong>L2 (Junior):</strong> 0-2 years of experience</li>
-                        <li><strong>L3 (Mid-Level):</strong> 2-5 years of experience</li>
-                        <li><strong>L4 (Senior):</strong> 5-8 years of experience</li>
-                        <li><strong>L5 (Staff):</strong> 8-12 years of experience</li>
-                        <li><strong>L6 (Principal):</strong> 12+ years of experience</li>
+                        <li><strong>Salary Comparison:</strong> Compares the selected role/level salary range (USD) with other countries.
+                        </li>
+                        <li><strong>Cost of Living:</strong> Shows a breakdown of key monthly living costs (e.g., rent, utilities) in USD,
+                            comparing the selected country with others.</li>
+                        <li><strong>Tax Breakdown:</strong> Visualizes the estimated deductions (Income Tax, Social Security, Other) from
+                            the gross salary to arrive at the net take-home pay.</li>
+                        <li><strong>Purchasing Power:</strong> Compares the equivalent purchasing power of the selected salary across
+                            different countries, adjusted for cost of living.</li>
                     </ul>
-
-                    <h6>Additional Features:</h6>
-                    <ul>
-                        <li>Customize tax rates for more accurate take-home calculations</li>
-                        <li>View cost of living comparisons across different locations</li>
-                        <li>See role expectations and responsibilities for each level</li>
-                    </ul>
-
-                    <h6>Company Overhead:</h6>
-                    <p class="small text-muted mb-2">
-                        The calculator includes employer-side costs that vary by location:
-                    </p>
-                    <ul>
-                        <li>Fixed costs (workspace, equipment, software licenses)</li>
-                        <li>Employer taxes and contributions</li>
-                        <li>Workers compensation insurance</li>
-                        <li>Other location-specific fees</li>
-                    </ul>
-                    <p class="small text-muted">
-                        These costs are essential for understanding the total investment required when hiring in different locations.
-                    </p>
+                    <p class="text-muted small">Remember to use the "Release Notes" (top right) to stay updated on new features and data
+                        improvements!</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
@@ -94,15 +154,6 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-info latest-update mb-4">
-                        <div class="d-flex align-items-center">
-                            <i class="bi bi-stars fs-4 me-3"></i>
-                            <div>
-                                <strong class="d-block mb-1">Latest Update (v2.0.0)</strong>
-                                Added comprehensive role-based compensation data for Product Managers and Designers, along with enhanced UI and improved market data.
-                            </div>
-                        </div>
-                    </div>
                     <div id="releaseNotesContent" class="release-notes-container">
                         <!-- Release notes will be populated by JavaScript -->
                     </div>
@@ -285,6 +336,18 @@
             <div class="col-md-8 col-lg-9">
                 <div id="results" class="d-none">
                     <div id="resultsMessageArea" class="mb-3"></div>
+                    <!-- Role Details Card -->
+                    <div class="card mb-4" id="roleDetailsCard">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-person-badge me-2"></i>Role Details
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="levelDetails"></div>
+                        </div>
+                    </div>
+
                     <!-- Compensation Summary Card -->
                     <div class="card mb-4" id="compensationSummaryCard">
                         <div class="card-header bg-primary text-white">
@@ -325,18 +388,6 @@
                             <div class="chart-container">
                                 <canvas id="purchasingPowerChart"></canvas>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Role Details Card -->
-                    <div class="card mb-4" id="roleDetailsCard">
-                        <div class="card-header bg-info text-white">
-                            <h5 class="card-title mb-0">
-                                <i class="bi bi-person-badge me-2"></i>Role Details
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="levelDetails"></div>
                         </div>
                     </div>
 

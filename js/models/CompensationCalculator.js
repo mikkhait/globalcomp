@@ -403,26 +403,33 @@ export class CompensationCalculator {
                 <h4 class="h6">${roleLevelDetails.title}</h4>
                 <p class="text-muted mb-3">${roleLevelDetails.description}</p>
                 
-                <div class="responsibilities mb-4">
-                    <h5 class="h6 text-primary">Key Responsibilities</h5>
-                    <ul class="list-unstyled">
-                        ${roleLevelDetails.responsibilities.map(r => `
-                            <li class="mb-2">
-                                <i class="bi bi-check2-circle text-success me-2"></i>${r}
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-                
-                <div class="skills">
-                    <h5 class="h6 text-primary">Required Skills</h5>
-                    <ul class="list-unstyled">
-                        ${roleLevelDetails.skills.map(s => `
-                            <li class="mb-2">
-                                <i class="bi bi-star-fill text-warning me-2"></i>${s}
-                            </li>
-                        `).join('')}
-                    </ul>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="responsibilities mb-4">
+                            <h5 class="h6 text-primary mb-3"><i class="bi bi-list-check me-2"></i>Key Responsibilities</h5>
+                            <ul class="list-unstyled">
+                                ${roleLevelDetails.responsibilities.map(r => `
+                                    <li class="mb-2 d-flex">
+                                        <i class="bi bi-check2-circle text-success me-2 mt-1"></i>
+                                        <span>${r}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skills mb-4">
+                            <h5 class="h6 text-primary mb-3"><i class="bi bi-star-fill me-2"></i>Required Skills</h5>
+                            <ul class="list-unstyled">
+                                ${roleLevelDetails.skills.map(s => `
+                                    <li class="mb-2 d-flex">
+                                        <i class="bi bi-arrow-right-short text-info me-2 mt-1"></i>
+                                        <span>${s}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
