@@ -1,3 +1,4 @@
+'use strict';
 import { CompensationCalculator } from './js/models/CompensationCalculator.js';
 import { compensationData } from './data.js';
 
@@ -14,8 +15,12 @@ let releaseNotesModalInstance = null;
 
 function initializeModals() {
     try {
-        howToUseModalInstance = new bootstrap.Modal(howToUseModal);
-        releaseNotesModalInstance = new bootstrap.Modal(releaseNotesModal);
+        if (howToUseModal) {
+            howToUseModalInstance = new bootstrap.Modal(howToUseModal);
+        }
+        if (releaseNotesModal) {
+            releaseNotesModalInstance = new bootstrap.Modal(releaseNotesModal);
+        }
     } catch (error) {
         console.error('Failed to initialize modals:', error);
     }
@@ -63,6 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize modals
     initializeModals();
     
+    // Attach event listeners to header buttons
+    const releaseNotesButton = document.getElementById('releaseNotesBtn');
+    if (releaseNotesButton) {
+        releaseNotesButton.addEventListener('click', showReleaseNotes);
+    }
+
+    const howToUseButton = document.getElementById('howToUseBtn');
+    if (howToUseButton) {
+        howToUseButton.addEventListener('click', showHowToUse);
+    }
+    
     // Check if it's first visit
     if (!localStorage.getItem('hasVisited')) {
         showHowToUse();
@@ -77,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('change', (event) => {
             if (calculator) {
-                calculator.updateCalculations();
+                calculator.updateResults();
             }
         });
     }

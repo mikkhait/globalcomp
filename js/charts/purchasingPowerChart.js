@@ -1,11 +1,28 @@
+'use strict';
 import { chartConfig } from '../config/chartConfig.js';
 import { CalculationUtils } from '../utils/calculationUtils.js';
 
 export class PurchasingPowerChart {
     static create(ctx, data, salary, country) {
+        if (!ctx) {
+            console.error("PurchasingPowerChart: Canvas context is missing.");
+            return null;
+        }
+        if (!data || !data.costOfLiving || typeof salary !== 'number' || !country) {
+            console.error("PurchasingPowerChart: Invalid or missing data, salary, or country.");
+            return null;
+        }
+
         const costData = data.costOfLiving;
-        const baseIndex = costData[country]?.index || 100;
-        const baseSalary = salary / baseIndex; // Normalize the salary by the base country's index
+        let baseIndex = costData[country]?.index;
+
+        if (typeof baseIndex !== 'number' || baseIndex === 0) {
+            console.warn(`PurchasingPowerChart: Invalid or zero baseIndex for ${country}. Using fallback 100.`);
+            baseIndex = 100; // Fallback to prevent division by zero or NaN results
+        }
+        
+        // If salary is 0, purchasing power will be 0. Avoid division by zero if baseIndex is also 0 (already handled).
+        const baseSalary = salary === 0 ? 0 : salary / baseIndex; 
 
         // Calculate purchasing power for all countries, sorted alphabetically
         const comparisonData = Object.entries(costData)
@@ -68,6 +85,11 @@ export class PurchasingPowerChart {
     }
 
     static calculatePurchasingPower(baseSalary, countryIndex) {
+        if (typeof baseSalary !== 'number' || typeof countryIndex !== 'number') {
+            console.warn('calculatePurchasingPower: Invalid input types.');
+            return 0;
+        }
+        // If countryIndex is 0, purchasing power is 0. Avoid NaN if baseSalary is also NaN (already handled by input checks).
         return baseSalary * countryIndex;
     }
 } 

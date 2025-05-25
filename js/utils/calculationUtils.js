@@ -1,3 +1,5 @@
+'use strict';
+
 export class CalculationUtils {
     static calculateMonthlyRange(range) {
         return {
