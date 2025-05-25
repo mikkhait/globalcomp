@@ -15,6 +15,20 @@
 export const compensationData = {
     releaseNotes: [
         {
+            version: "2.5.2",
+            date: "June 2025",
+            major: [
+                "Comprehensive overhaul of all Role Definitions (Software Engineer, Product Manager, Designer, Data Engineer for levels L2-L6) providing significantly more detailed and nuanced descriptions, responsibilities, and skill sets for improved clarity and accuracy."
+            ],
+            improvements: [
+                "Enhanced mobile responsiveness across the application, including optimized header layout, improved readability, and better content flow on smaller devices.",
+                "Refined visual styling for various UI components on mobile for a cleaner user experience."
+            ],
+            fixes: [
+                "Addressed minor CSS structural issues and improved overall stylesheet consistency."
+            ]
+        },
+        {
             version: "2.5.1",
             date: "May 2025",
             major: [
