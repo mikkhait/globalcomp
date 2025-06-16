@@ -15,6 +15,21 @@
 export const compensationData = {
     releaseNotes: [
         {
+            version: "2.5.3",
+            date: "June 2025",
+            major: [
+                "Updated exchange rates to reflect June 2025 market values (notably GBP to USD)",
+                "Ensured all compensation calculations use the latest currency conversion rates"
+            ],
+            improvements: [
+                "Improved accuracy of USD equivalents for all non-USD salaries",
+                "Release notes now clearly indicate currency update cycles"
+            ],
+            fixes: [
+                "Corrected outdated GBP to USD conversion logic in compensation summary display"
+            ]
+        },
+        {
             version: "2.5.2",
             date: "June 2025",
             major: [
@@ -202,11 +217,11 @@ export const compensationData = {
     
     exchangeRates: {
         USD: 1.0,
-        EUR: 0.9225,
-        PLN: 0.2489,
-        UAH: 0.0261,
-        CAD: 0.7412,
-        GBP: 0.7891,
+        EUR: 1.07,
+        PLN: 0.25,
+        UAH: 0.025,
+        CAD: 0.73,
+        GBP: 1.2686,
     },
     
     currencySymbols: {
