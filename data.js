@@ -700,7 +700,7 @@ export const compensationData = {
                 responsibilities: [
                     "Lead the definition, development, and launch of strategic products or complex feature sets that address major user needs and business opportunities.",
                     "Develop and evangelize a compelling product vision and strategy, ensuring alignment with broader company goals.",
-                    "Mentor and coach L2/L3 Product Managers, fostering their growth and improving the team\'s overall effectiveness.",
+                    "Mentor and coach L2/L3 Product Managers, fostering their growth and improving the team's overall effectiveness.",
                     "Collaborate closely with engineering, design, marketing, sales, and executive leadership to drive product success.",
                     "Own market positioning and go-to-market strategy for their product areas, driving adoption and achieving key performance indicators.",
                     "Proactively identify and pursue opportunities for product innovation and market differentiation."
@@ -939,11 +939,11 @@ export const compensationData = {
             },
             l6: {
                 title: "Principal Data Engineer",
-                description: "A distinguished data engineering leader (12+ years), recognized for their deep and broad expertise and visionary impact on the company\'s entire data landscape. Principal Data Engineers set the long-term technical vision for data, drive groundbreaking innovation in data practices and platforms, mentor other senior technologists, and often represent the company\'s data capabilities externally.",
+                description: "A distinguished data engineering leader (12+ years), recognized for their deep and broad expertise and visionary impact on the company's entire data landscape. Principal Data Engineers set the long-term technical vision for data, drive groundbreaking innovation in data practices and platforms, mentor other senior technologists, and often represent the company's data capabilities externally.",
                 responsibilities: [
                     "Define and champion the long-term technical vision, strategy, and architecture for all data engineering and platform initiatives across the company.",
                     "Initiate, lead, and deliver transformative, high-impact data projects and innovations that provide a significant competitive advantage through data.",
-                    "Solve the company\'s most critical, complex, and ambiguous data engineering challenges, frequently pioneering new architectural patterns or technologies.",
+                    "Solve the company's most critical, complex, and ambiguous data engineering challenges, frequently pioneering new architectural patterns or technologies.",
                     "Mentor and cultivate the growth of Staff and other Principal Data Engineers, shaping the next generation of data technology leadership.",
                     "Act as a key technical advisor on data to executive leadership, profoundly influencing company-wide strategy and investment in data capabilities.",
                     "Represent the company as a data technology authority at industry conferences, in publications, and within relevant open-source and data communities."
@@ -1238,18 +1238,18 @@ export const compensationData = {
             currency: "GBP",
             roles: {
                 engineer: {
-                    L2: { min: 45000, max: 65000 },
-                    L3: { min: 65000, max: 85000 },
-                    L4: { min: 85000, max: 110000 },
-                    L5: { min: 110000, max: 140000 },
-                    L6: { min: 140000, max: 180000 }
+                    L2: { min: 41000, max: 49000 },
+                    L3: { min: 49000, max: 58000 },
+                    L4: { min: 58000, max: 66000 },
+                    L5: { min: 66000, max: 80000 },
+                    L6: { min: 80000, max: 95000 }
                 },
                 dataEngineer: {
-                    L2: { min: 48000, max: 68000 },
-                    L3: { min: 68000, max: 88000 },
-                    L4: { min: 88000, max: 115000 },
-                    L5: { min: 115000, max: 145000 },
-                    L6: { min: 145000, max: 185000 }
+                    L2: { min: 54000, max: 60000 },
+                    L3: { min: 60000, max: 73000 },
+                    L4: { min: 73000, max: 95000 },
+                    L5: { min: 95000, max: 118000 },
+                    L6: { min: 118000, max: 141200 }
                 },
                 pm: {
                     L2: { min: 38000, max: 48000 },
@@ -1266,7 +1266,7 @@ export const compensationData = {
                     L6: { min: 93000, max: 115000 }
                 }
             },
-            notes: "Salaries in the UK are competitive within the region, with a growing tech sector. London salaries are typically 15-25% higher than listed. Data updated June 2025."
+            notes: "Salaries in the UK are competitive within the region. These ranges are validated for Wales and reflect June 2025 market data. London salaries are typically 15-25% higher than listed."
         }
     },
 
