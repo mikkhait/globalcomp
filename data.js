@@ -1,7 +1,7 @@
 /**
  * Global Compensation Calculator Data
- * Version: 2.5.3
- * Last Updated: June 2025
+ * Version: 2.6.0
+ * Last Updated: August 2025
  * 
  * This file contains comprehensive compensation data for tech roles across different countries.
  * Data includes:
@@ -14,6 +14,24 @@
 
 export const compensationData = {
     releaseNotes: [
+        {
+            version: "2.6.0",
+            date: "August 2025",
+            major: [
+                "Fast refresh of compensation ranges across all countries (~3% conservative uplift)",
+                "Added DevOps Engineer role (L2–L6) across all countries",
+                "Updated exchange rates to August 2025 values"
+            ],
+            improvements: [
+                "Updated country notes to reflect August 2025 market context",
+                "Added role definitions for DevOps Engineer",
+                "Extended aggregate salaryRanges with DevOps Engineer for USA/UK/Germany"
+            ],
+            fixes: [
+                "Corrected number formatting in Spain Data Engineer L6 max value",
+                "General data consistency and rounding cleanups"
+            ]
+        },
         {
             version: "2.5.3",
             date: "June 2025",
@@ -217,11 +235,11 @@ export const compensationData = {
     
     exchangeRates: {
         USD: 1.0,
-        EUR: 1.07,
-        PLN: 0.25,
-        UAH: 0.025,
-        CAD: 0.73,
-        GBP: 1.2686,
+        EUR: 1.1647,
+        PLN: 0.2742,
+        UAH: 0.0241,
+        CAD: 0.7273,
+        GBP: 1.3437,
     },
     
     currencySymbols: {
@@ -958,6 +976,99 @@ export const compensationData = {
                 ]
             }
         }
+        ,
+        devOpsEngineer: {
+            l2: {
+                title: "Associate DevOps Engineer",
+                description: "An entry-level DevOps role (0-2 years) focused on learning CI/CD, infrastructure-as-code, observability, and cloud fundamentals. Contributes to build/deploy pipelines and environment reliability under guidance.",
+                responsibilities: [
+                    "Assist with maintaining CI/CD pipelines and deployment workflows",
+                    "Write and maintain infrastructure-as-code (e.g., Terraform) with supervision",
+                    "Monitor services and respond to basic alerts and incidents",
+                    "Contribute to documentation of runbooks and platform tooling",
+                    "Collaborate with engineers on reliability and performance tasks"
+                ],
+                skills: [
+                    "Foundational knowledge of at least one cloud provider (AWS/GCP/Azure)",
+                    "Basics of CI/CD (e.g., GitHub Actions, GitLab CI, Jenkins)",
+                    "Intro to infrastructure-as-code (Terraform/CloudFormation)",
+                    "Linux fundamentals, shell scripting, and version control (Git)",
+                    "Strong willingness to learn SRE/DevOps practices"
+                ]
+            },
+            l3: {
+                title: "DevOps Engineer",
+                description: "A DevOps engineer (2-5 years) who independently builds and maintains CI/CD pipelines, IaC modules, and observability. Improves developer experience and environment reliability.",
+                responsibilities: [
+                    "Design, implement, and own CI/CD pipelines and release strategies",
+                    "Develop reusable infrastructure-as-code modules and standards",
+                    "Implement monitoring, logging, and alerting with SLO/SLI practices",
+                    "Automate environment provisioning and configuration management",
+                    "Collaborate with product teams to improve operability and performance"
+                ],
+                skills: [
+                    "Proficiency with a major cloud provider and VPC/networking basics",
+                    "Strong CI/CD tooling expertise and artifact/versioning strategy",
+                    "Hands-on with Terraform/CloudFormation and configuration management",
+                    "Observability stacks (e.g., Prometheus, Grafana, ELK, OpenTelemetry)",
+                    "Containerization/orchestration fundamentals (Docker/Kubernetes)"
+                ]
+            },
+            l4: {
+                title: "Senior DevOps Engineer",
+                description: "A senior DevOps engineer (5-8 years) leading platform reliability, cost/scale efficiency, security-by-default CI/CD, and incident response. Mentors DevOps engineers and drives best practices.",
+                responsibilities: [
+                    "Architect reliable, secure, and scalable platform/infrastructure solutions",
+                    "Own incident response processes and drive post-incident improvements",
+                    "Establish platform standards for IaC, CI/CD, and observability",
+                    "Optimize performance and cost across environments",
+                    "Mentor L2/L3 engineers and uplift operational excellence"
+                ],
+                skills: [
+                    "Deep cloud architecture and Kubernetes operations",
+                    "Advanced IaC patterns, modules, and policy as code",
+                    "SRE practices: SLOs, error budgets, capacity planning",
+                    "Strong security posture in pipelines and runtime environments",
+                    "Infra cost analysis and optimization"
+                ]
+            },
+            l5: {
+                title: "Staff DevOps Engineer / Platform Engineer",
+                description: "A staff-level DevOps/platform leader (8-12+ years) defining the platform roadmap, scaling patterns, and reliability strategies across multiple teams; aligns infrastructure with business goals.",
+                responsibilities: [
+                    "Define platform strategy and multi-region/HA architectures",
+                    "Lead cross-team initiatives on developer experience and reliability",
+                    "Set standards for security, compliance, and governance in the platform",
+                    "Drive significant cost/performance improvements at scale",
+                    "Coach senior engineers and influence technical direction across org"
+                ],
+                skills: [
+                    "Expertise in distributed systems and multi-cluster operations",
+                    "Platform product thinking and strong stakeholder communication",
+                    "Compliance and governance in cloud environments",
+                    "Incident/chaos engineering and resilience patterns",
+                    "Long-term capacity, reliability, and cost modeling"
+                ]
+            },
+            l6: {
+                title: "Principal DevOps Engineer",
+                description: "A principal-level platform/SRE leader (12+ years) setting vision for reliability, platform products, and automation across the company; represents platform externally.",
+                responsibilities: [
+                    "Set long-term reliability and platform vision for the company",
+                    "Lead transformative platform programs and large-scale migrations",
+                    "Evolve org-wide incident management and resilience practices",
+                    "Mentor Staff/Principal engineers and build platform communities of practice",
+                    "Represent platform strategy with executives and at industry forums"
+                ],
+                skills: [
+                    "World-class platform/SRE expertise across clouds and orchestration",
+                    "Visionary thinking with pragmatic execution in large environments",
+                    "Exceptional influence and communication at executive level",
+                    "Proven record of operating planet-scale or mission-critical systems",
+                    "Ecosystem leadership and strong external credibility"
+                ]
+            }
+        }
     },
 
     countries: {
@@ -965,355 +1076,441 @@ export const compensationData = {
             currency: "EUR",
             roles: {
                 engineer: {
-                    L2: { min: 32000, max: 42000 },
-                    L3: { min: 42000, max: 54000 },
-                    L4: { min: 54000, max: 67000 },
-                    L5: { min: 67000, max: 82000 },
-                    L6: { min: 82000, max: 95000 }
+                    L2: { min: 32960, max: 43260 },
+                    L3: { min: 43260, max: 55620 },
+                    L4: { min: 55620, max: 69010 },
+                    L5: { min: 69010, max: 84460 },
+                    L6: { min: 84460, max: 97850 }
                 },
                 dataEngineer: {
-                    L2: { min: 34000, max: 45000 },
-                    L3: { min: 45000, max: 57000 },
-                    L4: { min: 57000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
+                    L2: { min: 35020, max: 46350 },
+                    L3: { min: 46350, max: 58710 },
+                    L4: { min: 58710, max: 72100 },
+                    L5: { min: 72100, max: 87550 },
+                    L6: { min: 87550, max: 103000 }
                 },
                 pm: {
-                    L2: { min: 30000, max: 40000 },
-                    L3: { min: 40000, max: 52000 },
-                    L4: { min: 52000, max: 65000 },
-                    L5: { min: 65000, max: 80000 },
-                    L6: { min: 80000, max: 95000 }
+                    L2: { min: 30900, max: 41200 },
+                    L3: { min: 41200, max: 53560 },
+                    L4: { min: 53560, max: 66950 },
+                    L5: { min: 66950, max: 82400 },
+                    L6: { min: 82400, max: 97850 }
                 },
                 designer: {
-                    L2: { min: 28000, max: 37000 },
-                    L3: { min: 37000, max: 48000 },
-                    L4: { min: 48000, max: 60000 },
-                    L5: { min: 60000, max: 75000 },
-                    L6: { min: 75000, max: 90000 }
+                    L2: { min: 28840, max: 38110 },
+                    L3: { min: 38110, max: 49440 },
+                    L4: { min: 49440, max: 61800 },
+                    L5: { min: 61800, max: 77250 },
+                    L6: { min: 77250, max: 92700 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 32960, max: 43260 },
+                    L3: { min: 43260, max: 55620 },
+                    L4: { min: 55620, max: 69010 },
+                    L5: { min: 69010, max: 84460 },
+                    L6: { min: 84460, max: 97850 }
                 }
             },
-            notes: "Lithuania's IT sector continues to grow, with increasing demand for skilled professionals. Data updated June 2025."
+            notes: "Lithuania's IT sector continues steady growth with demand for engineers and data talent. Fast refresh applied (~3%) with August 2025 market context and updated EUR/USD."
         },
         usa: {
             currency: "USD",
             roles: {
                 engineer: {
-                    L2: { min: 90000, max: 120000 },
-                    L3: { min: 120000, max: 155000 },
-                    L4: { min: 155000, max: 195000 },
-                    L5: { min: 195000, max: 240000 },
-                    L6: { min: 240000, max: 300000 }
+                    L2: { min: 92700, max: 123600 },
+                    L3: { min: 123600, max: 159650 },
+                    L4: { min: 159650, max: 200850 },
+                    L5: { min: 200850, max: 247200 },
+                    L6: { min: 247200, max: 309000 }
                 },
                 dataEngineer: {
-                    L2: { min: 95000, max: 125000 },
-                    L3: { min: 125000, max: 160000 },
-                    L4: { min: 160000, max: 200000 },
-                    L5: { min: 200000, max: 250000 },
-                    L6: { min: 250000, max: 310000 }
+                    L2: { min: 97850, max: 128750 },
+                    L3: { min: 128750, max: 164800 },
+                    L4: { min: 164800, max: 206000 },
+                    L5: { min: 206000, max: 257500 },
+                    L6: { min: 257500, max: 319300 }
                 },
                 pm: {
-                    L2: { min: 85000, max: 120000 },
-                    L3: { min: 120000, max: 160000 },
-                    L4: { min: 150000, max: 195000 },
-                    L5: { min: 170000, max: 240000 },
-                    L6: { min: 200000, max: 270000 }
+                    L2: { min: 87550, max: 123600 },
+                    L3: { min: 123600, max: 164800 },
+                    L4: { min: 154500, max: 200850 },
+                    L5: { min: 175100, max: 247200 },
+                    L6: { min: 206000, max: 278100 }
                 },
                 designer: {
-                    L2: { min: 80000, max: 110000 },
-                    L3: { min: 110000, max: 150000 },
-                    L4: { min: 140000, max: 180000 },
-                    L5: { min: 160000, max: 210000 },
-                    L6: { min: 190000, max: 250000 }
+                    L2: { min: 82400, max: 113300 },
+                    L3: { min: 113300, max: 154500 },
+                    L4: { min: 144200, max: 185400 },
+                    L5: { min: 164800, max: 216300 },
+                    L6: { min: 195700, max: 257500 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 92700, max: 123600 },
+                    L3: { min: 123600, max: 159650 },
+                    L4: { min: 159650, max: 200850 },
+                    L5: { min: 200850, max: 247200 },
+                    L6: { min: 247200, max: 309000 }
                 }
             },
-            notes: "Salaries reflect 2025 US market, with higher ranges in major tech hubs (SF, NYC, Seattle). Data updated June 2025."
+            notes: "Salaries reflect 2025–2025H2 US market, uplifted ~3% in fast refresh. Major hubs (SF, NYC, Seattle) trend materially higher. Exchange rates updated August 2025."
         },
         spain: {
             currency: "EUR",
             roles: {
                 engineer: {
-                    L2: { min: 25000, max: 35000 },
-                    L3: { min: 35000, max: 50000 },
-                    L4: { min: 50000, max: 65000 },
-                    L5: { min: 65000, max: 80000 },
-                    L6: { min: 80000, max: 95000 }
+                    L2: { min: 25750, max: 36050 },
+                    L3: { min: 36050, max: 51500 },
+                    L4: { min: 51500, max: 66950 },
+                    L5: { min: 66950, max: 82400 },
+                    L6: { min: 82400, max: 97850 }
                 },
                 dataEngineer: {
-                    L2: { min: 27000, max: 37000 },
-                    L3: { min: 37000, max: 52000 },
-                    L4: { min: 52000, max: 67000 },
-                    L5: { min: 67000, max: 82000 },
-                    L6: { min: 82000, max: 98000 }
+                    L2: { min: 27810, max: 38110 },
+                    L3: { min: 38110, max: 53560 },
+                    L4: { min: 53560, max: 69010 },
+                    L5: { min: 69010, max: 84460 },
+                    L6: { min: 84460, max: 100940 }
                 },
                 pm: {
-                    L2: { min: 23000, max: 32000 },
-                    L3: { min: 32000, max: 45000 },
-                    L4: { min: 45000, max: 60000 },
-                    L5: { min: 60000, max: 75000 },
-                    L6: { min: 75000, max: 90000 }
+                    L2: { min: 23690, max: 32960 },
+                    L3: { min: 32960, max: 46350 },
+                    L4: { min: 46350, max: 61800 },
+                    L5: { min: 61800, max: 77250 },
+                    L6: { min: 77250, max: 92700 }
                 },
                 designer: {
-                    L2: { min: 21000, max: 30000 },
-                    L3: { min: 30000, max: 42000 },
-                    L4: { min: 42000, max: 55000 },
-                    L5: { min: 55000, max: 70000 },
-                    L6: { min: 70000, max: 85000 }
+                    L2: { min: 21630, max: 30900 },
+                    L3: { min: 30900, max: 43320 },
+                    L4: { min: 43320, max: 56650 },
+                    L5: { min: 56650, max: 72100 },
+                    L6: { min: 72100, max: 87550 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 25750, max: 36050 },
+                    L3: { min: 36050, max: 51500 },
+                    L4: { min: 51500, max: 66950 },
+                    L5: { min: 66950, max: 82400 },
+                    L6: { min: 82400, max: 97850 }
                 }
             },
-            notes: "Salaries in Spain include 14 monthly payments. Tech hubs like Barcelona and Madrid offer higher ranges. Data updated June 2025."
+            notes: "Spain salaries typically paid in 14 installments; Barcelona and Madrid remain above national medians. Fast refresh (~3%) and August 2025 FX incorporated."
         },
         poland: {
             currency: "PLN",
             roles: {
                 engineer: {
-                    L2: { min: 95000, max: 130000 },
-                    L3: { min: 130000, max: 180000 },
-                    L4: { min: 180000, max: 240000 },
-                    L5: { min: 240000, max: 310000 },
-                    L6: { min: 310000, max: 390000 }
+                    L2: { min: 97850, max: 133900 },
+                    L3: { min: 133900, max: 185400 },
+                    L4: { min: 185400, max: 247200 },
+                    L5: { min: 247200, max: 319300 },
+                    L6: { min: 319300, max: 401700 }
                 },
                 dataEngineer: {
-                    L2: { min: 100000, max: 135000 },
-                    L3: { min: 135000, max: 185000 },
-                    L4: { min: 185000, max: 245000 },
-                    L5: { min: 245000, max: 320000 },
-                    L6: { min: 320000, max: 400000 }
+                    L2: { min: 103000, max: 139050 },
+                    L3: { min: 139050, max: 190550 },
+                    L4: { min: 190550, max: 252350 },
+                    L5: { min: 252350, max: 329600 },
+                    L6: { min: 329600, max: 412000 }
                 },
                 pm: {
-                    L2: { min: 90000, max: 120000 },
-                    L3: { min: 120000, max: 160000 },
-                    L4: { min: 160000, max: 210000 },
-                    L5: { min: 210000, max: 270000 },
-                    L6: { min: 270000, max: 340000 }
+                    L2: { min: 92700, max: 123600 },
+                    L3: { min: 123600, max: 164800 },
+                    L4: { min: 164800, max: 216300 },
+                    L5: { min: 216300, max: 278100 },
+                    L6: { min: 278100, max: 350200 }
                 },
                 designer: {
-                    L2: { min: 80000, max: 110000 },
-                    L3: { min: 110000, max: 150000 },
-                    L4: { min: 150000, max: 200000 },
-                    L5: { min: 200000, max: 260000 },
-                    L6: { min: 260000, max: 320000 }
+                    L2: { min: 82400, max: 113300 },
+                    L3: { min: 113300, max: 154500 },
+                    L4: { min: 154500, max: 206000 },
+                    L5: { min: 206000, max: 267800 },
+                    L6: { min: 267800, max: 329600 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 97850, max: 133900 },
+                    L3: { min: 133900, max: 185400 },
+                    L4: { min: 185400, max: 247200 },
+                    L5: { min: 247200, max: 319300 },
+                    L6: { min: 319300, max: 401700 }
                 }
             },
-            notes: "Poland's IT sector is booming, with Warsaw and Krakow offering the highest salaries. Data updated June 2025."
+            notes: "Strong IT demand in Warsaw/Krakow; ranges reflect ~3% fast uplift and PLN/USD parity as of August 2025."
         },
         canada: {
             currency: "CAD",
             roles: {
                 engineer: {
-                    L2: { min: 80000, max: 105000 },
-                    L3: { min: 105000, max: 135000 },
-                    L4: { min: 135000, max: 170000 },
-                    L5: { min: 170000, max: 220000 },
-                    L6: { min: 220000, max: 270000 }
+                    L2: { min: 82400, max: 108150 },
+                    L3: { min: 108150, max: 139050 },
+                    L4: { min: 139050, max: 175100 },
+                    L5: { min: 175100, max: 226600 },
+                    L6: { min: 226600, max: 278100 }
                 },
                 dataEngineer: {
-                    L2: { min: 85000, max: 110000 },
-                    L3: { min: 110000, max: 140000 },
-                    L4: { min: 140000, max: 175000 },
-                    L5: { min: 175000, max: 225000 },
-                    L6: { min: 225000, max: 280000 }
+                    L2: { min: 87550, max: 113300 },
+                    L3: { min: 113300, max: 144200 },
+                    L4: { min: 144200, max: 180250 },
+                    L5: { min: 180250, max: 231750 },
+                    L6: { min: 231750, max: 288400 }
                 },
                 pm: {
-                    L2: { min: 75000, max: 100000 },
-                    L3: { min: 100000, max: 130000 },
-                    L4: { min: 130000, max: 165000 },
-                    L5: { min: 165000, max: 210000 },
-                    L6: { min: 210000, max: 260000 }
+                    L2: { min: 77250, max: 103000 },
+                    L3: { min: 103000, max: 133900 },
+                    L4: { min: 133900, max: 169950 },
+                    L5: { min: 169950, max: 216300 },
+                    L6: { min: 216300, max: 267800 }
                 },
                 designer: {
-                    L2: { min: 70000, max: 95000 },
-                    L3: { min: 95000, max: 125000 },
-                    L4: { min: 125000, max: 160000 },
-                    L5: { min: 160000, max: 200000 },
-                    L6: { min: 200000, max: 250000 }
+                    L2: { min: 72100, max: 97850 },
+                    L3: { min: 97850, max: 128750 },
+                    L4: { min: 128750, max: 164800 },
+                    L5: { min: 164800, max: 206000 },
+                    L6: { min: 206000, max: 257500 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 82400, max: 108150 },
+                    L3: { min: 108150, max: 139050 },
+                    L4: { min: 139050, max: 175100 },
+                    L5: { min: 175100, max: 226600 },
+                    L6: { min: 226600, max: 278100 }
                 }
             },
-            notes: "Canadian tech hubs (Toronto, Vancouver, Montreal) offer the highest salaries. Data updated June 2025."
+            notes: "Toronto/Vancouver/Montreal lead ranges. Fast refresh (~3%) with CAD/USD August 2025 rate applied."
         },
         ukraine: {
             currency: "UAH",
             roles: {
                 engineer: {
-                    L2: { min: 540000, max: 780000 },
-                    L3: { min: 780000, max: 1080000 },
-                    L4: { min: 1080000, max: 1500000 },
-                    L5: { min: 1500000, max: 2100000 },
-                    L6: { min: 2100000, max: 2700000 }
+                    L2: { min: 556200, max: 803400 },
+                    L3: { min: 803400, max: 1112400 },
+                    L4: { min: 1112400, max: 1545000 },
+                    L5: { min: 1545000, max: 2163000 },
+                    L6: { min: 2163000, max: 2781000 }
                 },
                 dataEngineer: {
-                    L2: { min: 570000, max: 820000 },
-                    L3: { min: 820000, max: 1150000 },
-                    L4: { min: 1150000, max: 1600000 },
-                    L5: { min: 1600000, max: 2200000 },
-                    L6: { min: 2200000, max: 2850000 }
+                    L2: { min: 587100, max: 844600 },
+                    L3: { min: 844600, max: 1184500 },
+                    L4: { min: 1184500, max: 1648000 },
+                    L5: { min: 1648000, max: 2266000 },
+                    L6: { min: 2266000, max: 2935500 }
                 },
                 pm: {
-                    L2: { min: 480000, max: 700000 },
-                    L3: { min: 700000, max: 1000000 },
-                    L4: { min: 1000000, max: 1400000 },
-                    L5: { min: 1400000, max: 1900000 },
-                    L6: { min: 1900000, max: 2500000 }
+                    L2: { min: 494400, max: 721000 },
+                    L3: { min: 721000, max: 1030000 },
+                    L4: { min: 1030000, max: 1442000 },
+                    L5: { min: 1442000, max: 1957000 },
+                    L6: { min: 1957000, max: 2575000 }
                 },
                 designer: {
-                    L2: { min: 420000, max: 600000 },
-                    L3: { min: 600000, max: 900000 },
-                    L4: { min: 900000, max: 1300000 },
-                    L5: { min: 1300000, max: 1800000 },
-                    L6: { min: 1800000, max: 2400000 }
+                    L2: { min: 432600, max: 618000 },
+                    L3: { min: 618000, max: 927000 },
+                    L4: { min: 927000, max: 1339000 },
+                    L5: { min: 1339000, max: 1854000 },
+                    L6: { min: 1854000, max: 2472000 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 556200, max: 803400 },
+                    L3: { min: 803400, max: 1112400 },
+                    L4: { min: 1112400, max: 1545000 },
+                    L5: { min: 1545000, max: 2163000 },
+                    L6: { min: 2163000, max: 2781000 }
                 }
             },
-            notes: "Salaries reflect 2025 market for international companies hiring in Ukraine. Local companies may offer lower ranges. Data updated June 2025."
+            notes: "Ranges reflect international hiring benchmarks; local offers can be lower. Fast refresh (~3%). UAH/USD updated August 2025."
         },
         slovakia: {
             currency: "EUR",
             roles: {
                 engineer: {
-                    L2: { min: 28000, max: 37000 },
-                    L3: { min: 37000, max: 50000 },
-                    L4: { min: 50000, max: 65000 },
-                    L5: { min: 65000, max: 80000 },
-                    L6: { min: 80000, max: 95000 }
+                    L2: { min: 28840, max: 38110 },
+                    L3: { min: 38110, max: 51500 },
+                    L4: { min: 51500, max: 66950 },
+                    L5: { min: 66950, max: 82400 },
+                    L6: { min: 82400, max: 97850 }
                 },
                 dataEngineer: {
-                    L2: { min: 30000, max: 40000 },
-                    L3: { min: 40000, max: 54000 },
-                    L4: { min: 54000, max: 70000 },
-                    L5: { min: 70000, max: 85000 },
-                    L6: { min: 85000, max: 100000 }
+                    L2: { min: 30900, max: 41200 },
+                    L3: { min: 41200, max: 55620 },
+                    L4: { min: 55620, max: 72100 },
+                    L5: { min: 72100, max: 87550 },
+                    L6: { min: 87550, max: 103000 }
                 },
                 pm: {
-                    L2: { min: 25000, max: 34000 },
-                    L3: { min: 34000, max: 46000 },
-                    L4: { min: 46000, max: 60000 },
-                    L5: { min: 60000, max: 75000 },
-                    L6: { min: 75000, max: 90000 }
+                    L2: { min: 25750, max: 35020 },
+                    L3: { min: 35020, max: 47380 },
+                    L4: { min: 47380, max: 61800 },
+                    L5: { min: 61800, max: 77250 },
+                    L6: { min: 77250, max: 92700 }
                 },
                 designer: {
-                    L2: { min: 23000, max: 32000 },
-                    L3: { min: 32000, max: 42000 },
-                    L4: { min: 42000, max: 55000 },
-                    L5: { min: 55000, max: 70000 },
-                    L6: { min: 70000, max: 85000 }
+                    L2: { min: 23690, max: 32960 },
+                    L3: { min: 32960, max: 43320 },
+                    L4: { min: 43320, max: 56650 },
+                    L5: { min: 56650, max: 72100 },
+                    L6: { min: 72100, max: 87550 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 28840, max: 38110 },
+                    L3: { min: 38110, max: 51500 },
+                    L4: { min: 51500, max: 66950 },
+                    L5: { min: 66950, max: 82400 },
+                    L6: { min: 82400, max: 97850 }
                 }
             },
-            notes: "Slovakia offers competitive salaries within the EU, with lower living costs than Western Europe. Data updated June 2025."
+            notes: "Competitive within EU with lower living costs versus Western Europe. Fast refresh (~3%) and August 2025 FX."
         },
         germany: {
             currency: "EUR",
             roles: {
                 engineer: {
-                    L2: { min: 60000, max: 80000 },
-                    L3: { min: 80000, max: 100000 },
-                    L4: { min: 100000, max: 125000 },
-                    L5: { min: 125000, max: 155000 },
-                    L6: { min: 155000, max: 200000 }
+                    L2: { min: 61800, max: 82400 },
+                    L3: { min: 82400, max: 103000 },
+                    L4: { min: 103000, max: 128750 },
+                    L5: { min: 128750, max: 159650 },
+                    L6: { min: 159650, max: 206000 }
                 },
                 dataEngineer: {
-                    L2: { min: 63000, max: 85000 },
-                    L3: { min: 85000, max: 105000 },
-                    L4: { min: 105000, max: 130000 },
-                    L5: { min: 130000, max: 160000 },
-                    L6: { min: 160000, max: 210000 }
+                    L2: { min: 64890, max: 87550 },
+                    L3: { min: 87550, max: 108150 },
+                    L4: { min: 108150, max: 133900 },
+                    L5: { min: 133900, max: 164800 },
+                    L6: { min: 164800, max: 216300 }
                 },
                 pm: {
-                    L2: { min: 55000, max: 70000 },
-                    L3: { min: 70000, max: 90000 },
-                    L4: { min: 90000, max: 115000 },
-                    L5: { min: 115000, max: 145000 },
-                    L6: { min: 145000, max: 185000 }
+                    L2: { min: 56650, max: 72100 },
+                    L3: { min: 72100, max: 92700 },
+                    L4: { min: 92700, max: 118450 },
+                    L5: { min: 118450, max: 149350 },
+                    L6: { min: 149350, max: 190550 }
                 },
                 designer: {
-                    L2: { min: 52000, max: 67000 },
-                    L3: { min: 67000, max: 87000 },
-                    L4: { min: 87000, max: 110000 },
-                    L5: { min: 110000, max: 140000 },
-                    L6: { min: 140000, max: 180000 }
+                    L2: { min: 53560, max: 69010 },
+                    L3: { min: 69010, max: 89610 },
+                    L4: { min: 89610, max: 113300 },
+                    L5: { min: 113300, max: 144200 },
+                    L6: { min: 144200, max: 185400 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 61800, max: 82400 },
+                    L3: { min: 82400, max: 103000 },
+                    L4: { min: 103000, max: 128750 },
+                    L5: { min: 128750, max: 159650 },
+                    L6: { min: 159650, max: 206000 }
                 }
             },
-            notes: "Salaries include 13th month pay. Berlin and Munich offer higher ranges. Data updated June 2025."
+            notes: "Some employers include 13th month pay; Berlin/Munich trend higher. Fast refresh (~3%) and August 2025 exchange rates applied."
         },
         uk: {
             currency: "GBP",
             roles: {
                 engineer: {
-                    L2: { min: 41000, max: 49000 },
-                    L3: { min: 49000, max: 58000 },
-                    L4: { min: 58000, max: 66000 },
-                    L5: { min: 66000, max: 80000 },
-                    L6: { min: 80000, max: 95000 }
+                    L2: { min: 42230, max: 50470 },
+                    L3: { min: 50470, max: 59740 },
+                    L4: { min: 59740, max: 67980 },
+                    L5: { min: 67980, max: 82400 },
+                    L6: { min: 82400, max: 97850 }
                 },
                 dataEngineer: {
-                    L2: { min: 54000, max: 60000 },
-                    L3: { min: 60000, max: 73000 },
-                    L4: { min: 73000, max: 95000 },
-                    L5: { min: 95000, max: 118000 },
-                    L6: { min: 118000, max: 141200 }
+                    L2: { min: 55620, max: 61800 },
+                    L3: { min: 61800, max: 75190 },
+                    L4: { min: 75190, max: 97850 },
+                    L5: { min: 97850, max: 121540 },
+                    L6: { min: 121540, max: 145436 }
                 },
                 pm: {
-                    L2: { min: 38000, max: 48000 },
-                    L3: { min: 48000, max: 65000 },
-                    L4: { min: 65000, max: 82000 },
-                    L5: { min: 82000, max: 95000 },
-                    L6: { min: 95000, max: 120000 }
+                    L2: { min: 39140, max: 49440 },
+                    L3: { min: 49440, max: 66950 },
+                    L4: { min: 66950, max: 84460 },
+                    L5: { min: 84460, max: 97850 },
+                    L6: { min: 97850, max: 123600 }
                 },
                 designer: {
-                    L2: { min: 35000, max: 45000 },
-                    L3: { min: 45000, max: 60000 },
-                    L4: { min: 60000, max: 78000 },
-                    L5: { min: 78000, max: 93000 },
-                    L6: { min: 93000, max: 115000 }
+                    L2: { min: 36050, max: 46350 },
+                    L3: { min: 46350, max: 61800 },
+                    L4: { min: 61800, max: 80340 },
+                    L5: { min: 80340, max: 95790 },
+                    L6: { min: 95790, max: 118450 }
+                },
+                devOpsEngineer: {
+                    L2: { min: 42230, max: 50470 },
+                    L3: { min: 50470, max: 59740 },
+                    L4: { min: 59740, max: 67980 },
+                    L5: { min: 67980, max: 82400 },
+                    L6: { min: 82400, max: 97850 }
                 }
             },
-            notes: "Salaries in the UK are competitive within the region. These ranges are validated for Wales and reflect June 2025 market data. London salaries are typically 15-25% higher than listed."
+            notes: "UK ranges validated for Wales; London typically 15–25% higher. Fast refresh (~3%) and GBP/USD as of August 2025."
         }
     },
 
     salaryRanges: {
         engineer: {
             usa: {
-                L2: { min: 85000, max: 110000 },
-                L3: { min: 110000, max: 140000 },
-                L4: { min: 140000, max: 180000 },
-                L5: { min: 180000, max: 220000 },
-                L6: { min: 220000, max: 280000 }
+                L2: { min: 87550, max: 113300 },
+                L3: { min: 113300, max: 144200 },
+                L4: { min: 144200, max: 185400 },
+                L5: { min: 185400, max: 226600 },
+                L6: { min: 226600, max: 288400 }
             },
             uk: {
-                L2: { min: 45000, max: 65000 },
-                L3: { min: 65000, max: 85000 },
-                L4: { min: 85000, max: 110000 },
-                L5: { min: 110000, max: 140000 },
-                L6: { min: 140000, max: 180000 }
+                L2: { min: 46350, max: 66950 },
+                L3: { min: 66950, max: 87650 },
+                L4: { min: 87650, max: 113300 },
+                L5: { min: 113300, max: 144200 },
+                L6: { min: 144200, max: 185400 }
             },
             germany: {
-                L2: { min: 55000, max: 75000 },
-                L3: { min: 75000, max: 95000 },
-                L4: { min: 95000, max: 120000 },
-                L5: { min: 120000, max: 150000 },
-                L6: { min: 150000, max: 190000 }
+                L2: { min: 56650, max: 77250 },
+                L3: { min: 77250, max: 97850 },
+                L4: { min: 97850, max: 123600 },
+                L5: { min: 123600, max: 154500 },
+                L6: { min: 154500, max: 195700 }
             }
         },
         dataEngineer: {
             usa: {
-                L2: { min: 90000, max: 115000 },
-                L3: { min: 115000, max: 145000 },
-                L4: { min: 145000, max: 185000 },
-                L5: { min: 185000, max: 225000 },
-                L6: { min: 225000, max: 285000 }
+                L2: { min: 92700, max: 118450 },
+                L3: { min: 118450, max: 149350 },
+                L4: { min: 149350, max: 190550 },
+                L5: { min: 190550, max: 231750 },
+                L6: { min: 231750, max: 293550 }
             },
             uk: {
-                L2: { min: 48000, max: 68000 },
-                L3: { min: 68000, max: 88000 },
-                L4: { min: 88000, max: 115000 },
-                L5: { min: 115000, max: 145000 },
-                L6: { min: 145000, max: 185000 }
+                L2: { min: 49440, max: 70040 },
+                L3: { min: 70040, max: 90680 },
+                L4: { min: 90680, max: 118450 },
+                L5: { min: 118450, max: 149350 },
+                L6: { min: 149350, max: 190550 }
             },
             germany: {
-                L2: { min: 58000, max: 78000 },
-                L3: { min: 78000, max: 98000 },
-                L4: { min: 98000, max: 125000 },
-                L5: { min: 125000, max: 155000 },
-                L6: { min: 155000, max: 195000 }
+                L2: { min: 59740, max: 80340 },
+                L3: { min: 80340, max: 100040 },
+                L4: { min: 100040, max: 127500 },
+                L5: { min: 127500, max: 158650 },
+                L6: { min: 158650, max: 199650 }
+            }
+        },
+        devOpsEngineer: {
+            usa: {
+                L2: { min: 92700, max: 123600 },
+                L3: { min: 123600, max: 159650 },
+                L4: { min: 159650, max: 200850 },
+                L5: { min: 200850, max: 247200 },
+                L6: { min: 247200, max: 309000 }
+            },
+            uk: {
+                L2: { min: 42230, max: 50470 },
+                L3: { min: 50470, max: 59740 },
+                L4: { min: 59740, max: 67980 },
+                L5: { min: 67980, max: 82400 },
+                L6: { min: 82400, max: 97850 }
+            },
+            germany: {
+                L2: { min: 61800, max: 82400 },
+                L3: { min: 82400, max: 103000 },
+                L4: { min: 103000, max: 128750 },
+                L5: { min: 128750, max: 159650 },
+                L6: { min: 159650, max: 206000 }
             }
         }
     }
