@@ -255,7 +255,7 @@ export const compensationData = {
         usa: 'USD',
         spain: 'EUR',
         poland: 'PLN',
-        ukraine: 'UAH',
+        ukraine: 'USD',
         slovakia: 'EUR',
         canada: 'CAD',
         lithuania: 'EUR',
@@ -1278,45 +1278,56 @@ export const compensationData = {
             notes: "Toronto/Vancouver/Montreal lead ranges. Fast refresh (~3%) with CAD/USD August 2025 rate applied."
         },
         ukraine: {
-            currency: "UAH",
+            currency: "USD",
             roles: {
                 engineer: {
-                    L2: { min: 556200, max: 803400 },
-                    L3: { min: 803400, max: 1112400 },
-                    L4: { min: 1112400, max: 1545000 },
-                    L5: { min: 1545000, max: 2163000 },
-                    L6: { min: 2163000, max: 2781000 }
+                    L2: { min: 13400, max: 19400 },
+                    L3: { min: 19400, max: 26800 },
+                    L4: { min: 26800, max: 37300 },
+                    L5: { min: 37200, max: 52100 },
+                    L6: { min: 52100, max: 67000 }
                 },
                 dataEngineer: {
-                    L2: { min: 587100, max: 844600 },
-                    L3: { min: 844600, max: 1184500 },
-                    L4: { min: 1184500, max: 1648000 },
-                    L5: { min: 1648000, max: 2266000 },
-                    L6: { min: 2266000, max: 2935500 }
+                    L2: { min: 14100, max: 20400 },
+                    L3: { min: 20400, max: 28600 },
+                    L4: { min: 28600, max: 39700 },
+                    L5: { min: 39700, max: 54600 },
+                    L6: { min: 54600, max: 70700 }
                 },
                 pm: {
-                    L2: { min: 494400, max: 721000 },
-                    L3: { min: 721000, max: 1030000 },
-                    L4: { min: 1030000, max: 1442000 },
-                    L5: { min: 1442000, max: 1957000 },
-                    L6: { min: 1957000, max: 2575000 }
+                    L2: { min: 11900, max: 17400 },
+                    L3: { min: 17400, max: 24800 },
+                    L4: { min: 24800, max: 34800 },
+                    L5: { min: 34800, max: 47200 },
+                    L6: { min: 47200, max: 62100 }
                 },
                 designer: {
-                    L2: { min: 432600, max: 618000 },
-                    L3: { min: 618000, max: 927000 },
-                    L4: { min: 927000, max: 1339000 },
-                    L5: { min: 1339000, max: 1854000 },
-                    L6: { min: 1854000, max: 2472000 }
+                    L2: { min: 10400, max: 14900 },
+                    L3: { min: 14900, max: 22300 },
+                    L4: { min: 22300, max: 32300 },
+                    L5: { min: 32300, max: 44700 },
+                    L6: { min: 44700, max: 59600 }
                 },
                 devOpsEngineer: {
-                    L2: { min: 556200, max: 803400 },
-                    L3: { min: 803400, max: 1112400 },
-                    L4: { min: 1112400, max: 1545000 },
-                    L5: { min: 1545000, max: 2163000 },
-                    L6: { min: 2163000, max: 2781000 }
+                    L2: { min: 13400, max: 19400 },
+                    L3: { min: 19400, max: 26800 },
+                    L4: { min: 26800, max: 37300 },
+                    L5: { min: 37200, max: 52100 },
+                    L6: { min: 52100, max: 67000 }
                 }
             },
-            notes: "Ranges reflect international hiring benchmarks; local offers can be lower. Fast refresh (~3%). UAH/USD updated August 2025."
+            notes: "Currency converted to USD for Ukraine using August 2025 FX. Ranges reflect fast refresh (~3%) with Djinni 30-day market thresholds as reference.",
+            sources: {
+                djinni: {
+                    url: "https://djinni.co/salaries/",
+                    updated: "August 2025",
+                    window: "last 30 days",
+                    currency: "USD",
+                    expectationsAvg: { min: 1000, max: 3500 },
+                    jobsMedianRange: { min: 1200, max: 2500 },
+                    hiredMedian: 2300
+                }
+            }
         },
         slovakia: {
             currency: "EUR",
