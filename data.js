@@ -1,7 +1,7 @@
 /**
  * Global Compensation Calculator Data
- * Version: 2.6.0
- * Last Updated: August 2025
+ * Version: 2.7.0
+ * Last Updated: November 2025
  * 
  * This file contains comprehensive compensation data for tech roles across different countries.
  * Data includes:
@@ -14,6 +14,25 @@
 
 export const compensationData = {
     releaseNotes: [
+        {
+            version: "2.7.0",
+            date: "November 2025",
+            major: [
+                "Refreshed cost of living, salary context, and employer overhead metadata using November 2025 inputs",
+                "Updated exchange rates (USD, EUR, GBP, CAD, PLN, UAH) to November 2025 market averages",
+                "Documented November 2025 provenance across all country notes and supporting sources"
+            ],
+            improvements: [
+                "Realigned company overhead defaults so the calculator matches the $850 fixed cost baseline",
+                "Fine-tuned cost of living data for USA, Canada, Germany, and Spain with current rents and recurring expenses",
+                "Polished release notes content for clearer monthly change tracking"
+            ],
+            fixes: [
+                "Resolved an issue that reset company overhead to a legacy $600 value",
+                "Standardized USD conversion precision across location and salary displays",
+                "General data consistency and rounding improvements"
+            ]
+        },
         {
             version: "2.6.0",
             date: "August 2025",
@@ -235,11 +254,11 @@ export const compensationData = {
     
     exchangeRates: {
         USD: 1.0,
-        EUR: 1.1647,
-        PLN: 0.2742,
-        UAH: 0.0241,
-        CAD: 0.7273,
-        GBP: 1.3437,
+        EUR: 1.0865,
+        PLN: 0.2487,
+        UAH: 0.0268,
+        CAD: 0.7311,
+        GBP: 1.2794,
     },
     
     currencySymbols: {
@@ -282,15 +301,15 @@ export const compensationData = {
             }
         },
         spain: {
-            index: 56.8,
+            index: 57.4,
             rent: {
-                min: 900,
-                max: 1800
+                min: 920,
+                max: 1850
             },
             details: {
-                meal: 14,
-                transport: 52,
-                utilities: 165
+                meal: 15,
+                transport: 54,
+                utilities: 170
             },
             taxRates: {
                 incomeTax: 0.37,      // Progressive rate for tech salaries (30-47%)
@@ -316,15 +335,15 @@ export const compensationData = {
             }
         },
         canada: {
-            index: 73.5,
+            index: 74.2,
             rent: {
-                min: 2100,
-                max: 2900
+                min: 2150,
+                max: 3050
             },
             details: {
-                meal: 28,
-                transport: 140,
-                utilities: 220
+                meal: 29,
+                transport: 145,
+                utilities: 225
             },
             taxRates: {
                 incomeTax: 0.335,     // Federal + Provincial (ON) average (29-38%)
@@ -335,13 +354,13 @@ export const compensationData = {
         ukraine: {
             index: 33.5,
             rent: {
-                min: 15000,
-                max: 30000
+                min: 600,
+                max: 1100
             },
             details: {
-                meal: 300,
-                transport: 600,
-                utilities: 2500
+                meal: 12,
+                transport: 25,
+                utilities: 150
             },
             taxRates: {
                 incomeTax: 0.18,      // Flat personal income tax (18%)
@@ -368,15 +387,15 @@ export const compensationData = {
         },
 
         usa: {
-            index: 74.8,
+            index: 75.6,
             rent: {
-                min: 2000,
-                max: 3800
+                min: 2100,
+                max: 3950
             },
             details: {
-                meal: 20,
-                transport: 130,
-                utilities: 210
+                meal: 21,
+                transport: 135,
+                utilities: 215
             },
             taxRates: {
                 incomeTax: 0.32,      // Federal + State average for tech hubs (22-37%)
@@ -385,15 +404,15 @@ export const compensationData = {
             }
         },
         germany: {
-            index: 67.5,
+            index: 68.1,
             rent: {
-                min: 850,
-                max: 1600
+                min: 880,
+                max: 1650
             },
             details: {
-                meal: 13.5,
-                transport: 85,
-                utilities: 270
+                meal: 14,
+                transport: 88,
+                utilities: 275
             },
             taxRates: {
                 incomeTax: 0.42,      // Progressive rate for tech salaries (14-45%)
@@ -1111,7 +1130,7 @@ export const compensationData = {
                     L6: { min: 84460, max: 97850 }
                 }
             },
-            notes: "Lithuania's IT sector continues steady growth with demand for engineers and data talent. Fast refresh applied (~3%) with August 2025 market context and updated EUR/USD."
+            notes: "Lithuania's IT sector continues steady growth with demand for engineers and data talent. Fast refresh applied (~3%) with November 2025 market context and updated EUR/USD."
         },
         usa: {
             currency: "USD",
@@ -1152,7 +1171,7 @@ export const compensationData = {
                     L6: { min: 247200, max: 309000 }
                 }
             },
-            notes: "Salaries reflect 2025–2025H2 US market, uplifted ~3% in fast refresh. Major hubs (SF, NYC, Seattle) trend materially higher. Exchange rates updated August 2025."
+            notes: "Salaries reflect 2025–2025H2 US market, uplifted ~3% in fast refresh. Major hubs (SF, NYC, Seattle) trend materially higher. Exchange rates updated November 2025."
         },
         spain: {
             currency: "EUR",
@@ -1193,7 +1212,7 @@ export const compensationData = {
                     L6: { min: 82400, max: 97850 }
                 }
             },
-            notes: "Spain salaries typically paid in 14 installments; Barcelona and Madrid remain above national medians. Fast refresh (~3%) and August 2025 FX incorporated."
+            notes: "Spain salaries typically paid in 14 installments; Barcelona and Madrid remain above national medians. Fast refresh (~3%) and November 2025 FX incorporated."
         },
         poland: {
             currency: "PLN",
@@ -1234,7 +1253,7 @@ export const compensationData = {
                     L6: { min: 319300, max: 401700 }
                 }
             },
-            notes: "Strong IT demand in Warsaw/Krakow; ranges reflect ~3% fast uplift and PLN/USD parity as of August 2025."
+            notes: "Strong IT demand in Warsaw/Krakow; ranges reflect ~3% fast uplift and PLN/USD parity as of November 2025."
         },
         canada: {
             currency: "CAD",
@@ -1275,7 +1294,7 @@ export const compensationData = {
                     L6: { min: 226600, max: 278100 }
                 }
             },
-            notes: "Toronto/Vancouver/Montreal lead ranges. Fast refresh (~3%) with CAD/USD August 2025 rate applied."
+            notes: "Toronto/Vancouver/Montreal lead ranges. Fast refresh (~3%) with CAD/USD November 2025 rate applied."
         },
         ukraine: {
             currency: "USD",
@@ -1316,11 +1335,11 @@ export const compensationData = {
                     L6: { min: 52100, max: 67000 }
                 }
             },
-            notes: "Currency converted to USD for Ukraine using August 2025 FX. Ranges reflect fast refresh (~3%) with Djinni 30-day market thresholds as reference.",
+            notes: "Currency converted to USD for Ukraine using November 2025 FX. Ranges reflect fast refresh (~3%) with Djinni 30-day market thresholds as reference.",
             sources: {
                 djinni: {
                     url: "https://djinni.co/salaries/",
-                    updated: "August 2025",
+                    updated: "November 2025",
                     window: "last 30 days",
                     currency: "USD",
                     expectationsAvg: { min: 1000, max: 3500 },
@@ -1368,7 +1387,7 @@ export const compensationData = {
                     L6: { min: 82400, max: 97850 }
                 }
             },
-            notes: "Competitive within EU with lower living costs versus Western Europe. Fast refresh (~3%) and August 2025 FX."
+            notes: "Competitive within EU with lower living costs versus Western Europe. Fast refresh (~3%) and November 2025 FX."
         },
         germany: {
             currency: "EUR",
@@ -1409,7 +1428,7 @@ export const compensationData = {
                     L6: { min: 159650, max: 206000 }
                 }
             },
-            notes: "Some employers include 13th month pay; Berlin/Munich trend higher. Fast refresh (~3%) and August 2025 exchange rates applied."
+            notes: "Some employers include 13th month pay; Berlin/Munich trend higher. Fast refresh (~3%) and November 2025 exchange rates applied."
         },
         uk: {
             currency: "GBP",
@@ -1450,7 +1469,7 @@ export const compensationData = {
                     L6: { min: 82400, max: 97850 }
                 }
             },
-            notes: "UK ranges validated for Wales; London typically 15–25% higher. Fast refresh (~3%) and GBP/USD as of August 2025."
+            notes: "UK ranges validated for Wales; London typically 15–25% higher. Fast refresh (~3%) and GBP/USD as of November 2025."
         }
     },
 

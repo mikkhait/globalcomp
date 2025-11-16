@@ -139,10 +139,23 @@ export class CompensationCalculator {
         if (workersCompInput) workersCompInput.value = (overhead.workersComp * 100).toFixed(1);
         if (otherFeesInput) otherFeesInput.value = (overhead.otherFees * 100).toFixed(1);
         
-        // Set default fixed overhead if the input exists
-        if (fixedOverheadInput && this.data.companyOverhead?.fixedMonthlyCostUSD) {
-            fixedOverheadInput.value = this.data.companyOverhead.fixedMonthlyCostUSD;
+        if (fixedOverheadInput) {
+            fixedOverheadInput.value = `${this.getDefaultFixedOverhead()}`;
         }
+    }
+
+    getDefaultFixedOverhead() {
+        const baseAmount = this.data?.companyOverhead?.fixedCosts?.baseAmount;
+        if (typeof baseAmount === 'number' && Number.isFinite(baseAmount)) {
+            return baseAmount;
+        }
+
+        const legacyAmount = this.data?.companyOverhead?.fixedMonthlyCostUSD;
+        if (typeof legacyAmount === 'number' && Number.isFinite(legacyAmount)) {
+            return legacyAmount;
+        }
+
+        return 600;
     }
 
     getTaxRates() {
@@ -163,8 +176,11 @@ export class CompensationCalculator {
         const workersCompOverrideInput = document.getElementById('workersCompOverride');
         const otherFeesOverrideInput = document.getElementById('otherFeesOverride');
         
+        const parsedFixedOverhead = parseFloat(fixedOverheadOverrideInput?.value);
+        const fixedOverhead = Number.isFinite(parsedFixedOverhead) ? parsedFixedOverhead : this.getDefaultFixedOverhead();
+
         return {
-            fixedOverhead: parseFloat(fixedOverheadOverrideInput?.value) || this.data.companyOverhead.fixedMonthlyCostUSD || 600,
+            fixedOverhead,
             employerTax: parseFloat(employerTaxOverrideInput?.value) / 100 || 0,
             workersComp: parseFloat(workersCompOverrideInput?.value) / 100 || 0,
             otherFees: parseFloat(otherFeesOverrideInput?.value) / 100 || 0
