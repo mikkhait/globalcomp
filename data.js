@@ -1,7 +1,7 @@
 /**
  * Global Compensation Calculator Data
- * Version: 2.7.0
- * Last Updated: November 2025
+ * Version: 2.8.0
+ * Last Updated: January 2026
  * 
  * This file contains comprehensive compensation data for tech roles across different countries.
  * Data includes:
@@ -14,6 +14,24 @@
 
 export const compensationData = {
     releaseNotes: [
+        {
+            version: "2.8.0",
+            date: "January 2026",
+            major: [
+                "Refreshed FX rates (EUR, GBP, CAD, PLN from ECB via Frankfurter; UAH from National Bank of Ukraine) to align USD conversions with early January 2026 market reference",
+                "Updated UK National Insurance defaults (employee + employer) using GOV.UK 2025/26 published contribution rates",
+                "Updated Canada payroll contribution defaults (EI + CPP, incl. CPP2 metadata) using CRA published 2026 payroll tables",
+                "Corrected Ukraine employee tax defaults to reflect PIT (18%) + military levy (1.5%) with employer-paid USC (22%)"
+            ],
+            improvements: [
+                "Aligned company overhead descriptions with underlying numeric rates (notably Canada and UK) for clearer interpretation",
+                "Improved dataset provenance notes for January 2026 refresh"
+            ],
+            fixes: [
+                "Fixed an internal mismatch where Canada employer tax rate did not include employer EI premium costs",
+                "Fixed an internal mismatch where UK employer NI default lagged the published 2025/26 employer contribution rate"
+            ]
+        },
         {
             version: "2.7.0",
             date: "November 2025",
@@ -254,11 +272,14 @@ export const compensationData = {
     
     exchangeRates: {
         USD: 1.0,
-        EUR: 1.0865,
-        PLN: 0.2487,
-        UAH: 0.0268,
-        CAD: 0.7311,
-        GBP: 1.2794,
+        // Jan 2026 refresh: USD per unit of currency
+        // EUR/GBP/CAD/PLN from ECB reference rates via Frankfurter (date: 2026-01-02)
+        // UAH from National Bank of Ukraine (date: 2026-01-02; USD/UAH => inverted to USD per UAH)
+        EUR: 1.1721,
+        PLN: 0.2783,
+        UAH: 0.0237,
+        CAD: 0.7281,
+        GBP: 1.3443,
     },
     
     currencySymbols: {
@@ -347,7 +368,7 @@ export const compensationData = {
             },
             taxRates: {
                 incomeTax: 0.335,     // Federal + Provincial (ON) average (29-38%)
-                socialSecurity: 0.0595,// CPP (5.95%) + EI (1.63%)
+                socialSecurity: 0.0758,// CPP (5.95%) + EI (1.63%) employee rates (2026 CRA tables)
                 other: 0.015          // Health premium
             }
         },
@@ -363,9 +384,9 @@ export const compensationData = {
                 utilities: 150
             },
             taxRates: {
-                incomeTax: 0.18,      // Flat personal income tax (18%)
-                socialSecurity: 0.05,  // Military tax (1.5%) + social security (3.6%)
-                other: 0.015          // Additional levies
+                incomeTax: 0.18,      // Personal income tax (18%)
+                socialSecurity: 0.00,  // Employee does not pay USC; employer pays USC (22%)
+                other: 0.015          // Military levy (1.5%)
             }
         },
         slovakia: {
@@ -433,8 +454,8 @@ export const compensationData = {
             },
             taxRates: {
                 incomeTax: 0.40,      // Higher rate band (20-45%)
-                socialSecurity: 0.12,  // National Insurance (10-12%)
-                other: 0.02           // Additional contributions
+                socialSecurity: 0.08,  // Class 1 employee NI main rate (8%) for 2025/26 published table
+                other: 0.00           // Kept at 0 by default; use overrides for pensions/other deductions
             }
         }
     },
@@ -476,10 +497,12 @@ export const compensationData = {
                 description: "Includes social and health insurance contributions (35.2%), accident insurance (0.8%), and other mandatory contributions including guarantee fund and reserve fund (1.2%)"
             },
             canada: {
-                employerTax: 0.0565,  // CPP (5.95%) + EI (2.21% employer portion)
+                // CRA 2026 payroll tables: CPP 5.95% (employee+employer); EI employee 1.63%, employer = 1.4x = 2.282%
+                // Note: CPP and EI are capped; this model treats them as a simple % for a reasonable approximation.
+                employerTax: 0.0823,  // CPP (5.95%) + EI employer (2.282%) = 8.232%
                 workersComp: 0.019,   // Workers' compensation (varies by province, 1.5-2.19%)
-                otherFees: 0.025,     // Provincial payroll taxes, health premiums
-                description: "Includes Canada Pension Plan (5.95%), Employment Insurance (2.21% employer portion), provincial workers' compensation (1.9%), and other provincial health premiums and payroll taxes (2.5%)"
+                otherFees: 0.025,     // Provincial payroll taxes, health premiums, supplemental benefits
+                description: "Includes Canada Pension Plan (CPP) employer contributions (5.95%), Employment Insurance (EI) employer premiums (2.282%; 1.4× employee rate), provincial workers' compensation (1.9%), and other provincial health premiums and payroll taxes (2.5%). CPP2 (second additional CPP, 4% on a narrow earnings band) is not explicitly modeled here."
             },
             lithuania: {
                 employerTax: 0.3118,  // Social insurance contributions (Sodra) (31.18%)
@@ -494,11 +517,31 @@ export const compensationData = {
                 description: "Includes social security contributions for pension, health, unemployment and nursing care (20.6%), statutory accident insurance (1.4%), and insolvency levy and other mandatory contributions (2.5%)"
             },
             uk: {
-                employerTax: 0.138,   // National Insurance contributions (13.8%)
+                employerTax: 0.15,    // Employer NI per GOV.UK table for 6 Apr 2025–5 Apr 2026 (category A)
                 workersComp: 0.012,   // Employers' liability insurance (1-2%)
                 otherFees: 0.025,     // Apprenticeship levy, pension auto-enrollment
-                description: "Includes National Insurance contributions (13.8%), employers' liability insurance (1.2%), apprenticeship levy, and pension auto-enrollment contributions (2.5%)"
+                description: "Includes employer National Insurance contributions (15% per GOV.UK published 2025/26 contribution table for category A), employers' liability insurance (1.2%), apprenticeship levy, and pension auto-enrollment contributions (2.5%)"
             }
+        }
+    },
+
+    dataProvenance: {
+        lastRefreshed: "January 2026",
+        exchangeRates: {
+            eurGbpCadPln: {
+                source: "Frankfurter API (ECB reference rates)",
+                asOf: "2026-01-02",
+                note: "Weekend/holiday dates roll to last available ECB reference rate."
+            },
+            uah: {
+                source: "National Bank of Ukraine (NBU) JSON endpoint",
+                asOf: "02.01.2026",
+                note: "NBU provides UAH per USD; dataset stores USD per UAH."
+            }
+        },
+        taxesAndPayroll: {
+            uk: { source: "GOV.UK National Insurance rates and categories", asOf: "6 April 2025 to 5 April 2026" },
+            canada: { source: "Canada Revenue Agency payroll deduction tables (EI + CPP + CPP2)", asOf: "2026 (published Oct 2025)" }
         }
     },
     

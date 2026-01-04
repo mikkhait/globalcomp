@@ -1,169 +1,119 @@
 'use strict';
-import { CompensationCalculator } from './js/models/CompensationCalculator.js';
-import { compensationData } from './data.js';
 
-// Import bootstrap from CDN if not using npm
-const bootstrap = window.bootstrap;
+import { StateManager } from './js/core/StateManager.js';
+import { UIManager } from './js/core/UIManager.js';
+import { EventManager } from './js/core/EventManager.js';
+// Cache-buster: ensures dataset refreshes propagate even under aggressive browser caching.
+import { compensationData } from './data.js?v=2.8.0';
 
-// Cache DOM elements
-const howToUseModal = document.getElementById('howToUseModal');
-const releaseNotesModal = document.getElementById('releaseNotesModal');
+/**
+ * Application Entry Point
+ * Initializes the core architectural agents and orchestrates the startup flow.
+ */
+class App {
+    constructor() {
+        this.data = compensationData;
+        this.stateManager = null;
+        this.uiManager = null;
+        this.eventManager = null;
+    }
 
-// Initialize modals
-let howToUseModalInstance = null;
-let releaseNotesModalInstance = null;
+    async init() {
+        try {
+            console.log('Initializing Global Compensation Calculator...');
+            
+            // 1. Initialize State
+            this.stateManager = new StateManager({
+                role: '',
+                country: '',
+                level: '',
+                incomeTax: 0,
+                socialSecurity: 0,
+                otherTaxes: 0,
+                fixedOverhead: 850,
+                employerTax: 0,
+                workersComp: 0,
+                otherFees: 0
+            });
 
-function initializeModals() {
-    try {
-        if (howToUseModal) {
-            howToUseModalInstance = new bootstrap.Modal(howToUseModal);
+            // 2. Initialize UI Manager (subscribes to state)
+            this.uiManager = new UIManager(this.data, this.stateManager);
+
+            // 3. Initialize Event Manager (updates state)
+            this.eventManager = new EventManager(this.stateManager, this.data);
+
+            // 4. Initial Setup
+            this.setupInitialState();
+            this.populateReleaseNotes();
+            this.handleFirstVisit();
+
+            console.log('Application initialized successfully.');
+        } catch (error) {
+            console.error('Critical failure during application initialization:', error);
+            this.displayCriticalError();
         }
-        if (releaseNotesModal) {
-            releaseNotesModalInstance = new bootstrap.Modal(releaseNotesModal);
-        }
-    } catch (error) {
-        console.error('Failed to initialize modals:', error);
-    }
-}
-
-function showHowToUse() {
-    try {
-        howToUseModalInstance?.show();
-    } catch (error) {
-        console.error('Failed to show How to Use modal:', error);
-    }
-}
-
-function showReleaseNotes() {
-    try {
-        releaseNotesModalInstance?.show();
-    } catch (error) {
-        console.error('Failed to show Release Notes modal:', error);
-    }
-}
-
-// Initialize calculator with error handling
-function initializeCalculator() {
-    try {
-        const calculator = new CompensationCalculator(compensationData);
-        return calculator;
-    } catch (error) {
-        console.error('Failed to initialize calculator:', error);
-        // Show user-friendly error message
-        const resultsDiv = document.getElementById('results');
-        if (resultsDiv) {
-            resultsDiv.innerHTML = `
-                <div class="alert alert-danger" role="alert">
-                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                    Failed to initialize calculator. Please refresh the page or try again later.
-                </div>
-            `;
-        }
-        return null;
-    }
-}
-
-function populateReleaseNotes(notes) {
-    const contentDiv = document.getElementById('releaseNotesContent');
-    if (!contentDiv) {
-        console.error('Release notes content area not found.');
-        return;
     }
 
-    if (!notes || notes.length === 0) {
-        contentDiv.innerHTML = '<p>No release notes available at this time.</p>';
-        return;
+    setupInitialState() {
+        // Any initial data population needed
     }
 
-    try {
-        let html = '';
-        notes.forEach(note => {
-            html += `
+    populateReleaseNotes() {
+        const contentDiv = document.getElementById('releaseNotesContent');
+        if (!contentDiv || !this.data.releaseNotes) return;
+
+        try {
+            const html = this.data.releaseNotes.map(note => `
                 <div class="release-note mb-4">
                     <div class="version-header">
                         <span class="version">Version ${note.version}</span>
                         <span class="date">${note.date}</span>
                     </div>
+                    ${this.renderReleaseSection(note.major, 'Major Changes', 'bi-stars')}
+                    ${this.renderReleaseSection(note.improvements, 'Improvements', 'bi-graph-up-arrow')}
+                    ${this.renderReleaseSection(note.fixes, 'Fixes', 'bi-tools')}
+                </div>
+            `).join('');
+            contentDiv.innerHTML = html;
+        } catch (error) {
+            console.error('Error populating release notes:', error);
+        }
+    }
+
+    renderReleaseSection(items, title, icon) {
+        if (!items || items.length === 0) return '';
+        return `
+            <div class="release-section mt-3">
+                <h6 class="section-title"><i class="bi ${icon} me-2"></i>${title}</h6>
+                <ul>${items.map(item => `<li><i class="bi bi-check-circle-fill me-2"></i>${item}</li>`).join('')}</ul>
+            </div>
+        `;
+    }
+
+    handleFirstVisit() {
+        if (!localStorage.getItem('hasVisited')) {
+            const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('howToUseModal'));
+            modal.show();
+            localStorage.setItem('hasVisited', 'true');
+        }
+    }
+
+    displayCriticalError() {
+        const resultsDiv = document.getElementById('results');
+        if (resultsDiv) {
+            resultsDiv.classList.remove('d-none');
+            resultsDiv.innerHTML = `
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">System Error</h4>
+                    <p>We encountered a critical error while loading the application. Please try refreshing the page.</p>
+                </div>
             `;
-
-            if (note.major && note.major.length > 0) {
-                html += `
-                    <div class="release-section major-changes">
-                        <h6 class="section-title"><i class="bi bi-stars me-2"></i>Major Changes</h6>
-                        <ul>${note.major.map(item => `<li><i class="bi bi-check-circle-fill me-2"></i>${item}</li>`).join('')}</ul>
-                    </div>
-                `;
-            }
-
-            if (note.improvements && note.improvements.length > 0) {
-                html += `
-                    <div class="release-section improvements">
-                        <h6 class="section-title"><i class="bi bi-graph-up-arrow me-2"></i>Improvements</h6>
-                        <ul>${note.improvements.map(item => `<li><i class="bi bi-check-circle-fill me-2"></i>${item}</li>`).join('')}</ul>
-                    </div>
-                `;
-            }
-
-            if (note.fixes && note.fixes.length > 0) {
-                html += `
-                    <div class="release-section fixes">
-                        <h6 class="section-title"><i class="bi bi-tools me-2"></i>Fixes</h6>
-                        <ul>${note.fixes.map(item => `<li><i class="bi bi-check-circle-fill me-2"></i>${item}</li>`).join('')}</ul>
-                    </div>
-                `;
-            }
-            html += '</div>'; // close release-note
-        });
-        contentDiv.innerHTML = html;
-    } catch (error) {
-        console.error('Error populating release notes:', error);
-        contentDiv.innerHTML = '<p class="text-danger">Error loading release notes. Please try again later.</p>';
+        }
     }
 }
 
-// Show the modal on first visit
+// Start the app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize modals
-    initializeModals();
-    
-    // Populate release notes
-    if (compensationData && compensationData.releaseNotes) {
-        populateReleaseNotes(compensationData.releaseNotes);
-    } else {
-        console.error('Release notes data not found or is invalid.');
-        const contentDiv = document.getElementById('releaseNotesContent');
-        if (contentDiv) {
-            contentDiv.innerHTML = '<p class="text-warning">Release notes data is currently unavailable.</p>';
-        }
-    }
-    
-    // Attach event listeners to header buttons
-    const releaseNotesButton = document.getElementById('releaseNotesBtn');
-    if (releaseNotesButton) {
-        releaseNotesButton.addEventListener('click', showReleaseNotes);
-    }
-
-    const howToUseButton = document.getElementById('howToUseBtn');
-    if (howToUseButton) {
-        howToUseButton.addEventListener('click', showHowToUse);
-    }
-    
-    // Check if it's first visit
-    if (!localStorage.getItem('hasVisited')) {
-        showHowToUse();
-        localStorage.setItem('hasVisited', 'true');
-    }
-    
-    // Initialize the calculator
-    const calculator = initializeCalculator();
-    
-    // Add event listeners for form controls
-    const form = document.getElementById('compensationForm');
-    if (form) {
-        form.addEventListener('change', (event) => {
-            if (calculator) {
-                calculator.updateResults();
-            }
-        });
-    }
-}); 
+    const app = new App();
+    app.init();
+});

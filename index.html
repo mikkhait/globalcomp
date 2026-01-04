@@ -215,7 +215,7 @@
                                     <h5 class="mb-4">Role & Location</h5>
                                     <div class="mb-3">
                                         <label for="role" class="form-label">Role</label>
-                                        <select class="form-select" id="role" required>
+                                        <select class="form-select" id="role" data-state="role" required>
                                             <option value="">Select a role</option>
                                             <option value="engineer">Software Engineer</option>
                                             <option value="dataEngineer">Data Engineer</option>
@@ -227,7 +227,7 @@
 
                                     <div class="mb-3">
                                         <label for="level" class="form-label">Seniority Level</label>
-                                        <select class="form-select" id="level" required>
+                                        <select class="form-select" id="level" data-state="level" required>
                                             <option value="">Select a level</option>
                                             <option value="L2">L2 (Junior)</option>
                                             <option value="L3">L3 (Mid-Level)</option>
@@ -238,7 +238,7 @@
                                     </div>
 <div class="mb-3">
     <label for="country" class="form-label">Country</label>
-    <select class="form-select" id="country" required>
+    <select class="form-select" id="country" data-state="country" required>
         <option value="">Select a country</option>
         <option value="canada">Canada</option>
         <option value="germany">Germany</option>
@@ -259,21 +259,22 @@
                                         <div class="mb-3">
                                             <label class="form-label">Income Tax (%)</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="incomeTaxOverride" min="0" max="100" step="0.1">
+                                                <input type="number" class="form-control" id="incomeTaxOverride" data-state="incomeTax" min="0" max="100" step="0.1">
                                                 <span class="input-group-text">%</span>
                                                 </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Social Security (%)</label>
                                                     <div class="input-group">
-                                                <input type="number" class="form-control" id="socialSecurityOverride" min="0" max="100" step="0.1">
+                                                <input type="number" class="form-control" id="socialSecurityOverride" data-state="socialSecurity" min="0" max="100"
+                                                    step="0.1">
                                                 <span class="input-group-text">%</span>
                                                 </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Other Taxes (%)</label>
                                                     <div class="input-group">
-                                                <input type="number" class="form-control" id="otherTaxesOverride" min="0" max="100" step="0.1">
+                                                <input type="number" class="form-control" id="otherTaxesOverride" data-state="otherTaxes" min="0" max="100" step="0.1">
                                                 <span class="input-group-text">%</span>
                                                 </div>
                                                 </div>
@@ -293,7 +294,8 @@
                                             <label class="form-label">Monthly Fixed Overhead ($)</label>
                                             <div class="input-group">
                                                 <span class="input-group-text">$</span>
-                                                <input type="number" class="form-control" id="fixedOverheadOverride" min="0" step="50" value="850">
+                                                <input type="number" class="form-control" id="fixedOverheadOverride" data-state="fixedOverhead" min="0" step="50"
+                                                    value="850">
                                             </div>
                                             <small class="text-muted">Base cost per employee (workspace, equipment, etc.)</small>
                                         </div>
@@ -303,21 +305,23 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Employer Tax (%)</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control" id="employerTaxOverride" min="0" max="100" step="0.1">
+                                                    <input type="number" class="form-control" id="employerTaxOverride" data-state="employerTax" min="0" max="100"
+                                                        step="0.1">
                                                     <span class="input-group-text">%</span>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Workers Comp (%)</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control" id="workersCompOverride" min="0" max="100" step="0.1">
+                                                    <input type="number" class="form-control" id="workersCompOverride" data-state="workersComp" min="0" max="100"
+                                                        step="0.1">
                                                     <span class="input-group-text">%</span>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Other Fees (%)</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control" id="otherFeesOverride" min="0" max="100" step="0.1">
+                                                    <input type="number" class="form-control" id="otherFeesOverride" data-state="otherFees" min="0" max="100" step="0.1">
                                                     <span class="input-group-text">%</span>
                                                 </div>
                                             </div>
@@ -335,22 +339,22 @@
 
             <!-- Results on the right -->
             <div class="col-md-8 col-lg-9">
-                <div id="results" class="d-none">
-                    <div id="resultsMessageArea" class="mb-3"></div>
+                <div id="results" class="d-none" data-ui-component="results-container">
+                    <div id="resultsMessageArea" class="mb-3" data-ui-component="message-area"></div>
                     <!-- Role Details Card -->
-                    <div class="card mb-4" id="roleDetailsCard">
+                    <div class="card mb-4" id="roleDetailsCard" data-ui-component="role-details-card">
                         <div class="card-header bg-info text-white">
                             <h5 class="card-title mb-0">
                                 <i class="bi bi-person-badge me-2"></i>Role Details
                             </h5>
                         </div>
                         <div class="card-body">
-                            <div id="levelDetails"></div>
+                            <div id="levelDetails" data-ui-component="level-details"></div>
                         </div>
                     </div>
 
                     <!-- Compensation Summary Card -->
-                    <div class="card mb-4" id="compensationSummaryCard">
+                    <div class="card mb-4" id="compensationSummaryCard" data-ui-component="compensation-summary-card">
                         <div class="card-header bg-primary text-white">
                             <h5 class="card-title mb-0">
                                 <i class="bi bi-currency-dollar me-2"></i>Compensation Summary
@@ -359,41 +363,41 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div id="annualRange" class="compensation-amount"></div>
+                                    <div id="annualRange" class="compensation-amount" data-ui-component="annual-range"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div id="monthlyRange" class="compensation-amount"></div>
+                                    <div id="monthlyRange" class="compensation-amount" data-ui-component="monthly-range"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Charts Grid -->
-                    <div class="row g-4 mb-4" id="chartsGrid">
+                    <div class="row g-4 mb-4" id="chartsGrid" data-ui-component="charts-grid">
                         <div class="col-md-6">
                             <div class="chart-container">
-                                <canvas id="salaryComparisonChart"></canvas>
+                                <canvas id="salaryComparisonChart" data-ui-component="salary-comparison-chart"></canvas>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="chart-container">
-                                <canvas id="costOfLivingChart"></canvas>
+                                <canvas id="costOfLivingChart" data-ui-component="cost-of-living-chart"></canvas>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="chart-container">
-                                <canvas id="taxBreakdownChart"></canvas>
+                                <canvas id="taxBreakdownChart" data-ui-component="tax-breakdown-chart"></canvas>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="chart-container">
-                                <canvas id="purchasingPowerChart"></canvas>
+                                <canvas id="purchasingPowerChart" data-ui-component="purchasing-power-chart"></canvas>
                             </div>
                         </div>
                     </div>
 
                     <!-- Location Info Card -->
-                    <div class="card mb-4" id="locationInfoCard">
+                    <div class="card mb-4" id="locationInfoCard" data-ui-component="location-info-card">
                         <div class="card-header bg-success text-white">
                             <h5 class="card-title mb-0">
                                 <i class="bi bi-geo-alt me-2"></i>Location Information
@@ -407,7 +411,7 @@
                                         <h6 class="section-title">
                                             <i class="bi bi-currency-exchange me-2"></i>Currency & Exchange
                                         </h6>
-                                        <div id="exchangeRate" class="info-content"></div>
+                                        <div id="exchangeRate" class="info-content" data-ui-component="exchange-rate"></div>
                                     </div>
                                 </div>
                                 
@@ -417,7 +421,7 @@
                                         <h6 class="section-title">
                                             <i class="bi bi-graph-up me-2"></i>Cost of Living Index
                                         </h6>
-                                        <div id="costIndex" class="info-content"></div>
+                                        <div id="costIndex" class="info-content" data-ui-component="cost-index"></div>
                                     </div>
                                 </div>
                                 
@@ -427,7 +431,7 @@
                                         <h6 class="section-title">
                                             <i class="bi bi-house me-2"></i>Housing Costs
                                         </h6>
-                                        <div id="rentCosts" class="info-content"></div>
+                                        <div id="rentCosts" class="info-content" data-ui-component="rent-costs"></div>
                                     </div>
                                 </div>
                                 
@@ -437,7 +441,7 @@
                                         <h6 class="section-title">
                                             <i class="bi bi-wallet2 me-2"></i>Monthly Expenses
                                         </h6>
-                                        <div id="livingCosts" class="info-content"></div>
+                                        <div id="livingCosts" class="info-content" data-ui-component="living-costs"></div>
                                     </div>
                                 </div>
                             </div>
@@ -448,21 +452,21 @@
                                     <h6 class="section-title">
                                         <i class="bi bi-info-circle me-2"></i>Additional Information
                                     </h6>
-                                    <div id="additionalNotes" class="info-content text-muted"></div>
+                                    <div id="additionalNotes" class="info-content text-muted" data-ui-component="additional-notes"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Company Overhead Card -->
-                    <div class="card mb-4" id="companyOverheadCard">
+                    <div class="card mb-4" id="companyOverheadCard" data-ui-component="company-overhead-card">
                         <div class="card-header bg-warning text-dark">
                             <h5 class="card-title mb-0">
                                 <i class="bi bi-building me-2"></i>Company Overhead
                             </h5>
                         </div>
                         <div class="card-body">
-                            <div id="overheadBreakdown"></div>
+                            <div id="overheadBreakdown" data-ui-component="overhead-breakdown"></div>
                             <small class="text-muted mt-2 d-block">
                                 Note: These calculations represent additional costs that a company incurs when employing someone in this location.
                             </small>
@@ -476,7 +480,7 @@
     
     <footer class="app-footer text-center py-3 mt-auto bg-light">
         <div class="container">
-            <small class="text-muted">&copy; 2025 Global Compensation Calculator. All Rights Reserved. Data is for
+            <small class="text-muted">&copy; 2026 Global Compensation Calculator. All Rights Reserved. Data is for
                 illustrative purposes only.</small>
         </div>
     </footer>
