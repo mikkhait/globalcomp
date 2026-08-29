@@ -187,6 +187,13 @@
         </div>
     </header>
 
+    <div id="welcomeBanner" class="welcome-banner d-none" role="status">
+        <div class="container-fluid d-flex align-items-center justify-content-between gap-3">
+            <div><i class="bi bi-lightning-charge-fill me-2"></i><strong>Tip:</strong> tap Role, Level and Country — your valuation appears instantly.</div>
+            <button type="button" class="btn-close" aria-label="Dismiss" id="welcomeBannerClose"></button>
+        </div>
+    </div>
+
     <main class="container-fluid mt-4">
         <div class="row g-4">
             <!-- Controls on the left -->
@@ -212,49 +219,69 @@
                             <!-- Basic Settings Tab -->
                             <div class="tab-pane fade show active" id="basic" role="tabpanel">
                                 <div class="mb-4">
-                                    <h5 class="mb-4">Role & Location</h5>
-                                    <div class="mb-3">
-                                        <label for="role" class="form-label">Role</label>
-                                        <select class="form-select" id="role" data-state="role" required>
-                                            <option value="">Select a role</option>
-                                            <option value="engineer">Software Engineer</option>
-                                            <option value="dataEngineer">Data Engineer</option>
-                                            <option value="devOpsEngineer">DevOps Engineer</option>
-                                            <option value="pm">Product Manager</option>
-                                            <option value="designer">Product Designer</option>
-                                        </select>
-                                    </div>
+                                    <h5 class="mb-3">Role &amp; Location</h5>
 
-                                    <div class="mb-3">
-                                        <label for="level" class="form-label">Seniority Level</label>
-                                        <select class="form-select" id="level" data-state="level" required>
-                                            <option value="">Select a level</option>
-                                            <option value="L2">L2 (Junior)</option>
-                                            <option value="L3">L3 (Mid-Level)</option>
-                                            <option value="L4">L4 (Senior)</option>
-                                            <option value="L5">L5 (Staff)</option>
-                                            <option value="L6">L6 (Principal)</option>
-                                        </select>
-                                    </div>
-<div class="mb-3">
-    <label for="country" class="form-label">Country</label>
-    <select class="form-select" id="country" data-state="country" required>
-        <option value="">Select a country</option>
-        <option value="canada">Canada</option>
-        <option value="germany">Germany</option>
-        <option value="lithuania">Lithuania</option>
-        <option value="poland">Poland</option>
-        <option value="slovakia">Slovakia</option>
-        <option value="spain">Spain</option>
-        <option value="uk">United Kingdom</option>
-        <option value="ukraine">Ukraine</option>
-        <option value="usa">USA</option>
-    </select>
-</div>
+                                    <!-- Role chips (icon-first selection) -->
+                                    <fieldset class="chip-fieldset mb-3">
+                                        <legend class="form-label">Role</legend>
+                                        <div class="chip-grid role-chips" role="radiogroup" aria-label="Role" data-selector="role">
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="engineer" data-state-target="role" tabindex="0">
+                                                <i class="bi bi-code-slash" aria-hidden="true"></i><span>Engineer</span>
+                                            </button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="dataEngineer" data-state-target="role" tabindex="-1">
+                                                <i class="bi bi-database" aria-hidden="true"></i><span>Data Eng</span>
+                                            </button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="devOpsEngineer" data-state-target="role" tabindex="-1">
+                                                <i class="bi bi-infinity" aria-hidden="true"></i><span>DevOps</span>
+                                            </button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="pm" data-state-target="role" tabindex="-1">
+                                                <i class="bi bi-kanban" aria-hidden="true"></i><span>Product</span>
+                                            </button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="designer" data-state-target="role" tabindex="-1">
+                                                <i class="bi bi-palette" aria-hidden="true"></i><span>Design</span>
+                                            </button>
+                                        </div>
+                                        <!-- Hidden inputs keep data-state bindings + native form semantics intact -->
+                                        <input type="hidden" id="role" data-state="role" value="">
+                                    </fieldset>
+
+                                    <!-- Level segmented control -->
+                                    <fieldset class="chip-fieldset mb-3">
+                                        <legend class="form-label">Seniority Level</legend>
+                                        <div class="seg-control" role="radiogroup" aria-label="Seniority level" data-selector="level">
+                                            <button type="button" class="seg-btn" role="radio" aria-checked="false" data-value="L2" data-state-target="level" tabindex="0"><span class="seg-label">L2</span><span class="seg-sub">Junior</span></button>
+                                            <button type="button" class="seg-btn" role="radio" aria-checked="false" data-value="L3" data-state-target="level" tabindex="-1"><span class="seg-label">L3</span><span class="seg-sub">Mid</span></button>
+                                            <button type="button" class="seg-btn" role="radio" aria-checked="false" data-value="L4" data-state-target="level" tabindex="-1"><span class="seg-label">L4</span><span class="seg-sub">Senior</span></button>
+                                            <button type="button" class="seg-btn" role="radio" aria-checked="false" data-value="L5" data-state-target="level" tabindex="-1"><span class="seg-label">L5</span><span class="seg-sub">Staff</span></button>
+                                            <button type="button" class="seg-btn" role="radio" aria-checked="false" data-value="L6" data-state-target="level" tabindex="-1"><span class="seg-label">L6</span><span class="seg-sub">Principal</span></button>
+                                        </div>
+                                        <input type="hidden" id="level" data-state="level" value="">
+                                    </fieldset>
+
+                                    <!-- Country flag chips -->
+                                    <fieldset class="chip-fieldset mb-2">
+                                        <legend class="form-label">Country</legend>
+                                        <div class="chip-grid country-chips" role="radiogroup" aria-label="Country" data-selector="country">
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="usa" data-state-target="country" tabindex="0"><span class="flag" aria-hidden="true">🇺🇸</span><span>USA</span></button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="canada" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇨🇦</span><span>Canada</span></button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="uk" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇬🇧</span><span>UK</span></button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="germany" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇩🇪</span><span>Germany</span></button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="spain" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇪🇸</span><span>Spain</span></button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="poland" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇵🇱</span><span>Poland</span></button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="lithuania" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇱🇹</span><span>Lithuania</span></button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="slovakia" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇸🇰</span><span>Slovakia</span></button>
+                                            <button type="button" class="chip" role="radio" aria-checked="false" data-value="ukraine" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇺🇦</span><span>Ukraine</span></button>
+                                        </div>
+                                        <input type="hidden" id="country" data-state="country" value="">
+                                    </fieldset>
                                 </div>
 
                                 <div class="tax-section mb-4">
-                                    <h5 class="mb-3">Tax Configuration</h5>
+                                    <details class="advanced-panel">
+                                        <summary class="advanced-summary">
+                                            <i class="bi bi-sliders me-2"></i>Tax Configuration
+                                            <small class="text-muted ms-1">(advanced — defaults auto-set per country)</small>
+                                        </summary>
                                     <div class="tax-controls bg-light p-3 rounded">
                                         <div class="mb-3">
                                             <label class="form-label">Income Tax (%)</label>
@@ -282,6 +309,7 @@
                                                     <i class="bi bi-arrow-counterclockwise me-2"></i>Reset to Defaults
                                                 </button>
                                     </div>
+                                    </details>
                                 </div>
                             </div>
 
@@ -341,6 +369,16 @@
             <div class="col-md-8 col-lg-9">
                 <div id="results" class="d-none" data-ui-component="results-container">
                     <div id="resultsMessageArea" class="mb-3" data-ui-component="message-area"></div>
+
+                    <!-- Hero valuation card: the "answer first" -->
+                    <div class="card hero-card mb-4" id="heroCard" data-ui-component="hero-card" aria-live="polite">
+                        <div class="card-body text-center py-4">
+                            <div class="hero-label mb-1">Estimated Annual Compensation</div>
+                            <div class="hero-value" id="heroCompValue">—</div>
+                            <div class="hero-sub text-muted mt-1" id="heroCompSub"></div>
+                            <div class="hero-meta text-muted mt-2" id="heroMeta"></div>
+                        </div>
+                    </div>
                     <!-- Role Details Card -->
                     <div class="card mb-4" id="roleDetailsCard" data-ui-component="role-details-card">
                         <div class="card-header bg-info text-white">

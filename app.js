@@ -6,6 +6,19 @@ import { EventManager } from './js/core/EventManager.js';
 // Cache-buster: ensures dataset refreshes propagate even under aggressive browser caching.
 import { compensationData } from './data.js?v=2.9.0';
 
+// Reflect restored state onto chip/segmented UI
+function reflectChips(state) {
+    Object.entries(state).forEach(([key, value]) => {
+        const group = document.querySelector(`[data-selector="${key}"]`);
+        if (!group) return;
+        group.querySelectorAll('[data-value]').forEach(b => {
+            const isSel = b.getAttribute('data-value') === value;
+            b.setAttribute('aria-checked', String(isSel));
+            b.tabIndex = isSel ? 0 : -1;
+        });
+    });
+}
+
 /**
  * Application Entry Point
  * Initializes the core architectural agents and orchestrates the startup flow.
@@ -55,7 +68,36 @@ class App {
     }
 
     setupInitialState() {
-        // Any initial data population needed
+        // Restore prior selection: URL params win, then localStorage
+        const restored = {};
+        try {
+            const params = new URLSearchParams(window.location.search);
+            ['role', 'level', 'country'].forEach(k => {
+                const v = params.get(k);
+                if (v && this.data.countries[v]) restored[k] = v;
+                else if (k !== 'country' && v) restored[k] = v;
+            });
+            if (!Object.keys(restored).length) {
+                const saved = JSON.parse(localStorage.getItem('gc_selection') || '{}');
+                if (saved.country && this.data.countries[saved.country]) {
+                    restored.country = saved.country;
+                    if (saved.role) restored.role = saved.role;
+                    if (saved.level) restored.level = saved.level;
+                } else if (saved.role || saved.level) {
+                    if (saved.role) restored.role = saved.role;
+                    if (saved.level) restored.level = saved.level;
+                }
+            }
+        } catch (e) { /* noop */ }
+
+        if (Object.keys(restored).length) {
+            this.stateManager.setState(restored);
+            reflectChips(restored);
+            // Apply defaults for restored country without clobbering
+            if (restored.country && this.eventManager) {
+                this.eventManager.resetToCountryDefaults(restored.country);
+            }
+        }
     }
 
     populateReleaseNotes() {
@@ -92,8 +134,12 @@ class App {
 
     handleFirstVisit() {
         if (!localStorage.getItem('hasVisited')) {
-            const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('howToUseModal'));
-            modal.show();
+            const banner = document.getElementById('welcomeBanner');
+            if (banner) {
+                banner.classList.remove('d-none');
+                const close = document.getElementById('welcomeBannerClose');
+                if (close) close.addEventListener('click', () => banner.classList.add('d-none'));
+            }
             localStorage.setItem('hasVisited', 'true');
         }
     }

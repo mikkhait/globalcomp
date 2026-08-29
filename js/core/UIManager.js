@@ -98,7 +98,8 @@ export class UIManager {
             const maxUSD = FormatUtils.convertToUSD(range.max, currency, this.data.exchangeRates);
 
             this.showContent();
-            this.updateDisplays(state, range, monthlyRange, minUSD, maxUSD, currency, country, costOfLiving, roleLevelDetails);
+            this.updateHero(range, minUSD, maxUSD, currency, state);
+        this.updateDisplays(state, range, monthlyRange, minUSD, maxUSD, currency, country, costOfLiving, roleLevelDetails);
             this.renderCharts(state, minUSD, maxUSD);
 
         } catch (error) {
@@ -163,6 +164,33 @@ export class UIManager {
         if (monthlyRangeEl) {
             monthlyRangeEl.innerHTML = this.createRangeHTML('Monthly Compensation', monthlyRange, minUSD / 12, maxUSD / 12, currency);
         }
+    }
+
+    updateHero(range, minUSD, maxUSD, currency, state) {
+        const heroValue = document.getElementById('heroCompValue');
+        const heroSub = document.getElementById('heroCompSub');
+        const heroMeta = document.getElementById('heroMeta');
+        if (!heroValue) return;
+        const mid = (range.min + range.max) / 2;
+        const midUSD = (minUSD + maxUSD) / 2;
+        heroValue.textContent = FormatUtils.formatCurrency(midUSD, 'USD');
+        const roleNames = { engineer: 'Software Engineer', dataEngineer: 'Data Engineer', devOpsEngineer: 'DevOps Engineer', pm: 'Product Manager', designer: 'Product Designer' };
+        const countryNames = { usa: 'USA', canada: 'Canada', uk: 'United Kingdom', germany: 'Germany', spain: 'Spain', poland: 'Poland', lithuania: 'Lithuania', slovakia: 'Slovakia', ukraine: 'Ukraine' };
+        if (heroSub) heroSub.textContent = `${roleNames[state.role] || state.role} · ${state.level} · ${countryNames[state.country] || state.country}`;
+        if (heroMeta) heroMeta.textContent = `Local: ${FormatUtils.formatCurrency(range.min, currency)} – ${FormatUtils.formatCurrency(range.max, currency)} · ~${FormatUtils.formatCurrency(midUSD / 12, 'USD')}/mo`;
+
+        // Reflect chip selection in case state changed programmatically
+        document.querySelectorAll('[data-selector]').forEach(group => {
+            const key = group.getAttribute('data-selector');
+            if (state[key] === undefined || state[key] === '') return;
+            group.querySelectorAll('[data-value]').forEach(b => {
+                const isSel = b.getAttribute('data-value') === String(state[key]);
+                b.setAttribute('aria-checked', String(isSel));
+                b.tabIndex = isSel ? 0 : -1;
+            });
+        });
+        const hidden = document.getElementById('role');
+        // hidden inputs already synced via state loop below
     }
 
     createRangeHTML(title, range, minUSD, maxUSD, currency) {
