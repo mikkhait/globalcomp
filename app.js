@@ -4,7 +4,7 @@ import { StateManager } from './js/core/StateManager.js';
 import { UIManager } from './js/core/UIManager.js';
 import { EventManager } from './js/core/EventManager.js';
 // Cache-buster: ensures dataset refreshes propagate even under aggressive browser caching.
-import { compensationData } from './data.js?v=2.8.0';
+import { compensationData } from './data.js?v=2.9.0';
 
 /**
  * Application Entry Point

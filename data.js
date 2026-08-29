@@ -1,6 +1,6 @@
 /**
  * Global Compensation Calculator Data
- * Version: 2.8.0
+ * Version: 2.9.0
  * Last Updated: January 2026
  * 
  * This file contains comprehensive compensation data for tech roles across different countries.
@@ -14,6 +14,21 @@
 
 export const compensationData = {
     releaseNotes: [
+        {
+            version: "2.9.0",
+            date: "August 2026",
+            major: [
+                "Refreshed FX rates to 2026-08-28 reference (EUR 1.1643, GBP 1.3583, CAD 0.7218, PLN 0.2684, UAH 0.0225 per USD; ECB/Frankfurter + NBU)",
+                "Germany: employer + employee social security raised to ~21.15% (average GKV Zusatzbeitrag 2.5%→2.9%, effective Jan 2026)",
+                "Spain: employer SS 29.8%→30.65%, employee 6.4%→6.5% (2026 MEI increase; Seguridad Social)",
+                "Ukraine: military levy 1.5%→5% (Law 4015-IX, effective 1 Dec 2024; dataset was stale)",
+                "Lithuania: CORRECTED employer Sodra 31.18%→~1.77% (2.49% fixed-term); employee carries the 19.5% VSD+PSD — previous employer value double-counted the burden",
+                "UK: raised senior salary bands L5/L6 across all roles (e.g. SWE £70–90K / £90–120K) on 2026 market data showing >5% drift"
+            ],
+            improvements: [
+                "Updated dataProvenance: FX asOf 2026-08-28, lastRefreshed August 2026; refreshed stale contribution descriptions"
+            ]
+        },
         {
             version: "2.8.0",
             date: "January 2026",
@@ -272,14 +287,14 @@ export const compensationData = {
     
     exchangeRates: {
         USD: 1.0,
-        // Jan 2026 refresh: USD per unit of currency
-        // EUR/GBP/CAD/PLN from ECB reference rates via Frankfurter (date: 2026-01-02)
-        // UAH from National Bank of Ukraine (date: 2026-01-02; USD/UAH => inverted to USD per UAH)
-        EUR: 1.1721,
-        PLN: 0.2783,
-        UAH: 0.0237,
-        CAD: 0.7281,
-        GBP: 1.3443,
+        // Aug 2026 refresh: USD per unit of currency
+        // EUR/GBP/CAD/PLN from ECB reference rates via Frankfurter (date: 2026-08-28)
+        // UAH from National Bank of Ukraine (date: 2026-08-31; USD/UAH => inverted to USD per UAH)
+        EUR: 1.1643,
+        PLN: 0.2684,
+        UAH: 0.0225,
+        CAD: 0.7218,
+        GBP: 1.3583,
     },
     
     currencySymbols: {
@@ -317,7 +332,7 @@ export const compensationData = {
             },
             taxRates: {
                 incomeTax: 0.20,      // Progressive rate for higher income (15-20%)
-                socialSecurity: 0.195, // 19.5% social insurance
+                socialSecurity: 0.195, // 19.5% social insurance (VSD 18.5% + PSD 0.7-3%; employee carries the main share)
                 other: 0.015          // Health insurance
             }
         },
@@ -334,7 +349,7 @@ export const compensationData = {
             },
             taxRates: {
                 incomeTax: 0.37,      // Progressive rate for tech salaries (30-47%)
-                socialSecurity: 0.064, // 6.4% Employee social security
+                socialSecurity: 0.065, // ~6.5% (common 4.70 + unemployment 1.55 + MEI ~0.25; 2026)
                 other: 0.02           // Regional taxes
             }
         },
@@ -386,7 +401,7 @@ export const compensationData = {
             taxRates: {
                 incomeTax: 0.18,      // Personal income tax (18%)
                 socialSecurity: 0.00,  // Employee does not pay USC; employer pays USC (22%)
-                other: 0.015          // Military levy (1.5%)
+                other: 0.05           // Military levy 5% (Law 4015-IX, eff. 1 Dec 2024; was 1.5%)
             }
         },
         slovakia: {
@@ -437,7 +452,7 @@ export const compensationData = {
             },
             taxRates: {
                 incomeTax: 0.42,      // Progressive rate for tech salaries (14-45%)
-                socialSecurity: 0.195, // Social insurance contributions (19.5%)
+                socialSecurity: 0.2115, // ~21.15% (GKV Zusatzbeitrag avg 2.9% from Jan 2026: pension 9.3 + health 8.75 + unemployment 1.3 + care 1.8)
                 other: 0.012          // Solidarity surcharge (5.5% of income tax)
             }
         },
@@ -473,10 +488,10 @@ export const compensationData = {
                 description: "Includes FICA (7.65%), workers compensation insurance (1.8%), and payroll taxes including FUTA and SUTA (3%)"
             },
             spain: {
-                employerTax: 0.298,   // Social Security contributions (29.8%)
+                employerTax: 0.3065,  // SS 2026: common 23.60 + unemployment 5.50 + FOGASA 0.20 + training 0.60 + MEI 0.75
                 workersComp: 0.016,   // Work accident insurance (1.6%)
                 otherFees: 0.032,     // Other contributions (unemployment, training)
-                description: "Includes Social Security contributions (29.8%), work accident insurance (1.6%), and other mandatory contributions such as unemployment and professional training funds (3.2%)"
+                description: "Includes Social Security contributions (30.65% for 2026, incl. MEI 0.75%), work accident insurance (1.6%), and other mandatory contributions such as unemployment and professional training funds (3.2%)"
             },
             poland: {
                 employerTax: 0.197,   // Social contributions (ZUS) (19.7%)
@@ -488,7 +503,7 @@ export const compensationData = {
                 employerTax: 0.22,    // Unified Social Contribution (USC) (22%)
                 workersComp: 0.012,   // Occupational risk insurance (0.6-1.5%)
                 otherFees: 0.015,     // Military levy and other contributions
-                description: "Includes Unified Social Contribution (22%), occupational risk insurance (1.2%), military levy and other mandatory contributions (1.5%)"
+                description: "Includes Unified Social Contribution (22%), occupational risk insurance (1.2%), military levy (5% since Dec 2024) and other mandatory contributions"
             },
             slovakia: {
                 employerTax: 0.352,   // Social and health insurance (35.2%)
@@ -505,16 +520,16 @@ export const compensationData = {
                 description: "Includes Canada Pension Plan (CPP) employer contributions (5.95%), Employment Insurance (EI) employer premiums (2.282%; 1.4× employee rate), provincial workers' compensation (1.9%), and other provincial health premiums and payroll taxes (2.5%). CPP2 (second additional CPP, 4% on a narrow earnings band) is not explicitly modeled here."
             },
             lithuania: {
-                employerTax: 0.3118,  // Social insurance contributions (Sodra) (31.18%)
+                employerTax: 0.0177,  // CORRECTED Aug 2026: employer Sodra ~1.77% (2.49% fixed-term); employee carries the 19.5% VSD+PSD — prior value double-counted employer burden
                 workersComp: 0.0018,  // Guarantee fund contribution (0.18%)
                 otherFees: 0.012,     // Long-term unemployment insurance (1.2%)
-                description: "Includes Sodra social insurance contributions for pension, sickness, maternity and unemployment (31.18%), guarantee fund contribution (0.18%), and long-term unemployment insurance (1.2%)"
+                description: "Includes employer Sodra contribution (~1.77% for 2026 — corrected Aug 2026; the employee carries the main 19.5% VSD+PSD social insurance), guarantee fund contribution (0.18%), and long-term unemployment insurance (1.2%)"
             },
             germany: {
-                employerTax: 0.206,   // Social security contributions (20.6%)
+                employerTax: 0.2115,  // SS 2026: pension 9.3 + health 8.55 (7.3 base + ~1.45 avg Zusatzbeitrag from Jan 2026) + unemployment 1.3 + care 1.85
                 workersComp: 0.014,   // Accident insurance (1.4%)
                 otherFees: 0.025,     // Insolvency levy and other contributions
-                description: "Includes social security contributions for pension, health, unemployment and nursing care (20.6%), statutory accident insurance (1.4%), and insolvency levy and other mandatory contributions (2.5%)"
+                description: "Includes social security contributions for pension, health, unemployment and nursing care (21.15% for 2026, reflecting the raised GKV Zusatzbeitrag), statutory accident insurance (1.4%), and insolvency levy and other mandatory contributions (2.5%)"
             },
             uk: {
                 employerTax: 0.15,    // Employer NI per GOV.UK table for 6 Apr 2025–5 Apr 2026 (category A)
@@ -526,16 +541,16 @@ export const compensationData = {
     },
 
     dataProvenance: {
-        lastRefreshed: "January 2026",
+        lastRefreshed: "August 2026",
         exchangeRates: {
             eurGbpCadPln: {
                 source: "Frankfurter API (ECB reference rates)",
-                asOf: "2026-01-02",
+                asOf: "2026-08-28",
                 note: "Weekend/holiday dates roll to last available ECB reference rate."
             },
             uah: {
                 source: "National Bank of Ukraine (NBU) JSON endpoint",
-                asOf: "02.01.2026",
+                asOf: "31.08.2026",
                 note: "NBU provides UAH per USD; dataset stores USD per UAH."
             }
         },
@@ -1480,39 +1495,39 @@ export const compensationData = {
                     L2: { min: 42230, max: 50470 },
                     L3: { min: 50470, max: 59740 },
                     L4: { min: 59740, max: 67980 },
-                    L5: { min: 67980, max: 82400 },
-                    L6: { min: 82400, max: 97850 }
+                    L5: { min: 70000, max: 90000 },
+                    L6: { min: 90000, max: 120000 }
                 },
                 dataEngineer: {
                     L2: { min: 55620, max: 61800 },
                     L3: { min: 61800, max: 75190 },
                     L4: { min: 75190, max: 97850 },
-                    L5: { min: 97850, max: 121540 },
-                    L6: { min: 121540, max: 145436 }
+                    L5: { min: 73500, max: 94500 },
+                    L6: { min: 94500, max: 126000 }
                 },
                 pm: {
                     L2: { min: 39140, max: 49440 },
                     L3: { min: 49440, max: 66950 },
                     L4: { min: 66950, max: 84460 },
-                    L5: { min: 84460, max: 97850 },
-                    L6: { min: 97850, max: 123600 }
+                    L5: { min: 70000, max: 90000 },
+                    L6: { min: 90000, max: 120000 }
                 },
                 designer: {
                     L2: { min: 36050, max: 46350 },
                     L3: { min: 46350, max: 61800 },
                     L4: { min: 61800, max: 80340 },
-                    L5: { min: 80340, max: 95790 },
-                    L6: { min: 95790, max: 118450 }
+                    L5: { min: 56000, max: 72000 },
+                    L6: { min: 72000, max: 96000 }
                 },
                 devOpsEngineer: {
                     L2: { min: 42230, max: 50470 },
                     L3: { min: 50470, max: 59740 },
                     L4: { min: 59740, max: 67980 },
-                    L5: { min: 67980, max: 82400 },
-                    L6: { min: 82400, max: 97850 }
+                    L5: { min: 71400, max: 91800 },
+                    L6: { min: 91800, max: 122400 }
                 }
             },
-            notes: "UK ranges validated for Wales; London typically 15–25% higher. Fast refresh (~3%) and GBP/USD as of November 2025."
+            notes: "UK ranges validated for Wales; London typically 15–25% higher. Fast refresh (~3%) and GBP/USD as of August 2026."
         }
     },
 
