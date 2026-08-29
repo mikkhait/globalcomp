@@ -222,8 +222,8 @@
                                     <h5 class="mb-3">Role &amp; Location</h5>
 
                                     <!-- Role chips (icon-first selection) -->
-                                    <fieldset class="chip-fieldset mb-3">
-                                        <legend class="form-label">Role</legend>
+                                    <div class="chip-fieldset mb-3" role="group" aria-label="Role">
+                                        <div class="form-label">Role</div>
                                         <div class="chip-grid role-chips" role="radiogroup" aria-label="Role" data-selector="role">
                                             <button type="button" class="chip" role="radio" aria-checked="false" data-value="engineer" data-state-target="role" tabindex="0">
                                                 <i class="bi bi-code-slash" aria-hidden="true"></i><span>Engineer</span>
@@ -243,11 +243,11 @@
                                         </div>
                                         <!-- Hidden inputs keep data-state bindings + native form semantics intact -->
                                         <input type="hidden" id="role" data-state="role" value="">
-                                    </fieldset>
+                                    </div>
 
                                     <!-- Level segmented control -->
-                                    <fieldset class="chip-fieldset mb-3">
-                                        <legend class="form-label">Seniority Level</legend>
+                                    <div class="chip-fieldset mb-3" role="group" aria-label="Seniority level">
+                                        <div class="form-label">Seniority Level</div>
                                         <div class="seg-control" role="radiogroup" aria-label="Seniority level" data-selector="level">
                                             <button type="button" class="seg-btn" role="radio" aria-checked="false" data-value="L2" data-state-target="level" tabindex="0"><span class="seg-label">L2</span><span class="seg-sub">Junior</span></button>
                                             <button type="button" class="seg-btn" role="radio" aria-checked="false" data-value="L3" data-state-target="level" tabindex="-1"><span class="seg-label">L3</span><span class="seg-sub">Mid</span></button>
@@ -256,11 +256,11 @@
                                             <button type="button" class="seg-btn" role="radio" aria-checked="false" data-value="L6" data-state-target="level" tabindex="-1"><span class="seg-label">L6</span><span class="seg-sub">Principal</span></button>
                                         </div>
                                         <input type="hidden" id="level" data-state="level" value="">
-                                    </fieldset>
+                                    </div>
 
                                     <!-- Country flag chips -->
-                                    <fieldset class="chip-fieldset mb-2">
-                                        <legend class="form-label">Country</legend>
+                                    <div class="chip-fieldset mb-2" role="group" aria-label="Country">
+                                        <div class="form-label">Country</div>
                                         <div class="chip-grid country-chips" role="radiogroup" aria-label="Country" data-selector="country">
                                             <button type="button" class="chip" role="radio" aria-checked="false" data-value="usa" data-state-target="country" tabindex="0"><span class="flag" aria-hidden="true">🇺🇸</span><span>USA</span></button>
                                             <button type="button" class="chip" role="radio" aria-checked="false" data-value="canada" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇨🇦</span><span>Canada</span></button>
@@ -273,7 +273,7 @@
                                             <button type="button" class="chip" role="radio" aria-checked="false" data-value="ukraine" data-state-target="country" tabindex="-1"><span class="flag" aria-hidden="true">🇺🇦</span><span>Ukraine</span></button>
                                         </div>
                                         <input type="hidden" id="country" data-state="country" value="">
-                                    </fieldset>
+                                    </div>
                                 </div>
 
                                 <div class="tax-section mb-4">

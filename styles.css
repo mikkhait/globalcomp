@@ -643,3 +643,8 @@ body {
     .seg-btn .seg-sub { display: none; }
     .seg-btn { min-height: 44px; }
 }
+
+/* WebKit hit-test hardening: children never capture taps; chip gets them all */
+.chip, .seg-btn { -webkit-user-select: none; user-select: none; touch-action: manipulation; }
+.chip > *, .seg-btn > *, .chip i, .chip .flag { pointer-events: none; }
+.chip-fieldset .form-label { margin-bottom: 0.5rem; font-weight: 600; font-size: 0.875rem; }
