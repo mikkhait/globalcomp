@@ -1,7 +1,7 @@
 /**
  * Global Compensation Calculator Data
- * Version: 2.9.0
- * Last Updated: January 2026
+ * Version: 2.10.0
+ * Last Updated: October 2026
  * 
  * This file contains comprehensive compensation data for tech roles across different countries.
  * Data includes:
@@ -14,6 +14,17 @@
 
 export const compensationData = {
     releaseNotes: [
+        {
+            version: "2.10.0",
+            date: "October 2026",
+            major: [
+                "Refreshed FX rates to 2026-10-01 reference (USD per unit: EUR 1.1298, GBP 1.3234, CAD 0.7020, PLN 0.2583, UAH 0.0223; ECB/Frankfurter + NBU) — all four ECB pairs drifted >2% since August"
+            ],
+            improvements: [
+                "Updated dataProvenance: FX asOf 2026-10-01, lastRefreshed October 2026",
+                "Deep-refresh audit: tax/payroll items (UK NI, CRA CPP/EI) verified within 3-month window — next full tax-table review due at UK 2026/27 → 2027/28 changeover (April 2027) and CRA 2027 tables (late 2026)"
+            ]
+        },
         {
             version: "2.9.0",
             date: "August 2026",
@@ -287,14 +298,14 @@ export const compensationData = {
     
     exchangeRates: {
         USD: 1.0,
-        // Aug 2026 refresh: USD per unit of currency
-        // EUR/GBP/CAD/PLN from ECB reference rates via Frankfurter (date: 2026-08-28)
-        // UAH from National Bank of Ukraine (date: 2026-08-31; USD/UAH => inverted to USD per UAH)
-        EUR: 1.1643,
-        PLN: 0.2684,
-        UAH: 0.0225,
-        CAD: 0.7218,
-        GBP: 1.3583,
+        // Oct 2026 refresh: USD per unit of currency
+        // EUR/GBP/CAD/PLN from ECB reference rates via Frankfurter (date: 2026-10-01)
+        // UAH from National Bank of Ukraine (date: 2026-10-02; USD/UAH => inverted to USD per UAH)
+        EUR: 1.1298,
+        PLN: 0.2583,
+        UAH: 0.0223,
+        CAD: 0.7020,
+        GBP: 1.3234,
     },
     
     currencySymbols: {
@@ -541,16 +552,16 @@ export const compensationData = {
     },
 
     dataProvenance: {
-        lastRefreshed: "August 2026",
+        lastRefreshed: "October 2026",
         exchangeRates: {
             eurGbpCadPln: {
                 source: "Frankfurter API (ECB reference rates)",
-                asOf: "2026-08-28",
+                asOf: "2026-10-01",
                 note: "Weekend/holiday dates roll to last available ECB reference rate."
             },
             uah: {
                 source: "National Bank of Ukraine (NBU) JSON endpoint",
-                asOf: "31.08.2026",
+                asOf: "02.10.2026",
                 note: "NBU provides UAH per USD; dataset stores USD per UAH."
             }
         },
